@@ -1,4 +1,3 @@
-
 # income-tax-submission-performance-tests
 Performance test suite for the Income Tax Submission Service, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
@@ -14,7 +13,7 @@ Run the following command to start the services locally:
 ```
 docker run --rm -d --name mongo -d -p 27017:27017 mongo:3.6
 
-sm --start PLATOPS_EXAMPLE_UI_TESTS -r
+sm --start INCOME_TAX_SUBMISSION_ALL -r
 ```
 
 ## Logging
