@@ -29,7 +29,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getIndexPage
   )
 
-  setup("agent-dividends", "agent Dividends Journey") withRequests(
+  setup("agent-dividends", "Agent Dividends Journey") withRequests(
     getLoginPage,
     postAgentLoginPage,
     getAgentTestOnlyEndPoint,
