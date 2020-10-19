@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.istass
+package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef.{http, status}
 import io.gatling.core.Predef._
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.istass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 
 object AuthLoginRequests extends ServicesConfiguration {
 
