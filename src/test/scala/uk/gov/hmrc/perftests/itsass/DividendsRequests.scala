@@ -8,14 +8,14 @@ import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 object DividendsRequests extends ServicesConfiguration {
 
   def getUKDividendsStatusPage = http("get UK Dividends Status Page")
-    .get(s"$serviceUrl/dividends/dividend-uk-status")
+    .get(s"$serviceUrl/dividends/uk-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postUKDividendsStatusPage = http("post UK Dividends Status Page")
-    .post(s"$serviceUrl/dividends/dividend-uk-status")
+    .post(s"$serviceUrl/dividends/uk-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", "true")
+    .formParam("yesNoValue", "yes")
     .check(status.is(303))
 
   def getUKDividendsAmountPage = http("get UK Dividends Amount Page")
@@ -30,14 +30,14 @@ object DividendsRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getOtherDividendsStatusPage = http("get Other Dividends Status Page")
-    .get(s"$serviceUrl/dividends/other-dividend-status")
+    .get(s"$serviceUrl/dividends/other-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postOtherDividendsStatusPage = http("post Other Dividends Status Page")
-    .post(s"$serviceUrl/dividends/other-dividend-status")
+    .post(s"$serviceUrl/dividends/other-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", "true")
+    .formParam("yesNoValue", "yes")
     .check(status.is(303))
 
   def getOtherDividendsAmountPage = http("get Other Dividends Amount Page")
