@@ -24,7 +24,7 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
-  val serviceUrl: String = baseUrlFor(baseUrl + "/income-through-software/return")
+  val serviceUrl: String = baseUrl + "/income-through-software/return"
   val authLoginUrl: String = baseUrlFor("auth-login")
   val csrfPattern: String = """name="csrfToken" value="([^"]+)"""
 
