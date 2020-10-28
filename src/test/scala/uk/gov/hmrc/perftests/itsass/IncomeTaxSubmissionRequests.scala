@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.istass
+package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef._
 import io.gatling.core.Predef._
@@ -24,21 +24,24 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
+  val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val authLoginUrl: String = baseUrlFor("auth-login")
   val csrfPattern: String = """name="csrfToken" value="([^"]+)"""
+
+  val serviceUrl: String = baseUrl + "/income-through-software/return"
 
   def saveCsrfToken()= regex(_ => csrfPattern).saveAs("csrfToken")
 
   def getStartPage = http("Get Start Page")
-    .get(s"$baseUrl/report-quarterly/income-and-expenses/submissions/start")
+    .get(s"$serviceUrl/start")
     .check(status.is(200))
 
   def getAgentTestOnlyEndPoint = http("Get Agent Test Only End Point")
-    .get(s"$baseUrl/report-quarterly/income-and-expenses/submissions/test-only/agent-access/1234567890")
+    .get(s"$serviceUrl/test-only/agent-access/1234567890")
     .check(status.is(303))
 
-  def getIndexPage = http("Get Index Page")
-    .get(s"$baseUrl/report-quarterly/income-and-expenses/submissions/index")
+  def getOverviewPage = http("Get Overview Page")
+    .get(s"$serviceUrl/view")
     .check(status.is(200))
 
 }

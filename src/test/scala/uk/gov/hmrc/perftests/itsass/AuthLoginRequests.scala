@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.istass
+package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef.{http, status}
 import io.gatling.core.Predef._
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.istass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 
 object AuthLoginRequests extends ServicesConfiguration {
 
@@ -32,7 +32,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .post(authLoginUrl + "/auth-login-stub/gg-sign-in": String)
     .formParam("authorityId", "")
     .formParam("gatewayToken", "")
-    .formParam("redirectionUrl", s"$baseUrl/report-quarterly/income-and-expenses/submissions/start")
+    .formParam("redirectionUrl", s"$serviceUrl/start")
     .formParam("credentialStrength", "strong")
     .formParam("confidenceLevel", "200")
     .formParam("affinityGroup", "Individual")
@@ -92,7 +92,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .post(authLoginUrl + "/auth-login-stub/gg-sign-in": String)
     .formParam("authorityId", "")
     .formParam("gatewayToken", "")
-    .formParam("redirectionUrl", s"$baseUrl/report-quarterly/income-and-expenses/submissions/test-only/agent-access/1234567890")
+    .formParam("redirectionUrl", s"$serviceUrl/test-only/agent-access/1234567890")
     .formParam("credentialStrength", "weak")
     .formParam("confidenceLevel", "50")
     .formParam("affinityGroup", "Agent")

@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.istass
+package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
-import uk.gov.hmrc.perftests.istass.AuthLoginRequests._
-import uk.gov.hmrc.perftests.istass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
+import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.DividendsRequests._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
@@ -26,7 +27,17 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postIndividualLoginPage,
     getStartPage,
-    getIndexPage
+    getOverviewPage,
+    getUKDividendsStatusPage,
+    postUKDividendsStatusPage,
+    getUKDividendsAmountPage,
+    postUKDividendsAmountPage,
+    getOtherDividendsStatusPage,
+    postOtherDividendsStatusPage,
+    getOtherDividendsAmountPage,
+    postOtherDividendsAmountPage,
+    getDividendsCheckYourAnswersPage,
+    postDividendsCheckYourAnswersPage
   )
 
   setup("agent-dividends", "Agent Dividends Journey") withRequests(
@@ -34,7 +45,17 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postAgentLoginPage,
     getAgentTestOnlyEndPoint,
     getStartPage,
-    getIndexPage
+    getOverviewPage,
+    getUKDividendsStatusPage,
+    postUKDividendsStatusPage,
+    getUKDividendsAmountPage,
+    postUKDividendsAmountPage,
+    getOtherDividendsStatusPage,
+    postOtherDividendsStatusPage,
+    getOtherDividendsAmountPage,
+    postOtherDividendsAmountPage,
+    getDividendsCheckYourAnswersPage,
+    postDividendsCheckYourAnswersPage
   )
 
   runSimulation()
