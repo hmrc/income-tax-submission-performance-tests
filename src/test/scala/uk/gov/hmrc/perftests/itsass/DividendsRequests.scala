@@ -22,60 +22,59 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 
 object DividendsRequests extends ServicesConfiguration {
-  val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
-  val personalIncomeServiceUrl: String = personalIncomeBaseUrl + "/income-through-software/return"
+  val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/dividends"
 
-  def getUKDividendsStatusPage = http("get UK Dividends Status Page")
-    .get(s"$personalIncomeServiceUrl/personal-income/dividends/uk-dividends")
+  def getUKDividendsStatusPage = http("Get UK Dividends Status Page")
+    .get(s"$dividendsUrl/uk-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUKDividendsStatusPage = http("post UK Dividends Status Page")
-    .post(s"$personalIncomeServiceUrl/personal-income/dividends/uk-dividends")
+  def postUKDividendsStatusPage = http("Post UK Dividends Status Page")
+    .post(s"$dividendsUrl/uk-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("yesNoValue", "yes")
+    .formParam("yes_no", "yes")
     .check(status.is(303))
 
-  def getUKDividendsAmountPage = http("get UK Dividends Amount Page")
-    .get(s"$personalIncomeServiceUrl/personal-income/dividends/uk-dividends-amount")
+  def getUKDividendsAmountPage = http("Get UK Dividends Amount Page")
+    .get(s"$dividendsUrl/uk-dividends-amount")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUKDividendsAmountPage = http("post UK Dividends Amount Page")
-    .post(s"$personalIncomeServiceUrl/personal-income/dividends/uk-dividends-amount")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("amount", "1000")
-    .check(status.is(303))
-
-  def getOtherDividendsStatusPage = http("get Other Dividends Status Page")
-    .get(s"$personalIncomeServiceUrl/personal-income/dividends/other-dividends")
-    .check(saveCsrfToken)
-    .check(status.is(200))
-
-  def postOtherDividendsStatusPage = http("post Other Dividends Status Page")
-    .post(s"$personalIncomeServiceUrl/personal-income/dividends/other-dividends")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("yesNoValue", "yes")
-    .check(status.is(303))
-
-  def getOtherDividendsAmountPage = http("get Other Dividends Amount Page")
-    .get(s"$personalIncomeServiceUrl/personal-income/dividends/other-dividends-amount")
-    .check(saveCsrfToken)
-    .check(status.is(200))
-
-  def postOtherDividendsAmountPage = http("post Other Dividends Amount Page")
-    .post(s"$personalIncomeServiceUrl/personal-income/dividends/other-dividends-amount")
+  def postUKDividendsAmountPage = http("Post UK Dividends Amount Page")
+    .post(s"$dividendsUrl/uk-dividends-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "1000")
     .check(status.is(303))
 
-  def getDividendsCheckYourAnswersPage = http("get Dividends Check Your Answers Page")
-    .get(s"$personalIncomeServiceUrl/personal-income/dividends/check-your-answers")
+  def getOtherDividendsStatusPage = http("Get Other Dividends Status Page")
+    .get(s"$dividendsUrl/other-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postDividendsCheckYourAnswersPage = http("post Dividends Check Your Answers Page")
-    .post(s"$personalIncomeServiceUrl/personal-income/dividends/check-your-answers")
+  def postOtherDividendsStatusPage = http("Post Other Dividends Status Page")
+    .post(s"$dividendsUrl/other-dividends")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("yes_no", "yes")
+    .check(status.is(303))
+
+  def getOtherDividendsAmountPage = http("Get Other Dividends Amount Page")
+    .get(s"$dividendsUrl/other-dividends-amount")
+    .check(saveCsrfToken)
+    .check(status.is(200))
+
+  def postOtherDividendsAmountPage = http("Post Other Dividends Amount Page")
+    .post(s"$dividendsUrl/other-dividends-amount")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "1000")
+    .check(status.is(303))
+
+  def getDividendsCheckYourAnswersPage = http("Get Dividends Check Your Answers Page")
+    .get(s"$dividendsUrl/check-your-answers")
+    .check(saveCsrfToken)
+    .check(status.is(200))
+
+  def postDividendsCheckYourAnswersPage = http("Post Dividends Check Your Answers Page")
+    .post(s"$dividendsUrl/check-your-answers")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
