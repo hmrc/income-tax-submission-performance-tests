@@ -33,15 +33,15 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
   def saveCsrfToken()= regex(_ => csrfPattern).saveAs("csrfToken")
 
   def getStartPage = http("Get Start Page")
-    .get(s"$serviceUrl/start")
+    .get(s"$serviceUrl/2020/start")
     .check(status.is(200))
 
   def getAgentTestOnlyEndPoint = http("Get Agent Test Only End Point")
-    .get(s"$serviceUrl/test-only/agent-access/1234567890")
+    .get(s"$serviceUrl/test-only/2020/agent-access/1234567890")
     .check(status.is(303))
 
   def getOverviewPage = http("Get Overview Page")
-    .get(s"$serviceUrl/view")
+    .get(s"$serviceUrl/2020/view")
     .check(status.is(200))
 
 }
