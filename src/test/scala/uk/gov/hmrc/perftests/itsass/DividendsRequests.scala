@@ -22,7 +22,7 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 
 object DividendsRequests extends ServicesConfiguration {
-  val dividendsUrl: String = personalIncomeBaseUrl + "/2020/income-through-software/return/personal-income/dividends"
+  val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2020/dividends"
 
   def getUKDividendsStatusPage = http("Get UK Dividends Status Page")
     .get(s"$dividendsUrl/uk-dividends")
