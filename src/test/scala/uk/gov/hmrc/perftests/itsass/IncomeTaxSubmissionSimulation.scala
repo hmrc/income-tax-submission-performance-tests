@@ -20,6 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
+import uk.gov.hmrc.perftests.itsass.InterestRequests._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
@@ -56,6 +57,80 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postOtherDividendsAmountPage,
     getDividendsCheckYourAnswersPage,
     postDividendsCheckYourAnswersPage
+  )
+
+  setup("individual-interest", "Individual Interest Journey") withRequests(
+    getLoginPage,
+    postIndividualLoginPage,
+    getStartPage,
+    getOverviewPage,
+    getUntaxedUKInterestStatusPage,
+    postUntaxedUKInterestStatusPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getTaxedUKInterestStatusPage,
+    postTaxedUKInterestStatusPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getInterestCheckYourAnswersPage,
+    postInterestCheckYourAnswersPage
+  )
+
+  setup("agent-interest", "Agent Interest Journey") withRequests(
+    getLoginPage,
+    postAgentLoginPage,
+    getStartPage,
+    getOverviewPage,
+    getUntaxedUKInterestStatusPage,
+    postUntaxedUKInterestStatusPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage,
+    getUntaxedUKInterestSummaryPage,
+    postUntaxedUKInterestSummaryPage,
+    getTaxedUKInterestStatusPage,
+    postTaxedUKInterestStatusPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage,
+    getTaxedUKInterestSummaryPage,
+    postTaxedUKInterestSummaryPage,
+    getInterestCheckYourAnswersPage,
+    postInterestCheckYourAnswersPage
   )
 
   runSimulation()
