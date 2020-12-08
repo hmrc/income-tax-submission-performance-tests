@@ -40,8 +40,11 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .get(s"$serviceUrl/test-only/2020/agent-access/1234567890")
     .check(status.is(303))
 
+  def getInsertNinoEndPoint = http("Insert Client Nino")
+    .get(s"$serviceUrl/test-only/2020/additional-parameters?NINO=AA123456A")
+    .check(status.is(303))
+
   def getOverviewPage = http("Get Overview Page")
     .get(s"$serviceUrl/2020/view")
     .check(status.is(200))
-
 }
