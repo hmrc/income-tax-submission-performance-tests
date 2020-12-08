@@ -43,17 +43,17 @@ object InterestRequests extends ServicesConfiguration {
   def postUntaxedUKInterestDetailsPage = http("Post Untaxed UK Interest Details Page")
     .post(s"$interestUrl/untaxed-uk-interest-details")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("account", "Tesco")
-    .formParam("amount", "1000")
+    .formParam("accountName", "Tesco")
+    .formParam("untaxedAmount", "1000")
     .check(status.is(303))
 
   def getUntaxedUKInterestSummaryPage = http("Get Untaxed UK Interest Summary Page")
-    .get(s"$interestUrl/untaxed-uk-interest-summary")
+    .get(s"$interestUrl/untaxed-uk-interest-account-summary")
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postUntaxedUKInterestSummaryPage = http("Post Untaxed UK Interest Summary Page")
-    .post(s"$interestUrl/untaxed-uk-interest-summary")
+    .post(s"$interestUrl/untaxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
@@ -76,17 +76,17 @@ object InterestRequests extends ServicesConfiguration {
   def postTaxedUKInterestDetailsPage = http("Post Taxed UK Interest Details Page")
     .post(s"$interestUrl/taxed-uk-interest-details")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("account", "Tesco")
-    .formParam("amount", "1000")
+    .formParam("friendlyName", "Tesco")
+    .formParam("incomeTaxAmount", "1000")
     .check(status.is(303))
 
   def getTaxedUKInterestSummaryPage = http("Get Taxed UK Interest Summary Page")
-    .get(s"$interestUrl/taxed-uk-interest-summary")
+    .get(s"$interestUrl/taxed-uk-interest-account-summary")
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postTaxedUKInterestSummaryPage = http("Post Taxed UK Interest Summary Page")
-    .post(s"$interestUrl/taxed-uk-interest-summary")
+    .post(s"$interestUrl/taxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
