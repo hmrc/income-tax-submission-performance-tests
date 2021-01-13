@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ object InterestRequests extends ServicesConfiguration {
   def postUntaxedUKInterestDetailsPage = http("Post Untaxed UK Interest Details Page")
     .post(s"$interestUrl/untaxed-uk-interest-details")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("accountName", "Tesco")
+    .formParam("untaxedAccountName", "Tesco")
     .formParam("untaxedAmount", "1000")
     .check(status.is(303))
 
@@ -76,8 +76,8 @@ object InterestRequests extends ServicesConfiguration {
   def postTaxedUKInterestDetailsPage = http("Post Taxed UK Interest Details Page")
     .post(s"$interestUrl/taxed-uk-interest-details")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("friendlyName", "Tesco")
-    .formParam("incomeTaxAmount", "1000")
+    .formParam("taxedAccountName", "Tesco")
+    .formParam("taxedAmount", "1000")
     .check(status.is(303))
 
   def getTaxedUKInterestSummaryPage = http("Get Taxed UK Interest Summary Page")
