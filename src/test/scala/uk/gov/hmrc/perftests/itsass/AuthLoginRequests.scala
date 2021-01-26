@@ -94,7 +94,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .formParam("gatewayToken", "")
     .formParam("redirectionUrl", s"$serviceUrl/2020/start")
     .formParam("credentialStrength", "weak")
-    .formParam("confidenceLevel", "50")
+    .formParam("confidenceLevel", "200")
     .formParam("affinityGroup", "Agent")
     .formParam("usersName", "")
     .formParam("email", "")

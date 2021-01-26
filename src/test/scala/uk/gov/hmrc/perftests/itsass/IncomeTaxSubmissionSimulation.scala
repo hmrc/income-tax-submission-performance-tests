@@ -27,7 +27,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("individual-dividends", "Individual Dividends Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage,
-    getInsertNinoEndPoint,
     getStartPage,
     getOverviewPage,
     getUKDividendsStatusPage,
@@ -46,7 +45,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postAgentLoginPage,
     getAgentTestOnlyEndPoint,
-    getInsertNinoEndPoint,
+    getInsertAdditionalParametersEndPoint,
     getStartPage,
     getOverviewPage,
     getUKDividendsStatusPage,
@@ -64,7 +63,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("individual-interest", "Individual Interest Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage,
-    getInsertNinoEndPoint,
     getStartPage,
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
@@ -103,7 +101,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postAgentLoginPage,
     getAgentTestOnlyEndPoint,
-    getInsertNinoEndPoint,
+    getInsertAdditionalParametersEndPoint,
     getStartPage,
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
