@@ -22,7 +22,7 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests.{personalIncomeBaseUrl, saveCsrfToken}
 
 object InterestRequests extends ServicesConfiguration {
-  val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2020/interest"
+  val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
 
   def getUntaxedUKInterestStatusPage = http("Get Untaxed UK Interest Status Page")
     .get(s"$interestUrl/untaxed-uk-interest")
