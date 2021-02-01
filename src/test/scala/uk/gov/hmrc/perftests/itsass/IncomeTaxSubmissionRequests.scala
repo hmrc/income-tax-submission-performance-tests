@@ -32,8 +32,6 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   def saveCsrfToken()= regex(_ => csrfPattern).saveAs("csrfToken")
 
-  def saveRedirectPath() = headerRegex("Location", """.+""").saveAs("redirectPath")
-
   def getStartPage = http("Get Start Page")
     .get(s"$serviceUrl/2022/start")
     .check(status.is(200))
