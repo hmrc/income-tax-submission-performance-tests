@@ -18,17 +18,18 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef.{http, status}
 import io.gatling.core.Predef._
+import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 
 object AuthLoginRequests extends ServicesConfiguration {
 
-  def getLoginPage = http("Get Login Page")
+  def getLoginPage: HttpRequestBuilder = http("Get Login Page")
     .get(authLoginUrl + s"/auth-login-stub/gg-sign-in")
-    .check(saveCsrfToken())
+    .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postIndividualLoginPage = http("Post Individual Login page")
+  def postIndividualLoginPage: HttpRequestBuilder = http("Post Individual Login page")
     .post(authLoginUrl + "/auth-login-stub/gg-sign-in": String)
     .formParam("authorityId", "")
     .formParam("gatewayToken", "")
@@ -88,7 +89,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .formParam("itmp.address.countryCode", "")
     .check(status.is(303))
 
-  def postAgentLoginPage = http("Post Agent Login page")
+  def postAgentLoginPage: HttpRequestBuilder = http("Post Agent Login page")
     .post(authLoginUrl + "/auth-login-stub/gg-sign-in": String)
     .formParam("authorityId", "")
     .formParam("gatewayToken", "")
