@@ -16,13 +16,21 @@
 
 package uk.gov.hmrc.perftests.itsass
 
-import io.gatling.http.Predef.{http, status}
+import io.gatling.http.Predef._
 import io.gatling.core.Predef._
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests.{personalIncomeBaseUrl, saveCsrfToken}
 
 object InterestRequests extends ServicesConfiguration {
   val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
+  val untaxedAccountPattern = s"""/income-through-software/return/personal-income/2022/interest/untaxed-uk-interest-details/([^"]+)"""
+  val taxedAccountPattern = s"""/income-through-software/return/personal-income/2022/interest/taxed-uk-interest-details/([^"]+)"""
+
+  private def saveUntaxedAccountId() = headerRegex(
+    "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
+
+  private def saveTaxedAccountId() = headerRegex(
+    "Location", taxedAccountPattern).saveAs("taxedAccountId")
 
   def getUntaxedUKInterestStatusPage = http("Get Untaxed UK Interest Status Page")
     .get(s"$interestUrl/untaxed-uk-interest")
@@ -33,15 +41,16 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/untaxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
+    .check(saveUntaxedAccountId())
     .check(status.is(303))
 
   def getUntaxedUKInterestDetailsPage = http("Get Untaxed UK Interest Details Page")
-    .get(s"$interestUrl/untaxed-uk-interest-details")
+    .get(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postUntaxedUKInterestDetailsPage = http("Post Untaxed UK Interest Details Page")
-    .post(s"$interestUrl/untaxed-uk-interest-details")
+    .post(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("untaxedAccountName", "Tesco")
     .formParam("untaxedAmount", "1000")
@@ -66,15 +75,16 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/taxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
+    .check(saveTaxedAccountId())
     .check(status.is(303))
 
   def getTaxedUKInterestDetailsPage = http("Get Taxed UK Interest Details Page")
-    .get(s"$interestUrl/taxed-uk-interest-details")
+    .get(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
     .check(saveCsrfToken)
     .check(status.is(200))
 
   def postTaxedUKInterestDetailsPage = http("Post Taxed UK Interest Details Page")
-    .post(s"$interestUrl/taxed-uk-interest-details")
+    .post(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("taxedAccountName", "Tesco")
     .formParam("taxedAmount", "1000")
