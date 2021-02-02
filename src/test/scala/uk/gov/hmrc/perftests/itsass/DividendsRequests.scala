@@ -18,62 +18,62 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef.{http, status}
 import io.gatling.core.Predef._
+import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 
 object DividendsRequests extends ServicesConfiguration {
-  val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/dividends"
 
-  def getUKDividendsStatusPage = http("Get UK Dividends Status Page")
+  def getUKDividendsStatusPage: HttpRequestBuilder = http("Get UK Dividends Status Page")
     .get(s"$dividendsUrl/uk-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUKDividendsStatusPage = http("Post UK Dividends Status Page")
+  def postUKDividendsStatusPage: HttpRequestBuilder = http("Post UK Dividends Status Page")
     .post(s"$dividendsUrl/uk-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
     .check(status.is(303))
 
-  def getUKDividendsAmountPage = http("Get UK Dividends Amount Page")
+  def getUKDividendsAmountPage: HttpRequestBuilder = http("Get UK Dividends Amount Page")
     .get(s"$dividendsUrl/uk-dividends-amount")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUKDividendsAmountPage = http("Post UK Dividends Amount Page")
+  def postUKDividendsAmountPage: HttpRequestBuilder = http("Post UK Dividends Amount Page")
     .post(s"$dividendsUrl/uk-dividends-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "1000")
     .check(status.is(303))
 
-  def getOtherDividendsStatusPage = http("Get Other Dividends Status Page")
+  def getOtherDividendsStatusPage: HttpRequestBuilder = http("Get Other Dividends Status Page")
     .get(s"$dividendsUrl/other-dividends")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postOtherDividendsStatusPage = http("Post Other Dividends Status Page")
+  def postOtherDividendsStatusPage: HttpRequestBuilder = http("Post Other Dividends Status Page")
     .post(s"$dividendsUrl/other-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
     .check(status.is(303))
 
-  def getOtherDividendsAmountPage = http("Get Other Dividends Amount Page")
+  def getOtherDividendsAmountPage: HttpRequestBuilder = http("Get Other Dividends Amount Page")
     .get(s"$dividendsUrl/other-dividends-amount")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postOtherDividendsAmountPage = http("Post Other Dividends Amount Page")
+  def postOtherDividendsAmountPage: HttpRequestBuilder = http("Post Other Dividends Amount Page")
     .post(s"$dividendsUrl/other-dividends-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "1000")
     .check(status.is(303))
 
-  def getDividendsCheckYourAnswersPage = http("Get Dividends Check Your Answers Page")
+  def getDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Get Dividends Check Your Answers Page")
     .get(s"$dividendsUrl/check-your-answers")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postDividendsCheckYourAnswersPage = http("Post Dividends Check Your Answers Page")
+  def postDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Post Dividends Check Your Answers Page")
     .post(s"$dividendsUrl/check-your-answers")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))

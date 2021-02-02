@@ -18,33 +18,25 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef._
 import io.gatling.core.Predef._
-
+import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
+import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
-  val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
-  val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
-  val authLoginUrl: String = baseUrlFor("auth-login")
-  val csrfPattern: String = """name="csrfToken" value="([^"]+)"""
-
-  val serviceUrl: String = baseUrl + "/income-through-software/return"
-
-  def saveCsrfToken()= regex(_ => csrfPattern).saveAs("csrfToken")
-
-  def getStartPage = http("Get Start Page")
+  def getStartPage: HttpRequestBuilder = http("Get Start Page")
     .get(s"$serviceUrl/2022/start")
     .check(status.is(200))
 
-  def getAgentTestOnlyEndPoint = http("Get Agent Test Only End Point")
+  def getAgentTestOnlyEndPoint: HttpRequestBuilder = http("Get Agent Test Only End Point")
     .get(s"$serviceUrl/test-only/2022/agent-access/1234567890")
     .check(status.is(303))
 
-  def getInsertAdditionalParametersEndPoint = http("Insert Additional Parameters End Point")
+  def getInsertAdditionalParametersEndPoint: HttpRequestBuilder = http("Insert Additional Parameters End Point")
     .get(s"$serviceUrl/test-only/2022/additional-parameters?NINO=AA123456A&MTDITID=1234567890")
     .check(status.is(303))
 
-  def getOverviewPage = http("Get Overview Page")
+  def getOverviewPage: HttpRequestBuilder = http("Get Overview Page")
     .get(s"$serviceUrl/2022/view")
     .check(status.is(200))
 }

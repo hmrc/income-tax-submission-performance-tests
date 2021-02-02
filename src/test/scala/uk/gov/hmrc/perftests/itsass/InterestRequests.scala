@@ -18,94 +18,86 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.http.Predef._
 import io.gatling.core.Predef._
+import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests.{personalIncomeBaseUrl, saveCsrfToken}
+import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 
 object InterestRequests extends ServicesConfiguration {
-  val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
-  val untaxedAccountPattern = s"""/income-through-software/return/personal-income/2022/interest/untaxed-uk-interest-details/([^"]+)"""
-  val taxedAccountPattern = s"""/income-through-software/return/personal-income/2022/interest/taxed-uk-interest-details/([^"]+)"""
 
-  private def saveUntaxedAccountId() = headerRegex(
-    "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
-
-  private def saveTaxedAccountId() = headerRegex(
-    "Location", taxedAccountPattern).saveAs("taxedAccountId")
-
-  def getUntaxedUKInterestStatusPage = http("Get Untaxed UK Interest Status Page")
+  def getUntaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Untaxed UK Interest Status Page")
     .get(s"$interestUrl/untaxed-uk-interest")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUntaxedUKInterestStatusPage = http("Post Untaxed UK Interest Status Page")
+  def postUntaxedUKInterestStatusPage: HttpRequestBuilder = http("Post Untaxed UK Interest Status Page")
     .post(s"$interestUrl/untaxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
-    .check(saveUntaxedAccountId())
+    .check(saveUntaxedAccountId)
     .check(status.is(303))
 
-  def getUntaxedUKInterestDetailsPage = http("Get Untaxed UK Interest Details Page")
+  def getUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Get Untaxed UK Interest Details Page")
     .get(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUntaxedUKInterestDetailsPage = http("Post Untaxed UK Interest Details Page")
+  def postUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Untaxed UK Interest Details Page")
     .post(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("untaxedAccountName", "Tesco")
     .formParam("untaxedAmount", "1000")
     .check(status.is(303))
 
-  def getUntaxedUKInterestSummaryPage = http("Get Untaxed UK Interest Summary Page")
+  def getUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Get Untaxed UK Interest Summary Page")
     .get(s"$interestUrl/untaxed-uk-interest-account-summary")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postUntaxedUKInterestSummaryPage = http("Post Untaxed UK Interest Summary Page")
+  def postUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Untaxed UK Interest Summary Page")
     .post(s"$interestUrl/untaxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
-  def getTaxedUKInterestStatusPage = http("Get Taxed UK Interest Status Page")
+  def getTaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Taxed UK Interest Status Page")
     .get(s"$interestUrl/taxed-uk-interest")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postTaxedUKInterestStatusPage = http("Post Taxed UK Interest Status Page")
+  def postTaxedUKInterestStatusPage: HttpRequestBuilder = http("Post Taxed UK Interest Status Page")
     .post(s"$interestUrl/taxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("yes_no", "yes")
-    .check(saveTaxedAccountId())
+    .check(saveTaxedAccountId)
     .check(status.is(303))
 
-  def getTaxedUKInterestDetailsPage = http("Get Taxed UK Interest Details Page")
+  def getTaxedUKInterestDetailsPage: HttpRequestBuilder = http("Get Taxed UK Interest Details Page")
     .get(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postTaxedUKInterestDetailsPage = http("Post Taxed UK Interest Details Page")
+  def postTaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Taxed UK Interest Details Page")
     .post(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("taxedAccountName", "Tesco")
     .formParam("taxedAmount", "1000")
     .check(status.is(303))
 
-  def getTaxedUKInterestSummaryPage = http("Get Taxed UK Interest Summary Page")
+  def getTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Get Taxed UK Interest Summary Page")
     .get(s"$interestUrl/taxed-uk-interest-account-summary")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postTaxedUKInterestSummaryPage = http("Post Taxed UK Interest Summary Page")
+  def postTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Taxed UK Interest Summary Page")
     .post(s"$interestUrl/taxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
-  def getInterestCheckYourAnswersPage = http("Get Interest Check Your Answers Page")
+  def getInterestCheckYourAnswersPage: HttpRequestBuilder = http("Get Interest Check Your Answers Page")
     .get(s"$interestUrl/check-your-answers")
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def postInterestCheckYourAnswersPage = http("Post Interest Check Your Answers Page")
+  def postInterestCheckYourAnswersPage: HttpRequestBuilder = http("Post Interest Check Your Answers Page")
     .post(s"$interestUrl/check-your-answers")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
