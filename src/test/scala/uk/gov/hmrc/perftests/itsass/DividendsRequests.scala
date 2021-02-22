@@ -32,7 +32,7 @@ object DividendsRequests extends ServicesConfiguration {
   def postUKDividendsStatusPage: HttpRequestBuilder = http("Post UK Dividends Status Page")
     .post(s"$dividendsUrl/uk-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("yes_no", "yes")
+    .formParam("value", true)
     .check(status.is(303))
 
   def getUKDividendsAmountPage: HttpRequestBuilder = http("Get UK Dividends Amount Page")
@@ -54,7 +54,7 @@ object DividendsRequests extends ServicesConfiguration {
   def postOtherDividendsStatusPage: HttpRequestBuilder = http("Post Other Dividends Status Page")
     .post(s"$dividendsUrl/other-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("yes_no", "yes")
+    .formParam("value", true)
     .check(status.is(303))
 
   def getOtherDividendsAmountPage: HttpRequestBuilder = http("Get Other Dividends Amount Page")
