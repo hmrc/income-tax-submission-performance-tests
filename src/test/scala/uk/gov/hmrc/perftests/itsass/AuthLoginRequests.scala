@@ -93,7 +93,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .post(authLoginUrl + "/auth-login-stub/gg-sign-in": String)
     .formParam("authorityId", "")
     .formParam("gatewayToken", "")
-    .formParam("redirectionUrl", s"$serviceUrl/2022/start")
+    .formParam("redirectionUrl", s"$serviceUrl/test-only/2022/start/additional-parameters?ClientNino=AA123457A&ClientMTDID=1234567890")
     .formParam("credentialStrength", "weak")
     .formParam("confidenceLevel", "200")
     .formParam("affinityGroup", "Agent")
