@@ -28,12 +28,8 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .get(s"$serviceUrl/2022/start")
     .check(status.is(200))
 
-  def getAgentTestOnlyEndPoint: HttpRequestBuilder = http("Get Agent Test Only End Point")
-    .get(s"$serviceUrl/test-only/2022/agent-access/1234567890")
-    .check(status.is(303))
-
   def getInsertAdditionalParametersEndPoint: HttpRequestBuilder = http("Insert Additional Parameters End Point")
-    .get(s"$serviceUrl/test-only/2022/additional-parameters?NINO=AA123456A&MTDITID=1234567890")
+    .get(s"$serviceUrl/test-only/2022/additional-parameters?ClientNino=AA123456A&ClientMTDID=1234567890")
     .check(status.is(303))
 
   def getOverviewPage: HttpRequestBuilder = http("Get Overview Page")
