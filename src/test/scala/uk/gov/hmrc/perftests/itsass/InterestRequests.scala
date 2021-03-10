@@ -56,6 +56,7 @@ object InterestRequests extends ServicesConfiguration {
   def postUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Untaxed UK Interest Summary Page")
     .post(s"$interestUrl/untaxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", false)
     .check(status.is(303))
 
   def getTaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Taxed UK Interest Status Page")
@@ -90,6 +91,7 @@ object InterestRequests extends ServicesConfiguration {
   def postTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Taxed UK Interest Summary Page")
     .post(s"$interestUrl/taxed-uk-interest-account-summary")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", false)
     .check(status.is(303))
 
   def getInterestCheckYourAnswersPage: HttpRequestBuilder = http("Get Interest Check Your Answers Page")
