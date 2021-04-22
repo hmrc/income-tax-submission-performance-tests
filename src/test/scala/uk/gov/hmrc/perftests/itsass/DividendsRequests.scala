@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.perftests.itsass
 
-import io.gatling.http.Predef.{http, status}
+import io.gatling.http.Predef._
 import io.gatling.core.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
@@ -26,7 +26,7 @@ object DividendsRequests extends ServicesConfiguration {
 
   def getUKDividendsStatusPage: HttpRequestBuilder = http("Get UK Dividends Status Page")
     .get(s"$dividendsUrl/dividends-from-uk-companies")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postUKDividendsStatusPage: HttpRequestBuilder = http("Post UK Dividends Status Page")
@@ -37,7 +37,7 @@ object DividendsRequests extends ServicesConfiguration {
 
   def getUKDividendsAmountPage: HttpRequestBuilder = http("Get UK Dividends Amount Page")
     .get(s"$dividendsUrl/how-much-dividends-from-uk-companies")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postUKDividendsAmountPage: HttpRequestBuilder = http("Post UK Dividends Amount Page")
@@ -48,7 +48,7 @@ object DividendsRequests extends ServicesConfiguration {
 
   def getOtherDividendsStatusPage: HttpRequestBuilder = http("Get Other Dividends Status Page")
     .get(s"$dividendsUrl/dividends-from-uk-trusts-or-open-ended-investment-companies")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postOtherDividendsStatusPage: HttpRequestBuilder = http("Post Other Dividends Status Page")
@@ -59,7 +59,7 @@ object DividendsRequests extends ServicesConfiguration {
 
   def getOtherDividendsAmountPage: HttpRequestBuilder = http("Get Other Dividends Amount Page")
     .get(s"$dividendsUrl/how-much-dividends-from-uk-trusts-and-open-ended-investment-companies")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postOtherDividendsAmountPage: HttpRequestBuilder = http("Post Other Dividends Amount Page")
@@ -70,7 +70,7 @@ object DividendsRequests extends ServicesConfiguration {
 
   def getDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Get Dividends Check Your Answers Page")
     .get(s"$dividendsUrl/check-income-from-dividends")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Post Dividends Check Your Answers Page")

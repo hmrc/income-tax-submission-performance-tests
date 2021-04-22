@@ -26,7 +26,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getUntaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Untaxed UK Interest Status Page")
     .get(s"$interestUrl/untaxed-uk-interest")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postUntaxedUKInterestStatusPage: HttpRequestBuilder = http("Post Untaxed UK Interest Status Page")
@@ -38,7 +38,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Get Untaxed UK Interest Details Page")
     .get(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Untaxed UK Interest Details Page")
@@ -50,7 +50,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Get Untaxed UK Interest Summary Page")
     .get(s"$interestUrl/untaxed-uk-interest-account-summary")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Untaxed UK Interest Summary Page")
@@ -61,7 +61,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getTaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Taxed UK Interest Status Page")
     .get(s"$interestUrl/taxed-uk-interest")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postTaxedUKInterestStatusPage: HttpRequestBuilder = http("Post Taxed UK Interest Status Page")
@@ -73,7 +73,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getTaxedUKInterestDetailsPage: HttpRequestBuilder = http("Get Taxed UK Interest Details Page")
     .get(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postTaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Taxed UK Interest Details Page")
@@ -85,7 +85,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Get Taxed UK Interest Summary Page")
     .get(s"$interestUrl/taxed-uk-interest-account-summary")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Taxed UK Interest Summary Page")
@@ -96,7 +96,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getInterestCheckYourAnswersPage: HttpRequestBuilder = http("Get Interest Check Your Answers Page")
     .get(s"$interestUrl/check-your-answers")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postInterestCheckYourAnswersPage: HttpRequestBuilder = http("Post Interest Check Your Answers Page")
