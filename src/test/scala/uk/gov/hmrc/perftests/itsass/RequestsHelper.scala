@@ -18,9 +18,11 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
+import io.gatling.core.check.regex.RegexCheckType
+import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import io.gatling.http.Predef._
-import io.gatling.http.check.HttpCheck
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
+
 
 object RequestsHelper extends ServicesConfiguration {
 
@@ -31,16 +33,16 @@ object RequestsHelper extends ServicesConfiguration {
   val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/dividends"
   val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
 
-  val csrfPattern: String = """name="csrfToken" value="([^"]+)"""
+  val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/untaxed-uk-interest-details/([^"]+)"""
   val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/taxed-uk-interest-details/([^"]+)"""
 
-  def saveUntaxedAccountId: CheckBuilder[HttpCheck, Response, Response, String] = headerRegex(
+  def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
 
-  def saveTaxedAccountId: CheckBuilder[HttpCheck, Response, Response, String] = headerRegex(
+  def saveTaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", taxedAccountPattern).saveAs("taxedAccountId")
 
-  def saveCsrfToken: CheckBuilder[HttpCheck, Response, CharSequence, String] = regex(_ => csrfPattern).saveAs("csrfToken")
+  def saveCsrfToken(): CheckBuilder[RegexCheckType, String, String] = regex(_ => csrfPattern).saveAs("csrfToken")
 
 }

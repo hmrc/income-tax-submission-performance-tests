@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.perftests.itsass
 
-import io.gatling.http.Predef.{http, status}
+import io.gatling.http.Predef._
 import io.gatling.core.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
@@ -26,7 +26,7 @@ object AuthLoginRequests extends ServicesConfiguration {
 
   def getLoginPage: HttpRequestBuilder = http("Get Login Page")
     .get(authLoginUrl + s"/auth-login-stub/gg-sign-in")
-    .check(saveCsrfToken)
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postIndividualLoginPage: HttpRequestBuilder = http("Post Individual Login page")
