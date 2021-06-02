@@ -45,7 +45,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("agent-dividends", "Agent Dividends Journey") withRequests(
     getLoginPage,
     postAgentLoginPage("AA111112A"),
-    getInsertAdditionalParametersEndPoint,
+    getInsertAdditionalParametersEndPoint("AA111112A"),
     getStartPage,
     getOverviewPage,
     getUKDividendsStatusPage,
@@ -100,7 +100,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("agent-interest", "Agent Interest Journey") withRequests(
     getLoginPage,
     postAgentLoginPage("AA111112A"),
-    getInsertAdditionalParametersEndPoint,
+    getInsertAdditionalParametersEndPoint("AA111112A"),
     getStartPage,
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
@@ -149,6 +149,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("agent-employment", "Agent Multiple Employments Journey") withRequests(
     getLoginPage,
     postAgentLoginPage("BB444444A"),
+    getInsertAdditionalParametersEndPoint("BB444444A"),
     getStartPage,
     getOverviewPage,
     getEmploymentSummaryPage,
