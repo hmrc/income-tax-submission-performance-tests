@@ -30,6 +30,7 @@ object EmploymentsRequests extends ServicesConfiguration {
 
   def getEmployerDetailsAndBenefitsPage(employmentId: String): HttpRequestBuilder = http("Get Employer Details And Benefits Page")
     .get(s"$employmentsUrl/employer-details-and-benefits?employmentId=$employmentId")
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def getEmploymentDetailsPage(employmentId: String): HttpRequestBuilder = http("Get Employment Details Page")
