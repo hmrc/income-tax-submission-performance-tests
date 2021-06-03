@@ -41,10 +41,10 @@ object InterestRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Untaxed UK Interest Details Page")
+  def postUntaxedUKInterestDetailsPage(accountName: String): HttpRequestBuilder = http("Post Untaxed UK Interest Details Page")
     .post(s"$interestUrl/untaxed-uk-interest-details/$${untaxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("untaxedAccountName", "Tesco")
+    .formParam("untaxedAccountName", s"$accountName")
     .formParam("untaxedAmount", "1000")
     .check(status.is(303))
 
@@ -76,10 +76,10 @@ object InterestRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postTaxedUKInterestDetailsPage: HttpRequestBuilder = http("Post Taxed UK Interest Details Page")
+  def postTaxedUKInterestDetailsPage(accountName: String): HttpRequestBuilder = http("Post Taxed UK Interest Details Page")
     .post(s"$interestUrl/taxed-uk-interest-details/$${taxedAccountId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("taxedAccountName", "Tesco")
+    .formParam("taxedAccountName", s"$accountName")
     .formParam("taxedAmount", "1000")
     .check(status.is(303))
 
