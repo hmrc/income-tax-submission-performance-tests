@@ -20,13 +20,14 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
+import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
 import uk.gov.hmrc.perftests.itsass.InterestRequests._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-dividends", "Individual Dividends Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage,
+    postIndividualLoginPage("AA111111A"),
     getStartPage,
     getOverviewPage,
     getUKDividendsStatusPage,
@@ -43,8 +44,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-dividends", "Agent Dividends Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage,
-    getInsertAdditionalParametersEndPoint,
+    postAgentLoginPage("AA111112A"),
+    getInsertAdditionalParametersEndPoint("AA111112A"),
     getStartPage,
     getOverviewPage,
     getUKDividendsStatusPage,
@@ -61,35 +62,35 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-interest", "Individual Interest Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage,
+    postIndividualLoginPage("AA111111A"),
     getStartPage,
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Tesco Bank"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Halifax"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Santander"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getTaxedUKInterestStatusPage,
     postTaxedUKInterestStatusPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Tesco Bank"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Halifax"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Santander"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getInterestCheckYourAnswersPage,
@@ -98,40 +99,64 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-interest", "Agent Interest Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage,
-    getInsertAdditionalParametersEndPoint,
+    postAgentLoginPage("AA111112A"),
+    getInsertAdditionalParametersEndPoint("AA111112A"),
     getStartPage,
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Tesco Bank"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Halifax"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getUntaxedUKInterestDetailsPage,
-    postUntaxedUKInterestDetailsPage,
+    postUntaxedUKInterestDetailsPage("Santander"),
     getUntaxedUKInterestSummaryPage,
     postUntaxedUKInterestSummaryPage,
     getTaxedUKInterestStatusPage,
     postTaxedUKInterestStatusPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Tesco Bank"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Halifax"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getTaxedUKInterestDetailsPage,
-    postTaxedUKInterestDetailsPage,
+    postTaxedUKInterestDetailsPage("Santander"),
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getInterestCheckYourAnswersPage,
     postInterestCheckYourAnswersPage
+  )
+
+  setup("individual-employment", "Individual Single Employment Journey") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA133742A"),
+    getStartPage,
+    getOverviewPage,
+    getEmploymentSummaryPage,
+    getEmploymentDetailsPage("00000000-0000-1000-8000-000000000000"),
+    getEmploymentBenefitsPage("00000000-0000-1000-8000-000000000000"),
+    getEmploymentExpensesPage
+  )
+
+  setup("agent-employment", "Agent Multiple Employments Journey") withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A"),
+    getInsertAdditionalParametersEndPoint("BB444444A"),
+    getStartPage,
+    getOverviewPage,
+    getEmploymentSummaryPage,
+    getEmployerDetailsAndBenefitsPage("00000000-5555-0000-0000-000000000001"),
+    getEmploymentDetailsPage("00000000-5555-0000-0000-000000000001"),
+    getEmploymentBenefitsPage("00000000-5555-0000-0000-000000000001"),
+    getEmploymentExpensesPage
   )
 
   runSimulation()

@@ -28,10 +28,12 @@ object RequestsHelper extends ServicesConfiguration {
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
+  val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val authLoginUrl: String = baseUrlFor("auth-login")
   val serviceUrl: String = baseUrl + "/income-through-software/return"
   val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/dividends"
   val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
+  val employmentsUrl: String = employmentFrontendBaseUrl + "/income-through-software/return/employment-income/2022"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/untaxed-uk-interest-details/([^"]+)"""
