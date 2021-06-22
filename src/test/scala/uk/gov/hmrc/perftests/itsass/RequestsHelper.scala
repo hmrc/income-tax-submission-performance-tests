@@ -36,8 +36,8 @@ object RequestsHelper extends ServicesConfiguration {
   val employmentsUrl: String = employmentFrontendBaseUrl + "/income-through-software/return/employment-income/2022"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
-  val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/untaxed-uk-interest-details/([^"]+)"""
-  val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/taxed-uk-interest-details/([^"]+)"""
+  val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-untaxed-uk-interest-account/([^"]+)"""
+  val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-taxed-uk-interest-account/([^"]+)"""
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
