@@ -26,18 +26,21 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
 object RequestsHelper extends ServicesConfiguration {
 
+  val taxYear: String = "2022"
+
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val authLoginUrl: String = baseUrlFor("auth-login")
   val serviceUrl: String = baseUrl + "/income-through-software/return"
-  val dividendsUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/dividends"
-  val interestUrl: String = personalIncomeBaseUrl + "/income-through-software/return/personal-income/2022/interest"
-  val employmentsUrl: String = employmentFrontendBaseUrl + "/income-through-software/return/employment-income/2022"
+  val dividendsUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/dividends"
+  val interestUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/interest"
+  val giftAidUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/charity"
+  val employmentsUrl: String = employmentFrontendBaseUrl + s"/income-through-software/return/employment-income/$taxYear"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
-  val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-untaxed-uk-interest-account/([^"]+)"""
-  val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-taxed-uk-interest-account/([^"]+)"""
+  val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
+  val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
