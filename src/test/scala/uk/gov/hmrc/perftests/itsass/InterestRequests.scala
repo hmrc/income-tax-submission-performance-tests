@@ -36,6 +36,18 @@ object InterestRequests extends ServicesConfiguration {
     .check(saveUntaxedAccountId)
     .check(status.is(303))
 
+  def getUntaxedAccountChoose: HttpRequestBuilder = http("Get Untaxed Account Choose Page")
+    .get(s"$interestUrl/untaxed-account-choose")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postUntaxedAccountChoose: HttpRequestBuilder = http("Post Untaxed Account Choose Page")
+    .post(s"$interestUrl/untaxed-account-choose")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value",ADD_A_NEW_ACCOUNT)
+    .check(saveUntaxedAccountId)
+    .check(status.is(303))
+
   def getUntaxedUKInterestDetailsPage: HttpRequestBuilder = http("Get Untaxed UK Interest Details Page")
     .get(s"$interestUrl/add-untaxed-uk-interest-account/$${untaxedAccountId}": String)
     .check(saveCsrfToken())
@@ -68,6 +80,18 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/taxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
+    .check(saveTaxedAccountId)
+    .check(status.is(303))
+
+  def getTaxedAccountChoose: HttpRequestBuilder = http("Get Taxed Account Choose Page")
+    .get(s"$interestUrl/taxed-account-choose")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postTaxedAccountChoose: HttpRequestBuilder = http("Post Taxed Account Choose Page")
+    .post(s"$interestUrl/taxed-account-choose")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value",ADD_A_NEW_ACCOUNT)
     .check(saveTaxedAccountId)
     .check(status.is(303))
 

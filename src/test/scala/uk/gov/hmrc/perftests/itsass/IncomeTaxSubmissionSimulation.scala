@@ -67,6 +67,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
+    getUntaxedAccountChoose,
+    postUntaxedAccountChoose,
     getUntaxedUKInterestDetailsPage,
     postUntaxedUKInterestDetailsPage("Tesco Bank"),
     getUntaxedUKInterestSummaryPage,
@@ -81,6 +83,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postUntaxedUKInterestSummaryPage,
     getTaxedUKInterestStatusPage,
     postTaxedUKInterestStatusPage,
+    getTaxedAccountChoose,
+    postTaxedAccountChoose,
     getTaxedUKInterestDetailsPage,
     postTaxedUKInterestDetailsPage("Tesco Bank"),
     getTaxedUKInterestSummaryPage,
@@ -105,6 +109,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getOverviewPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
+    getUntaxedAccountChoose,
+    postUntaxedAccountChoose,
     getUntaxedUKInterestDetailsPage,
     postUntaxedUKInterestDetailsPage("Tesco Bank"),
     getUntaxedUKInterestSummaryPage,
@@ -119,6 +125,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postUntaxedUKInterestSummaryPage,
     getTaxedUKInterestStatusPage,
     postTaxedUKInterestStatusPage,
+    getTaxedAccountChoose,
+    postTaxedAccountChoose,
     getTaxedUKInterestDetailsPage,
     postTaxedUKInterestDetailsPage("Tesco Bank"),
     getTaxedUKInterestSummaryPage,
@@ -132,7 +140,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getTaxedUKInterestSummaryPage,
     postTaxedUKInterestSummaryPage,
     getInterestCheckYourAnswersPage,
-    postInterestCheckYourAnswersPage
+    postInterestCheckYourAnswersPage,
   )
 
   setup("individual-employment", "Individual Single Employment Journey") withRequests(

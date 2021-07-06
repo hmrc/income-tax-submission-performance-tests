@@ -38,6 +38,7 @@ object RequestsHelper extends ServicesConfiguration {
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-untaxed-uk-interest-account/([^"]+)"""
   val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/2022/interest/add-taxed-uk-interest-account/([^"]+)"""
+  val ADD_A_NEW_ACCOUNT = "eb687fc3-37fc-4b7d-8038-19aaf62f9681-111-eb687fc3-37fc-4b7d-8038-19aaf62f9681"
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
