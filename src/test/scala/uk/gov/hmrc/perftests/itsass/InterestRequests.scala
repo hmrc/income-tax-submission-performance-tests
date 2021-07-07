@@ -33,6 +33,10 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/untaxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
+    .check(status.is(303))
+
+  def getUntaxedChooseAccountRedirect: HttpRequestBuilder = http("Get ID for Untaxed Amount Controller")
+    .get(s"$interestUrl/which-account-did-you-get-untaxed-interest-from")
     .check(saveUntaxedAccountId)
     .check(status.is(303))
 
@@ -68,6 +72,16 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/taxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
+    .check(status.is(303))
+
+  def getTaxedChooseAccountPage: HttpRequestBuilder = http("Get Choose Account Page")
+    .get(s"$interestUrl/which-account-did-you-get-taxed-interest-from")
+    .check(status.is(200))
+
+  def postTaxedChooseAccountPage: HttpRequestBuilder = http("Post Choose Account Page")
+    .post(s"$interestUrl/which-account-did-you-get-taxed-interest-from")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "eb687fc3-37fc-4b7d-8038-19aaf62f9681-111-eb687fc3-37fc-4b7d-8038-19aaf62f9681")
     .check(saveTaxedAccountId)
     .check(status.is(303))
 
