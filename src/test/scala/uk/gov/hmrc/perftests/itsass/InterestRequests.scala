@@ -57,10 +57,10 @@ object InterestRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postUntaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Untaxed UK Interest Summary Page")
+  def postUntaxedUKInterestSummaryPage(addAnotherAccount: Boolean): HttpRequestBuilder = http("Post Untaxed UK Interest Summary Page")
     .post(s"$interestUrl/accounts-with-untaxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", false)
+    .formParam("value", addAnotherAccount)
     .check(status.is(303))
 
   def getTaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Taxed UK Interest Status Page")
@@ -102,10 +102,10 @@ object InterestRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postTaxedUKInterestSummaryPage: HttpRequestBuilder = http("Post Taxed UK Interest Summary Page")
+  def postTaxedUKInterestSummaryPage(addAnotherAccount: Boolean): HttpRequestBuilder = http("Post Taxed UK Interest Summary Page")
     .post(s"$interestUrl/accounts-with-taxed-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", false)
+    .formParam("value", addAnotherAccount)
     .check(status.is(303))
 
   def getInterestCheckYourAnswersPage: HttpRequestBuilder = http("Get Interest Check Your Answers Page")
