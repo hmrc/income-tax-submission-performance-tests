@@ -25,14 +25,14 @@ import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   def getStartPage: HttpRequestBuilder = http("Get Start Page")
-    .get(s"$serviceUrl/2022/start")
+    .get(s"$serviceUrl/$taxYear/start")
     .check(status.is(200))
 
   def getInsertAdditionalParametersEndPoint(nino: String): HttpRequestBuilder = http("Insert Additional Parameters End Point")
-    .get(s"$serviceUrl/test-only/2022/additional-parameters?ClientNino=$nino&ClientMTDID=1234567891")
+    .get(s"$serviceUrl/test-only/$taxYear/additional-parameters?ClientNino=$nino&ClientMTDID=1234567891")
     .check(status.is(303))
 
   def getOverviewPage: HttpRequestBuilder = http("Get Overview Page")
-    .get(s"$serviceUrl/2022/view")
+    .get(s"$serviceUrl/$taxYear/view")
     .check(status.is(200))
 }
