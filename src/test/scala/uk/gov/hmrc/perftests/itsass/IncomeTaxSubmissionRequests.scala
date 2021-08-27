@@ -24,7 +24,7 @@ import uk.gov.hmrc.perftests.itsass.RequestsHelper._
 
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
-  def getStartPage: HttpRequestBuilder = http("Get Start Page")
+  def getStartPage(taxYear: String): HttpRequestBuilder = http("Get Start Page")
     .get(s"$serviceUrl/$taxYear/start")
     .check(status.is(200))
 
@@ -32,7 +32,11 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .get(s"$serviceUrl/test-only/$taxYear/additional-parameters?ClientNino=$nino&ClientMTDID=1234567891")
     .check(status.is(303))
 
-  def getOverviewPage: HttpRequestBuilder = http("Get Overview Page")
+  def getOverviewPage(taxYear: String): HttpRequestBuilder = http("Get Overview Page")
     .get(s"$serviceUrl/$taxYear/view")
+    .check(status.is(200))
+
+  def getEOYOverviewPage(taxYearEOY: String): HttpRequestBuilder = http("Get EOY Overview Page")
+    .get(s"$serviceUrl/$taxYearEOY/income-tax-return-overview")
     .check(status.is(200))
 }
