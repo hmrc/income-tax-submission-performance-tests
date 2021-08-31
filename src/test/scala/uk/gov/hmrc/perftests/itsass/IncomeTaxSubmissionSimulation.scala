@@ -18,11 +18,12 @@ package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
-import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
-import uk.gov.hmrc.perftests.itsass.InterestRequests._
 import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
+import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.InterestRequests._
+import uk.gov.hmrc.perftests.itsass.RequestsHelper.{taxYear, taxYearEOY}
 
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
@@ -30,8 +31,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("individual-dividends", "Individual Dividends Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA111111A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
@@ -48,8 +49,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postAgentLoginPage("AA111112A"),
     getInsertAdditionalParametersEndPoint("AA111112A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
@@ -65,8 +66,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("individual-interest", "Individual Interest Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA111111A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedChooseAccountRedirect,
@@ -106,8 +107,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postAgentLoginPage("AA111112A"),
     getInsertAdditionalParametersEndPoint("AA111112A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedChooseAccountRedirect,
@@ -146,32 +147,71 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("individual-employment", "Individual Single Employment Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA133742A"),
-    getStartPage,
-    getOverviewPage,
-    getEmploymentSummaryPage,
-    getEmploymentDetailsPage("00000000-0000-1000-8000-000000000000"),
-    getEmploymentBenefitsPage("00000000-0000-1000-8000-000000000000"),
-    getEmploymentExpensesPage
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getEmploymentSummaryPage(taxYear),
+    getEmploymentDetailsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
+    getEmploymentBenefitsPage(taxYear,"00000000-0000-1000-8000-000000000000"),
+    getEmploymentExpensesPage(taxYear)
   )
 
   setup("agent-employment", "Agent Multiple Employments Journey") withRequests(
     getLoginPage,
     postAgentLoginPage("BB444444A"),
     getInsertAdditionalParametersEndPoint("BB444444A"),
-    getStartPage,
-    getOverviewPage,
-    getEmploymentSummaryPage,
-    getEmployerDetailsAndBenefitsPage("00000000-5555-0000-0000-000000000001"),
-    getEmploymentDetailsPage("00000000-5555-0000-0000-000000000001"),
-    getEmploymentBenefitsPage("00000000-5555-0000-0000-000000000001"),
-    getEmploymentExpensesPage
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getEmploymentSummaryPage(taxYear),
+    getEmployerDetailsAndBenefitsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
+    getEmploymentDetailsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
+    getEmploymentBenefitsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
+    getEmploymentExpensesPage(taxYear)
+  )
+
+  setup("individual-add-employment", "Individual Add Employment-No Employments") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA123456A"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getAddEmploymentPage(taxYearEOY),
+    postAddEmploymentPage(taxYearEOY),
+    getEmployerNamePage(taxYearEOY),
+    postEmployerNamePage(taxYearEOY),
+    getPayeRefPage(taxYearEOY),
+    postPayeRefPage(taxYearEOY),
+    getEmploymentStartDatePage(taxYearEOY),
+    postEmploymentStartDate(taxYearEOY),
+    getPayEmploymentPage(taxYearEOY),
+    postPayEmploymentPage(taxYearEOY),
+    getUkTaxEmploymentPage(taxYearEOY),
+    postUkTaxEmploymentPage(taxYearEOY)
+  )
+
+  setup("agent-add-employment", "Agent Add Employment - Prior Employments") withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A"),
+    getInsertAdditionalParametersEndPoint("BB444444A"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    postEmploymentSummaryPage(taxYearEOY),
+    getEmployerNamePage(taxYearEOY),
+    postEmployerNamePage(taxYearEOY),
+    getPayeRefPage(taxYearEOY),
+    postPayeRefPage(taxYearEOY),
+    getEmploymentStartDatePage(taxYearEOY),
+    postEmploymentStartDate(taxYearEOY),
+    getPayEmploymentPage(taxYearEOY),
+    postPayEmploymentPage(taxYearEOY),
+    getUkTaxEmploymentPage(taxYearEOY),
+    postUkTaxEmploymentPage(taxYearEOY)
   )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA111112A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getGiftAidStatusPage,
     postGiftAidStatusPage,
     getGiftAidDetailsPage,
@@ -238,8 +278,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getLoginPage,
     postAgentLoginPage("AA111112A"),
     getInsertAdditionalParametersEndPoint("AA111112A"),
-    getStartPage,
-    getOverviewPage,
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
     getGiftAidStatusPage,
     postGiftAidStatusPage,
     getGiftAidDetailsPage,
