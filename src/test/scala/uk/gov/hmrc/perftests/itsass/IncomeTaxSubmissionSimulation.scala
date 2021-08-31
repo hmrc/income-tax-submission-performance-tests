@@ -193,7 +193,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("BB444444A"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
-    getEOYEmploymentSummaryPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
     postEmploymentSummaryPage(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
     postEmployerNamePage(taxYearEOY),
