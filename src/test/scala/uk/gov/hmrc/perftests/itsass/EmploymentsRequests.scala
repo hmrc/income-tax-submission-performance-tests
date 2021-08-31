@@ -62,7 +62,7 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postAddEmploymentPage(taxYear: String): HttpRequestBuilder = http("Post Add Employment Status Page")
+  def postAddEmploymentPage(taxYear: String): HttpRequestBuilder = http("Post Add Employment Page")
     .post(s"${employmentsUrl(taxYear)}/add-employment")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)

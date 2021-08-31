@@ -168,7 +168,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentExpensesPage(taxYear)
   )
 
-  setup("individual-add-employment", "Individual Add Employment -No Employments") withRequests(
+  setup("individual-add-employment", "Individual Add Employment-No Employments") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA123456A"),
     getStartPage(taxYearEOY),

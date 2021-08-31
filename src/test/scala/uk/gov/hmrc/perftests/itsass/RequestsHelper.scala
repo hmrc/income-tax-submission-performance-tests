@@ -18,14 +18,9 @@ package uk.gov.hmrc.perftests.itsass
 
 import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
-import io.gatling.core.check.css.CssCheckType
 import io.gatling.core.check.regex.RegexCheckType
-import io.gatling.core.structure.ChainBuilder
-import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import io.gatling.http.Predef._
-import io.gatling.http.check.HttpCheck
-import io.gatling.http.request.builder.HttpRequestBuilder
-import jodd.lagarto.dom.NodeSelector
+import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
 
@@ -47,7 +42,7 @@ object RequestsHelper extends ServicesConfiguration {
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
   val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
-  val employmentIdPattern: String = s"""/income-through-software/return/employment-income/$taxYearEOY/employer-name([^"]+)"""
+  val employmentIdPattern: String = s"""/income-through-software/return/employment-income/$taxYearEOY/employer-name?([^"]+)"""
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
