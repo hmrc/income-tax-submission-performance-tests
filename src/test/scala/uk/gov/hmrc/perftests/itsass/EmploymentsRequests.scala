@@ -45,6 +45,12 @@ object EmploymentsRequests extends ServicesConfiguration {
     .get(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$employmentId")
     .check(status.is(200))
 
+  def postEmploymentDetailsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Employment Details Page")
+    .post(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$employmentId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(saveCsrfToken())
+    .check(status.is(303))
+
   def getEmploymentBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employment Benefits Page")
     .get(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$employmentId")
     .check(status.is(200))
@@ -64,6 +70,18 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("value", true)
     .check(saveEmploymentId)
     .check(status.is(303))
+
+  def getRemoveEmploymentPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Remove Employment Page")
+    .get(s"${employmentsUrl(taxYear)}/remove-employment?employmentId=$employmentId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postRemoveEmploymentPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Remove Employment Page")
+    .post(s"${employmentsUrl(taxYear)}/remove-employment?employmentId=$employmentId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
 
   def getEmployerNamePage(taxYear: String): HttpRequestBuilder = http("Get Employer Name Page")
     .get(s"${employmentsUrl(taxYear)}/employer-name?employmentId=$${employmentId}": String)
