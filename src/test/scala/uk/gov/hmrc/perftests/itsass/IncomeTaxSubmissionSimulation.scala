@@ -207,6 +207,42 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postUkTaxEmploymentPage(taxYearEOY)
   )
 
+  setup("individual-remove-employment", "Individual Remove Employment - Single Employment") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA133742A"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getRemoveEmploymentPage(taxYearEOY,"00000000-0000-1000-8000-000000000004"),
+    postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
+  )
+
+  setup("agent-remove-employment", "Agent Remove Employment - Multiple Employments") withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A"),
+    getInsertAdditionalParametersEndPoint("BB444444A"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getRemoveEmploymentPage(taxYearEOY,"00000000-5555-0000-0000-000000000001"),
+    postRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
+    getEmploymentSummaryPage(taxYearEOY)
+  )
+
+  setup("individual-employment-details", "Individual Multiple Employments - Check Employment Details EOY") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("BB444444A"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY,"00000000-5555-5555-0000-000000000002"),
+    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
+    postEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
+    getEmploymentSummaryPage(taxYearEOY)
+  )
+
+
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
     getLoginPage,
     postIndividualLoginPage("AA111112A"),
