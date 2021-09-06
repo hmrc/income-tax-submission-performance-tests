@@ -230,7 +230,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentSummaryPage(taxYearEOY)
   )
 
-  setup("individual-employment", "Individual Multiple Employments - Check Employment Details EOY")withRequests(
+  setup("individual-employment-details", "Individual Multiple Employments - Check Employment Details EOY") withRequests(
     getLoginPage,
     postIndividualLoginPage("BB444444A"),
     getStartPage(taxYearEOY),
