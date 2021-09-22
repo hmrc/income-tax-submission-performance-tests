@@ -26,7 +26,6 @@ object AuthLoginRequests extends ServicesConfiguration {
 
   def getLoginPage: HttpRequestBuilder = http("Get Login Page")
     .get(authLoginUrl + s"/auth-login-stub/gg-sign-in")
-    .check(saveCsrfToken())
     .check(status.is(200))
 
   def postIndividualLoginPage(nino: String): HttpRequestBuilder = http("Post Individual Login page")
