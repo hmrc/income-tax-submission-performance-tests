@@ -9,7 +9,7 @@ logs
 *.DS_Store
 /.project
 .history
-.bsp
+/.bsp
 
 # IDE files
 /.idea
