@@ -143,5 +143,16 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("amount", "500")
     .check(status.is(303)
     )
+  def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
+    .get(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
+    .check(status.is(200)
+    )
+
+  def postWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Post When did you leave your employer Page")
+    .post(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303)
+    )
 
 }
