@@ -106,6 +106,19 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("payeRef", "123/AB123")
     .check(status.is(303))
 
+  def getPayrollIdPage(taxYear: String): HttpRequestBuilder = {
+    http("Get PayrollId Page")
+      .get(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+      .check(status.is(200)
+      )
+  }
+
+  def postPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Post Payroll Id Page")
+    .post(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("payrollId", "123456789")
+    .check(status.is(303))
+
   def getEmploymentStartDatePage(taxYear: String): HttpRequestBuilder = http("Get Start Date Employment Page")
     .get(s"${employmentsUrl(taxYear)}/employment-start-date?employmentId=$${employmentId}": String)
     .check(status.is(200)
