@@ -177,7 +177,7 @@ object EmploymentsRequests extends ServicesConfiguration {
   def postAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Are you still working for you employer Page")
     .post(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", true)
+    .formParam("value", false)
     .check(status.is(303))
 
 

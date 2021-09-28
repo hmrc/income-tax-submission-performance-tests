@@ -183,15 +183,14 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postEmploymentStartDate(taxYearEOY),
     getAreYouStillWorkingAtEmployerPage(taxYearEOY),
     postAreYouStillWorkingAtEmployerPage(taxYearEOY),
+    getWhenDidYouLeaveYourEmployerPage(taxYearEOY),
+    postWhenDidYouLeaveYourEmployerPage(taxYearEOY),
     getPayrollIdPage(taxYearEOY),
     postPayrollIdPage(taxYearEOY),
     getPayEmploymentPage(taxYearEOY),
     postPayEmploymentPage(taxYearEOY),
     getUkTaxEmploymentPage(taxYearEOY),
-    postUkTaxEmploymentPage(taxYearEOY),
-    getWhenDidYouLeaveYourEmployerPage(taxYearEOY),
-    postWhenDidYouLeaveYourEmployerPage(taxYearEOY)
-
+    postUkTaxEmploymentPage(taxYearEOY)
   )
 
   setup("agent-add-employment", "Agent Add Employment - Prior Employments") withRequests(
@@ -210,6 +209,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postEmploymentStartDate(taxYearEOY),
     getAreYouStillWorkingAtEmployerPage(taxYearEOY),
     postAreYouStillWorkingAtEmployerPage(taxYearEOY),
+    getWhenDidYouLeaveYourEmployerPage(taxYearEOY),
+    postWhenDidYouLeaveYourEmployerPage(taxYearEOY),
     getPayrollIdPage(taxYearEOY),
     postPayrollIdPage(taxYearEOY),
     getPayEmploymentPage(taxYearEOY),
