@@ -106,6 +106,19 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("payeRef", "123/AB123")
     .check(status.is(303))
 
+  def getPayrollIdPage(taxYear: String): HttpRequestBuilder = {
+    http("Get PayrollId Page")
+      .get(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+      .check(status.is(200)
+      )
+  }
+
+  def postPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Post Payroll Id Page")
+    .post(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("payrollId", "123456789")
+    .check(status.is(303))
+
   def getEmploymentStartDatePage(taxYear: String): HttpRequestBuilder = http("Get Start Date Employment Page")
     .get(s"${employmentsUrl(taxYear)}/employment-start-date?employmentId=$${employmentId}": String)
     .check(status.is(200)
@@ -143,6 +156,7 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("amount", "500")
     .check(status.is(303)
     )
+
   def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
     .get(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
     .check(status.is(200)
@@ -154,5 +168,17 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("amount", "500")
     .check(status.is(303)
     )
+
+  def getAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Are you still working for you employer Page")
+    .get(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Are you still working for you employer Page")
+    .post(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
 
 }
