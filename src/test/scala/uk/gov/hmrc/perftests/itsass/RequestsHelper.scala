@@ -32,12 +32,14 @@ object RequestsHelper extends ServicesConfiguration {
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
+  val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
   val authLoginUrl: String = baseUrlFor("auth-login")
   val serviceUrl: String = baseUrl + "/income-through-software/return"
   val dividendsUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/dividends"
   val interestUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/interest"
   val giftAidUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/charity"
   val employmentsUrl: String => String =(taxYear:String) => employmentFrontendBaseUrl + s"/income-through-software/return/employment-income/$taxYear"
+  val viewAndChangeUrl: String = viewAndChangeFrontendBaseUrl + s"/report-quarterly/income-and-expenses"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""

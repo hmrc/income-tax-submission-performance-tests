@@ -23,6 +23,7 @@ import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
 import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.InterestRequests._
+import uk.gov.hmrc.perftests.itsass.CrystallisationRequests._
 import uk.gov.hmrc.perftests.itsass.RequestsHelper.{taxYear, taxYearEOY}
 
 
@@ -30,7 +31,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-dividends", "Individual Dividends Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111111A"),
+    postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getUKDividendsStatusPage,
@@ -47,8 +48,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-dividends", "Agent Dividends Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A"),
-    getInsertAdditionalParametersEndPoint("AA111112A"),
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getUKDividendsStatusPage,
@@ -65,7 +66,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-interest", "Individual Interest Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111111A"),
+    postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getUntaxedUKInterestStatusPage,
@@ -105,8 +106,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-interest", "Agent Interest Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A"),
-    getInsertAdditionalParametersEndPoint("AA111112A"),
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getUntaxedUKInterestStatusPage,
@@ -146,7 +147,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-employment", "Individual Single Employment Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA133742A"),
+    postIndividualLoginPage("AA133742A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
@@ -157,8 +158,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-employment", "Agent Multiple Employments Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage("BB444444A"),
-    getInsertAdditionalParametersEndPoint("BB444444A"),
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
@@ -170,7 +171,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-add-employment", "Individual Add Employment-No Employments") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA123456A"),
+    postIndividualLoginPage("AA123456A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getAddEmploymentPage(taxYearEOY),
@@ -195,8 +196,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-add-employment", "Agent Add Employment - Prior Employments") withRequests(
     getLoginPage,
-    postAgentLoginPage("BB444444A"),
-    getInsertAdditionalParametersEndPoint("BB444444A"),
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -221,7 +222,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-remove-employment", "Individual Remove Employment - Single Employment") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA133742A"),
+    postIndividualLoginPage("AA133742A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -232,8 +233,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-remove-employment", "Agent Remove Employment - Multiple Employments") withRequests(
     getLoginPage,
-    postAgentLoginPage("BB444444A"),
-    getInsertAdditionalParametersEndPoint("BB444444A"),
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -244,7 +245,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-employment-details", "Individual Multiple Employments - Check Employment Details EOY") withRequests(
     getLoginPage,
-    postIndividualLoginPage("BB444444A"),
+    postIndividualLoginPage("BB444444A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -257,7 +258,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111112A"),
+    postIndividualLoginPage("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGiftAidStatusPage,
@@ -324,8 +325,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("agent-gift-aid", "Agent Gift Aid Journey") withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A"),
-    getInsertAdditionalParametersEndPoint("AA111112A"),
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGiftAidStatusPage,
@@ -388,6 +389,43 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postOverseasCharitiesSharesSecuritiesLandPropertyDonatedToSummaryPage(addAnotherCharity = false),
     getGiftAidCheckYourAnswersPage,
     postGiftAidCheckYourAnswersPage
+  )
+
+  setup("individual-crystallisation", "Individual Crystallisation Journey") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA888888A", "XAIT00000888888"),
+    getStartPage(taxYearEOY),
+    getViewChangeTestHeadersPage,
+    postViewChangeTestHeadersPage,
+    getEOYOverviewPage(taxYearEOY),
+    postEOYOverviewPage(taxYearEOY),
+    getFinalTaxCalculationEndpoint(taxYearEOY),
+    getFinalTaxCalculationPage(taxYearEOY),
+    postFinalTaxCalculationPage(taxYearEOY),
+    getDeclarationPage(taxYearEOY),
+    getReceivedTaxCalculationPage(taxYearEOY)
+  )
+
+  setup("agent-crystallisation", "Agent Crystallisation Journey") withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA888888A", "XAIT00000888888"),
+    getInsertAdditionalParametersEndPoint("AA888888A", "XAIT00000888888"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    postEOYOverviewPage(taxYearEOY),
+    getCitizenDetailsStubPage,
+    postCitizenDetailsStubPage,
+    getClientUTRPage,
+    postClientUTRPage,
+    getConfirmClientUTRPage,
+    postConfirmClientUTRPage,
+    getViewChangeTestHeadersPage,
+    postViewChangeTestHeadersPage,
+    getFinalTaxCalculationAgentEndpoint(taxYearEOY),
+    getFinalTaxCalculationAgentPage(taxYearEOY),
+    postFinalTaxCalculationAgentPage(taxYearEOY),
+    getDeclarationPage(taxYearEOY),
+    getReceivedTaxCalculationPage(taxYearEOY)
   )
 
   runSimulation()
