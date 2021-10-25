@@ -29,6 +29,8 @@ object RequestsHelper extends ServicesConfiguration {
   val taxYear: String = "2022"
   val taxYearEOY: String = "2021"
 
+  val employmentIdWithNoBenefits = "00000000-5555-0000-0000-000000000002"
+
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
