@@ -18,6 +18,7 @@ package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
+import uk.gov.hmrc.perftests.itsass.BenefitsRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
 import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
@@ -255,6 +256,39 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentSummaryPage(taxYearEOY)
   )
 
+  setup("individual-add-benefits", "Individual Multiple Employments - Adding benefits full flow") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("BB444444A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY,"00000000-5555-0000-0000-000000000002"),
+    getEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getReceivedBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postReceivedBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCarVanFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCarVanFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyCarBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyCarBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyCarAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyCarAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyCarFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyCarFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyCarFuelAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyCarFuelAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyVanBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyVanBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyVanAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyVanAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyVanFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyVanFuelBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCompanyVanFuelAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCompanyVanFuelAmountBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getMileageBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postMileageBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getMileageBenefitsAmountPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postMileageBenefitsAmountPage(taxYearEOY, "00000000-5555-0000-0000-000000000002")
+  )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
     getLoginPage,
