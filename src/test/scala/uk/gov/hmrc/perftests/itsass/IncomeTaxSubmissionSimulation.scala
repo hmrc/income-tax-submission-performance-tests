@@ -18,6 +18,7 @@ package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
+import uk.gov.hmrc.perftests.itsass.BenefitsRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
 import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
@@ -255,6 +256,39 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentSummaryPage(taxYearEOY)
   )
 
+  setup("individual-add-benefits", "Individual Multiple Employments - Adding benefits full flow") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("BB444444A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY,"00000000-5555-0000-0000-000000000002"),
+    getEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getReceivedBenefitsPage,
+    postReceivedBenefitsPage,
+    getCarVanFuelBenefitsPage,
+    postCarVanFuelBenefitsPage,
+    getCompanyCarBenefitsPage,
+    postCompanyCarBenefitsPage,
+    getCompanyCarAmountBenefitsPage,
+    postCompanyCarAmountBenefitsPage,
+    getCompanyCarFuelBenefitsPage,
+    postCompanyCarFuelBenefitsPage,
+    getCompanyCarFuelAmountBenefitsPage,
+    postCompanyCarFuelAmountBenefitsPage,
+    getCompanyVanBenefitsPage,
+    postCompanyVanBenefitsPage,
+    getCompanyVanAmountBenefitsPage,
+    postCompanyVanAmountBenefitsPage,
+    getCompanyVanFuelBenefitsPage,
+    postCompanyVanFuelBenefitsPage,
+    getCompanyVanFuelAmountBenefitsPage,
+    postCompanyVanFuelAmountBenefitsPage,
+    getMileageBenefitsPage,
+    postMileageBenefitsPage,
+    getMileageBenefitsAmountPage,
+    postMileageBenefitsAmountPage
+  )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
     getLoginPage,
