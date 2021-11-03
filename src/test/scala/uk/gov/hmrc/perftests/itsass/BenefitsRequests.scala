@@ -144,4 +144,73 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("amount", "500")
     .check(status.is(303))
 
+  def getAccommodationRelocationBenefitsPage: HttpRequestBuilder = http("Get Accommodation Relocation Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/accommodation-relocation?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAccommodationRelocationBenefitsPage: HttpRequestBuilder = http("Post Accommodation Relocation Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/accommodation-relocation?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getAccommodationBenefitsPage: HttpRequestBuilder = http("Get Accommodation Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/living-accommodation?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAccommodationBenefitsPage: HttpRequestBuilder = http("Post Accommodation Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/living-accommodation?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getAccommodationAmountBenefitsPage: HttpRequestBuilder = http("Get Accommodation Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/living-accommodation-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAccommodationAmountBenefitsPage: HttpRequestBuilder = http("Post Accommodation Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/living-accommodation-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
+
+  def getQualifyingRelocationBenefitsPage: HttpRequestBuilder = http("Get Qualifying Relocation Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/qualifying-relocation?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postQualifyingRelocationBenefitsPage: HttpRequestBuilder = http("Post Qualifying Relocation Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/qualifying-relocation?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getQualifyingRelocationAmountBenefitsPage: HttpRequestBuilder = http("Get Qualifying Relocation Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/qualifying-relocation-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postQualifyingRelocationAmountBenefitsPage: HttpRequestBuilder = http("Post Qualifying Relocation Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/qualifying-relocation-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
+
+  def getNonQualifyingRelocationBenefitsPage: HttpRequestBuilder = http("Get Non Qualifying Relocation Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-qualifying-relocation?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonQualifyingRelocationBenefitsPage: HttpRequestBuilder = http("Post Non Qualifying Relocation Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-qualifying-relocation?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getNonQualifyingRelocationAmountBenefitsPage: HttpRequestBuilder = http("Get Non Qualifying Relocation Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-qualifying-relocation-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonQualifyingRelocationAmountBenefitsPage: HttpRequestBuilder = http("Post Non Qualifying Relocation Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-qualifying-relocation-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
 }
