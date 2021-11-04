@@ -156,17 +156,6 @@ object GiftAidRequests extends ServicesConfiguration {
     .formParam("amount", "1000")
     .check(status.is(303))
 
-  def getDonationOfSharesSecuritiesLandPropertyStatusPage: HttpRequestBuilder = http(s"Get Did you donate shares, securities, land or property to charity? Status Page")
-    .get(s"$giftAidUrl/donation-of-shares-securities-land-or-property")
-    .check(saveCsrfToken())
-    .check(status.is(200))
-
-  def postDonationOfSharesSecuritiesLandPropertyStatusPage: HttpRequestBuilder = http(s"Post Did you donate shares, securities, land or property to charity? Status Page")
-    .post(s"$giftAidUrl/donation-of-shares-securities-land-or-property")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", true)
-    .check(status.is(303))
-
   def getDonationOfSharesOrSecuritiesStatusPage: HttpRequestBuilder = http(s"Get Did you donate qualifying shares or securities to charity? Status Page")
     .get(s"$giftAidUrl/donation-of-shares-or-securities")
     .check(saveCsrfToken())
