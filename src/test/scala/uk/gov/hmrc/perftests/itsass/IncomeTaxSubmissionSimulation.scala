@@ -301,7 +301,21 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getNonQualifyingRelocationBenefitsPage,
     postNonQualifyingRelocationBenefitsPage,
     getNonQualifyingRelocationAmountBenefitsPage,
-    postNonQualifyingRelocationAmountBenefitsPage
+    postNonQualifyingRelocationAmountBenefitsPage,
+    getTravelOrEntertainmentBenefitsPage,
+    postTravelOrEntertainmentBenefitsPage,
+    getTravelOrSubsistenceBenefitsPage,
+    postTravelOrSubsistenceBenefitsPage,
+    getTravelOrSubsistenceAmountBenefitsPage,
+    postTravelOrSubsistenceAmountBenefitsPage,
+    getIncidentalOvernightCostsBenefitsPage,
+    postIncidentalOvernightCostsBenefitsPage,
+    getIncidentalOvernightCostsAmountBenefitsPage,
+    postIncidentalOvernightCostsAmountBenefitsPage,
+    getEntertainmentBenefitsPage,
+    postEntertainmentBenefitsPage,
+    getEntertainmentAmountBenefitsPage,
+    postEntertainmentAmountBenefitsPage
   )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
