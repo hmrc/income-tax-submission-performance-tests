@@ -213,4 +213,74 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "500")
     .check(status.is(303))
+
+  def getTravelOrEntertainmentBenefitsPage: HttpRequestBuilder = http("Get Travel And Entertainment Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/travel-entertainment?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postTravelOrEntertainmentBenefitsPage: HttpRequestBuilder = http("Post Travel And Entertainment Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/travel-entertainment?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getTravelOrSubsistenceBenefitsPage: HttpRequestBuilder = http("Get Travel Or Subsistence Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/travel-subsistence?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postTravelOrSubsistenceBenefitsPage: HttpRequestBuilder = http("Post Travel Or Subsistence Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/travel-subsistence?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getTravelOrSubsistenceAmountBenefitsPage: HttpRequestBuilder = http("Get Travel Or Subsistence Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/travel-subsistence-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postTravelOrSubsistenceAmountBenefitsPage: HttpRequestBuilder = http("Post Travel Or Subsistence Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/travel-subsistence-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
+
+  def getIncidentalOvernightCostsBenefitsPage: HttpRequestBuilder = http("Get Incidental Overnight Costs Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/incidental-overnight-costs?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncidentalOvernightCostsBenefitsPage: HttpRequestBuilder = http("Post Incidental Overnight Costs Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/incidental-overnight-costs?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getIncidentalOvernightCostsAmountBenefitsPage: HttpRequestBuilder = http("Get Incidental Overnight Costs Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/incidental-overnight-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncidentalOvernightCostsAmountBenefitsPage: HttpRequestBuilder = http("Post Incidental Overnight Costs Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/incidental-overnight-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
+
+  def getEntertainmentBenefitsPage: HttpRequestBuilder = http("Get Entertainment Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/entertainment-expenses?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postEntertainmentBenefitsPage: HttpRequestBuilder = http("Post Entertainment Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/entertainment-expenses?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getEntertainmentAmountBenefitsPage: HttpRequestBuilder = http("Get Entertainment Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/entertainment-expenses-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postEntertainmentAmountBenefitsPage: HttpRequestBuilder = http("Post Entertainment Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/entertainment-expenses-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "500")
+    .check(status.is(303))
 }
