@@ -14,6 +14,8 @@ Run the following command to start the services locally:
 docker run --rm -d --name mongo -d -p 27017:27017 mongo:3.6
 
 sm --start INCOME_TAX_SUBMISSION_ALL -r
+sm --stop INCOME_TAX_VIEW_CHANGE_FRONTEND_SUBMISSION
+sm --start ITVC_ALL -r
 ```
 
 ## Logging
