@@ -35,7 +35,7 @@ object RequestsHelper extends ServicesConfiguration {
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
-  val authLoginUrl: String = baseUrlFor("auth-login")
+  val authLoginUrl: String = baseUrlFor("auth-login-stub")
   val serviceUrl: String = baseUrl + "/income-through-software/return"
   val dividendsUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/dividends"
   val interestUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/interest"
