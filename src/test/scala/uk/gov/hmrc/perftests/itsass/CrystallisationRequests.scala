@@ -50,6 +50,11 @@ object CrystallisationRequests extends ServicesConfiguration {
     .get(s"$serviceUrl/$taxYearEOY/declaration")
     .check(status.is(200))
 
+  def postDeclarationPage(taxYearEOY: String): HttpRequestBuilder = http("Post Declaration Page")
+    .post(s"$serviceUrl/$taxYearEOY/declaration")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
   def getReceivedTaxCalculationPage(taxYearEOY: String): HttpRequestBuilder = http(s"Get We've received your Income Tax Return Page")
     .get(s"$serviceUrl/$taxYearEOY/income-tax-return-received")
     .check(status.is(200))

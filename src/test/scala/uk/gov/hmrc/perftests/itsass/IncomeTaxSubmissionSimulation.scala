@@ -479,6 +479,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getFinalTaxCalculationPage(taxYearEOY),
     postFinalTaxCalculationPage(taxYearEOY),
     getDeclarationPage(taxYearEOY),
+    postDeclarationPage(taxYearEOY),
     getReceivedTaxCalculationPage(taxYearEOY)
   )
 
@@ -501,6 +502,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getFinalTaxCalculationAgentPage(taxYearEOY),
     postFinalTaxCalculationAgentPage(taxYearEOY),
     getDeclarationPage(taxYearEOY),
+    postDeclarationPage(taxYearEOY),
     getReceivedTaxCalculationPage(taxYearEOY)
   )
 
