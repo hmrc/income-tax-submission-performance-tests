@@ -36,16 +36,16 @@ object RequestsHelper extends ServicesConfiguration {
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
   val authLoginUrl: String = baseUrlFor("auth-login-stub")
-  val serviceUrl: String = baseUrl + "/income-through-software/return"
-  val dividendsUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/dividends"
-  val interestUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/interest"
-  val giftAidUrl: String = personalIncomeBaseUrl + s"/income-through-software/return/personal-income/$taxYear/charity"
-  val employmentsUrl: String => String =(taxYear:String) => employmentFrontendBaseUrl + s"/income-through-software/return/employment-income/$taxYear"
+  val serviceUrl: String = baseUrl + "/update-and-submit-income-tax-return"
+  val dividendsUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/dividends"
+  val interestUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/interest"
+  val giftAidUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/charity"
+  val employmentsUrl: String => String =(taxYear:String) => employmentFrontendBaseUrl + s"/update-and-submit-income-tax-return/employment-income/$taxYear"
   val viewAndChangeUrl: String = viewAndChangeFrontendBaseUrl + s"/report-quarterly/income-and-expenses"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
-  val untaxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
-  val taxedAccountPattern: String = s"""/income-through-software/return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
+  val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
+  val taxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
   val employmentIdPattern: String = s"""employmentId=([^"]+)"""
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
