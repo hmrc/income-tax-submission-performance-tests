@@ -373,4 +373,94 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "900")
     .check(status.is(303))
+
+  def getMedicalDentalChildcareBenefitsPage: HttpRequestBuilder = http("Get Medical Dental Childcare Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental-childcare-education-loans?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postMedicalDentalChildcareBenefitsPage: HttpRequestBuilder = http("Post Medical Dental Childcare Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental-childcare-education-loans?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getMedicalDentalBenefitsPage: HttpRequestBuilder = http("Get Medical Dental Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postMedicalDentalBenefitsPage: HttpRequestBuilder = http("Post Medical Dental Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getMedicalDentalAmountBenefitsPage: HttpRequestBuilder = http("Get Medical Dental Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postMedicalDentalAmountBenefitsPage: HttpRequestBuilder = http("Post Medical Dental Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/medical-dental-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "900")
+    .check(status.is(303))
+
+  def getChildcareBenefitsPage: HttpRequestBuilder = http("Get Childcare Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/childcare?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postChildcareBenefitsPage: HttpRequestBuilder = http("Post Childcare Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/childcare?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getChildcareAmountBenefitsPage: HttpRequestBuilder = http("Get Childcare Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/childcare-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postChildcareAmountBenefitsPage: HttpRequestBuilder = http("Post Childcare Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/childcare-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "900")
+    .check(status.is(303))
+
+  def getEducationalServicesBenefitsPage: HttpRequestBuilder = http("Get Educational Services Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/educational-services?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postEducationalServicesBenefitsPage: HttpRequestBuilder = http("Post Educational Services Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/educational-services?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getEducationalServicesAmountBenefitsPage: HttpRequestBuilder = http("Get Educational Services Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/educational-services-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postEducationalServicesAmountBenefitsPage: HttpRequestBuilder = http("Post Educational Services Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/educational-services-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "900")
+    .check(status.is(303))
+
+  def getBeneficialLoansBenefitsPage: HttpRequestBuilder = http("Get Beneficial Loans Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/beneficial-loans?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postBeneficialLoansBenefitsPage: HttpRequestBuilder = http("Post Beneficial Loans Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/beneficial-loans?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getBeneficialLoansAmountBenefitsPage: HttpRequestBuilder = http("Get Beneficial Loans Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/beneficial-loans-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postBeneficialLoansAmountBenefitsPage: HttpRequestBuilder = http("Post Beneficial Loans Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/beneficial-loans-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "900")
+    .check(status.is(303))
 }
