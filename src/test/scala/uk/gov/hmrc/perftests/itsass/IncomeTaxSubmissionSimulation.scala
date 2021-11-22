@@ -333,7 +333,25 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getOtherServicesBenefitsPage,
     postOtherServicesBenefitsPage,
     getOtherServicesAmountBenefitsPage,
-    postOtherServicesAmountBenefitsPage
+    postOtherServicesAmountBenefitsPage,
+    getMedicalDentalChildcareBenefitsPage,
+    postMedicalDentalChildcareBenefitsPage,
+    getMedicalDentalBenefitsPage,
+    postMedicalDentalBenefitsPage,
+    getMedicalDentalAmountBenefitsPage,
+    postMedicalDentalAmountBenefitsPage,
+    getChildcareBenefitsPage,
+    postChildcareBenefitsPage,
+    getChildcareAmountBenefitsPage,
+    postChildcareAmountBenefitsPage,
+    getEducationalServicesBenefitsPage,
+    postEducationalServicesBenefitsPage,
+    getEducationalServicesAmountBenefitsPage,
+    postEducationalServicesAmountBenefitsPage,
+    getBeneficialLoansBenefitsPage,
+    postBeneficialLoansBenefitsPage,
+    getBeneficialLoansAmountBenefitsPage,
+    postBeneficialLoansAmountBenefitsPage
   )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
