@@ -463,4 +463,54 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "900")
     .check(status.is(303))
+
+  def getIncomeTaxOrIncurredCostsBenefitsPage: HttpRequestBuilder = http("Get Income Tax of Incurred Costs Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax-or-incurred-costs?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncomeTaxOrIncurredCostsBenefitsPage: HttpRequestBuilder = http("Post Income Tax of Incurred Costs Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax-or-incurred-costs?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getIncomeTaxBenefitsPage: HttpRequestBuilder = http("Get Income Tax Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncomeTaxBenefitsPage: HttpRequestBuilder = http("Post Income Tax Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getIncomeTaxAmountBenefitsPage: HttpRequestBuilder = http("Get Income Tax Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncomeTaxAmountBenefitsPage: HttpRequestBuilder = http("Post Income Tax Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/employer-income-tax-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "700")
+    .check(status.is(303))
+
+  def getIncurredCostsBenefitsPage: HttpRequestBuilder = http("Get Incurred Costs Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/incurred-costs?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncurredCostsBenefitsPage: HttpRequestBuilder = http("Post Incurred Costs Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/incurred-costs?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getIncurredCostsAmountBenefitsPage: HttpRequestBuilder = http("Get Incurred Costs Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/incurred-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postIncurredCostsAmountBenefitsPage: HttpRequestBuilder = http("Post Incurred Costs Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/incurred-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "700")
+    .check(status.is(303))
 }
