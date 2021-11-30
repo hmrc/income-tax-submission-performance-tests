@@ -59,7 +59,7 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getEmploymentExpensesPage(taxYear: String): HttpRequestBuilder = http("Get Employment Expenses Page")
-    .get(s"${employmentsUrl(taxYear)}/check-employment-expenses")
+    .get(s"${employmentsUrl(taxYear)}/expenses/check-employment-expenses")
     .check(status.is(200))
 
   def getAddEmploymentPage(taxYear: String): HttpRequestBuilder = http("Get Add Employment Page")
