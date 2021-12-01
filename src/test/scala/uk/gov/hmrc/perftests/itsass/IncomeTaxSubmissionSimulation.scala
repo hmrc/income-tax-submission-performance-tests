@@ -351,7 +351,17 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getBeneficialLoansBenefitsPage,
     postBeneficialLoansBenefitsPage,
     getBeneficialLoansAmountBenefitsPage,
-    postBeneficialLoansAmountBenefitsPage
+    postBeneficialLoansAmountBenefitsPage,
+    getIncomeTaxOrIncurredCostsBenefitsPage,
+    postIncomeTaxOrIncurredCostsBenefitsPage,
+    getIncomeTaxBenefitsPage,
+    postIncomeTaxBenefitsPage,
+    getIncomeTaxAmountBenefitsPage,
+    postIncomeTaxAmountBenefitsPage,
+    getIncurredCostsBenefitsPage,
+    postIncurredCostsBenefitsPage,
+    getIncurredCostsAmountBenefitsPage,
+    postIncurredCostsAmountBenefitsPage
   )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
