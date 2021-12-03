@@ -23,7 +23,6 @@ import io.gatling.http.Predef._
 import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
-
 object RequestsHelper extends ServicesConfiguration {
 
   val taxYear: String = "2022"
@@ -35,6 +34,7 @@ object RequestsHelper extends ServicesConfiguration {
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
+  val nrsProxyBaseUrl: String = baseUrlFor("income-tax-nrs-proxy")
   val authLoginUrl: String = baseUrlFor("auth-login-stub")
   val serviceUrl: String = baseUrl + "/update-and-submit-income-tax-return"
   val dividendsUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/dividends"

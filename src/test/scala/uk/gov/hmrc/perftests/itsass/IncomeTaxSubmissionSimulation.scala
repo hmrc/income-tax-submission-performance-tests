@@ -17,6 +17,7 @@
 package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
+import uk.gov.hmrc.perftests.itsass.AuthLoginAPIRequests.insertAuthRecordInd
 import uk.gov.hmrc.perftests.itsass.AuthLoginRequests._
 import uk.gov.hmrc.perftests.itsass.BenefitsRequests._
 import uk.gov.hmrc.perftests.itsass.DividendsRequests._
@@ -25,6 +26,7 @@ import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.InterestRequests._
 import uk.gov.hmrc.perftests.itsass.CrystallisationRequests._
+import uk.gov.hmrc.perftests.itsass.NRSProxyRequests.postNrsProxyStatement
 import uk.gov.hmrc.perftests.itsass.RequestsHelper.{taxYear, taxYearEOY}
 
 
@@ -532,6 +534,11 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getDeclarationPage(taxYearEOY),
     postDeclarationPage(taxYearEOY),
     getReceivedTaxCalculationPage(taxYearEOY)
+  )
+
+  setup("nrs-proxy-crystallisation", "NRS Crystallisation Downstream Request") withRequests(
+    insertAuthRecordInd("AA888888A", "XAIT00000888888"),
+    postNrsProxyStatement("AA888888A","itsa-crystallisation", "XAIT00000888888")
   )
 
   runSimulation()
