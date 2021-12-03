@@ -26,18 +26,41 @@ The template uses [logback.xml](src/test/resources) to configure log levels. The
 
 It might be useful to try the journey with one user to check that everything works fine before running the full performance test
 ```
-sbt -Dperftest.runSmokeTest=true -DrunLocal=true gatling:test
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dperftest.labels=journeyFlows gatling:test
+
+-------------------------------OR----------------------------
+
+./run_smoke_tests.sh
+```
+This will run all the available journeys in the simulation except for the NRS Journey. 
+
+If you just wish to run the NRS Requests, this is labelled as *"nrsProxy"*. You can do so with the following
+
+```
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dperftest.labels=nrsProxy gatling:test
+
+-------------------------------OR----------------------------
+
+./run_nrs_smoke_tests.sh
 ```
 
 #### Running the performance test
 ```
-sbt -DrunLocal=true gatling:test
+sbt -DrunLocal=true -Dperftest.labels=journeyFlows gatling:test
+
+-------------------------------OR----------------------------
+
+sbt -DrunLocal=true -Dperftest.labels=nrsProxy gatling:test
 ```
 ### Run the example test against staging environment
 
 #### Smoke test
 ```
-sbt -Dperftest.runSmokeTest=true -DrunLocal=false gatling:test
+sbt -Dperftest.runSmokeTest=true -DrunLocal=false -Dperftest.labels=journeyFlows gatling:test
+
+-------------------------------OR----------------------------
+
+sbt -Dperftest.runSmokeTest=true -DrunLocal=false -Dperftest.labels=nrsProxy gatling:test
 ```
 
 #### Run the performance test

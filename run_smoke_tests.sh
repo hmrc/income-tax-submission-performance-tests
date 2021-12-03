@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sbt -Dperftest.runSmokeTest=true -DrunLocal=true gatling:test
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dperftest.labels=journeyFlows gatling:test
 
