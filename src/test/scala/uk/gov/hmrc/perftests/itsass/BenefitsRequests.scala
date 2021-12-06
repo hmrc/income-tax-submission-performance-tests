@@ -513,4 +513,114 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "700")
     .check(status.is(303))
+
+  def getReimbursedCostsVouchersNonCashBenefitsPage: HttpRequestBuilder = http("Get Reimbursed Costs, Vouchers and Non Cash Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/reimbursed-costs-vouchers-non-cash-benefits?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postReimbursedCostsVouchersNonCashBenefitsPage: HttpRequestBuilder = http("Post Reimbursed Costs, Vouchers and Non Cash Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/reimbursed-costs-vouchers-non-cash-benefits?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getNonTaxableCostsBenefitsPage: HttpRequestBuilder = http("Get Non-Taxable Costs Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-taxable-costs?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonTaxableCostsBenefitsPage: HttpRequestBuilder = http("Post Non-Taxable Costs Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-taxable-costs?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getNonTaxableCostsAmountBenefitsPage: HttpRequestBuilder = http("Get Non-Taxable Costs Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-taxable-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonTaxableCostsAmountBenefitsPage: HttpRequestBuilder = http("Post Non-Taxable Costs Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-taxable-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getTaxableCostsBenefitsPage: HttpRequestBuilder = http("Get Taxable Costs Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/taxable-costs?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postTaxableCostsBenefitsPage: HttpRequestBuilder = http("Post Taxable Costs Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/taxable-costs?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getTaxableCostsAmountBenefitsPage: HttpRequestBuilder = http("Get Taxable Costs Amount Benefits Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/taxable-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postTaxableCostsAmountBenefitsPage: HttpRequestBuilder = http("Post Taxable Costs Amount Benefits Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/taxable-costs-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getVouchersOrCreditCardsBenefitsPage: HttpRequestBuilder = http("Get Vouchers or Credit Cards Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/vouchers-or-credit-cards?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postVouchersOrCreditCardsBenefitsPage: HttpRequestBuilder = http("Post Vouchers or Credit Cards Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/vouchers-or-credit-cards?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getVouchersOrCreditCardsAmountBenefitsPage: HttpRequestBuilder = http("Get Vouchers or Credit Cards Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/vouchers-or-credit-cards-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postVouchersOrCreditCardsAmountBenefitsPage: HttpRequestBuilder = http("Post Vouchers or Credit Cards Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/vouchers-or-credit-cards-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getNonCashBenefitsPage: HttpRequestBuilder = http("Get Non-Cash Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-cash-benefits?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonCashBenefitsPage: HttpRequestBuilder = http("Post Non-Cash Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-cash-benefits?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getNonCashAmountBenefitsPage: HttpRequestBuilder = http("Get Non-Cash Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/non-cash-benefits-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postNonCashAmountBenefitsPage: HttpRequestBuilder = http("Post Non-Cash Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/non-cash-benefits-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getOtherBenefitsPage: HttpRequestBuilder = http("Get Other Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/other-benefits?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postOtherBenefitsPage: HttpRequestBuilder = http("Post Other Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/other-benefits?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getOtherBenefitsAmountPage: HttpRequestBuilder = http("Get Other Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/other-benefits-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postOtherBenefitsAmountPage: HttpRequestBuilder = http("Post Other Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/other-benefits-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
 }
