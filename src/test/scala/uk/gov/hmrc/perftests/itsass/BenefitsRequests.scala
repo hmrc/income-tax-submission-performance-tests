@@ -623,4 +623,55 @@ object BenefitsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "100")
     .check(status.is(303))
+
+  def getAssetsOrAssetsTransferBenefitsPage: HttpRequestBuilder = http("Get Assets or Assets Transfer Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/assets?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAssetsOrAssetsTransferBenefitsPage: HttpRequestBuilder = http("Post Assets or Assets Transfer Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/assets?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getAssetsBenefitsPage: HttpRequestBuilder = http("Get Assets Available for Use Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/assets-available-for-use?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAssetsBenefitsPage: HttpRequestBuilder = http("Post Assets Available for Use Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/assets-available-for-use?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getAssetsBenefitsAmountPage: HttpRequestBuilder = http("Get Assets Available for Use Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/assets-available-for-use-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAssetsBenefitsAmountPage: HttpRequestBuilder = http("Post Assets Available for Use Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/assets-available-for-use-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getAssetsTransferBenefitsPage: HttpRequestBuilder = http("Get Assets Transfer Benefits Question Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/assets-to-keep?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAssetsTransferBenefitsPage: HttpRequestBuilder = http("Post Assets Transfer Benefits Question Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/assets-to-keep?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getAssetsTransferBenefitsAmountPage: HttpRequestBuilder = http("Get Assets Transfer Benefits Amount Page")
+    .get(s"${employmentsUrl(taxYearEOY)}/benefits/assets-to-keep-amount?employmentId=$employmentIdWithNoBenefits")
+    .check(status.is(200))
+
+  def postAssetsTransferBenefitsAmountPage: HttpRequestBuilder = http("Post Assets Transfer Benefits Amount Page")
+    .post(s"${employmentsUrl(taxYearEOY)}/benefits/assets-to-keep-amount?employmentId=$employmentIdWithNoBenefits")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "100")
+    .check(status.is(303))
+
 }
