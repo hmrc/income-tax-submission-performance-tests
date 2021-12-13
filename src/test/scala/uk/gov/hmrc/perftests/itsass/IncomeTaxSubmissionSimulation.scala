@@ -25,6 +25,7 @@ import uk.gov.hmrc.perftests.itsass.EmploymentsRequests._
 import uk.gov.hmrc.perftests.itsass.GiftAidRequests._
 import uk.gov.hmrc.perftests.itsass.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.InterestRequests._
+import uk.gov.hmrc.perftests.itsass.ExpensesRequests._
 import uk.gov.hmrc.perftests.itsass.CrystallisationRequests._
 import uk.gov.hmrc.perftests.itsass.NRSProxyRequests.postNrsProxyStatement
 import uk.gov.hmrc.perftests.itsass.RequestsHelper.{taxYear, taxYearEOY}
@@ -155,7 +156,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
     getEmploymentDetailsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
-    getEmploymentBenefitsPage(taxYear,"00000000-0000-1000-8000-000000000000"),
+    getEmploymentBenefitsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
     getEmploymentExpensesPage(taxYear)
   )
 
@@ -166,9 +167,9 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
-    getEmployerDetailsAndBenefitsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
-    getEmploymentDetailsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
-    getEmploymentBenefitsPage(taxYear, employmentId="00000000-5555-0000-0000-000000000001"),
+    getEmployerDetailsAndBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
+    getEmploymentDetailsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
+    getEmploymentBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
     getEmploymentExpensesPage(taxYear)
   )
 
@@ -229,7 +230,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY,"00000000-0000-1000-8000-000000000004"),
+    getRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
     postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
     getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
   )
@@ -241,7 +242,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY,"00000000-5555-0000-0000-000000000001"),
+    getRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
     postRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
     getEmploymentSummaryPage(taxYearEOY)
   )
@@ -252,7 +253,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY,"00000000-5555-5555-0000-000000000002"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
     getEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
     postEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
     getEmploymentSummaryPage(taxYearEOY)
@@ -264,7 +265,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY,"00000000-5555-0000-0000-000000000002"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage,
@@ -397,6 +398,62 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getAssetsTransferBenefitsAmountPage,
     postAssetsTransferBenefitsAmountPage,
     getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002")
+  )
+
+  setup("individual-add-expenses", "Individual Expenses Journey - Single Employment") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA133742A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    getEmploymentExpensesPage(taxYearEOY),
+    getClaimingExpensesPage,
+    postClaimingExpensesPage,
+    getTravelAndOvernightExpensesPage,
+    postTravelAndOvernightExpensesPage,
+    getTravelAndOvernightExpensesAmountPage,
+    postTravelAndOvernightExpensesAmountPage,
+    getUniformsOrToolsExpensesPage,
+    postUniformsOrToolsExpensesPage,
+    getUniformsOrToolsExpensesAmountPage,
+    postUniformsOrToolsExpensesAmountPage,
+    getProfessionalSubscriptionsExpensesPage,
+    postProfessionalSubscriptionsExpensesPage,
+    getProfessionalSubscriptionsExpensesAmountPage,
+    postProfessionalSubscriptionsExpensesAmountPage,
+    getOtherEquipmentExpensesPage,
+    postOtherEquipmentExpensesPage,
+    getOtherEquipmentExpensesAmountPage,
+    postOtherEquipmentExpensesAmountPage
+  )
+
+  setup("agent-add-expenses", "Agent Expenses Journey - Multiple Employments") withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getEmploymentExpensesPage(taxYearEOY),
+    getClaimingExpensesPage,
+    postClaimingExpensesPage,
+    getTravelAndOvernightExpensesPage,
+    postTravelAndOvernightExpensesPage,
+    getTravelAndOvernightExpensesAmountPage,
+    postTravelAndOvernightExpensesAmountPage,
+    getUniformsOrToolsExpensesPage,
+    postUniformsOrToolsExpensesPage,
+    getUniformsOrToolsExpensesAmountPage,
+    postUniformsOrToolsExpensesAmountPage,
+    getProfessionalSubscriptionsExpensesPage,
+    postProfessionalSubscriptionsExpensesPage,
+    getProfessionalSubscriptionsExpensesAmountPage,
+    postProfessionalSubscriptionsExpensesAmountPage,
+    getOtherEquipmentExpensesPage,
+    postOtherEquipmentExpensesPage,
+    getOtherEquipmentExpensesAmountPage,
+    postOtherEquipmentExpensesAmountPage
   )
 
   setup("individual-gift-aid", "Individual Gift Aid Journey") withRequests(
@@ -571,7 +628,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("nrs-proxy-crystallisation", "NRS Crystallisation Downstream Request") withRequests(
     insertAuthRecordInd("AA888888A", "XAIT00000888888"),
-    postNrsProxyStatement("AA888888A","itsa-crystallisation", "XAIT00000888888")
+    postNrsProxyStatement("AA888888A", "itsa-crystallisation", "XAIT00000888888")
   )
 
   runSimulation()
