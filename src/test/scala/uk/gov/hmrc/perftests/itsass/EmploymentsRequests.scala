@@ -37,7 +37,7 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getEmployerDetailsAndBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employer Details And Benefits Page")
-    .get(s"${employmentsUrl(taxYear)}/employer-details-and-benefits?employmentId=$employmentId")
+    .get(s"${employmentsUrl(taxYear)}/employer-information?employmentId=$employmentId")
     .check(saveCsrfToken)
     .check(status.is(200))
 
