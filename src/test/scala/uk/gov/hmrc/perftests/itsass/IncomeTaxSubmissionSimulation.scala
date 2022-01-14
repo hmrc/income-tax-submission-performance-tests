@@ -232,7 +232,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentSummaryPage(taxYearEOY),
     getRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
     postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
-    getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
+    getEmploymentSummaryPage(taxYearEOY)
   )
 
   setup("agent-remove-employment", "Agent Remove Employment - Multiple Employments") withRequests(
