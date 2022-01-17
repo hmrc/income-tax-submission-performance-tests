@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -161,6 +161,18 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(status.is(303)
     )
 
+  def getCheckYourEmploymentDetailsPage(taxYear: String): HttpRequestBuilder = http("Get Check Your Employment Details Page")
+    .get(s"${employmentsUrl(taxYear)}/check-your-employment-details?employmentId=$${employmentId}": String)
+    .check(status.is(200)
+    )
+
+  def postCheckYourEmploymentDetailsPage(taxYear: String): HttpRequestBuilder = http("Post Check Your Employment Details Page")
+    .post(s"${employmentsUrl(taxYear)}/check-your-employment-details?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303)
+    )
+
   def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
     .get(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
     .check(status.is(200)
@@ -183,6 +195,8 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", false)
     .check(status.is(303))
+
+
 
 
 }

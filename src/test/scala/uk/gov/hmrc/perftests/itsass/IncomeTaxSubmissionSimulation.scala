@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -629,6 +629,45 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
   setup("nrs-proxy-crystallisation", "NRS Crystallisation Downstream Request") withRequests(
     insertAuthRecordInd("AA888888A", "XAIT00000888888"),
     postNrsProxyStatement("AA888888A", "itsa-crystallisation", "XAIT00000888888")
+
+  )
+  setup("individual-add-new-employment", "Individual Add New Employment - Prior Employments") withRequests(
+    getLoginPage,
+    postIndividualLoginPage("BB444444A", "XAIT00000888888"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    postEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postEmploymentDetailsPage(taxYearEOY, "000000000-5555-0000-0000-000000000002"),
+    getReceivedBenefitsPage,
+    postReceivedBenefitsPage,
+    getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getClaimingExpensesPage,
+    postClaimingExpensesPage,
+    getEmploymentSummaryPage(taxYearEOY),
+    postEmploymentSummaryPage(taxYearEOY)
+
+  )
+  setup("agent-add-new-employment", "Agent Add New Employment - Prior Employments") withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    postEmploymentSummaryPage(taxYearEOY),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getReceivedBenefitsPage,
+    postReceivedBenefitsPage,
+    getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getClaimingExpensesPage,
+    postClaimingExpensesPage,
+    getEmploymentSummaryPage(taxYearEOY),
+    postEmploymentSummaryPage(taxYearEOY)
   )
 
   runSimulation()
