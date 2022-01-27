@@ -30,7 +30,6 @@ import uk.gov.hmrc.perftests.itsass.CrystallisationRequests._
 import uk.gov.hmrc.perftests.itsass.NRSProxyRequests.postNrsProxyStatement
 import uk.gov.hmrc.perftests.itsass.RequestsHelper.{taxYear, taxYearEOY}
 
-
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
 
   setup("individual-dividends", "Individual Dividends Journey") withRequests(
@@ -205,7 +204,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    postEmploymentSummaryPage(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
     postEmployerNamePage(taxYearEOY),
     getPayeRefPage(taxYearEOY),
@@ -631,13 +629,13 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     postNrsProxyStatement("AA888888A", "itsa-crystallisation", "XAIT00000888888")
 
   )
+
   setup("individual-add-new-employment", "Individual Add New Employment - Prior Employments") withRequests(
     getLoginPage,
     postIndividualLoginPage("BB444444A", "XAIT00000888888"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    postEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     postEmploymentDetailsPage(taxYearEOY, "000000000-5555-0000-0000-000000000002"),
@@ -646,10 +644,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
-    getEmploymentSummaryPage(taxYearEOY),
-    postEmploymentSummaryPage(taxYearEOY)
+    getEmploymentSummaryPage(taxYearEOY)
 
   )
+
   setup("agent-add-new-employment", "Agent Add New Employment - Prior Employments") withRequests(
     getLoginPage,
     postAgentLoginPage("BB444444A", "1234567890"),
@@ -657,7 +655,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    postEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     postEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
@@ -666,8 +663,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner {
     getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
-    getEmploymentSummaryPage(taxYearEOY),
-    postEmploymentSummaryPage(taxYearEOY)
+    getEmploymentSummaryPage(taxYearEOY)
   )
 
   runSimulation()

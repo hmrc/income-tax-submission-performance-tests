@@ -26,15 +26,7 @@ object EmploymentsRequests extends ServicesConfiguration {
 
   def getEmploymentSummaryPage(taxYear: String): HttpRequestBuilder = http("Get Employment Summary Page")
     .get(s"${employmentsUrl(taxYear)}/employment-summary")
-    .check(checkIf(taxYear.equals(taxYearEOY)){saveCsrfToken})
     .check(status.is(200))
-
-  def postEmploymentSummaryPage(taxYear: String): HttpRequestBuilder = http("Post Employment Summary Page")
-    .post(s"${employmentsUrl(taxYear)}/employment-summary")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", true)
-    .check(saveEmploymentId)
-    .check(status.is(303))
 
   def getEmployerDetailsAndBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employer Details And Benefits Page")
     .get(s"${employmentsUrl(taxYear)}/employer-information?employmentId=$employmentId")
