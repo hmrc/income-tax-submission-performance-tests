@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.RequestsHelper._
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object EmploymentsRequests extends ServicesConfiguration {
 
@@ -91,9 +91,9 @@ object EmploymentsRequests extends ServicesConfiguration {
 
   def getPayeRefPage(taxYear: String): HttpRequestBuilder = {
     http("Get Paye-Ref Page")
-    .get(s"${employmentsUrl(taxYear)}/employer-paye-reference?employmentId=$${employmentId}": String)
-    .check(status.is(200)
-    )
+      .get(s"${employmentsUrl(taxYear)}/employer-paye-reference?employmentId=$${employmentId}": String)
+      .check(status.is(200)
+      )
   }
 
   def postPayeRefPage(taxYear: String): HttpRequestBuilder = http("Post Paye Ref Page")
@@ -187,8 +187,5 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", false)
     .check(status.is(303))
-
-
-
 
 }

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import org.joda.time.DateTime
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.utils.NumberGenerator._
+import uk.gov.hmrc.perftests.itsass.utils.NumberGenerator.{randomAlphanumeric, randomNumber}
 
 object AuthLoginAPIRequests extends ServicesConfiguration {
 
@@ -34,14 +34,14 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
   val Agent: String = "Agent"
   val Individual: String = "Individual"
 
-  def insertAuthRecordInd(simNino : String, simMtditid : String): HttpRequestBuilder = http("Insert Auth Record Individual")
+  def insertAuthRecordInd(simNino: String, simMtditid: String): HttpRequestBuilder = http("Insert Auth Record Individual")
     .post(authLoginApiUrl)
     .body(StringBody(authPayload(Individual, simNino, simMtditid, None)))
     .headers(Map("Content-Type" -> "application/json"))
     .check(status.is(201))
     .check(header("Authorization").saveAs("bearerToken"))
 
-  def insertAuthRecordAgent(simNino : String, simMtditid : String, simArn: Option[String]): HttpRequestBuilder = http("Insert Auth Record Agent")
+  def insertAuthRecordAgent(simNino: String, simMtditid: String, simArn: Option[String]): HttpRequestBuilder = http("Insert Auth Record Agent")
     .post(authLoginApiUrl)
     .body(StringBody(authPayload(Agent, simNino, simMtditid, simArn)))
     .headers(Map("Content-Type" -> "application/json"))
@@ -80,7 +80,7 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
          |  "externalId": "Ext-${randomAlphanumeric(8)}-ac7a-4cc2-950a-19e6fac91f2a",
          |  "agentCode" : "",
          |  "credentials": {
-         |    "providerId": "${randomNumber(100000,999999)}3381064832",
+         |    "providerId": "${randomNumber(100000, 999999)}3381064832",
          |    "providerType": "GovernmentGatewayTest"
          |  },
          |  "confidenceLevel": 200,
@@ -104,7 +104,7 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
     authPayload
   }
 
-  def saEnrolment(mtditidToUse : String): String =
+  def saEnrolment(mtditidToUse: String): String =
     s""" [
        |   {
        |     "key": "HMRC-MTD-IT",
@@ -118,7 +118,7 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
        |   }
        |  ] """.stripMargin
 
-  def saDelegatedEnrolment(mtditidToUse : String): String =
+  def saDelegatedEnrolment(mtditidToUse: String): String =
     s""" [
        |    {
        |      "key": "HMRC-MTD-IT",

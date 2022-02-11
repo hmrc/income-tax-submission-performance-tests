@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
-import io.gatling.core.Predef._
+import io.gatling.core.Predef.{StringBody, _}
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.perftests.itsass.Json.NRSRequest.submitCrystallisationNrsStatement
-import uk.gov.hmrc.perftests.itsass.RequestsHelper.nrsProxyBaseUrl
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object NRSProxyRequests {
 
-  def nrsHeaders(mtditid : String): Map[String, String] =
+  def nrsHeaders(mtditid: String): Map[String, String] =
     Map(
       "Accept" -> s"application/vnd.hmrc.1.0+json",
       "Authorization" -> s"$${bearerToken}",

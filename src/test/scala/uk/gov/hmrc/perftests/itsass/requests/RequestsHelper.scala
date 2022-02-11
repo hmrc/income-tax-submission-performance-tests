@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
 import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
 import io.gatling.core.check.regex.RegexCheckType
-import io.gatling.http.Predef._
+import io.gatling.http.Predef.{Response, headerRegex}
 import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
+
 
 object RequestsHelper extends ServicesConfiguration {
 
   val taxYear: String = "2022"
   val taxYearEOY: String = "2021"
 
-  val employmentIdWithNoBenefits = "00000000-5555-0000-0000-000000000002"
+  val employmentIdWithNoBenefits: String = "00000000-5555-0000-0000-000000000002"
+  val employmentIdWithNoStudentLoans: String = "00000000-0000-0000-0000-000000000002"
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
@@ -40,7 +42,7 @@ object RequestsHelper extends ServicesConfiguration {
   val dividendsUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/dividends"
   val interestUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/interest"
   val giftAidUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/charity"
-  val employmentsUrl: String => String =(taxYear:String) => employmentFrontendBaseUrl + s"/update-and-submit-income-tax-return/employment-income/$taxYear"
+  val employmentsUrl: String => String = (taxYear: String) => employmentFrontendBaseUrl + s"/update-and-submit-income-tax-return/employment-income/$taxYear"
   val viewAndChangeUrl: String = viewAndChangeFrontendBaseUrl + s"/report-quarterly/income-and-expenses"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
