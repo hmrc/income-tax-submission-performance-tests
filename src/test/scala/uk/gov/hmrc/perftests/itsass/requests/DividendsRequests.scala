@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
-import io.gatling.http.Predef._
 import io.gatling.core.Predef._
+import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.RequestsHelper._
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object DividendsRequests extends ServicesConfiguration {
 

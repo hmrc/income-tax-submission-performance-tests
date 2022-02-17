@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
-import io.gatling.http.Predef._
 import io.gatling.core.Predef._
+import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.RequestsHelper._
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object AuthLoginRequests extends ServicesConfiguration {
 
@@ -134,7 +134,7 @@ object AuthLoginRequests extends ServicesConfiguration {
     .formParam("enrolment[4].taxIdentifier[0].name", "")
     .formParam("enrolment[4].taxIdentifier[0].value", "")
     .formParam("enrolment[4].state", "Activated")
-    .formParam("delegatedEnrolment[0].key","HMRC-MTD-IT")
+    .formParam("delegatedEnrolment[0].key", "HMRC-MTD-IT")
     .formParam("delegatedEnrolment[0].taxIdentifier[0].name", "MTDITID")
     .formParam("delegatedEnrolment[0].taxIdentifier[0].value", s"$mtditid")
     .formParam("delegatedEnrolment[0].delegatedAuthRule", "mtd-it-auth")

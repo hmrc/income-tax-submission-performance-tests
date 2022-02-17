@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.itsass
+package uk.gov.hmrc.perftests.itsass.requests
 
-import io.gatling.http.Predef._
 import io.gatling.core.Predef._
+import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.itsass.RequestsHelper._
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
@@ -35,5 +35,15 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
   def getOverviewPage(taxYear: String): HttpRequestBuilder = http("Get Overview Page")
     .get(s"$serviceUrl/$taxYear/view")
     .check(status.is(200))
+
+  def getEOYOverviewPage(taxYearEOY: String): HttpRequestBuilder = http("Get EOY Overview Page")
+    .get(s"$serviceUrl/$taxYearEOY/income-tax-return-overview")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postEOYOverviewPage(taxYearEOY: String): HttpRequestBuilder = http("Post EOY Overview Page")
+    .post(s"$serviceUrl/$taxYearEOY/final-calculation")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
 
 }
