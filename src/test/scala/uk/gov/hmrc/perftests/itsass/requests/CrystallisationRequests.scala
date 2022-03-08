@@ -26,17 +26,6 @@ object CrystallisationRequests extends ServicesConfiguration {
 
   //Common
 
-  def getViewChangeTestHeadersPage: HttpRequestBuilder = http("Get V&C Test Headers Page")
-    .get(s"$viewAndChangeUrl/view/test-only/test-headers")
-    .check(saveCsrfToken())
-    .check(status.is(200))
-
-  def postViewChangeTestHeadersPage: HttpRequestBuilder = http("Post V&C Test Headers Page")
-    .post(s"$viewAndChangeUrl/view/test-only/test-headers")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("headerName", "ITVC_CRYSTALLISATION_METADATA")
-    .check(status.is(303))
-
   def getDeclarationPage(taxYearEOY: String): HttpRequestBuilder = http(s"Get Declaration Page")
     .get(s"$serviceUrl/$taxYearEOY/declaration")
     .check(status.is(200))
