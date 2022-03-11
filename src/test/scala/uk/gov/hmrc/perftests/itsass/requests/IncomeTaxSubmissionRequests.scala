@@ -46,4 +46,24 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
+  def getClientUTRPage: HttpRequestBuilder = http("Get UTR Page")
+    .get(s"$viewAndChangeUrl/view/agents/client-utr")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postClientUTRPage: HttpRequestBuilder = http("Post UTR Page")
+    .post(s"$viewAndChangeUrl/view/agents/client-utr")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("utr", "1234567890")
+    .check(status.is(303))
+
+  def getConfirmClientUTRPage: HttpRequestBuilder = http(s"Get confirm client UTR Page")
+    .get(s"$viewAndChangeUrl/view/agents/confirm-client")
+    .check(status.is(200))
+
+  def postConfirmClientUTRPage: HttpRequestBuilder = http(s"Post confirm client UTR Page")
+    .post(s"$viewAndChangeUrl/view/agents/confirm-client")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
 }
