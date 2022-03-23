@@ -29,14 +29,13 @@ trait ViewEstimationSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA888888A", "XAIT00000888888"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
-    getTaxOverviewPage,
-    getIncomeTaxPage
+    getTaxCalculationOverviewPage
   )
 
   def viewEstimationAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA888888A", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AA888888A", "1234567890"),
+    postAgentLoginPage("AA888888A", "XAIT00000888888"),
+    getInsertAdditionalParametersEndPoint("AA888888A", "XAIT00000888888"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getIncomeTaxAgentEndpoint,
@@ -44,8 +43,7 @@ trait ViewEstimationSimSteps extends PerformanceTestRunner {
     postClientUTRPage,
     getConfirmClientUTRPage,
     postConfirmClientUTRPage,
-    getTaxOverviewAgentsPage,
-    getIncomeTaxAgentPage
+    getTaxCalculationOverviewAgentsPage
   )
 
 }
