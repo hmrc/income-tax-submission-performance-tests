@@ -26,12 +26,7 @@ object ViewEstimationRequests extends ServicesConfiguration {
 
   //Individual
 
-  def getIncomeTaxPage: HttpRequestBuilder = http(s"Get Income Tax Page")
-    .get(s"$viewAndChangeUrl/view")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .check(status.is(200))
-
-  def getTaxOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
+  def getTaxCalculationOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
     .get(s"$viewAndChangeUrl/view/tax-overview")
     .check(saveCsrfToken())
     .check(status.is(200))
@@ -42,11 +37,7 @@ object ViewEstimationRequests extends ServicesConfiguration {
     .get(s"$viewAndChangeUrl/view/agents/tax-overview")
     .check(status.is(303))
 
-  def getIncomeTaxAgentPage: HttpRequestBuilder = http(s"Get Income Tax Agent Page")
-    .get(s"$viewAndChangeUrl/view/agents/income-tax-account")
-    .check(status.is(200))
-
-  def getTaxOverviewAgentsPage: HttpRequestBuilder = http(s"Get Tax Overview AgentsPage")
+  def getTaxCalculationOverviewAgentsPage: HttpRequestBuilder = http(s"Get Tax Overview AgentsPage")
     .get(s"$viewAndChangeUrl/view/agents/tax-overview")
     .check(saveCsrfToken())
     .check(status.is(200))
