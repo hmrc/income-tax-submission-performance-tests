@@ -35,18 +35,11 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   giftAidAgent(id ="agent-gift-aid", description = "Agent Gift Aid Journey")
 
   //Employment
-  employmentIndividual(id ="individual-employment", description = "Individual Single Employment Journey")
-  employmentAgent(id ="agent-employment", description = "Agent Multiple Employments Journey")
-  addEmploymentIndividual(id ="individual-add-employment", description = "Individual Add Employment-No Employments")
-  addEmploymentAgent(id ="agent-add-employment", description = "Agent Add Employment - Prior Employments")
-  removeEmploymentIndividual(id ="individual-remove-employment", description = "Individual Remove Employment - Single Employment")
-  removeEmploymentAgent(id ="agent-remove-employment", description = "Agent Remove Employment - Multiple Employments")
-  employmentDetailsIndividual(id ="individual-employment-details", description = "Individual Multiple Employments - Check Employment Details EOY")
-  employmentBenefitsIndividual(id ="individual-add-benefits", description = "Individual Multiple Employments - Adding benefits full flow")
-  employmentExpensesIndividual(id ="individual-add-expenses", description = "Individual Expenses Journey - Single Employment")
-  employmentExpensesAgent(id ="agent-add-expenses", description = "Agent Expenses Journey - Multiple Employments")
-  addNewEmploymentIndividual(id ="individual-add-new-employment", description = "Individual Add New Employment - Prior Employments")
-  addNewEmploymentAgent(id ="agent-add-new-employment", description = "Agent Add New Employment - Prior Employments")
+
+  addFullEmploymentIndividual(id ="individual-add-employment", description = "Individual Add Full Employment")
+  addFullEmploymentAgent(id ="agent-add-employment", description = "Agent Add Full Employment")
+  checkAndRemoveEmploymentIndividual(id ="individual-check-remove-employment", description = "Individual Check and Remove Employment")
+  checkAndRemoveEmploymentAgent(id ="agent-check-remove-employment", description = "Agent Check And Remove Employment")
 
   //StudentLoans
   studentLoansIndividual(id ="individual-student-loans", description = "Individual Student Loans Journey")

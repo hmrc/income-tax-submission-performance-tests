@@ -33,26 +33,59 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(saveCsrfToken)
     .check(status.is(200))
 
-  def getEmploymentDetailsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employment Details Page")
+  def getCheckEmploymentDetailsPage(taxYear: String): HttpRequestBuilder = http("Get Check Employment Details Page")
+    .get(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$${employmentId}": String)
+    .check(status.is(200))
+
+  def postCheckEmploymentDetailsPage(taxYear: String): HttpRequestBuilder = http("Post Check Employment Details Page")
+    .post(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def getCheckExistingEmploymentDetailsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Check Existing Employment Details Page")
     .get(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$employmentId")
     .check(status.is(200))
 
-  def postEmploymentDetailsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Employment Details Page")
+  def postCheckExistingEmploymentDetailsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Check Existing Employment Details Page")
     .post(s"${employmentsUrl(taxYear)}/check-employment-details?employmentId=$employmentId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
-  def getEmploymentBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employment Benefits Page")
+  def getCheckEmploymentBenefitsPage(taxYear: String): HttpRequestBuilder = http("Get Check Employment Benefits Page")
+    .get(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$${employmentId}": String)
+    .check(status.is(200))
+
+  def redirectCheckEmploymentBenefitsPage(taxYear: String): HttpRequestBuilder = http("Redirect Check Employment Benefits Page")
+    .get(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def postCheckEmploymentBenefitsPage(taxYear: String): HttpRequestBuilder = http("Post Check Employment Benefits Page")
+    .post(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def getCheckExistingEmploymentBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Check Existing Employment Benefits Page")
     .get(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$employmentId")
     .check(status.is(200))
 
-  def getEmploymentBenefitsWithoutBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Employment Benefits Without BenefitsPage")
+  def postCheckExistingEmploymentBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Check Existing Employment Benefits Page")
+    .post(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$employmentId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def getCheckEmploymentBenefitsWithoutBenefitsPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Check Employment Benefits Without Benefits Page")
     .get(s"${employmentsUrl(taxYear)}/check-employment-benefits?employmentId=$employmentId")
     .check(status.is(303))
 
-  def getEmploymentExpensesPage(taxYear: String): HttpRequestBuilder = http("Get Employment Expenses Page")
+  def getCheckEmploymentExpensesPage(taxYear: String): HttpRequestBuilder = http("Get Check Employment Expenses Page")
     .get(s"${employmentsUrl(taxYear)}/expenses/check-employment-expenses")
     .check(status.is(200))
+
+  def postCheckEmploymentExpensesPage(taxYear: String): HttpRequestBuilder = http("Post Check Employment Benefits Page")
+    .post(s"${employmentsUrl(taxYear)}/expenses/check-employment-expenses")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
 
   def getAddEmploymentPage(taxYear: String): HttpRequestBuilder = http("Get Add Employment Page")
     .get(s"${employmentsUrl(taxYear)}/add-employment")
@@ -77,11 +110,9 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("value", true)
     .check(status.is(303))
 
-
   def getEmployerNamePage(taxYear: String): HttpRequestBuilder = http("Get Employer Name Page")
     .get(s"${employmentsUrl(taxYear)}/employer-name?employmentId=$${employmentId}": String)
-    .check(status.is(200)
-    )
+    .check(status.is(200))
 
   def postEmployerNamePage(taxYear: String): HttpRequestBuilder = http("Post Employer Name Page")
     .post(s"${employmentsUrl(taxYear)}/employer-name?employmentId=$${employmentId}": String)
@@ -89,12 +120,9 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("name", "KFC")
     .check(status.is(303))
 
-  def getPayeRefPage(taxYear: String): HttpRequestBuilder = {
-    http("Get Paye-Ref Page")
+  def getPayeRefPage(taxYear: String): HttpRequestBuilder = http("Get Paye-Ref Page")
       .get(s"${employmentsUrl(taxYear)}/employer-paye-reference?employmentId=$${employmentId}": String)
-      .check(status.is(200)
-      )
-  }
+      .check(status.is(200))
 
   def postPayeRefPage(taxYear: String): HttpRequestBuilder = http("Post Paye Ref Page")
     .post(s"${employmentsUrl(taxYear)}/employer-paye-reference?employmentId=$${employmentId}": String)
@@ -102,25 +130,12 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("payeRef", "123/AB123")
     .check(status.is(303))
 
-  def getPayrollIdPage(taxYear: String): HttpRequestBuilder = {
-    http("Get PayrollId Page")
-      .get(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
-      .check(status.is(200)
-      )
-  }
-
-  def postPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Post Payroll Id Page")
-    .post(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("payrollId", "123456789")
-    .check(status.is(303))
-
   def getEmploymentStartDatePage(taxYear: String): HttpRequestBuilder = http("Get Start Date Employment Page")
     .get(s"${employmentsUrl(taxYear)}/employment-start-date?employmentId=$${employmentId}": String)
     .check(status.is(200)
     )
 
-  def postEmploymentStartDate(taxYear: String): HttpRequestBuilder = http("Post Start Date Employment Page")
+  def postEmploymentStartDatePage(taxYear: String): HttpRequestBuilder = http("Post Start Date Employment Page")
     .post(s"${employmentsUrl(taxYear)}/employment-start-date?employmentId=$${employmentId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount-day", "11")
@@ -128,6 +143,41 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("amount-year", "2012")
     .check(status.is(303)
     )
+
+  def getAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Get Are you still working for your employer Page")
+    .get(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Post Are you still working for your employer Page")
+    .post(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", false)
+    .check(status.is(303))
+
+  def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
+    .get(s"${employmentsUrl(taxYear)}/employment-end-date?employmentId=$${employmentId}": String)
+    .check(status.is(200)
+    )
+
+  def postWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Post When did you leave your employer Page")
+    .post(s"${employmentsUrl(taxYear)}/employment-end-date?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount-day", "11")
+    .formParam("amount-month", "01")
+    .formParam("amount-year", "2021")
+    .check(status.is(303)
+    )
+
+  def getPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Get PayrollId Page")
+    .get(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+    .check(status.is(200))
+
+  def postPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Post Payroll Id Page")
+    .post(s"${employmentsUrl(taxYear)}/payroll-id?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("payrollId", "123456789")
+    .check(status.is(303))
 
   def getPayEmploymentPage(taxYear: String): HttpRequestBuilder = http("Get Pay Employment Page")
     .get(s"${employmentsUrl(taxYear)}/how-much-pay?employmentId=$${employmentId}": String)
@@ -164,28 +214,5 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("value", true)
     .check(status.is(303)
     )
-
-  def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
-    .get(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
-    .check(status.is(200)
-    )
-
-  def postWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Post When did you leave your employer Page")
-    .post(s"${employmentsUrl(taxYear)}/uk-tax?employmentId=$${employmentId}": String)
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("amount", "500")
-    .check(status.is(303)
-    )
-
-  def getAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Are you still working for you employer Page")
-    .get(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
-    .check(saveCsrfToken())
-    .check(status.is(200))
-
-  def postAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Are you still working for you employer Page")
-    .post(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", false)
-    .check(status.is(303))
 
 }
