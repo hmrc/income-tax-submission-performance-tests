@@ -19,7 +19,7 @@ package uk.gov.hmrc.perftests.itsass
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
-class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps
+class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps
   with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps {
 
   //Dividends
@@ -62,6 +62,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
 
   //NRS
   nrsJourney(id ="nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
+
+  //CIS
+  cisIndividual(id = "individual-cis", description = "Individual CIS Journey")
+  cisAgent(id = "agent-cis", description = "Agent CIS Journey")
 
   runSimulation()
 }

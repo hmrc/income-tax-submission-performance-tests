@@ -38,12 +38,14 @@ object RequestsHelper extends ServicesConfiguration {
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
   val nrsProxyBaseUrl: String = baseUrlFor("income-tax-nrs-proxy")
   val authLoginUrl: String = baseUrlFor("auth-login-stub")
+  val cisBaseUrl: String = baseUrlFor("income-tax-cis-frontend")
   val serviceUrl: String = baseUrl + "/update-and-submit-income-tax-return"
   val dividendsUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/dividends"
   val interestUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/interest"
   val giftAidUrl: String = personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear/charity"
   val employmentsUrl: String => String = (taxYear: String) => employmentFrontendBaseUrl + s"/update-and-submit-income-tax-return/employment-income/$taxYear"
   val viewAndChangeUrl: String = viewAndChangeFrontendBaseUrl + s"/report-quarterly/income-and-expenses"
+  val cisUrl: String => String = (taxYear: String) => cisBaseUrl + s"/update-and-submit-income-tax-return/construction-industry-scheme-deductions/$taxYear"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
