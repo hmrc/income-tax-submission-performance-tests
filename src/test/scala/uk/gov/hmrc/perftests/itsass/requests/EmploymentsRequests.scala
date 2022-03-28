@@ -66,6 +66,17 @@ object EmploymentsRequests extends ServicesConfiguration {
     .check(saveEmploymentId)
     .check(status.is(303))
 
+  def getSelectEmploymentPage(taxYear: String): HttpRequestBuilder = http("Get Select Employment Page")
+    .get(s"${employmentsUrl(taxYear)}/select-employer")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postSelectEmploymentPage(taxYear: String): HttpRequestBuilder = http("Post Select Employment Page")
+    .post(s"${employmentsUrl(taxYear)}/select-employer")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "00000000-5555-0000-0000-100000000001")
+    .check(status.is(303))
+
   def getRemoveEmploymentPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Remove Employment Page")
     .get(s"${employmentsUrl(taxYear)}/remove-employment?employmentId=$employmentId")
     .check(saveCsrfToken())

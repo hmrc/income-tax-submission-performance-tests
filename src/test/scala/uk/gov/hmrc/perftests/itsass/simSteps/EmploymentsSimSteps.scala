@@ -356,6 +356,8 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
+    getSelectEmploymentPage(taxYearEOY),
+    postSelectEmploymentPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
