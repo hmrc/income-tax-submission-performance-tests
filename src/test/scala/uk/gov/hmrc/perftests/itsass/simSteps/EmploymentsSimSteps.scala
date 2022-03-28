@@ -26,18 +26,18 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY
 
 trait EmploymentsSimSteps extends PerformanceTestRunner {
 
-  def employmentIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def employmentIndividualCurrentTaxYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AA133742A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
-    getEmploymentDetailsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
-    getEmploymentBenefitsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
-    getEmploymentExpensesPage(taxYear)
+    getCheckEmploymentDetailsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
+    getCheckEmploymentBenefitsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
+    getCheckEmploymentExpensesPage(taxYear)
   )
 
-  def employmentAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def employmentAgentCurrentTaxYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postAgentLoginPage("BB444444A", "1234567890"),
     getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
@@ -45,9 +45,9 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
     getEmployerDetailsAndBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
-    getEmploymentDetailsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
-    getEmploymentBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
-    getEmploymentExpensesPage(taxYear)
+    getCheckEmploymentDetailsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
+    getCheckEmploymentBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
+    getCheckEmploymentExpensesPage(taxYear)
   )
 
   def addEmploymentIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -100,41 +100,6 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postUkTaxEmploymentPage(taxYearEOY)
   )
 
-  def removeEmploymentIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
-    getLoginPage,
-    postIndividualLoginPage("AA133742A", "1234567890"),
-    getStartPage(taxYearEOY),
-    getEOYOverviewPage(taxYearEOY),
-    getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
-    postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
-    getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
-  )
-
-  def removeEmploymentAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
-    getLoginPage,
-    postAgentLoginPage("BB444444A", "1234567890"),
-    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
-    getStartPage(taxYearEOY),
-    getEOYOverviewPage(taxYearEOY),
-    getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
-    postRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
-    getEmploymentSummaryPage(taxYearEOY)
-  )
-
-  def employmentDetailsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
-    getLoginPage,
-    postIndividualLoginPage("BB444444A", "1234567890"),
-    getStartPage(taxYearEOY),
-    getEOYOverviewPage(taxYearEOY),
-    getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
-    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
-    postEmploymentDetailsPage(taxYearEOY, "00000000-5555-5555-0000-000000000002"),
-    getEmploymentSummaryPage(taxYearEOY)
-  )
-
   def employmentBenefitsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("BB444444A", "1234567890"),
@@ -142,7 +107,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage,
     getCarVanFuelBenefitsPage,
@@ -273,7 +238,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postAssetsTransferBenefitsPage,
     getAssetsTransferBenefitsAmountPage,
     postAssetsTransferBenefitsAmountPage,
-    getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002")
+    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002")
   )
 
   def employmentExpensesIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -283,7 +248,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
-    getEmploymentExpensesPage(taxYearEOY),
+    getCheckEmploymentExpensesPage(taxYearEOY),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
     getTravelAndOvernightExpensesPage,
@@ -311,7 +276,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmploymentExpensesPage(taxYearEOY),
+    getCheckEmploymentExpensesPage(taxYearEOY),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
     getTravelAndOvernightExpensesPage,
@@ -339,11 +304,11 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    postEmploymentDetailsPage(taxYearEOY, "000000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCheckEmploymentDetailsPage(taxYearEOY, "000000000-5555-0000-0000-000000000002"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage,
-    getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
     getEmploymentSummaryPage(taxYearEOY)
@@ -360,13 +325,36 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postSelectEmploymentPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    postEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    postCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage,
-    getEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
+    getEmploymentSummaryPage(taxYearEOY)
+  )
+
+  def removeEmploymentIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA133742A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
+  )
+
+  def removeEmploymentAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("BB444444A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getEmploymentSummaryPage(taxYearEOY),
+    getRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
+    postRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
     getEmploymentSummaryPage(taxYearEOY)
   )
 }
