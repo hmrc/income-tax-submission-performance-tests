@@ -109,6 +109,21 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("amount-year", "2012")
     .check(status.is(303))
 
+  def getEmploymentDatesPage(taxYear: String): HttpRequestBuilder = http("Get Employment Dates Page")
+    .get(s"${employmentsUrl(taxYear)}/employment-dates?employmentId=$${employmentId}": String)
+    .check(status.is(200))
+
+  def postEmploymentDates(taxYear: String): HttpRequestBuilder = http("Post to Employment Dates Page")
+    .post(s"${employmentsUrl(taxYear)}/employment-dates?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("startAmount-day", "11")
+    .formParam("startAmount-month", "01")
+    .formParam("startAmount-year", "2012")
+    .formParam("endAmount-day", "11")
+    .formParam("endAmount-month", "03")
+    .formParam("endAmount-year", "2021")
+    .check(status.is(303))
+
   def getAreYouStillWorkingAtEmployerPage(taxYear: String): HttpRequestBuilder = http("Get Are you still working for you employer Page")
     .get(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
     .check(saveCsrfToken())
@@ -118,18 +133,6 @@ object EmploymentsRequests extends ServicesConfiguration {
     .post(s"${employmentsUrl(taxYear)}/still-working-for-employer?employmentId=$${employmentId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", false)
-    .check(status.is(303))
-
-  def getWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Get When did you leave your employer Page")
-    .get(s"${employmentsUrl(taxYear)}/employment-end-date?employmentId=$${employmentId}": String)
-    .check(status.is(200))
-
-  def postWhenDidYouLeaveYourEmployerPage(taxYear: String): HttpRequestBuilder = http("Post When did you leave your employer Page")
-    .post(s"${employmentsUrl(taxYear)}/employment-end-date?employmentId=$${employmentId}": String)
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("amount-day", "11")
-    .formParam("amount-month", "01")
-    .formParam("amount-year", "2021")
     .check(status.is(303))
 
   def getPayrollIdPage(taxYear: String): HttpRequestBuilder = http("Get PayrollId Page")
