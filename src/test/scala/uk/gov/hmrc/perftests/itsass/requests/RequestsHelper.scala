@@ -22,12 +22,9 @@ import io.gatling.core.check.regex.RegexCheckType
 import io.gatling.http.Predef.{Response, headerRegex}
 import io.gatling.http.check.header.HttpHeaderRegexCheckType
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
+import uk.gov.hmrc.perftests.itsass.utils.TaxYearHelper
 
-
-object RequestsHelper extends ServicesConfiguration {
-
-  val taxYear: String = "2022"
-  val taxYearEOY: String = "2021"
+object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
 
   val employmentIdWithNoBenefits: String = "00000000-5555-0000-0000-000000000002"
   val employmentIdWithNoStudentLoans: String = "00000000-0000-0000-0000-000000000002"
