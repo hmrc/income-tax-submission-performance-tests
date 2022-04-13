@@ -43,11 +43,13 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val employmentsUrl: String => String = (taxYear: String) => employmentFrontendBaseUrl + s"/update-and-submit-income-tax-return/employment-income/$taxYear"
   val viewAndChangeUrl: String = viewAndChangeFrontendBaseUrl + s"/report-quarterly/income-and-expenses"
   val cisUrl: String => String = (taxYear: String) => cisBaseUrl + s"/update-and-submit-income-tax-return/construction-industry-scheme-deductions/$taxYear"
+  val pensionsFrontendBaseUrl: String = baseUrlFor("income-tax-pensions-frontend")
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
   val taxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
   val employmentIdPattern: String = s"""employmentId=([^"]+)"""
+  val pensionsUrl: String => String = (taxYear: String) => pensionsFrontendBaseUrl + s"/update-and-submit-income-tax-return/pensions/$taxYear"
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
