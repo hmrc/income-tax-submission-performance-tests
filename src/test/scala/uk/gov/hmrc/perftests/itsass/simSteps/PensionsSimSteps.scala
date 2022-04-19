@@ -81,7 +81,4 @@ trait PensionsSimSteps extends PerformanceTestRunner{
     getCheckYourPaymentsIntoPensions(taxYear)
   )
 
-
-
-
 }
