@@ -20,8 +20,6 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 import uk.gov.hmrc.perftests.itsass.simSteps.PensionsSimSteps
 
-
-
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps
   with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
 
@@ -54,6 +52,14 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   studentLoansIndividual(id ="individual-student-loans", description = "Individual Student Loans Journey")
   studentLoansAgent(id ="agent-student-loans", description = "Agent Student Loans Journey")
 
+  //CIS
+  cisIndividual(id = "individual-cis", description = "Individual CIS Journey")
+  cisAgent(id = "agent-cis", description = "Agent CIS Journey")
+
+  //Pensions
+  paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")
+  paymentsIntoPensionAgent(id = "agent-payments-into-pensions", description = "Agent Payments into Pensions")
+
   //Crystallisation
   crystallisationIndividual(id ="individual-crystallisation", description = "Individual Crystallisation Journey")
   crystallisationAgent(id ="agent-crystallisation", description = "Agent Crystallisation Journey")
@@ -64,14 +70,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
 
   //NRS
   nrsJourney(id ="nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
-
-  //CIS
-  cisIndividual(id = "individual-cis", description = "Individual CIS Journey")
-  cisAgent(id = "agent-cis", description = "Agent CIS Journey")
-
-   //Pensions
-  paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")
-  paymentsIntoPensionAgent(id = "agent-payments-into-pensions", description = "Agent Payments into Pensions")
 
   runSimulation()
 }
