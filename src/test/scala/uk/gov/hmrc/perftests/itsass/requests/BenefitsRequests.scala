@@ -28,10 +28,10 @@ object BenefitsRequests extends ServicesConfiguration {
     .get(s"${employmentsUrl(taxYearEOY)}/benefits/company-benefits?employmentId=$employmentIdWithNoBenefits")
     .check(status.is(200))
 
-  def postReceivedBenefitsPage: HttpRequestBuilder = http("Post Received Benefits Question Page")
+  def postReceivedBenefitsPage(hasBenefits: Boolean = true): HttpRequestBuilder = http("Post Received Benefits Question Page")
     .post(s"${employmentsUrl(taxYearEOY)}/benefits/company-benefits?employmentId=$employmentIdWithNoBenefits")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", true)
+    .formParam("value", hasBenefits)
     .check(status.is(303))
 
   def getCarVanFuelBenefitsPage: HttpRequestBuilder = http("Get Car Van Fuel Benefits Question Page")
