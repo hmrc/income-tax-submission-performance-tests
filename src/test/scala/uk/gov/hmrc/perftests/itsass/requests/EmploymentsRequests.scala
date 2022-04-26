@@ -59,6 +59,16 @@ object EmploymentsRequests extends ServicesConfiguration {
     .get(s"${employmentsUrl(taxYear)}/expenses/check-employment-expenses")
     .check(status.is(200))
 
+  def getExpensesInterruptPage(taxYear: String): HttpRequestBuilder = http("Get Expenses Interrupt page")
+    .get(s"${employmentsUrl(taxYear)}/employment/expenses/start-employment-expenses")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postExpensesInterruptPage(taxYear: String): HttpRequestBuilder = http("Post Expenses Interrupt page")
+    .post(s"${employmentsUrl(taxYear)}/employment/expenses/start-employment-expenses")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
   def getSelectEmploymentPage(taxYear: String): HttpRequestBuilder = http("Get Select Employment Page")
     .get(s"${employmentsUrl(taxYear)}/select-employer")
     .check(saveCsrfToken())
