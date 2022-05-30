@@ -24,115 +24,115 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object PaymentsIntoPensionsRequests extends ServicesConfiguration  {
 
-  def getPensionsSummaryPage(taxYear: String): HttpRequestBuilder = http("Get Pension Summary Page")
+  def getPensionsSummaryPage: HttpRequestBuilder = http("Get Pension Summary Page")
     .get(s"${pensionsUrl(taxYear)}/pensions-summary")
     .check(status.is(200))
 
   def getReliefAtSourcePensionsPage: HttpRequestBuilder = http("Get Relief At Source Pensions Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/relief-at-source")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/relief-at-source")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def postReliefAtSourcePensionsPage: HttpRequestBuilder = http("Post Relief At Source Pensions Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/relief-at-source")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/relief-at-source")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
   def getTotalPaymentsIntoReliefAtSourceAmountPage: HttpRequestBuilder = http("Get Total Payment into Relief at Source Amount Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/relief-at-source-amount")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/relief-at-source-amount")
     .check(status.is(200))
 
   def postTotalPaymentsIntoReliefAtSourceAmountPage: HttpRequestBuilder = http("Post Total Payment into Relief at Source Amount Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/relief-at-source-amount")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/relief-at-source-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "100")
     .check(status.is(303))
 
   def getDidYouMakeOneOffPaymentsPage: HttpRequestBuilder = http("Get Did you make any one-off payments Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/one-off-payments")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/one-off-payments")
     .check(status.is(200))
 
   def postDidYouMakeOneOffPaymentsPage: HttpRequestBuilder = http("Post Did you make any one-off payments Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/one-off-payments")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/one-off-payments")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
   def getTotalOneOffPaymentsIntoReliefAtSourceAmountPage: HttpRequestBuilder = http("Get Total one-off payments into relief at source Amount Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/one-off-payments-amount")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/one-off-payments-amount")
     .check(status.is(200))
 
   def postTotalOneOffPaymentsIntoReliefAtSourceAmountPage: HttpRequestBuilder = http("Post Total one-off payments into relief at source Amount Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/one-off-payments-amount")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/one-off-payments-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "100")
     .check(status.is(303))
 
   def getYourTotalPaymentsIntoReliefAtSourcePage: HttpRequestBuilder = http("Get Your Total Payments Into Relief At Source Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/total-relief-at-source-check")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/total-relief-at-source-check")
     .check(status.is(200))
 
   def postYourTotalPaymentsIntoReliefAtSourcePage: HttpRequestBuilder = http("Post Your Total Payments Into Relief At Source Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/total-relief-at-source-check")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/total-relief-at-source-check")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
   def getPensionsWhereTaxReliefIsNotClaimedPage: HttpRequestBuilder = http("Get Pensions Where Tax Relief Is Not Claimed Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief")
     .check(status.is(200))
 
   def postPensionsWhereTaxReliefIsNotClaimedPage: HttpRequestBuilder = http("Post Pensions Where Tax Relief Is Not Claimed Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
    def getDidYouPayIntoRetirementAnnuityContractPage: HttpRequestBuilder = http("Get Did You Pay Into Retirement Annuity Contract Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/retirement-annuity")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/retirement-annuity")
     .check(status.is(200))
 
   def postDidYouPayIntoRetirementAnnuityContractPage: HttpRequestBuilder = http("Post Did You Pay Into Retirement Annuity Contract Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/retirement-annuity")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/retirement-annuity")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
   def getHowMuchDidYouPayIntoRetirementAnnuityContractsAmountPage: HttpRequestBuilder = http("Get How Much Did You Pay Into Retirement Annuity Contracts Amount Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/retirement-annuity-amount")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/retirement-annuity-amount")
     .check(status.is(200))
 
   def postHowMuchDidYouPayIntoRetirementAnnuityContractsAmountPage: HttpRequestBuilder = http("Post How Much Did You Pay Into Retirement Annuity Contracts Amount Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/retirement-annuity-amount")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/retirement-annuity-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .formParam("amount", "100")
     .check(status.is(303))
 
   def getDidYouPayIntoWorkplacePensionPage: HttpRequestBuilder = http("Get Did You Pay Into Workplace Pension Question Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/workplace")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/workplace")
     .check(status.is(200))
 
   def postDidYouPayIntoWorkplacePensionPage: HttpRequestBuilder = http("Post Did You Pay Into Workplace Pension Question Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/workplace")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/workplace")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
 
   def getHowMuchDidYouPayIntoWorkPlacePensionAmountPage: HttpRequestBuilder = http("Get How Much Did You Pay Into Work Place" +
     "Pension Amount Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/workplace-amount")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/workplace-amount")
     .check(status.is(200))
 
   def postHowMuchDidYouPayIntoWorkPlacePensionAmountPage: HttpRequestBuilder = http("Post How Much Did You Pay Into Work Place Pension Amount Page")
-    .post(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/no-tax-relief/workplace-amount")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/no-tax-relief/workplace-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "100")
     .check(status.is(303))
 
-  def getCheckYourPaymentsIntoPensions(taxYear: String): HttpRequestBuilder = http("Get Check Your Payments into Pensions Page")
-    .get(s"${pensionsUrl(taxYearEOY)}/payments-into-pensions/check-payments-into-pensions")
+  def getCheckYourPaymentsIntoPensions: HttpRequestBuilder = http("Get Check Your Payments into Pensions Page")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/check-payments-into-pensions")
     .check(status.is(200))
 
 }

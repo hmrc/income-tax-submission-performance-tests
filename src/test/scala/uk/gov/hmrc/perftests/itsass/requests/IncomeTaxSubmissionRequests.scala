@@ -26,10 +26,10 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   def getStartPage(taxYear: String): HttpRequestBuilder = http("Get Start Page")
     .get(s"$serviceUrl/$taxYear/start")
-    .check(status.is(200))
+    .check(status.is(303))
 
-  def getInsertAdditionalParametersEndPoint(nino: String, mtditid: String): HttpRequestBuilder = http("Insert Additional Parameters End Point")
-    .get(s"$serviceUrl/test-only/$taxYear/additional-parameters?ClientNino=$nino&ClientMTDID=$mtditid")
+  def getInsertAdditionalParametersEndPoint(nino: String, mtditid: String, userTaxYear: String = taxYear): HttpRequestBuilder = http("Insert Additional Parameters End Point")
+    .get(s"$serviceUrl/test-only/$userTaxYear/additional-parameters?ClientNino=$nino&ClientMTDID=$mtditid")
     .check(status.is(303))
 
   def getOverviewPage(taxYear: String): HttpRequestBuilder = http("Get Overview Page")

@@ -30,8 +30,8 @@ trait CISSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getCisSummaryPage(taxYear),
-    getCisContractorPage(taxYear, "111%252F11111"),
-    getCheckYourCisDeductionsPage(taxYear, "may", "111%252F11111")
+    getCisContractorPage(taxYear, "111%2F11111"),
+    getCheckYourCisDeductionsPage(taxYear, "may", "111%2F11111")
   )
 
   def cisAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -41,8 +41,8 @@ trait CISSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getCisSummaryPage(taxYear),
-    getCisContractorPage(taxYear, "111%252F11111"),
-    getCheckYourCisDeductionsPage(taxYear, "may", "111%252F11111")
+    getCisContractorPage(taxYear, "111%2F11111"),
+    getCheckYourCisDeductionsPage(taxYear, "may", "111%2F11111")
   )
 
 }
