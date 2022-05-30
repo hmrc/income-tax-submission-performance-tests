@@ -29,7 +29,7 @@ trait PensionsSimSteps extends PerformanceTestRunner{
      postAgentLoginPage("AA123459A", "1234567890"),
      getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
      getStartPage(taxYear),
-     getPensionsSummaryPage(taxYear),
+     getPensionsSummaryPage,
      getReliefAtSourcePensionsPage,
      postReliefAtSourcePensionsPage,
      getTotalPaymentsIntoReliefAtSourceAmountPage,
@@ -50,14 +50,14 @@ trait PensionsSimSteps extends PerformanceTestRunner{
      postDidYouPayIntoWorkplacePensionPage,
      getHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
      postHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
-     getCheckYourPaymentsIntoPensions(taxYear)
+     getCheckYourPaymentsIntoPensions
    )
 
   def paymentsIntoPensionsIndividual (id: String, description: String): JourneyPart = setup(id, description) withRequests (
     getLoginPage,
     postIndividualLoginPage("AA123459A", "1234567890"),
     getStartPage(taxYear),
-    getPensionsSummaryPage(taxYear),
+    getPensionsSummaryPage,
     getReliefAtSourcePensionsPage,
     postReliefAtSourcePensionsPage,
     getTotalPaymentsIntoReliefAtSourceAmountPage,
@@ -78,7 +78,7 @@ trait PensionsSimSteps extends PerformanceTestRunner{
     postDidYouPayIntoWorkplacePensionPage,
     getHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
     postHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
-    getCheckYourPaymentsIntoPensions(taxYear)
+    getCheckYourPaymentsIntoPensions
   )
 
 }
