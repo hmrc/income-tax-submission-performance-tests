@@ -18,7 +18,6 @@ package uk.gov.hmrc.perftests.itsass
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
-import uk.gov.hmrc.perftests.itsass.simSteps.PensionsSimSteps
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps
   with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
@@ -32,44 +31,46 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   interestAgent(id = "agent-interest", description = "Agent Interest Journey")
 
   //GiftAid
-  giftAidIndividual(id ="individual-gift-aid", description = "Individual Gift Aid Journey")
-  giftAidAgent(id ="agent-gift-aid", description = "Agent Gift Aid Journey")
+  giftAidIndividual(id = "individual-gift-aid", description = "Individual Gift Aid Journey")
+  giftAidAgent(id = "agent-gift-aid", description = "Agent Gift Aid Journey")
 
   //Employment
-  employmentIndividualCurrentTaxYear(id ="individual-employment-current-taxYear", description = "Individual Single Employment Journey - Current Tax Year")
-  employmentAgentCurrentTaxYear(id ="agent-employment-current-taxYear", description = "Agent Multiple Employments Journey - Current Tax Year")
-  addEmploymentIndividual(id ="individual-add-employment", description = "Individual Add Employment - No Employments")
-  addEmploymentAgent(id ="agent-add-employment", description = "Agent Add Employment - Prior Employments")
-  employmentBenefitsIndividual(id ="individual-add-benefits", description = "Individual Multiple Employments - Adding benefits full flow")
-  employmentExpensesIndividual(id ="individual-add-expenses", description = "Individual Expenses Journey - Single Employment")
-  employmentExpensesAgent(id ="agent-add-expenses", description = "Agent Expenses Journey - Multiple Employments")
-  addNewEmploymentIndividual(id ="individual-add-new-employment", description = "Individual Add New Employment - Prior Employments")
-  addNewEmploymentAgent(id ="agent-add-new-employment", description = "Agent Add New Employment - Prior Employments")
-  removeEmploymentIndividual(id ="individual-remove-employment", description = "Individual Remove Employment - Single Employment")
-  removeEmploymentAgent(id ="agent-remove-employment", description = "Agent Remove Employment - Multiple Employments")
+  employmentIndividualCurrentTaxYear(id = "individual-employment-current-taxYear", description = "Individual Single Employment Journey - Current Tax Year")
+  employmentAgentCurrentTaxYear(id = "agent-employment-current-taxYear", description = "Agent Multiple Employments Journey - Current Tax Year")
+  addEmploymentIndividual(id = "individual-add-employment", description = "Individual Add Employment - No Employments")
+  addEmploymentAgent(id = "agent-add-employment", description = "Agent Add Employment - Prior Employments")
+  employmentBenefitsIndividual(id = "individual-add-benefits", description = "Individual Multiple Employments - Adding benefits full flow")
+  employmentExpensesIndividual(id = "individual-add-expenses", description = "Individual Expenses Journey - Single Employment")
+  employmentExpensesAgent(id = "agent-add-expenses", description = "Agent Expenses Journey - Multiple Employments")
+  addNewEmploymentIndividual(id = "individual-add-new-employment", description = "Individual Add New Employment - Prior Employments")
+  addNewEmploymentAgent(id = "agent-add-new-employment", description = "Agent Add New Employment - Prior Employments")
+  removeEmploymentIndividual(id = "individual-remove-employment", description = "Individual Remove Employment - Single Employment")
+  removeEmploymentAgent(id = "agent-remove-employment", description = "Agent Remove Employment - Multiple Employments")
 
   //StudentLoans
-  studentLoansIndividual(id ="individual-student-loans", description = "Individual Student Loans Journey")
-  studentLoansAgent(id ="agent-student-loans", description = "Agent Student Loans Journey")
+  studentLoansIndividual(id = "individual-student-loans", description = "Individual Student Loans Journey")
+  studentLoansAgent(id = "agent-student-loans", description = "Agent Student Loans Journey")
 
   //CIS
-  cisIndividual(id = "individual-cis", description = "Individual CIS Journey")
-  cisAgent(id = "agent-cis", description = "Agent CIS Journey")
+  cisIndividualInYear(id = "individual-cis-in-year", description = "Individual CIS in year Journey")
+  cisAgentInYear(id = "agent-cis-in-year", description = "Agent CIS in year Journey")
+  cisIndividualEndOfYear(id = "individual-cis-end-of-year", description = "Individual CIS end of year Journey")
+  cisAgentEndOfYear(id = "agent-cis-end-of-year", description = "Agent CIS end of year Journey")
 
   //Pensions
   paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")
   paymentsIntoPensionAgent(id = "agent-payments-into-pensions", description = "Agent Payments into Pensions")
 
   //Crystallisation
-  crystallisationIndividual(id ="individual-crystallisation", description = "Individual Crystallisation Journey")
-  crystallisationAgent(id ="agent-crystallisation", description = "Agent Crystallisation Journey")
+  crystallisationIndividual(id = "individual-crystallisation", description = "Individual Crystallisation Journey")
+  crystallisationAgent(id = "agent-crystallisation", description = "Agent Crystallisation Journey")
 
   //View Estimation
   viewEstimationIndividual(id = "individual-view-estimation", description = "Individual View Estimation Journey")
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
 
   //NRS
-  nrsJourney(id ="nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
+  nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
 
   runSimulation()
 }
