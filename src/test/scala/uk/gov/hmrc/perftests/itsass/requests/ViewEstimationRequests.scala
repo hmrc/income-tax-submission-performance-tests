@@ -27,7 +27,7 @@ object ViewEstimationRequests extends ServicesConfiguration {
   //Individual
 
   def getTaxCalculationOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
-    .get(s"$viewAndChangeUrl/view/tax-overview")
+    .get(s"$viewAndChangeUrl/view/tax-overview?origin=PTA")
     .check(saveCsrfToken())
     .check(status.is(200))
 
