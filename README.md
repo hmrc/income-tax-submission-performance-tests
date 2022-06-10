@@ -1,21 +1,18 @@
 # income-tax-submission-performance-tests
 Performance test suite for the Income Tax Submission Service, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
-
 ## Running the tests
 
 Prior to executing the tests ensure you have:
 
-* Docker - to start mongo container
+* A Mongo service or Docker container running
 * Installed/configured service manager
 
 Run the following command to start the services locally:
 ```
-docker run --rm -d --name mongo -d -p 27017:27017 mongo:3.6
 
 sm --start INCOME_TAX_SUBMISSION_ALL -r
-sm --stop INCOME_TAX_VIEW_CHANGE_FRONTEND_SUBMISSION
-sm --start ITVC_ALL -r
+
 ```
 
 ## Logging
@@ -52,10 +49,14 @@ sbt -DrunLocal=true -Dperftest.labels=journeyFlows gatling:test
 
 sbt -DrunLocal=true -Dperftest.labels=nrsProxy gatling:test
 ```
-### Run the example test against staging environment
+### Run the test against staging environment
 
 #### Smoke test
 ```
+./run_smoke_tests_staging.sh
+
+-------------------------------OR----------------------------
+
 sbt -Dperftest.runSmokeTest=true -DrunLocal=false -Dperftest.labels=journeyFlows gatling:test
 
 -------------------------------OR----------------------------

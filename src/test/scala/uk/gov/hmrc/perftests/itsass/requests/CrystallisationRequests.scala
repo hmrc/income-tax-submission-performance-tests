@@ -42,16 +42,16 @@ object CrystallisationRequests extends ServicesConfiguration {
   //Individual
 
   def getFinalTaxCalculationEndpoint(taxYearEOY: String): HttpRequestBuilder = http(s"Get Final Tax Calculation Endpoint")
-    .get(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview/calculate")
+    .get(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview/calculate?origin=PTA")
     .check(status.is(303))
 
   def getFinalTaxCalculationPage(taxYearEOY: String): HttpRequestBuilder = http(s"Get Your final tax overview Page")
-    .get(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview")
+    .get(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview?origin=PTA")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def postFinalTaxCalculationPage(taxYearEOY: String): HttpRequestBuilder = http(s"Post Your final tax overview Page")
-    .post(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview")
+    .post(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview?origin=PTA")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
