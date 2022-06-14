@@ -31,6 +31,7 @@ trait CrystallisationSimSteps extends PerformanceTestRunner {
     getEOYOverviewPage(taxYearEOY),
     postEOYOverviewPage(taxYearEOY),
     getFinalTaxCalculationEndpoint(taxYearEOY),
+    getFinalTaxCalculationPageOriginRedirect(taxYearEOY),
     getFinalTaxCalculationPage(taxYearEOY),
     postFinalTaxCalculationPage(taxYearEOY),
     getDeclarationPage(taxYearEOY),

@@ -29,6 +29,8 @@ trait ViewEstimationSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA888888A", "XAIT00000888888"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+    postOverviewPageInYearEstimate(taxYear),
+    getTaxCalculationOverviewPageOriginRedirect,
     getTaxCalculationOverviewPage
   )
 

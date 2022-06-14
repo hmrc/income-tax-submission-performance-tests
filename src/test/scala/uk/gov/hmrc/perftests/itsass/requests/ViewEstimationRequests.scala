@@ -26,10 +26,20 @@ object ViewEstimationRequests extends ServicesConfiguration {
 
   //Individual
 
-  def getTaxCalculationOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
+  def postOverviewPageInYearEstimate(taxYear: String): HttpRequestBuilder = http("Post In Year Estimate Request on Overview page")
+    .post(s"$serviceUrl/$taxYear/inYear-estimate")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def getTaxCalculationOverviewPageOriginRedirect: HttpRequestBuilder = http(s"Get Tax Overview Page origin redirect")
     .get(s"$viewAndChangeUrl/view/tax-overview?origin=PTA")
-    .check(saveCsrfToken())
+    .check(status.is(303))
+    .check(currentLocationRegex("(.*)/view/tax-overview(.*)"))
+
+  def getTaxCalculationOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
+    .get(s"$viewAndChangeUrl/view/tax-overview")
     .check(status.is(200))
+    .check(currentLocationRegex("(.*)/view/tax-overview(.*)"))
 
   //Agent
 
