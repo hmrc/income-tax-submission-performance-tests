@@ -34,6 +34,7 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
 
   def getOverviewPage(taxYear: String): HttpRequestBuilder = http("Get Overview Page")
     .get(s"$serviceUrl/$taxYear/view")
+    .check(saveCsrfToken())
     .check(status.is(200))
 
   def getEOYOverviewPage(taxYearEOY: String): HttpRequestBuilder = http("Get EOY Overview Page")
@@ -58,11 +59,11 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getConfirmClientUTRPage: HttpRequestBuilder = http(s"Get confirm client UTR Page")
-    .get(s"$viewAndChangeUrl/view/agents/confirm-client")
+    .get(s"$viewAndChangeUrl/view/agents/confirm-client-details")
     .check(status.is(200))
 
   def postConfirmClientUTRPage: HttpRequestBuilder = http(s"Post confirm client UTR Page")
-    .post(s"$viewAndChangeUrl/view/agents/confirm-client")
+    .post(s"$viewAndChangeUrl/view/agents/confirm-client-details")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
