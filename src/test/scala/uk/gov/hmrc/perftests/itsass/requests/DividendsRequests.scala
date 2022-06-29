@@ -24,6 +24,17 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object DividendsRequests extends ServicesConfiguration {
 
+  def getDividendsGatewayPage: HttpRequestBuilder = http("Get Dividends Gateway Page")
+    .get(s"$interestUrl/interest-from-UK")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postDividendsGatewayPage: HttpRequestBuilder = http("Post Dividends Gateway Page")
+    .post(s"$interestUrl/interest-from-UK")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getUKDividendsStatusPage: HttpRequestBuilder = http("Get UK Dividends Status Page")
     .get(s"$dividendsUrl/dividends-from-uk-companies")
     .check(saveCsrfToken())
