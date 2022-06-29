@@ -29,8 +29,14 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+<<<<<<< HEAD
     getDividendsGatewayPage,
     postDividendsGatewayPage,
+=======
+//    ToDo - Uncomment once tailoring is enabled in staging
+//    getDividendsGatewayPage,
+//    postDividendsGatewayPage,
+>>>>>>> SASS-2834 : Added dividends gateway step to dividends journeys
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
@@ -49,8 +55,14 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+<<<<<<< HEAD
     getDividendsGatewayPage,
     postDividendsGatewayPage,
+=======
+//    ToDo - Uncomment once tailoring is enabled in staging
+//    getDividendsGatewayPage,
+//    postDividendsGatewayPage,
+>>>>>>> SASS-2834 : Added dividends gateway step to dividends journeys
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
