@@ -29,6 +29,9 @@ trait InterestSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+//    ToDo - Uncomment once tailoring is enabled in staging
+//    getInterestGatewayPage,
+//    postInterestGatewayPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedChooseAccountRedirect,
@@ -70,6 +73,9 @@ trait InterestSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+//    ToDo - Uncomment once tailoring is enabled in staging
+//    getInterestGatewayPage,
+//    postInterestGatewayPage,
     getUntaxedUKInterestStatusPage,
     postUntaxedUKInterestStatusPage,
     getUntaxedChooseAccountRedirect,
