@@ -24,6 +24,17 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object GiftAidRequests extends ServicesConfiguration {
 
+  def getGiftAidGatewayPage: HttpRequestBuilder = http("Get Gift Aid Gateway Page")
+    .get(s"$giftAidUrl/charity-donations-to-charity")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGiftAidGatewayPage: HttpRequestBuilder = http("Post Gift Aid Gateway Page")
+    .post(s"$giftAidUrl/charity-donations-to-charity")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getGiftAidStatusPage: HttpRequestBuilder = http("Get Did you Use Gift Aid to Donate to charity? Status Page")
     .get(s"$giftAidUrl/charity-donation-using-gift-aid")
     .check(saveCsrfToken())
