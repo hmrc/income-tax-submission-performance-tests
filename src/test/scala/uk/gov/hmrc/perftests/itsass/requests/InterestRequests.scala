@@ -24,6 +24,17 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object InterestRequests extends ServicesConfiguration {
 
+  def getInterestGatewayPage: HttpRequestBuilder = http("Get Interest Gateway Page")
+    .get(s"$interestUrl/interest-from-UK")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postInterestGatewayPage: HttpRequestBuilder = http("Post Interest Gateway Page")
+    .post(s"$interestUrl/interest-from-UK")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getUntaxedUKInterestStatusPage: HttpRequestBuilder = http("Get Untaxed UK Interest Status Page")
     .get(s"$interestUrl/untaxed-uk-interest")
     .check(saveCsrfToken())
