@@ -36,8 +36,8 @@ trait ViewEstimationSimSteps extends PerformanceTestRunner {
 
   def viewEstimationAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA888888A", "XAIT00000888888"),
-    getInsertAdditionalParametersEndPoint("AA888888A", "XAIT00000888888"),
+    postAgentLoginPage("AA123459A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getIncomeTaxAgentEndpoint,
