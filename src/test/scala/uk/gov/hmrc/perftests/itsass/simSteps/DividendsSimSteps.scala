@@ -30,8 +30,8 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
 //    ToDo - Uncomment once tailoring is enabled in staging
-//    getDividendsGatewayPage,
-//    postDividendsGatewayPage,
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
@@ -51,8 +51,8 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
 //    ToDo - Uncomment once tailoring is enabled in staging
-//    getDividendsGatewayPage,
-//    postDividendsGatewayPage,
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
