@@ -34,9 +34,14 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     postDividendsGatewayPage,
 =======
 //    ToDo - Uncomment once tailoring is enabled in staging
+<<<<<<< HEAD
 //    getDividendsGatewayPage,
 //    postDividendsGatewayPage,
 >>>>>>> SASS-2834 : Added dividends gateway step to dividends journeys
+=======
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
+>>>>>>> test update
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
@@ -60,9 +65,14 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     postDividendsGatewayPage,
 =======
 //    ToDo - Uncomment once tailoring is enabled in staging
+<<<<<<< HEAD
 //    getDividendsGatewayPage,
 //    postDividendsGatewayPage,
 >>>>>>> SASS-2834 : Added dividends gateway step to dividends journeys
+=======
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
+>>>>>>> test update
     getUKDividendsStatusPage,
     postUKDividendsStatusPage,
     getUKDividendsAmountPage,
