@@ -29,6 +29,7 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+//    ToDo - Uncomment once tailoring is enabled in staging
     getDividendsGatewayPage,
     postDividendsGatewayPage,
     getUKDividendsStatusPage,
@@ -49,6 +50,7 @@ trait DividendsSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+//    ToDo - Uncomment once tailoring is enabled in staging
     getDividendsGatewayPage,
     postDividendsGatewayPage,
     getUKDividendsStatusPage,
