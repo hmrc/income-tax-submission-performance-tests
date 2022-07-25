@@ -41,13 +41,11 @@ trait CrystallisationSimSteps extends PerformanceTestRunner {
 
   def crystallisationAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA888888A", "XAIT00000888888"),
-    getInsertAdditionalParametersEndPoint("AA888888A", "XAIT00000888888"),
+    postAgentLoginPage("AA000000A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA000000A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     postEOYOverviewPage(taxYearEOY),
-    getCitizenDetailsStubPage,
-    postCitizenDetailsStubPage,
     getClientUTRPage,
     postClientUTRPage,
     getConfirmClientUTRPage,
