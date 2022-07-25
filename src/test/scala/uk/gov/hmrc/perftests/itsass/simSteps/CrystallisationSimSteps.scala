@@ -26,7 +26,7 @@ trait CrystallisationSimSteps extends PerformanceTestRunner {
 
   def crystallisationIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA888888A", "XAIT00000888888"),
+    postIndividualLoginPage("AA000000A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     postEOYOverviewPage(taxYearEOY),
