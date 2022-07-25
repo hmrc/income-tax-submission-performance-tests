@@ -70,7 +70,7 @@ object CrystallisationRequests extends ServicesConfiguration {
   def postCitizenDetailsStubPage: HttpRequestBuilder = http("Post Citizen Details Stub Page")
     .post(s"$viewAndChangeUrl/view/test-only/stub-client")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("nino", "AA888888A")
+    .formParam("nino", "AA000000A")
     .formParam("utr", "1234567890")
     .formParam("status", "200")
     .check(status.is(303))
