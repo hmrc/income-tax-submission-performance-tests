@@ -33,7 +33,7 @@ object ViewEstimationRequests extends ServicesConfiguration {
 
   def getTaxCalculationOverviewPageOriginRedirect: HttpRequestBuilder = http(s"Get Tax Overview Page origin redirect")
     .get(s"$viewAndChangeUrl/view/tax-overview?origin=PTA")
-    .check(status.is(200))
+    .check(status.is(303))
     .check(currentLocationRegex("(.*)/view/tax-overview(.*)"))
 
   def getTaxCalculationOverviewPage: HttpRequestBuilder = http(s"Get Tax Overview Page")
