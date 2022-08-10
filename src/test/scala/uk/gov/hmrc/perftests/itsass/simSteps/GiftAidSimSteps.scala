@@ -30,8 +30,9 @@ trait GiftAidSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     //    ToDo - Uncomment once tailoring is enabled in staging
-    //    getGiftAidGatewayPage,
-    //    postGiftAidGatewayPage,getGiftAidStatusPage,
+    getGiftAidGatewayPage,
+    postGiftAidGatewayPage,
+    getGiftAidStatusPage,
     postGiftAidStatusPage,
     getGiftAidDetailsPage,
     postGiftAidDetailsPage,
@@ -93,10 +94,12 @@ trait GiftAidSimSteps extends PerformanceTestRunner {
 
   def giftAidAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A", "1234567890"),
+    postAgentLoginPage  ("AA111112A", "1234567890"),
     getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+    getGiftAidGatewayPage,
+    postGiftAidGatewayPage,
     getGiftAidStatusPage,
     postGiftAidStatusPage,
     getGiftAidDetailsPage,
