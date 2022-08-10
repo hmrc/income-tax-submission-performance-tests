@@ -29,7 +29,6 @@ trait GiftAidSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
-    //    ToDo - Uncomment once tailoring is enabled in staging
     getGiftAidGatewayPage,
     postGiftAidGatewayPage,
     getGiftAidStatusPage,
