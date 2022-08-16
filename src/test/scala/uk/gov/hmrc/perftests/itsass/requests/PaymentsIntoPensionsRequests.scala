@@ -28,6 +28,17 @@ object PaymentsIntoPensionsRequests extends ServicesConfiguration  {
     .get(s"${pensionsUrl(taxYear)}/pensions-summary")
     .check(status.is(200))
 
+  // TODO: Page not available yet - Do not merge
+  def getPensionsCYAPage: HttpRequestBuilder = http("Get Payments Into Pensions Status Page")
+    .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/payments-into-pensions-status")
+    .check(status.is(200))
+
+  def postPensionsCYAPage: HttpRequestBuilder = http("Post Payments Into Pensions Status Page")
+    .post(s"${pensionsUrl(taxYear)}/payments-into-pensions/payments-into-pensions-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getReliefAtSourcePensionsPage: HttpRequestBuilder = http("Get Relief At Source Pensions Question Page")
     .get(s"${pensionsUrl(taxYear)}/payments-into-pensions/relief-at-source")
     .check(saveCsrfToken())

@@ -17,6 +17,5 @@ lazy val root = (project in file("."))
     parallelExecution in Test := false,
     publishArtifact in Test := true,
     testOptions in Test := Seq.empty,
-    libraryDependencies ++= Dependencies.test,
-    resolvers ++= Seq(Resolver.bintrayRepo("hmrc", "releases"))
+    libraryDependencies ++= Dependencies.test
   )
