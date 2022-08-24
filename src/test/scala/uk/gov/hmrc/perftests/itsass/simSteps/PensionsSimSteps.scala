@@ -30,9 +30,8 @@ trait PensionsSimSteps extends PerformanceTestRunner{
      getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
      getStartPage(taxYear),
      getPensionsSummaryPage,
-    // TODO: Page not available yet - Do not merge
-    // getPensionsCYAPage,
-    // postPensionsCYAPage,
+     getPensionsCYAPage,
+     postPensionsCYAPage,
      getReliefAtSourcePensionsPage,
      postReliefAtSourcePensionsPage,
      getTotalPaymentsIntoReliefAtSourceAmountPage,
@@ -61,9 +60,8 @@ trait PensionsSimSteps extends PerformanceTestRunner{
     postIndividualLoginPage("AA123459A", "1234567890"),
     getStartPage(taxYear),
     getPensionsSummaryPage,
-    // Page not available yet - Do not merge
-    // getPensionsCYAPage,
-    // postPensionsCYAPage,
+    getPensionsCYAPage,
+    postPensionsCYAPage,
     getReliefAtSourcePensionsPage,
     postReliefAtSourcePensionsPage,
     getTotalPaymentsIntoReliefAtSourceAmountPage,
