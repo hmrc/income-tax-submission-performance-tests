@@ -26,8 +26,8 @@ import uk.gov.hmrc.perftests.itsass.utils.TaxYearHelper
 
 object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
 
-  val employmentIdWithNoBenefits: String = "00000000-5555-0000-0000-000000000002"
-  val employmentIdWithNoStudentLoans: String = "00000000-0000-0000-0000-000000000002"
+  val employmentIdWithNoBenefits: String = "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"
+  val employmentIdWithNoStudentLoans: String = "3c891e58-9b21-4296-8ecd-76f771c5d079"
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
