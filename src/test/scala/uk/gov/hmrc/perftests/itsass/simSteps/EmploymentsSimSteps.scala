@@ -32,8 +32,8 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
-    getCheckEmploymentDetailsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
-    getCheckEmploymentBenefitsPage(taxYear, "00000000-0000-1000-8000-000000000000"),
+    getCheckEmploymentDetailsPage(taxYear, "5e5271a9-4424-416b-8c7f-913811541375"),
+    getCheckEmploymentBenefitsPage(taxYear, "5e5271a9-4424-416b-8c7f-913811541375"),
     getCheckEmploymentExpensesPage(taxYear)
   )
 
@@ -44,9 +44,9 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getEmploymentSummaryPage(taxYear),
-    getEmployerDetailsAndBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
-    getCheckEmploymentDetailsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
-    getCheckEmploymentBenefitsPage(taxYear, employmentId = "00000000-5555-0000-0000-000000000001"),
+    getEmployerDetailsAndBenefitsPage(taxYear, employmentId = "1c09adb7-8bd7-48da-bc0c-f10108758d6a"),
+    getCheckEmploymentDetailsPage(taxYear, employmentId = "1c09adb7-8bd7-48da-bc0c-f10108758d6a"),
+    getCheckEmploymentBenefitsPage(taxYear, employmentId = "1c09adb7-8bd7-48da-bc0c-f10108758d6a"),
     getCheckEmploymentExpensesPage(taxYear)
   )
 
@@ -104,8 +104,8 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getCheckEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
+    getCheckEmploymentBenefitsWithoutBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage(),
     getCarVanFuelBenefitsPage,
@@ -236,7 +236,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postAssetsTransferBenefitsPage,
     getAssetsTransferBenefitsAmountPage,
     postAssetsTransferBenefitsAmountPage,
-    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002")
+    getCheckEmploymentBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb")
   )
 
   def employmentExpensesIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -245,7 +245,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "516441e9-aac7-40fe-9444-2f2c7e4d165d"),
     getCheckEmploymentExpensesPage(taxYearEOY),
     getExpensesInterruptPage(taxYearEOY),
     postExpensesInterruptPage(taxYearEOY),
@@ -305,12 +305,12 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    postCheckEmploymentDetailsPage(taxYearEOY, "000000000-5555-0000-0000-000000000002"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
+    getCheckEmploymentDetailsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
+    postCheckEmploymentDetailsPage(taxYearEOY, "0f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage(false),
-    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
     getEmploymentSummaryPage(taxYearEOY)
@@ -326,12 +326,12 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getSelectEmploymentPage(taxYearEOY),
     postSelectEmploymentPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getEmployerDetailsAndBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    getCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
-    postCheckEmploymentDetailsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getEmployerDetailsAndBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
+    getCheckEmploymentDetailsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
+    postCheckEmploymentDetailsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
     getReceivedBenefitsPage,
     postReceivedBenefitsPage(false),
-    getCheckEmploymentBenefitsPage(taxYearEOY, "00000000-5555-0000-0000-000000000002"),
+    getCheckEmploymentBenefitsPage(taxYearEOY, "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"),
     getClaimingExpensesPage,
     postClaimingExpensesPage,
     getEmploymentSummaryPage(taxYearEOY)
@@ -343,8 +343,8 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
-    postRemoveEmploymentPage(taxYearEOY, "00000000-0000-1000-8000-000000000004"),
+    getRemoveEmploymentPage(taxYearEOY, "516441e9-aac7-40fe-9444-2f2c7e4d165d"),
+    postRemoveEmploymentPage(taxYearEOY, "516441e9-aac7-40fe-9444-2f2c7e4d165d"),
     getEmploymentSummaryPage(taxYearEOY) //TODO - change to EOY overview page once caching problem is resolved
   )
 
@@ -355,8 +355,8 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
-    getRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
-    postRemoveEmploymentPage(taxYearEOY, "00000000-5555-0000-0000-000000000001"),
+    getRemoveEmploymentPage(taxYearEOY, "1c09adb7-8bd7-48da-bc0c-f10108758d6a"),
+    postRemoveEmploymentPage(taxYearEOY, "1c09adb7-8bd7-48da-bc0c-f10108758d6a"),
     getEmploymentSummaryPage(taxYearEOY)
   )
 }

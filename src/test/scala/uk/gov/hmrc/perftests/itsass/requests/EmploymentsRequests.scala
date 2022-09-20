@@ -77,7 +77,7 @@ object EmploymentsRequests extends ServicesConfiguration {
   def postSelectEmploymentPage(taxYear: String): HttpRequestBuilder = http("Post Select Employment Page")
     .post(s"${employmentsUrl(taxYear)}/select-employer")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", "00000000-5555-0000-0000-100000000001")
+    .formParam("value", "eb4425f4-1459-4fd5-b0c7-35476f4a5ea4")
     .check(status.is(303))
 
   def getEmployerNamePage(taxYear: String): HttpRequestBuilder = http("Get Employer Name Page")
