@@ -58,7 +58,6 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
 //    TODO add line below when gateway question page is created
 //    getEmploymentGatewayPage(taxYearEOY),
 //    postEmploymentGatewayPage(taxYearEOY),
-//    TODO remove line below when gateway question page is created
     getEmploymentSummaryPage(taxYearEOY),
     getNewEmploymentUUID(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
@@ -86,7 +85,6 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
 //    TODO add line below when gateway question page is created
 //        getEmploymentGatewayPage(taxYearEOY),
 //       postEmploymentGatewayPage(taxYearEOY),
-//    TODO remove line below when gateway question page is created
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
     postEmployerNamePage(taxYearEOY),
