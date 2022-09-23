@@ -28,6 +28,17 @@ object EmploymentsRequests extends ServicesConfiguration {
     .get(s"${employmentsUrl(taxYear)}/employment-summary")
     .check(status.is(200))
 
+  def getEmploymentGatewayPage(taxYear: String): HttpRequestBuilder = http("Get Employment Gateway Page")
+    .get(s"${employmentsUrl(taxYear)}/income-from-employment")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postEmploymentGatewayPage(taxYear: String): HttpRequestBuilder = http("Post Employment Gateway Page")
+    .post(s"${employmentsUrl(taxYear)}/income-from-employment")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getNewEmploymentUUID(taxYear: String): HttpRequestBuilder = http("Get Add New Employment UUID")
     .get(s"${employmentsUrl(taxYear)}/employment-summary/add-employment")
     .check(saveEmploymentId)

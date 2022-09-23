@@ -47,7 +47,7 @@ object CrystallisationRequests extends ServicesConfiguration {
 
   def getFinalTaxCalculationPageOriginRedirect(taxYearEOY: String): HttpRequestBuilder = http(s"Get Your final tax overview Page origin redirect")
     .get(s"$viewAndChangeUrl/view/$taxYearEOY/final-tax-overview?origin=PTA")
-    .check(status.is(303))
+    .check(status.is(200))
     .check(currentLocationRegex(s"(.*)/view/$taxYearEOY/final-tax-overview(.*)"))
 
   def getFinalTaxCalculationPage(taxYearEOY: String): HttpRequestBuilder = http(s"Get Your final tax overview Page")

@@ -55,6 +55,10 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA123456A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
+//    TODO add line below when gateway question page is created
+//    getEmploymentGatewayPage(taxYearEOY),
+//    postEmploymentGatewayPage(taxYearEOY),
+//    TODO remove line below when gateway question page is created
     getEmploymentSummaryPage(taxYearEOY),
     getNewEmploymentUUID(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
@@ -79,6 +83,10 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("BB444444A", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
+//    TODO add line below when gateway question page is created
+//        getEmploymentGatewayPage(taxYearEOY),
+//       postEmploymentGatewayPage(taxYearEOY),
+//    TODO remove line below when gateway question page is created
     getEmploymentSummaryPage(taxYearEOY),
     getEmployerNamePage(taxYearEOY),
     postEmployerNamePage(taxYearEOY),
