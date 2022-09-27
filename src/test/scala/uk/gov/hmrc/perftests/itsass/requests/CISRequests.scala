@@ -22,6 +22,16 @@ import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.cisUrl
 
 object CISRequests {
+  def getCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Get CIS Gateway Page")
+    .get(s"${cisUrl(taxYear)}/deductions-from-payments")
+    //.check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Post CIS Gateway Page")
+    .post(s"${cisUrl(taxYear)}/deductions-from-payments")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
 
   def getCisSummaryPage(taxYear: String): HttpRequestBuilder = http("Get CIS Summary Page")
     .get(s"${cisUrl(taxYear)}/summary")

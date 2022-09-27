@@ -50,6 +50,9 @@ trait CISSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage(nino = "AC150000B", mtditid = "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
+    //    TODO add line below when gateway question page is created
+    //    getCisGatewayPage(taxYearEOY),
+    //    postCisGatewayPage(taxYearEOY),
     getCisSummaryPage(taxYearEOY),
     getCisContractorPage(taxYearEOY, contractorId = "111%2F11111"),
     getCheckYourCisDeductionsPage(taxYearEOY, month = "may", contractorId = "111%2F11111"),
@@ -73,6 +76,9 @@ trait CISSimSteps extends PerformanceTestRunner {
     getInsertAdditionalParametersEndPoint("AC150000B", "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
+    //    TODO add line below when gateway question page is created
+    //    getCisGatewayPage(taxYearEOY),
+    //    postCisGatewayPage(taxYearEOY),
     getCisSummaryPage(taxYearEOY),
     getContractorDetailsPage(taxYearEOY),
     postContractorDetailsPage(taxYearEOY, contractorId = "123/45678"),
