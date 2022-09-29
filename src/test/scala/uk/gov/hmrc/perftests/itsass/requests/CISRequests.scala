@@ -24,7 +24,6 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.cisUrl
 object CISRequests {
   def getCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Get CIS Gateway Page")
     .get(s"${cisUrl(taxYear)}/deductions-from-payments")
-    //.check(saveCsrfToken())
     .check(status.is(200))
 
   def postCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Post CIS Gateway Page")
