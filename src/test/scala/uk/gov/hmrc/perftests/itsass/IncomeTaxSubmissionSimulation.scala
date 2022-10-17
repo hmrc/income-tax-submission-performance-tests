@@ -19,7 +19,7 @@ package uk.gov.hmrc.perftests.itsass
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
-class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps
+class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps with StateBenefitsSimSteps
   with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
 
   //Dividends
@@ -56,6 +56,12 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   cisAgentInYear(id = "agent-cis-in-year", description = "Agent CIS in year Journey")
   cisIndividualEndOfYear(id = "individual-cis-end-of-year", description = "Individual CIS end of year Journey")
   cisAgentEndOfYear(id = "agent-cis-end-of-year", description = "Agent CIS end of year Journey")
+
+  //State Benefits
+  stateBenefitsIndividualInYear(id = "individual-state-benefits-in-year", description = "Individual State Benefits in year Journey")
+  stateBenefitsAgentInYear(id = "agent-state-benefits-in-year", description = "Agent State Benefits in year Journey")
+  stateBenefitsIndividualEndOfYear(id = "individual-state-benefits-end-of-year", description = "Individual State Benefits end of year Journey")
+  stateBenefitsAgentEndOfYear(id = "agent-state-benefits-end-of-year", description = "Agent State Benefits end of year Journey")
 
   //Pensions
   paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")
