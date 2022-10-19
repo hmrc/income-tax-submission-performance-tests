@@ -29,7 +29,8 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AC160000B", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
-    getStateBenefitsSummaryPage(taxYear),
+    //    getStateBenefitsSummaryPage(taxYear),
+    //    getJobSeekersAllowancePage(taxYear)
   )
 
   def stateBenefitsAgentInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -37,8 +38,8 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postAgentLoginPage("AC160000B", "1234567890"),
     getInsertAdditionalParametersEndPoint("AC160000B", "1234567890"),
     getStartPage(taxYear),
-    getOverviewPage(taxYear),
-    getStateBenefitsSummaryPage(taxYear),
+    //    getOverviewPage(taxYear),
+    //    getStateBenefitsSummaryPage(taxYear)
   )
 
   def stateBenefitsIndividualEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -47,6 +48,7 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
+    getStateBenefitsSummaryPage(taxYearEOY)
   )
 
   def stateBenefitsAgentEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -56,5 +58,6 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
+    getStateBenefitsSummaryPage(taxYearEOY)
   )
 }

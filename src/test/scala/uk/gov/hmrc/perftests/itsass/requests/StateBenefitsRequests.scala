@@ -26,4 +26,8 @@ object StateBenefitsRequests {
   def getStateBenefitsSummaryPage(taxYear: String): HttpRequestBuilder = http("Get State Benefits Summary Page")
     .get(s"${stateBenefitsUrl(taxYear)}/summary")
     .check(status.is(expected = 200))
+
+  def getJobSeekersAllowancePage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance  Page")
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/claims")
+    .check(status.is(expected = 200))
 }
