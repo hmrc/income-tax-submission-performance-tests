@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests._
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY}
-import uk.gov.hmrc.perftests.itsass.requests.StateBenefitsRequests.{getJobSeekersAllowancePage, getStateBenefitsSummaryPage}
+import uk.gov.hmrc.perftests.itsass.requests.StateBenefitsRequests._
 
 trait StateBenefitsSimSteps extends PerformanceTestRunner {
 
@@ -48,7 +48,12 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
-    getJobSeekersAllowancePage(taxYearEOY)
+    getJobSeekersAllowancePage(taxYearEOY),
+    postCreateUserSessionData(taxYearEOY),
+    getJobSeekersAllowanceStartDatePage(taxYearEOY),
+    postJobSeekersAllowanceStartDatePage(taxYearEOY),
+    getJobSeekersAllowanceEndDatePage(taxYearEOY),
+    postJobSeekersAllowanceEndDatePage(taxYearEOY)
   )
 
   def stateBenefitsAgentEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -58,6 +63,11 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
-    getJobSeekersAllowancePage(taxYearEOY)
+    getJobSeekersAllowancePage(taxYearEOY),
+    postCreateUserSessionData(taxYearEOY),
+    getJobSeekersAllowanceStartDatePage(taxYearEOY),
+    postJobSeekersAllowanceStartDatePage(taxYearEOY),
+    getJobSeekersAllowanceEndDatePage(taxYearEOY),
+    postJobSeekersAllowanceEndDatePage(taxYearEOY)
   )
 }
