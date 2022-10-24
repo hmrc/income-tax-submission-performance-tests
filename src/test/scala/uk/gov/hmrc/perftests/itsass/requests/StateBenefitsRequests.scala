@@ -48,4 +48,16 @@ object StateBenefitsRequests {
     .formParam("value-for-month", "1")
     .formParam("value-for-year", taxYear)
     .check(status.is(303))
+
+  def getJobSeekersAllowanceEndDatePage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - End Date Page")
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/end-date": String)
+    .check(status.is(expected = 200))
+
+  def postJobSeekersAllowanceEndDatePage(taxYear: String): HttpRequestBuilder = http("Post Jobseeker's Allowance - End Date Page")
+    .post(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/end-date": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value-for-day", "1")
+    .formParam("value-for-month", "2")
+    .formParam("value-for-year", taxYear)
+    .check(status.is(303))
 }
