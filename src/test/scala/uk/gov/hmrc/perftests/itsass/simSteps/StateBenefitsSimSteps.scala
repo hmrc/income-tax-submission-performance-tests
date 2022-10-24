@@ -52,6 +52,8 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postCreateUserSessionData(taxYearEOY),
     getJobSeekersAllowanceStartDatePage(taxYearEOY),
     postJobSeekersAllowanceStartDatePage(taxYearEOY),
+    getDidClaimEndInTaxYearPage(taxYearEOY),
+    postDidClaimEndInTaxYearPage(taxYearEOY),
     getJobSeekersAllowanceEndDatePage(taxYearEOY),
     postJobSeekersAllowanceEndDatePage(taxYearEOY)
   )
@@ -67,6 +69,8 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postCreateUserSessionData(taxYearEOY),
     getJobSeekersAllowanceStartDatePage(taxYearEOY),
     postJobSeekersAllowanceStartDatePage(taxYearEOY),
+    getDidClaimEndInTaxYearPage(taxYearEOY),
+    postDidClaimEndInTaxYearPage(taxYearEOY),
     getJobSeekersAllowanceEndDatePage(taxYearEOY),
     postJobSeekersAllowanceEndDatePage(taxYearEOY)
   )
