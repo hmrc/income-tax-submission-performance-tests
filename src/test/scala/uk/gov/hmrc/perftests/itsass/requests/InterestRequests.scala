@@ -142,6 +142,7 @@ object InterestRequests extends ServicesConfiguration {
   def postInterestFromSecuritiesPage: HttpRequestBuilder = http("Post Interest From Securities")
     .post(s"$interestUrl/interest-from-securities")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value",true)
     .check(status.is(303))
 
   def getTaxTakenFromInterestPage: HttpRequestBuilder = http("Get How Much Interest Did You Get Page")
@@ -152,6 +153,7 @@ object InterestRequests extends ServicesConfiguration {
   def postTaxTakenFromInterestPage: HttpRequestBuilder = http("Post How Much Interest Did You Get Page")
     .post(s"$interestUrl/interest-from-securities/interest-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("interestAmount", "193.54")
     .check(status.is(303))
 
   def getInterestSecuritiesAmountPage: HttpRequestBuilder = http("Get Was Tax Taken Off Your Interest Page")
@@ -162,6 +164,7 @@ object InterestRequests extends ServicesConfiguration {
   def postInterestSecuritiesAmountPage: HttpRequestBuilder = http("Post Was Tax Taken Off Your Interest Page")
     .post(s"$interestUrl/interest-from-securities/tax-taken-from-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value",true)
     .check(status.is(303))
 
   def getTaxSecuritiesAmountPage: HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
@@ -172,6 +175,7 @@ object InterestRequests extends ServicesConfiguration {
   def postTaxSecuritiesAmountPage: HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
     .post(s"$interestUrl/interest-from-securities/tax-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("taxAmounts","120")
     .check(status.is(303))
 
   def getSecuritiesCheckYourAnswersPage: HttpRequestBuilder = http("Get Check Your Interest From Gilt Edged Or Accrued Income Securities Page")
