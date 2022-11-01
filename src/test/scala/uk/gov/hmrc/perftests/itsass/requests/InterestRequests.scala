@@ -143,7 +143,7 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/interest-from-securities")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value",true)
-    .check(status.is(303))
+    .check(status.is(200))
 
   def getTaxTakenFromInterestPage: HttpRequestBuilder = http("Get How Much Interest Did You Get Page")
     .get(s"$interestUrl/interest-from-securities/interest-amount")
