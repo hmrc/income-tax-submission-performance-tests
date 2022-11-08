@@ -40,21 +40,21 @@ object StudentLoansRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getUndergraduateLoanAmountPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Undergraduate Loans Page")
-    .get(s"${employmentsUrl(taxYear)}/student-loans/undergraduate-repayment-amount?employmentId=$employmentId")
+    .get(s"${employmentsUrl(taxYear)}/student-loans/student-loan-repayment-amount?employmentId=$employmentId")
     .check(status.is(200))
 
   def postUndergraduateLoanAmountPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Undergraduate Loans Page")
-    .post(s"${employmentsUrl(taxYear)}/student-loans/undergraduate-repayment-amount?employmentId=$employmentId")
+    .post(s"${employmentsUrl(taxYear)}/student-loans/student-loan-repayment-amount?employmentId=$employmentId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "1500")
     .check(status.is(303))
 
   def getPostgraduateLoanAmountPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Postgraduate Loans Amount Page")
-    .get(s"${employmentsUrl(taxYear)}/student-loans/postgraduate-repayment-amount?employmentId=$employmentId")
+    .get(s"${employmentsUrl(taxYear)}/student-loans/postgraduate-loan-repayment-amount?employmentId=$employmentId")
     .check(status.is(200))
 
   def postPostgraduateLoanAmountPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Post Postgraduate Loans Amount Page")
-    .post(s"${employmentsUrl(taxYear)}/student-loans/postgraduate-repayment-amount?employmentId=$employmentId")
+    .post(s"${employmentsUrl(taxYear)}/student-loans/postgraduate-loan-repayment-amount?employmentId=$employmentId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "1500")
     .check(status.is(303))
