@@ -90,4 +90,14 @@ object StateBenefitsRequests {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", "true")
     .check(status.is(303))
+
+  def getTaxTakenOffAmountPage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - Amount Page")
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/tax-taken-off-amount": String)
+    .check(status.is(expected = 200))
+
+  def postTaxTakenOffAmountPage(taxYear: String): HttpRequestBuilder = http("Post Jobseeker's Allowance - Amount Page")
+    .post(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/tax-taken-off-amount": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "234")
+    .check(status.is(303))
 }
