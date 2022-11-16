@@ -57,7 +57,9 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getJobSeekersAllowanceEndDatePage(taxYearEOY),
     postJobSeekersAllowanceEndDatePage(taxYearEOY),
     getJobSeekersAllowanceAmountPage(taxYearEOY),
-    postJobSeekersAllowanceAmountPage(taxYearEOY)
+    postJobSeekersAllowanceAmountPage(taxYearEOY),
+    getTaxTakenOffPage(taxYearEOY),
+    postTaxTakenOffPage(taxYearEOY)
   )
 
   def stateBenefitsAgentEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -76,6 +78,8 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getJobSeekersAllowanceEndDatePage(taxYearEOY),
     postJobSeekersAllowanceEndDatePage(taxYearEOY),
     getJobSeekersAllowanceAmountPage(taxYearEOY),
-    postJobSeekersAllowanceAmountPage(taxYearEOY)
+    postJobSeekersAllowanceAmountPage(taxYearEOY),
+    getTaxTakenOffPage(taxYearEOY),
+    postTaxTakenOffPage(taxYearEOY)
   )
 }
