@@ -100,4 +100,8 @@ object StateBenefitsRequests {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", "234")
     .check(status.is(303))
+
+  def getReviewJobSeekersAllowanceClaimPage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - Review Claim Page")
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-jobseekers-allowance-claim": String)
+    .check(status.is(expected = 200))
 }
