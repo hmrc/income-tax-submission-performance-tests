@@ -83,7 +83,7 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
          |    "providerId": "${randomNumber(100000, 999999)}3381064832",
          |    "providerType": "GovernmentGatewayTest"
          |  },
-         |  "confidenceLevel": 200,
+         |  "confidenceLevel": 250,
          |  "nino": "$ninoToUse",
          |  "usersName": "test",
          |  "agentInformation": {},
