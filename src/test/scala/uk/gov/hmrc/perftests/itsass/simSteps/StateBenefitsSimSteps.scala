@@ -38,7 +38,7 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postAgentLoginPage("AC160000B", "1234567890"),
     getInsertAdditionalParametersEndPoint("AC160000B", "1234567890"),
     getStartPage(taxYear),
-    //    getOverviewPage(taxYear),
+    getOverviewPage(taxYear),
     //    getStateBenefitsSummaryPage(taxYear)
   )
 
@@ -63,7 +63,7 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getTaxTakenOffAmountPage(taxYearEOY),
     postTaxTakenOffAmountPage(taxYearEOY),
     getReviewJobSeekersAllowanceClaimPage(taxYearEOY),
-    getRemoveJobSeekersAllowanceClaimPage (taxYearEOY),
+    getRemoveJobSeekersAllowanceClaimPage(taxYearEOY),
     postRemoveJobSeekersAllowanceClaimPage(taxYearEOY)
   )
 
@@ -89,7 +89,6 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     getTaxTakenOffAmountPage(taxYearEOY),
     postTaxTakenOffAmountPage(taxYearEOY),
     getReviewJobSeekersAllowanceClaimPage(taxYearEOY),
-    getRemoveJobSeekersAllowanceClaimPage(taxYearEOY),
-    postRemoveJobSeekersAllowanceClaimPage(taxYearEOY)
+    postSaveAndContinue(taxYearEOY)
   )
 }

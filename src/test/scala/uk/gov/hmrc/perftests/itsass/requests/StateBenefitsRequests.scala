@@ -113,4 +113,9 @@ object StateBenefitsRequests {
     .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/remove": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(expected = 303))
+
+  def postSaveAndContinue(taxYear: String): HttpRequestBuilder = http("Post Save and Continue")
+    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-jobseekers-allowance-claim/save": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(expected = 303))
 }
