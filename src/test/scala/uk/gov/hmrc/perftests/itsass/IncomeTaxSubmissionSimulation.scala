@@ -60,8 +60,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //State Benefits
   stateBenefitsIndividualInYear(id = "individual-state-benefits-in-year", description = "Individual State Benefits in year Journey")
   stateBenefitsAgentInYear(id = "agent-state-benefits-in-year", description = "Agent State Benefits in year Journey")
-  stateBenefitsIndividualEndOfYear(id = "individual-state-benefits-end-of-year", description = "Individual State Benefits end of year Journey")
-  stateBenefitsAgentEndOfYear(id = "agent-state-benefits-end-of-year", description = "Agent State Benefits end of year Journey")
+  stateBenefitsIndividualEndOfYearNewClaimJSA(id = "individual-state-benefits-end-of-year-new-claim-jsa", description = "Individual State Benefits end of year new JSA claim journey")
+  stateBenefitsIndividualEndOfYearExistingClaimJSA(id = "individual-state-benefits-end-of-year-existing-claim-jsa", description = "Individual State Benefits end of year existing JSA claim journey")
 
   //Pensions
   paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")

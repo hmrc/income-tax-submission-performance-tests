@@ -42,7 +42,7 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     //    getStateBenefitsSummaryPage(taxYear)
   )
 
-  def stateBenefitsIndividualEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def stateBenefitsIndividualEndOfYearNewClaimJSA(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890"),
     getStartPage(taxYearEOY),
@@ -67,28 +67,14 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postRemoveJobSeekersAllowanceClaimPage(taxYearEOY)
   )
 
-  def stateBenefitsAgentEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def stateBenefitsIndividualEndOfYearExistingClaimJSA(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC160000B", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AC160000B", "1234567890"),
+    postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
     getJobSeekersAllowancePage(taxYearEOY),
-    postCreateUserSessionData(taxYearEOY),
-    getJobSeekersAllowanceStartDatePage(taxYearEOY),
-    postJobSeekersAllowanceStartDatePage(taxYearEOY),
-    getDidClaimEndInTaxYearPage(taxYearEOY),
-    postDidClaimEndInTaxYearPage(taxYearEOY),
-    getJobSeekersAllowanceEndDatePage(taxYearEOY),
-    postJobSeekersAllowanceEndDatePage(taxYearEOY),
-    getJobSeekersAllowanceAmountPage(taxYearEOY),
-    postJobSeekersAllowanceAmountPage(taxYearEOY),
-    getTaxTakenOffPage(taxYearEOY),
-    postTaxTakenOffPage(taxYearEOY),
-    getTaxTakenOffAmountPage(taxYearEOY),
-    postTaxTakenOffAmountPage(taxYearEOY),
-    getReviewJobSeekersAllowanceClaimPage(taxYearEOY),
-    postSaveAndContinue(taxYearEOY)
+    getReviewJobSeekersAllowanceClaimPage(taxYearEOY, "a1e8057e-fbbc-47a8-a8b4-78d9f015c938"),
+    postReviewJobSeekersAllowanceClaimRestoreContinue(taxYearEOY)
   )
 }
