@@ -52,7 +52,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
   val taxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-taxed-uk-interest-account/([^"]+)"""
   val employmentIdPattern: String = s"""employmentId=([^"]+)"""
-  val sessionDataIdPattern: String = s"""/jobseekers-allowance/([^"]+)/(start-date|review-jobseekers-allowance-claim)"""
+  val sessionDataIdPattern: String = s"""/jobseekers-allowance/([^"]+)/(start-date|review-claim)"""
 
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
