@@ -64,7 +64,9 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
     postTaxTakenOffAmountPage(taxYearEOY),
     getReviewJobSeekersAllowanceClaimPage(taxYearEOY),
     getRemoveJobSeekersAllowanceClaimPage(taxYearEOY),
-    postRemoveJobSeekersAllowanceClaimPage(taxYearEOY)
+    postRemoveJobSeekersAllowanceClaimPage(taxYearEOY),
+    getHaveYouCompletedThisSectionPage(taxYearEOY),
+    postHaveYouCompletedThisSectionPage(taxYearEOY)
   )
 
   def stateBenefitsIndividualEndOfYearExistingClaimJSA(id: String, description: String): JourneyPart = setup(id, description) withRequests(

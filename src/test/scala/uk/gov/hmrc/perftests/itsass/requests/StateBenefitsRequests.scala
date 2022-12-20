@@ -102,11 +102,11 @@ object StateBenefitsRequests {
     .check(status.is(303))
 
   def getReviewJobSeekersAllowanceClaimPage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - Review Claim Page")
-    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-jobseekers-allowance-claim": String)
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-claim": String)
     .check(status.is(expected = 200))
 
   def postReviewJobSeekersAllowanceClaimSaveAndContinue(taxYear: String): HttpRequestBuilder = http("Post Save and Continue")
-    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-jobseekers-allowance-claim/save": String)
+    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-claim/save": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(expected = 303))
 
@@ -116,7 +116,7 @@ object StateBenefitsRequests {
     .check(status.is(expected = 303))
 
   def postReviewJobSeekersAllowanceClaimRestoreContinue(taxYear: String): HttpRequestBuilder = http("Post Save and Continue")
-    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-jobseekers-allowance-claim/restore": String)
+    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/review-claim/restore": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(expected = 303))
 
@@ -128,4 +128,13 @@ object StateBenefitsRequests {
     .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/remove": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(expected = 303))
+  def getHaveYouCompletedThisSectionPage(taxYear: String): HttpRequestBuilder = http("Get Have You Completed This Section Page")
+    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/section-completed": String)
+    .check(status.is(expected = 200))
+
+  def postHaveYouCompletedThisSectionPage(taxYear: String): HttpRequestBuilder = http("Post Have You Completed This Section Page")
+    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/section-completed": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "true")
+    .check(status.is(303))
 }
