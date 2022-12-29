@@ -31,8 +31,8 @@ object StateBenefitsRequests {
     .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/claims")
     .check(status.is(expected = 200))
 
-  def postCreateUserSessionData(taxYear: String): HttpRequestBuilder = http("Create UserSessionData")
-    .post(s"${stateBenefitsUrl(taxYear)}/session-data")
+  def postCreateUserSessionData(taxYear: String, benefitType: String): HttpRequestBuilder = http("Create UserSessionData")
+    .post(s"${stateBenefitsUrl(taxYear)}/session-data?benefitType=$benefitType")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(saveSessionDataId)
     .check(status.is(303))
@@ -111,7 +111,7 @@ object StateBenefitsRequests {
     .check(status.is(expected = 303))
 
   def getReviewJobSeekersAllowanceClaimPage(taxYear: String, benefitId: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - Review Claim Page: Benefit ID")
-    .get(s"${stateBenefitsUrl(taxYear)}/session-data?benefitId=$benefitId": String)
+    .get(s"${stateBenefitsUrl(taxYear)}/session-data?benefitType=jobSeekersAllowance&benefitId=$benefitId": String)
     .check(saveSessionDataId)
     .check(status.is(expected = 303))
 
@@ -128,13 +128,4 @@ object StateBenefitsRequests {
     .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/remove": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(expected = 303))
-  def getHaveYouCompletedThisSectionPage(taxYear: String): HttpRequestBuilder = http("Get Have You Completed This Section Page")
-    .get(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/section-completed": String)
-    .check(status.is(expected = 200))
-
-  def postHaveYouCompletedThisSectionPage(taxYear: String): HttpRequestBuilder = http("Post Have You Completed This Section Page")
-    .post(url = s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/section-completed": String)
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", "true")
-    .check(status.is(303))
 }
