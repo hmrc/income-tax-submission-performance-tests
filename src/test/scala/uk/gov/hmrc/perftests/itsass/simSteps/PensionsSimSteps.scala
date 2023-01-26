@@ -21,6 +21,7 @@ import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, po
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getStartPage}
 import uk.gov.hmrc.perftests.itsass.requests.PaymentsIntoPensionsRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
+import uk.gov.hmrc.perftests.itsass.requests.UnauthorisedPaymentsFromPensionsRequests.{getAmountThatDidNotResultInASurcharge, getAmountThatResultedInASurcharge, getCheckYourUnauthorisedPayments, getDidYouPayNonUkOnAmountSurcharge, getDidYouPayNonUkOnAmountThatDidNotSurcharge, getPensionSchemeTaxReference, getRemovePensionSchemeTaxReference, getUnauthorisedPayments, getUnauthorisedPaymentsFromUKPensionScheme, getWereAnyOfThePaymentFromAUKPension, postAmountThatDidNotResultInASurcharge, postAmountThatResultedInASurcharge, postDidYouPayNonUkOnAmountSurcharge, postDidYouPayNonUkOnAmountThatDidSurcharge, postPensionSchemeTaxReference, postRemovePensionSchemeTaxReference, postUnauthorisedPayments, postWereAnyOfThePaymentFromAUKPension}
 
 trait PensionsSimSteps extends PerformanceTestRunner{
 
@@ -83,6 +84,58 @@ trait PensionsSimSteps extends PerformanceTestRunner{
     getHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
     postHowMuchDidYouPayIntoWorkPlacePensionAmountPage,
     getCheckYourPaymentsIntoPensions
+  )
+
+  def unauthorisedPaymentsFromPensionsAgent (id: String, description: String): JourneyPart = setup(id, description) withRequests (
+    getLoginPage,
+    postAgentLoginPage("AA123459A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
+    getStartPage(taxYear),
+    getPensionsSummaryPage,
+    getUnauthorisedPayments,
+    postUnauthorisedPayments,
+    getAmountThatResultedInASurcharge,
+    postAmountThatResultedInASurcharge,
+    getDidYouPayNonUkOnAmountSurcharge,
+    postDidYouPayNonUkOnAmountSurcharge,
+    getAmountThatDidNotResultInASurcharge,
+    postAmountThatDidNotResultInASurcharge,
+    getDidYouPayNonUkOnAmountThatDidNotSurcharge,
+    postDidYouPayNonUkOnAmountThatDidSurcharge,
+    getWereAnyOfThePaymentFromAUKPension,
+    postWereAnyOfThePaymentFromAUKPension,
+    getPensionSchemeTaxReference,
+    postPensionSchemeTaxReference,
+    getUnauthorisedPaymentsFromUKPensionScheme,
+    getRemovePensionSchemeTaxReference,
+    postRemovePensionSchemeTaxReference,
+    getCheckYourUnauthorisedPayments
+
+
+  )
+
+  def unauthorisedPaymentsFromPensionsIndividual (id: String, description: String): JourneyPart = setup(id, description) withRequests (
+    getLoginPage,
+    postIndividualLoginPage("AA370343B", "1234567890"),
+    getStartPage(taxYear),
+    getPensionsSummaryPage,
+    getUnauthorisedPayments,
+    postUnauthorisedPayments,
+    getAmountThatResultedInASurcharge,
+    postAmountThatResultedInASurcharge,
+    getDidYouPayNonUkOnAmountSurcharge,
+    postDidYouPayNonUkOnAmountSurcharge,
+    getAmountThatDidNotResultInASurcharge,
+    postAmountThatDidNotResultInASurcharge,
+    getDidYouPayNonUkOnAmountThatDidNotSurcharge,
+    postDidYouPayNonUkOnAmountThatDidSurcharge,
+    getWereAnyOfThePaymentFromAUKPension,
+    postWereAnyOfThePaymentFromAUKPension,
+    getPensionSchemeTaxReference,
+    postPensionSchemeTaxReference,
+    getUnauthorisedPaymentsFromUKPensionScheme,
+    getCheckYourUnauthorisedPayments
+
   )
 
 }

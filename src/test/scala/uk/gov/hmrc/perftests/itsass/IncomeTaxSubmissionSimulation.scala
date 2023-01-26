@@ -67,6 +67,9 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   paymentsIntoPensionsIndividual(id = "individual-payments-into-pensions", description = "Individual Payments into Pensions")
   paymentsIntoPensionAgent(id = "agent-payments-into-pensions", description = "Agent Payments into Pensions")
 
+  unauthorisedPaymentsFromPensionsIndividual(id = "individual-unauthorised-payments-from-pensions", description = "Individual Unauthorised Payments from pensions")
+  unauthorisedPaymentsFromPensionsAgent(id = "agent-unauthorised-payments-from-pensions", description = "Agent Unauthorised Payments from pensions")
+
   //Crystallisation
   crystallisationIndividual(id = "individual-crystallisation", description = "Individual Crystallisation Journey")
   crystallisationAgent(id = "agent-crystallisation", description = "Agent Crystallisation Journey")
