@@ -98,7 +98,7 @@ object StateBenefitsRequests {
   def postTaxTakenOffAmountPage(taxYear: String): HttpRequestBuilder = http("Post Jobseeker's Allowance - Amount Page")
     .post(s"${stateBenefitsUrl(taxYear)}/jobseekers-allowance/$${sessionDataId}/tax-taken-off-amount": String)
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("amount", "234")
+    .formParam("amount", "34")
     .check(status.is(303))
 
   def getReviewJobSeekersAllowanceClaimPage(taxYear: String): HttpRequestBuilder = http("Get Jobseeker's Allowance - Review Claim Page")
