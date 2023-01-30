@@ -123,17 +123,17 @@ trait InterestSimSteps extends PerformanceTestRunner {
     getInterestSummaryPage,
     getInterestFromSecuritiesPage,
     postInterestFromSecuritiesPage,
-    getInterestSecuritiesAmountPage,
-    postInterestSecuritiesAmountPage,
-    getTaxTakenFromInterestPage,
-    postTaxTakenFromInterestPage,
     getTaxSecuritiesAmountPage,
     postTaxSecuritiesAmountPage,
+    getInterestSecuritiesTaxTakenOffPage,
+    postInterestSecuritiesTaxTakenOffPage,
+    getTaxTakenFromInterestAmountPage,
+    postTaxTakenFromInterestAmountPage,
    getSecuritiesCheckYourAnswersPage,
    posttSecuritiesCheckYourAnswersPage,
 
   )
-  
+
   def interestSecuritiesAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postAgentLoginPage("AA111112A", "1234567890"),
@@ -143,12 +143,12 @@ trait InterestSimSteps extends PerformanceTestRunner {
     getInterestSummaryPage,
     getInterestFromSecuritiesPage,
     postInterestFromSecuritiesPage,
-    getInterestSecuritiesAmountPage,
-    postInterestSecuritiesAmountPage,
-    getTaxTakenFromInterestPage,
-    postTaxTakenFromInterestPage,
-    getInterestSecuritiesAmountPage,
-    postInterestSecuritiesAmountPage,
+    getTaxSecuritiesAmountPage,
+    postTaxSecuritiesAmountPage,
+    getInterestSecuritiesTaxTakenOffPage,
+    postInterestSecuritiesTaxTakenOffPage,
+    getTaxTakenFromInterestAmountPage,
+    postTaxTakenFromInterestAmountPage,
     getSecuritiesCheckYourAnswersPage,
     posttSecuritiesCheckYourAnswersPage,
 

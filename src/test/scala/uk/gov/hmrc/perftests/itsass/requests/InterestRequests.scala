@@ -26,7 +26,7 @@ object InterestRequests extends ServicesConfiguration {
 
   def getInterestSummaryPage: HttpRequestBuilder = http("Get Interest Summary Page")
     .get(s"$interestUrl/interest-summary")
-    .check(saveCsrfToken())
+    //.check(saveCsrfToken())
     .check(status.is(200))
 
   def getInterestGatewayPage: HttpRequestBuilder = http("Get Interest Gateway Page")
@@ -143,48 +143,48 @@ object InterestRequests extends ServicesConfiguration {
     .post(s"$interestUrl/interest-from-securities")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value",true)
-    .check(status.is(200))
-
-  def getTaxTakenFromInterestPage: HttpRequestBuilder = http("Get How Much Interest Did You Get Page")
-    .get(s"$interestUrl/interest-from-securities/interest-amount")
-    .check(saveCsrfToken())
-    .check(status.is(200))
-
-  def postTaxTakenFromInterestPage: HttpRequestBuilder = http("Post How Much Interest Did You Get Page")
-    .post(s"$interestUrl/interest-from-securities/interest-amount")
-    .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("interestAmount", "193.54")
     .check(status.is(303))
 
-  def getInterestSecuritiesAmountPage: HttpRequestBuilder = http("Get Was Tax Taken Off Your Interest Page")
-    .get(s"$interestUrl/interest-from-securities/tax-taken-from-interest")
+  def getTaxTakenFromInterestAmountPage: HttpRequestBuilder = http("Get How Much Interest Did You Get Page")
+    .get(s"$interestUrl/tax-taken-off-interest")
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postInterestSecuritiesAmountPage: HttpRequestBuilder = http("Post Was Tax Taken Off Your Interest Page")
-    .post(s"$interestUrl/interest-from-securities/tax-taken-from-interest")
+  def postTaxTakenFromInterestAmountPage: HttpRequestBuilder = http("Post How Much Interest Did You Get Page")
+    .post(s"$interestUrl/tax-taken-off-interest")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "193.54")
+    .check(status.is(303))
+
+  def getInterestSecuritiesTaxTakenOffPage: HttpRequestBuilder = http("Get Was Tax Taken Off Your Interest Page")
+    .get(s"$interestUrl/tax-taken-from-interest")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postInterestSecuritiesTaxTakenOffPage: HttpRequestBuilder = http("Post Was Tax Taken Off Your Interest Page")
+    .post(s"$interestUrl/tax-taken-from-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value",true)
     .check(status.is(303))
 
   def getTaxSecuritiesAmountPage: HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
-    .get(s"$interestUrl/interest-from-securities/tax-amount")
+    .get(s"$interestUrl/interest-amount")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def postTaxSecuritiesAmountPage: HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
-    .post(s"$interestUrl/interest-from-securities/tax-amount")
+    .post(s"$interestUrl/interest-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("taxAmounts","120")
+    .formParam("amount","120")
     .check(status.is(303))
 
   def getSecuritiesCheckYourAnswersPage: HttpRequestBuilder = http("Get Check Your Interest From Gilt Edged Or Accrued Income Securities Page")
-    .get(s"$interestUrl/interest-from-securities/check-interest-from-securities")
+    .get(s"$interestUrl/check-interest-from-securities")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def posttSecuritiesCheckYourAnswersPage: HttpRequestBuilder = http("Post Check Your Interest From Gilt Edged Or Accrued Income Securities Page")
-    .post(s"$interestUrl/interest-from-securities/check-interest-from-securities")
+    .post(s"$interestUrl/check-interest-from-securities")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
