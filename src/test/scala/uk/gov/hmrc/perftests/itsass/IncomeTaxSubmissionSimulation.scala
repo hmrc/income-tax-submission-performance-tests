@@ -19,7 +19,7 @@ package uk.gov.hmrc.perftests.itsass
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
-class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with CISSimSteps with StateBenefitsSimSteps
+class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
   with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
 
   //Dividends
@@ -29,6 +29,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //Interest
   interestIndividual(id = "individual-interest", description = "Individual Interest Journey")
   interestAgent(id = "agent-interest", description = "Agent Interest Journey")
+
+  //AdditionalInformation
   interestSecuritiesIndividual(id = "individual-securities" , description = "Individual Securities Journey")
     interestSecuritiesAgent(id = "agent-securities" , description = "Agent Securities Journey")
 

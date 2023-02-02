@@ -114,43 +114,4 @@ trait InterestSimSteps extends PerformanceTestRunner {
     postInterestCheckYourAnswersPage
   )
 
-
-  def interestSecuritiesIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
-    getLoginPage,
-    postIndividualLoginPage("AA111111A", "1234567890"),
-    getStartPage(taxYear),
-     getOverviewPage(taxYear),
-    // getInterestSummaryPage,
-     getInterestFromSecuritiesPage,
-     postInterestFromSecuritiesPage,
-     getTaxSecuritiesAmountPage,
-     postTaxSecuritiesAmountPage,
-     getInterestSecuritiesTaxTakenOffPage,
-     postInterestSecuritiesTaxTakenOffPage,
-     getTaxTakenFromInterestAmountPage,
-     postTaxTakenFromInterestAmountPage,
-     getSecuritiesCheckYourAnswersPage,
-     posttSecuritiesCheckYourAnswersPage,
-
-  )
-
-  def interestSecuritiesAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
-      getLoginPage,
-       postAgentLoginPage("AA111112A", "1234567890"),
-       getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
-       getStartPage(taxYear),
-       getOverviewPage(taxYear),
-      // getInterestSummaryPage,
-       getInterestFromSecuritiesPage,
-       postInterestFromSecuritiesPage,
-       getTaxSecuritiesAmountPage,
-       postTaxSecuritiesAmountPage,
-       getInterestSecuritiesTaxTakenOffPage,
-       postInterestSecuritiesTaxTakenOffPage,
-       getTaxTakenFromInterestAmountPage,
-      postTaxTakenFromInterestAmountPage,
-      getSecuritiesCheckYourAnswersPage,
-      posttSecuritiesCheckYourAnswersPage,
-
-  )
 }
