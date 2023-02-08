@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.perftests.itsass.simSteps
 
+import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getOverviewPage, getStartPage}
@@ -29,6 +30,7 @@ trait InterestSimSteps extends PerformanceTestRunner {
     postIndividualLoginPage("AA111111A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+   // getInterestSummaryPage,
     getInterestGatewayPage,
     postInterestGatewayPage,
     getUntaxedUKInterestStatusPage,
@@ -66,12 +68,15 @@ trait InterestSimSteps extends PerformanceTestRunner {
     postInterestCheckYourAnswersPage
   )
 
+
+
   def interestAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postAgentLoginPage("AA111112A", "1234567890"),
     getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
+   // getInterestSummaryPage,
     getInterestGatewayPage,
     postInterestGatewayPage,
     getUntaxedUKInterestStatusPage,
