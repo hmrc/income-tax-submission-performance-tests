@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.perftests.itsass.simSteps
 
-import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getOverviewPage, getStartPage}
