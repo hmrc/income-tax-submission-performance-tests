@@ -115,12 +115,24 @@ object EmploymentsRequests extends ServicesConfiguration {
     .get(s"${employmentsUrl(taxYear)}/details/employment-start-date?employmentId=$${employmentId}": String)
     .check(status.is(200))
 
-  def postEmploymentStartDate(taxYear: String): HttpRequestBuilder = http("Post Start Date Employment Page")
+  def postEmploymentStartDatePage(taxYear: String): HttpRequestBuilder = http("Post Start Date Employment Page")
     .post(s"${employmentsUrl(taxYear)}/details/employment-start-date?employmentId=$${employmentId}": String)
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount-day", "11")
     .formParam("amount-month", "01")
     .formParam("amount-year", "2012")
+    .check(status.is(303))
+
+  def getEmploymentEndDatePage(taxYear: String): HttpRequestBuilder = http("Get End Date Employment Page")
+    .get(s"${employmentsUrl(taxYear)}/details/employment-end-date?employmentId=$${employmentId}": String)
+    .check(status.is(200))
+
+  def postEmploymentEndDatePage(taxYear: String): HttpRequestBuilder = http("Post End Date Employment Page")
+    .post(s"${employmentsUrl(taxYear)}/details/employment-end-date?employmentId=$${employmentId}": String)
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount-day", "11")
+    .formParam("amount-month", "03")
+    .formParam("amount-year", s"$taxYearEOYValue")
     .check(status.is(303))
 
   def getEmploymentDatesPage(taxYear: String): HttpRequestBuilder = http("Get Employment Dates Page")
