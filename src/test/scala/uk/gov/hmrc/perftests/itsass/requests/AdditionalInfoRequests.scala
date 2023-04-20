@@ -188,5 +188,136 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
+  def getGainsGatewayPage: HttpRequestBuilder = http("Get Gains Gateway Page")
+    .get(s"$gainsUrl/gains-gateway")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGainsGatewayPage: HttpRequestBuilder = http("Post Gains Gateway Page")
+    .post(s"$gainsUrl/gains-gateway/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getPolicyTypePage: HttpRequestBuilder = http("Get Policy Type Page")
+    .get(s"$gainsUrl/policy-type/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPolicyTypePage(policyType: String): HttpRequestBuilder = http("Post Policy Type Page")
+    .post(s"$gainsUrl/policy-type/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("policy-type", policyType)
+    .check(status.is(303))
+
+  def getPolicyNumberPage: HttpRequestBuilder = http("Get Policy Number Page")
+    .get(s"$gainsUrl/policy-name/$gainsSessionId")
+    .check(status.is(200))
+
+  def postPolicyNumberPage: HttpRequestBuilder = http("Post Policy Number Page")
+    .post(s"$gainsUrl/policy-name/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "LA/2881/07")
+    .check(status.is(303))
+
+  def getGainsAmountPage: HttpRequestBuilder = http("Get Gains Amount Page")
+    .get(s"$gainsUrl/gains-amount/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGainsAmountPage(gainsAmount: String): HttpRequestBuilder = http("Post Gains Amount Page")
+    .post(s"$gainsUrl/gains-amount/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", (gainsAmount))
+    .check(status.is(303))
+
+  def getGainsStatusPage: HttpRequestBuilder = http("Get Gains Status Page")
+    .get(s"$gainsUrl/gains-status/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGainsStatusPage: HttpRequestBuilder = http("Post Gains Status Page")
+    .post(s"$gainsUrl/gains-status/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getPolicyHeldPreviousPage: HttpRequestBuilder = http("Get Policy Held Previous Page")
+    .get(s"$gainsUrl/policy-held-previous/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPolicyHeldPreviousPage(): HttpRequestBuilder = http("Post Policy Held Previous Page")
+    .post(s"$gainsUrl/policy-held-previous/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("year", "99")
+    .check(status.is(303))
+
+  def getPolicyEventPage: HttpRequestBuilder = http("Get Policy Event Page")
+    .get(s"$gainsUrl/policy-event/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPolicyEventPage(policyEvent: String): HttpRequestBuilder = http("Post Policy Event Page")
+    .post(s"$gainsUrl/policy-event/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("policy-event", policyEvent)
+    .check(status.is(303))
+
+  def getPolicyHeldPage: HttpRequestBuilder = http("Get Policy Held Page")
+    .get(s"$gainsUrl/policy-held/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPolicyHeldPage: HttpRequestBuilder = http("Post Policy Held Page")
+    .post(s"$gainsUrl/policy-held/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("year", "99")
+    .check(status.is(303))
+
+  def getPaidTaxStatusPage: HttpRequestBuilder = http("Get Paid Tax Status Page")
+    .get(s"$gainsUrl/paid-tax-status/$gainsSessionId")
+    .check(status.is(200))
+
+  def postPaidTaxStatusPage: HttpRequestBuilder = http("Post Paid Tax Status Page")
+    .post(s"$gainsUrl/paid-tax-status/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    //.check(saveTaxedAccountId)
+    .check(status.is(303))
+
+  def getDeficiencyReliefStatusPage: HttpRequestBuilder = http("Get Deficiency Relief Status Page")
+    .get(s"$gainsUrl/deficiency-relief-status/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postDeficiencyReliefStatusPage(amount: String): HttpRequestBuilder = http("Post Deficiency Relief Status Page")
+    .post(s"$gainsUrl/deficiency-relief-status/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .formParam("amount", "100")
+    .check(status.is(303))
+
+  def getPolicySummaryPage: HttpRequestBuilder = http("Get Policy Summary Page")
+    .get(s"$gainsUrl/policy-summary/$gainsSessionId")
+    .check(status.is(200))
+
+  def postPolicySummaryPage: HttpRequestBuilder = http("Post Policy Summary Page")
+    .post(s"$gainsUrl/policy-summary")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
+  def getGainsSummaryPage: HttpRequestBuilder = http("Get Gains Summary Page")
+    .get(s"$gainsUrl/summary")
+    .check(status.is(200))
+
+  def getPoliciesRemoveConfirmationPage: HttpRequestBuilder = http("Get Policies Remove Confirmation Page")
+    .get(s"$gainsUrl/policies-remove-confirmation/$gainsSessionId")
+    .check(status.is(200))
+
+  def postPoliciesRemoveConfirmationPage: HttpRequestBuilder = http("Post Policies Remove Confirmation Page")
+    .post(s"$gainsUrl/policies-remove-confirmation/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
 
 }

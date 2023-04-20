@@ -28,10 +28,12 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
 
   val employmentIdWithNoBenefits: String = "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"
   val employmentIdWithNoStudentLoans: String = "3c891e58-9b21-4296-8ecd-76f771c5d079"
+  val gainsSessionId = "sessionId-eb3158c2-0aff-4ce8-8d1b-f2208ace52fe"
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
+  val additionalInfoFrontendBaseUrl: String = baseUrlFor("income-tax-additional-info-frontend")
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
   val nrsProxyBaseUrl: String = baseUrlFor("income-tax-nrs-proxy")
   val authLoginUrl: String = baseUrlFor("auth-login-stub")
@@ -47,6 +49,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val cisUrl: String => String = (taxYear: String) => cisBaseUrl + s"/update-and-submit-income-tax-return/construction-industry-scheme-deductions/$taxYear"
   val stateBenefitsUrl: String => String = (taxYear: String) => stateBenefitsBaseUrl + s"/update-and-submit-income-tax-return/state-benefits/$taxYear"
   val pensionsUrl: String => String = (taxYear: String) => pensionsFrontendBaseUrl + s"/update-and-submit-income-tax-return/pensions/$taxYear"
+  val gainsUrl: String = additionalInfoFrontendBaseUrl + s"/update-and-submit-income-tax-return/additional-information/$taxYear/gains"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""
