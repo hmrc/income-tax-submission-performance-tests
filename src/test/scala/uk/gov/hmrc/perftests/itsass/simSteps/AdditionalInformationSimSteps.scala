@@ -62,4 +62,71 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
       posttSecuritiesCheckYourAnswersPage,
 
   )
+
+  def gainsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA111111A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getGainsGatewayPage,
+    postGainsGatewayPage,
+    getPolicyTypePage,
+    postPolicyTypePage("lifeInsurance"),
+    getPolicyNumberPage,
+    postPolicyNumberPage,
+    getGainsAmountPage,
+    postGainsAmountPage("193.34"),
+    getGainsStatusPage,
+    postGainsStatusPage,
+    getPolicyHeldPreviousPage,
+    postPolicyHeldPreviousPage,
+    getPolicyEventPage,
+    postPolicyEventPage("Policy matured or a death"),
+    getPolicyHeldPage,
+    postPolicyHeldPage,
+    getPaidTaxStatusPage,
+    postPaidTaxStatusPage,
+    getDeficiencyReliefStatusPage,
+    postDeficiencyReliefStatusPage("100"),
+    getPolicySummaryPage,
+    postPolicySummaryPage,
+    getGainsSummaryPage,
+    getPoliciesRemoveConfirmationPage,
+    postPoliciesRemoveConfirmationPage
+
+  )
+
+  def gainsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getGainsGatewayPage,
+    postGainsGatewayPage,
+    getPolicyTypePage,
+    postPolicyTypePage("lifeInsurance"),
+    getPolicyNumberPage,
+    postPolicyNumberPage,
+    getGainsAmountPage,
+    postGainsAmountPage("193.34"),
+    getGainsStatusPage,
+    postGainsStatusPage,
+    getPolicyHeldPreviousPage,
+    postPolicyHeldPreviousPage,
+    getPolicyEventPage,
+    postPolicyEventPage("Policy matured or a death"),
+    getPolicyHeldPage,
+    postPolicyHeldPage,
+    getPaidTaxStatusPage,
+    postPaidTaxStatusPage,
+    getDeficiencyReliefStatusPage,
+    postDeficiencyReliefStatusPage("100"),
+    getPolicySummaryPage,
+    postPolicySummaryPage,
+    getGainsSummaryPage,
+    getPoliciesRemoveConfirmationPage,
+    postPoliciesRemoveConfirmationPage
+
+  )
 }
