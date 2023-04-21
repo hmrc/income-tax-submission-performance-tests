@@ -129,4 +129,69 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postPoliciesRemoveConfirmationPage
 
   )
+
+  def gainsVoidedISAIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA111111A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getGainsGatewayPage,
+    postGainsGatewayPage,
+    getPolicyTypePage,
+    postPolicyTypePage("voidedIsa"),
+    getPolicyNumberPage,
+    postPolicyNumberPage,
+    getGainsAmountPage,
+    postGainsAmountPage("193.34"),
+    getPolicyEventPage,
+    postPolicyEventPage("Policy matured or a death"),
+    getGainsStatusPage,
+    postGainsStatusPage,
+    getPolicyHeldPreviousPage,
+    postPolicyHeldPreviousPage,
+    getPolicyHeldPage,
+    postPolicyHeldPage,
+    getPaidTaxAmountPage,
+    postPaidTaxAmountPage,
+    getPolicySummaryPage,
+    postPolicySummaryPage,
+    getGainsSummaryPage,
+    getPoliciesRemoveConfirmationPage,
+    postPoliciesRemoveConfirmationPage
+
+  )
+
+  def gainsVoidedISAAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getGainsGatewayPage,
+    postGainsGatewayPage,
+    getPolicyTypePage,
+    postPolicyTypePage("voidedIsa"),
+    getPolicyNumberPage,
+    postPolicyNumberPage,
+    getGainsAmountPage,
+    postGainsAmountPage("193.34"),
+    getPolicyEventPage,
+    postPolicyEventPage("Policy matured or a death"),
+    getGainsStatusPage,
+    postGainsStatusPage,
+    getPolicyHeldPreviousPage,
+    postPolicyHeldPreviousPage,
+    getPolicyHeldPage,
+    postPolicyHeldPage,
+    getPaidTaxAmountPage,
+    postPaidTaxAmountPage,
+    getPolicySummaryPage,
+    postPolicySummaryPage,
+    getGainsSummaryPage,
+    getPoliciesRemoveConfirmationPage,
+    postPoliciesRemoveConfirmationPage
+
+  )
+
+
 }
