@@ -27,6 +27,16 @@ object CISRequests {
     .get(s"${cisUrl(taxYear)}/summary")
     .check(status.is(expected = 200))
 
+  def getCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Get CIS Gateway Page")
+    .get(s"${cisUrl(taxYear)}/deductions-from-payments")
+    .check(status.is(expected = 200))
+
+  def postCisGatewayPage(taxYear: String): HttpRequestBuilder = http("Post Interest Gateway Page")
+    .post(s"${cisUrl(taxYear)}/deductions-from-payments")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
   def getCisContractorPage(taxYear: String, contractorId: String): HttpRequestBuilder = http("Get CIS Contractor Page")
     .get(s"${cisUrl(taxYear)}/contractor?contractor=$contractorId")
     .check(status.is(expected = 200))
