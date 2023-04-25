@@ -35,6 +35,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   interestSecuritiesAgent(id = "agent-securities" , description = "Agent Securities Journey")
   gainsIndividual(id = "individual-gains", description = "Individual Gains Journey")
   gainsAgent(id = "agent-gains", description = "Agent Gains Journey")
+  gainsVoidedISAIndividual(id = "individual-gains-voided-ISA", description = "Individual Gains Voided ISA Journey")
+  gainsVoidedISAAgent(id = "agent-gains-voided-ISA", description = "Agent Gains Voided ISA Journey")
 
   //GiftAid
   giftAidIndividual(id = "individual-gift-aid", description = "Individual Gift Aid Journey")

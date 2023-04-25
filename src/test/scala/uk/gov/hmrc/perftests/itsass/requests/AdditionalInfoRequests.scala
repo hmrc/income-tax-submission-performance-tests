@@ -247,7 +247,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postPolicyHeldPreviousPage(): HttpRequestBuilder = http("Post Policy Held Previous Page")
+  def postPolicyHeldPreviousPage: HttpRequestBuilder = http("Post Policy Held Previous Page")
     .post(s"$gainsUrl/policy-held-previous/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("year", "99")
@@ -273,6 +273,17 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .post(s"$gainsUrl/policy-held/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("year", "99")
+    .check(status.is(303))
+
+  def getPaidTaxAmountPage: HttpRequestBuilder = http("Get Paid Tax Amount Page")
+    .get(s"$gainsUrl/paid-tax-amount/$gainsSessionId")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPaidTaxAmountPage: HttpRequestBuilder = http("Post Paid Tax Amount Page")
+    .post(s"$gainsUrl/paid-tax-amount/$gainsSessionId")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "199")
     .check(status.is(303))
 
   def getPaidTaxStatusPage: HttpRequestBuilder = http("Get Paid Tax Status Page")
