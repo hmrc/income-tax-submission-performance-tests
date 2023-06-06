@@ -331,4 +331,79 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
+  def getStockDividendsStatusPage: HttpRequestBuilder = http("Get Stock Dividends Status Page")
+    .get(s"$dividendsUrl/stock-dividend-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendsStatusPage: HttpRequestBuilder = http("Post Stock Dividends Status Page")
+    .post(s"$dividendsUrl/stock-dividend-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getStockDividendsAmountPage: HttpRequestBuilder = http("Get Stock Dividends Amount Page")
+    .get(s"$dividendsUrl/stock-dividend-amount")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendsAmountPage: HttpRequestBuilder = http("Post Stock Dividends Amount Page")
+    .post(s"$dividendsUrl/stock-dividend-amount")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "1000")
+    .check(status.is(303))
+
+  def getDividendsRedeemableStatusPage: HttpRequestBuilder = http("Get Dividends Redeemable Status Page")
+    .get(s"$dividendsUrl/redeemable-shares-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postDividendsRedeemableStatusPage: HttpRequestBuilder = http("Post Dividends Redeemable Status Page")
+    .post(s"$dividendsUrl/redeemable-shares-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getDividendsRedeemableSharesAmountPage: HttpRequestBuilder = http("Get Dividends Redeemable Shares Amount Page")
+    .get(s"$dividendsUrl/redeemable-shares-amount")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postDividendsRedeemableSharesAmountPage: HttpRequestBuilder = http("Post Dividends Redeemable Shares Amount Page")
+    .post(s"$dividendsUrl/redeemable-shares-amount")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "1000")
+    .check(status.is(303))
+
+  def getStockDividendsCompanyLoanStatusPage: HttpRequestBuilder = http("Get Stock Dividends Company Loan Status Page")
+    .get(s"$dividendsUrl/close-company-loan-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendsCompanyLoanStatusPage: HttpRequestBuilder = http("Post Stock Dividends Company Loan Status Page")
+    .post(s"$dividendsUrl/close-company-loan-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getStockDividendsCompanyLoanAmountPage: HttpRequestBuilder = http("Get Stock Dividends Company Loan Amount Page")
+    .get(s"$dividendsUrl/close-company-loan-amount")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendsCompanyLoanAmountPage: HttpRequestBuilder = http("Post Stock Dividends Company Loan Amount Page")
+    .post(s"$dividendsUrl/close-company-loan-amount")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", "1000")
+    .check(status.is(303))
+
+  def getStockDividendsSummaryPage: HttpRequestBuilder = http("Get Stock Dividends Check Your Answers Page")
+    .get(s"$dividendsUrl/summary")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendsSummaryPage: HttpRequestBuilder = http("Post Stock Dividends Check Your Answers Page")
+    .post(s"$dividendsUrl/summary")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
 }

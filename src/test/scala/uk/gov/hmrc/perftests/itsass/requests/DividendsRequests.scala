@@ -88,5 +88,4 @@ object DividendsRequests extends ServicesConfiguration {
     .post(s"$dividendsUrl/check-income-from-dividends")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
-
 }

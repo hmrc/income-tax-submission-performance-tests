@@ -17,9 +17,10 @@
 package uk.gov.hmrc.perftests.itsass.simSteps
 
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
+import uk.gov.hmrc.perftests.itsass.requests.AdditionalInfoRequests._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
+import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getOverviewPage, getStartPage}
-import uk.gov.hmrc.perftests.itsass.requests.AdditionalInfoRequests.{getInterestSummaryPage, _}
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
 
 trait AdditionalInformationSimSteps extends PerformanceTestRunner {
@@ -193,5 +194,67 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   )
 
+  def stockDividendsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA111111A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
+    getUKDividendsStatusPage,
+    postUKDividendsStatusPage,
+    getUKDividendsAmountPage,
+    postUKDividendsAmountPage,
+    getOtherDividendsStatusPage,
+    postOtherDividendsStatusPage,
+    getOtherDividendsAmountPage,
+    postOtherDividendsAmountPage,
+    getStockDividendsStatusPage,
+    postStockDividendsStatusPage,
+    getStockDividendsAmountPage,
+    postStockDividendsAmountPage,
+    getDividendsRedeemableStatusPage,
+    postDividendsRedeemableStatusPage,
+    getDividendsRedeemableSharesAmountPage,
+    postDividendsRedeemableSharesAmountPage,
+    getStockDividendsCompanyLoanStatusPage,
+    postStockDividendsCompanyLoanStatusPage,
+    getStockDividendsCompanyLoanAmountPage,
+    postStockDividendsCompanyLoanAmountPage,
+    getStockDividendsSummaryPage,
+    postStockDividendsSummaryPage
+  )
+
+  def stockDividendsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA111112A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getDividendsGatewayPage,
+    postDividendsGatewayPage,
+    getUKDividendsStatusPage,
+    postUKDividendsStatusPage,
+    getUKDividendsAmountPage,
+    postUKDividendsAmountPage,
+    getOtherDividendsStatusPage,
+    postOtherDividendsStatusPage,
+    getOtherDividendsAmountPage,
+    postOtherDividendsAmountPage,
+    getStockDividendsStatusPage,
+    postStockDividendsStatusPage,
+    getStockDividendsAmountPage,
+    postStockDividendsAmountPage,
+    getDividendsRedeemableStatusPage,
+    postDividendsRedeemableStatusPage,
+    getDividendsRedeemableSharesAmountPage,
+    postDividendsRedeemableSharesAmountPage,
+    getStockDividendsCompanyLoanStatusPage,
+    postStockDividendsCompanyLoanStatusPage,
+    getStockDividendsCompanyLoanAmountPage,
+    postStockDividendsCompanyLoanAmountPage,
+    getStockDividendsSummaryPage,
+    postStockDividendsSummaryPage
+  )
 
 }
