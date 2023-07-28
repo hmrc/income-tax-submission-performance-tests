@@ -80,12 +80,12 @@ object DividendsRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Get Dividends Check Your Answers Page")
-    .get(s"$dividendsUrl/check-income-from-dividends")
+    .get(s"$dividendsUrl/summary")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def postDividendsCheckYourAnswersPage: HttpRequestBuilder = http("Post Dividends Check Your Answers Page")
-    .post(s"$dividendsUrl/check-income-from-dividends")
+    .post(s"$dividendsUrl/summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 }
