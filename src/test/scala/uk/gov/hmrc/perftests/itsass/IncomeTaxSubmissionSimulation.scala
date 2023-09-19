@@ -20,8 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with AboutYouSimSteps
-  with AboutYourWorkSimSteps with IncomeFromPropertyPensionsInvestmentsSimSteps with CapitalGainsSimSteps {
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -88,22 +87,6 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //View Estimation
   viewEstimationIndividual(id = "individual-view-estimation", description = "Individual View Estimation Journey")
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
-
-  //About You
-  aboutYouIndividual(id = "individual-about-you", description = "Individual About You Journey")
-  aboutYouAgent(id = "agent-about-you", description = "Agent About You Journey")
-
-  //About Your Work
-  aboutYourWorkIndividual(id = "individual-about-your-work", description = "Individual About Your Work Journey")
-  aboutYourWorkAgent(id = "agent-about-your-work", description = "Agent About Your Work Journey")
-
-  //Income From Property Pensions And Investments
-  incomeFromPropertyPensionsAndInvestmentsIndividual(id = "individual-property-pensions-and-investments", description = "Individual Income From Property Pensions And Investments")
-  incomeFromPropertyPensionsAndInvestmentsAgent(id = "agent-property-pensions-and-investments", description = "Agent Income From Property Pensions And Investments")
-
-  //Capital Gains, Trusts And Estates
-  capitalGainsIndividual(id = "individual-capital-gains", description = "Individual Capital Gains, Trusts And Estates")
-  capitalGainsAgent(id = "agent-capital-gains", description = "Agent Capital Gains, Trusts And Estates")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
