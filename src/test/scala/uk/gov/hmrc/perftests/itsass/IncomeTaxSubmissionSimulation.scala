@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps {
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps{
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -87,6 +87,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //View Estimation
   viewEstimationIndividual(id = "individual-view-estimation", description = "Individual View Estimation Journey")
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
+
+  //Tailor Return
+  tailorReturnIndividual(id = "individual-tailor-return", description = "Individual Tailor Return Journey")
+  tailorReturnAgent(id = "agent-tailor-return", description = "Agent Tailor Return Journey")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
