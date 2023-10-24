@@ -24,15 +24,52 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper._
 
 object TailorReturnRequests extends ServicesConfiguration {
 
-  def getTailorReturnSamplePage: HttpRequestBuilder = http("Get Tailor Return Sample Page")
-    .get(s"${tailorReturnUrl}/sampleYesNoPage/${taxYearEOY}")
+  def getTailorReturnStartPage(taxYear: String): HttpRequestBuilder = http("Get Tailor Return Start Page")
+    .get(s"${tailorReturnUrl}/${taxYear}/start")
+    .check(status.is(200))
+
+  def getUkResidenceStatusPage: HttpRequestBuilder = http("Get Uk Residence Status")
+    .get(s"${tailorReturnUrl}/${taxYearEOY}/about-you/uk-residence-status")
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postTailorReturnSamplePage: HttpRequestBuilder = http("Post Tailor Return Sample Page")
-    .post(s"${tailorReturnUrl}/sampleYesNoPage/${taxYearEOY}")
+  def postUkResidenceStatusPage: HttpRequestBuilder = http("Post Uk Residence Status")
+    .post(s"${tailorReturnUrl}/${taxYearEOY}/about-you/uk-residence-status")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value", true)
+    .formParam("value", "uk")
+    .check(status.is(303))
+
+  def getChangeUkResidenceStatusPage: HttpRequestBuilder = http("Get Change Uk Residence Status")
+    .get(s"${tailorReturnUrl}/${taxYearEOY}/about-you/change-uk-residence-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeUkResidenceStatusPage: HttpRequestBuilder = http("Post Change Uk Residence Status")
+    .post(s"${tailorReturnUrl}/${taxYearEOY}/about-you/change-uk-residence-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "nonUK")
+    .check(status.is(303))
+
+  def getYourResidenceStatusPage: HttpRequestBuilder = http("Get Your Residence Status Page")
+    .get(s"${tailorReturnUrl}/${taxYearEOY}/about-you/your-residence-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postYourResidenceStatusPage: HttpRequestBuilder = http("Post Your Residence Status Page")
+    .post(s"${tailorReturnUrl}/${taxYearEOY}/about-you/your-residence-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "nonResident")
+    .check(status.is(303))
+
+  def getChangeYourResidenceStatusPage: HttpRequestBuilder = http("Get Change Your Residence Status Page")
+    .get(s"${tailorReturnUrl}/${taxYearEOY}/about-you/change-your-residence-status")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeYourResidenceStatusPage: HttpRequestBuilder = http("Post Change Your Residence Status Page")
+    .post(s"${tailorReturnUrl}/${taxYearEOY}/about-you/change-your-residence-status")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "dualResident")
     .check(status.is(303))
 
   def getTailorReturnFrontEndPage: HttpRequestBuilder = http("Get Tailor Return Frontend Page")

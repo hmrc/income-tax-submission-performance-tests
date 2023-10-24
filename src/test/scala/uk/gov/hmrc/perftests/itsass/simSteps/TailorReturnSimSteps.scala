@@ -20,16 +20,23 @@ import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.TailorReturnRequests._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getStartPage}
-import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY}
 
 trait TailorReturnSimSteps extends PerformanceTestRunner{
 
   def tailorReturnIndividual (id: String, description: String): JourneyPart = setup(id, description) withRequests (
     getLoginPage,
     postIndividualLoginPage("AA123459A", "1234567890"),
-    getStartPage(taxYear),
-    getTailorReturnSamplePage,
-    postTailorReturnSamplePage,
+    getStartPage(taxYearEOY),
+    getTailorReturnStartPage(taxYearEOY),
+    getUkResidenceStatusPage,
+    postUkResidenceStatusPage,
+    getChangeUkResidenceStatusPage,
+    postChangeUkResidenceStatusPage,
+    getYourResidenceStatusPage,
+    postYourResidenceStatusPage,
+    getChangeYourResidenceStatusPage,
+    postChangeYourResidenceStatusPage,
     getTailorReturnFrontEndPage
   )
 
@@ -37,9 +44,16 @@ trait TailorReturnSimSteps extends PerformanceTestRunner{
     getLoginPage,
     postAgentLoginPage("AA123459A", "1234567890"),
     getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
-    getStartPage(taxYear),
-    getTailorReturnSamplePage,
-    postTailorReturnSamplePage,
+    getStartPage(taxYearEOY),
+    getTailorReturnStartPage(taxYearEOY),
+    getUkResidenceStatusPage,
+    postUkResidenceStatusPage,
+    getChangeUkResidenceStatusPage,
+    postChangeUkResidenceStatusPage,
+    getUkResidenceStatusPage,
+    postUkResidenceStatusPage,
+    getChangeUkResidenceStatusPage,
+    postChangeUkResidenceStatusPage,
     getTailorReturnFrontEndPage
   )
 }
