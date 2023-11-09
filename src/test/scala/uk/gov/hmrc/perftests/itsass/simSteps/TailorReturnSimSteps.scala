@@ -76,7 +76,6 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     getStartPage(taxYearEOY),
     getTailorReturnStartPage(taxYearEOY),
     getTailorReturnAddSectionsPage(taxYearEOY),
-    getTailorReturnStartPage(taxYearEOY),
     getUkResidenceStatusPage,
     postUkResidenceStatusPage,
     getChangeUkResidenceStatusPage,
