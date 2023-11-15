@@ -26,25 +26,25 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
 
   def stateBenefitsIndividualInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AC160000B", "1234567890"),
+    postIndividualLoginPage("AC160000B", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
-    //    getStateBenefitsSummaryPage(taxYear),
-    //    getJobSeekersAllowancePage(taxYear)
+    getStateBenefitsSummaryPage(taxYear),
+    getJobSeekersAllowancePage(taxYear)
   )
 
   def stateBenefitsAgentInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC160000B", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AC160000B", "1234567890"),
+    postAgentLoginPage("AC160000B", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AC160000B", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
-    //    getStateBenefitsSummaryPage(taxYear)
+    getStateBenefitsSummaryPage(taxYear)
   )
 
   def stateBenefitsIndividualEndOfYearNewClaimJSA(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890"),
+    postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),
@@ -69,7 +69,7 @@ trait StateBenefitsSimSteps extends PerformanceTestRunner {
 
   def stateBenefitsIndividualEndOfYearExistingClaimJSA(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890"),
+    postIndividualLoginPage(nino = "AC160000B", mtditid = "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getStateBenefitsSummaryPage(taxYearEOY),

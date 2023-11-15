@@ -26,7 +26,7 @@ trait ViewEstimationSimSteps extends PerformanceTestRunner {
 
   def viewEstimationIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA888888A", "XAIT00000888888"),
+    postIndividualLoginPage("AA888888A", "XAIT00000888888",taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     postOverviewPageInYearEstimate(taxYear),

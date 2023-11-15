@@ -26,7 +26,7 @@ trait CISSimSteps extends PerformanceTestRunner {
 
   def cisIndividualInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AC150000B", "1234567890"),
+    postIndividualLoginPage("AC150000B", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getCisSummaryPage(taxYear),
@@ -36,8 +36,8 @@ trait CISSimSteps extends PerformanceTestRunner {
 
   def cisAgentInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC150000B", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890"),
+    postAgentLoginPage("AC150000B", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getCisSummaryPage(taxYear),
@@ -47,11 +47,11 @@ trait CISSimSteps extends PerformanceTestRunner {
 
   def cisIndividualEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage(nino = "AC150000B", mtditid = "1234567890"),
+    postIndividualLoginPage(nino = "AC150000B", mtditid = "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
-//  getCisGatewayPage(taxYearEOY),
-//  postCisGatewayPage(taxYearEOY),
+    getCisGatewayPage(taxYearEOY),
+    postCisGatewayPage(taxYearEOY),
     getCisSummaryPage(taxYearEOY),
     getCisContractorPage(taxYearEOY, contractorId = "111%2F11111"),
     getCheckYourCisDeductionsPage(taxYearEOY, month = "may", contractorId = "111%2F11111"),
@@ -71,12 +71,12 @@ trait CISSimSteps extends PerformanceTestRunner {
 
   def cisAgentEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC150000B", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890"),
+    postAgentLoginPage("AC150000B", "1234567890", taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
-    //  getCisGatewayPage(taxYearEOY),
-    //  postCisGatewayPage(taxYearEOY),
+    getCisGatewayPage(taxYearEOY),
+    postCisGatewayPage(taxYearEOY),
     getCisSummaryPage(taxYearEOY),
     getContractorDetailsPage(taxYearEOY),
     postContractorDetailsPage(taxYearEOY, contractorId = "123/45678"),
