@@ -27,7 +27,7 @@ trait StudentLoansSimSteps extends PerformanceTestRunner {
 
   def studentLoansIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA123459A", "1234567890"),
+    postIndividualLoginPage("AA123459A", "1234567890",taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -45,8 +45,8 @@ trait StudentLoansSimSteps extends PerformanceTestRunner {
 
   def studentLoansAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA123459A", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
+    postAgentLoginPage("AA123459A", "1234567890",taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890",taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
