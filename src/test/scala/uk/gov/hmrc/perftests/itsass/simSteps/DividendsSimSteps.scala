@@ -26,7 +26,7 @@ trait DividendsSimSteps extends PerformanceTestRunner {
 
   def individualDividends(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111111A", "1234567890", taxYearEOY),
+    postIndividualLoginPage("AA111112A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getDividendsGatewayPage(taxYearEOY),

@@ -26,7 +26,7 @@ trait InterestSimSteps extends PerformanceTestRunner {
 
   def interestIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111111A", "1234567890", taxYear),
+    postIndividualLoginPage("AA111112A", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getInterestSummaryPage(taxYear),
