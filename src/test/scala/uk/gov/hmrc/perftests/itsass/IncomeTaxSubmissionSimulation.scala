@@ -89,8 +89,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
 
   //Tailor Return
-  tailorReturnIndividual(id = "individual-tailor-return", description = "Individual Tailor Return Journey")
-  tailorReturnAgent(id = "agent-tailor-return", description = "Agent Tailor Return Journey")
+  aboutYouIndividual(id = "individual-about-you", description = "Individual About You Journey")
+  aboutYouAgent(id = "agent-about-you", description = "Agent About You Journey")
+  incomeFromWorkIndividual(id = "individual-income-from-work", description = "Individual Income From Work Journey")
+  incomeFromWorkAgent(id = "agent-income-from-work", description = "Agent Income From Work Journey")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
