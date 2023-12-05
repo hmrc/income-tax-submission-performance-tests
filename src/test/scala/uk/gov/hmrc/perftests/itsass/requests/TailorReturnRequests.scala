@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -342,5 +342,115 @@ object TailorReturnRequests extends ServicesConfiguration {
     .post(s"${tailorReturnUrl(taxYear)}/change-payments-pensions")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value[]", "none")
+    .check(status.is(303))
+
+  def getPensionsPage(taxYear: String): HttpRequestBuilder = http("Get Pensions Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/pensions")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPensionsPage(taxYear: String): HttpRequestBuilder = http("Post Pensions Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/pensions")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "statePension")
+    .check(status.is(303))
+
+  def getChangePensionsPage(taxYear: String): HttpRequestBuilder = http("Get Change Pensions Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-pensions")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangePensionsPage(taxYear: String): HttpRequestBuilder = http("Post Change Pensions Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-pensions")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "nonUkPensions")
+    .check(status.is(303))
+
+  def getRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Get Rental Income Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/rental-income")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Post Rental Income Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/rental-income")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "uk")
+    .check(status.is(303))
+
+  def getChangeRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Get Change Rental Income Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-rental-income")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Post Change Rental Income Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-rental-income")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "nonUk")
+    .check(status.is(303))
+
+  def getUKDividendsSharesLoansPage(taxYear: String): HttpRequestBuilder = http("Get UK Dividends Shares Loans Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-dividends-shares-loans")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postUKDividendsSharesLoansPage(taxYear: String): HttpRequestBuilder = http("Post UK Dividends Shares Loans Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-dividends-shares-loans")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "cashDividendsUkStocksAndShares")
+    .check(status.is(303))
+
+  def getChangeUKDividendsSharesLoansPage(taxYear: String): HttpRequestBuilder = http("Get Change UK Dividends Shares Loans Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-dividends-shares-loans")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeUKDividendsSharesLoansPage(taxYear: String): HttpRequestBuilder = http("Post Change UK Dividends Shares Loans Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-dividends-shares-loans")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "stockDividendsUkCompanies")
+    .check(status.is(303))
+
+  def getUKInsuranceGainsPage(taxYear: String): HttpRequestBuilder = http("Get UK Insurance Gains Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-insurance-gains")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postUKInsuranceGainsPage(taxYear: String): HttpRequestBuilder = http("Post UK Insurance Gains Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-insurance-gains")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "lifeAnnuity")
+    .check(status.is(303))
+
+  def getChangeUKInsuranceGainsPage(taxYear: String): HttpRequestBuilder = http("Get Change UK Insurance Gains Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-insurance-gains")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeUKInsuranceGainsPage(taxYear: String): HttpRequestBuilder = http("Post Change UK Insurance Gains Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-insurance-gains")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "lifeInsurance")
+    .check(status.is(303))
+
+  def getUKInterestPage(taxYear: String): HttpRequestBuilder = http("Get UK Interest Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-interest")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postUKInterestPage(taxYear: String): HttpRequestBuilder = http("Post UK Interest Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-interest")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "fromUkTrustFunds")
+    .check(status.is(303))
+
+  def getChangeUKInterestPage(taxYear: String): HttpRequestBuilder = http("Get Change UK Interest Page")
+    .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-interest")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeUKInterestPage(taxYear: String): HttpRequestBuilder = http("Post Change UK Interest Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-interest")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "fromUkBanks")
     .check(status.is(303))
 }
