@@ -19,7 +19,7 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.TailorReturnRequests._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
-import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getStartPage}
+import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getEOYOverviewPage, getInsertAdditionalParametersEndPoint, getStartPage}
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY}
 
 trait TailorReturnSimSteps extends PerformanceTestRunner {
@@ -178,5 +178,59 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     postPaymentsPensionsPage(taxYear),
     getChangePaymentsPensionsPage(taxYear),
     postChangePaymentsPensionsPage(taxYear)
+  )
+  def propertyPensionsInvestmentsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA111112A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getPensionsPage(taxYearEOY),
+    postPensionsPage(taxYearEOY),
+    getChangePensionsPage(taxYearEOY),
+    postChangePensionsPage(taxYearEOY),
+    getRentalIncomePage(taxYearEOY),
+    postRentalIncomePage(taxYearEOY),
+    getChangeRentalIncomePage(taxYearEOY),
+    postChangeRentalIncomePage(taxYearEOY),
+    getUKDividendsSharesLoansPage(taxYearEOY),
+    postUKDividendsSharesLoansPage(taxYearEOY),
+    getChangeUKDividendsSharesLoansPage(taxYearEOY),
+    postChangeUKDividendsSharesLoansPage(taxYearEOY),
+    getUKInsuranceGainsPage(taxYearEOY),
+    postUKInsuranceGainsPage(taxYearEOY),
+    getChangeUKInsuranceGainsPage(taxYearEOY),
+    postChangeUKInsuranceGainsPage(taxYearEOY),
+    getUKInterestPage(taxYearEOY),
+    postUKInterestPage(taxYearEOY),
+    postChangeUKInterestPage(taxYearEOY),
+    getChangeUKInterestPage(taxYearEOY)
+  )
+
+  def propertyPensionsInvestmentsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA111112A", "1234567890", taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getPensionsPage(taxYearEOY),
+    postPensionsPage(taxYearEOY),
+    getChangePensionsPage(taxYearEOY),
+    postChangePensionsPage(taxYearEOY),
+    getRentalIncomePage(taxYearEOY),
+    postRentalIncomePage(taxYearEOY),
+    getChangeRentalIncomePage(taxYearEOY),
+    postChangeRentalIncomePage(taxYearEOY),
+    getUKDividendsSharesLoansPage(taxYearEOY),
+    postUKDividendsSharesLoansPage(taxYearEOY),
+    getChangeUKDividendsSharesLoansPage(taxYearEOY),
+    postChangeUKDividendsSharesLoansPage(taxYearEOY),
+    getUKInsuranceGainsPage(taxYearEOY),
+    postUKInsuranceGainsPage(taxYearEOY),
+    getChangeUKInsuranceGainsPage(taxYearEOY),
+    postChangeUKInsuranceGainsPage(taxYearEOY),
+    getUKInterestPage(taxYearEOY),
+    postUKInterestPage(taxYearEOY),
+    postChangeUKInterestPage(taxYearEOY),
+    getChangeUKInterestPage(taxYearEOY)
   )
 }
