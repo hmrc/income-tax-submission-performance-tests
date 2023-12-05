@@ -321,4 +321,26 @@ object TailorReturnRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value[]", "none")
     .check(status.is(303))
+
+  def getPaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Get Payments Into Pensions Page")
+    .get(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Post Payments Into Pensions Page")
+    .post(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "ukPensions")
+    .check(status.is(303))
+
+  def getChangePaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Get Change Payments Into Pensions Page")
+    .get(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangePaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Post Change Payments Into Pensions Page")
+    .post(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "none")
+    .check(status.is(303))
 }
