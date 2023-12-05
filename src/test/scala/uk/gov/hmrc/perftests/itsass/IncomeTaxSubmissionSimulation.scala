@@ -93,6 +93,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   aboutYouAgent(id = "agent-about-you", description = "Agent About You Journey")
   incomeFromWorkIndividual(id = "individual-income-from-work", description = "Individual Income From Work Journey")
   incomeFromWorkAgent(id = "agent-income-from-work", description = "Agent Income From Work Journey")
+  individualPaymentsIntoPensions(id = "payments-into-pensions-individual", description = "Individual Payments Into Pensions")
+  agentPaymentsIntoPensions(id = "payments-into-pensions-agent", description = "Agent Payments Into Pensions")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")

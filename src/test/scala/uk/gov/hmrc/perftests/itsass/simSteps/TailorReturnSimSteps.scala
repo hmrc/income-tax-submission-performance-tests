@@ -154,4 +154,29 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     getChangeJobseekersAllowancePage(taxYear),
     postChangeJobseekersAllowancePage(taxYear),
   )
+
+  def individualPaymentsIntoPensions(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA123459A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getTailorReturnStartPage(taxYearEOY),
+    getTailorReturnAddSectionsPage(taxYearEOY),
+    getPaymentsPensionsPage(taxYearEOY),
+    postPaymentsPensionsPage(taxYearEOY),
+    getChangePaymentsPensionsPage(taxYearEOY),
+    postChangePaymentsPensionsPage(taxYearEOY),
+  )
+
+  def agentPaymentsIntoPensions(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA123459A", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
+    getStartPage(taxYear),
+    getTailorReturnStartPage(taxYear),
+    getTailorReturnAddSectionsPage(taxYear),
+    getPaymentsPensionsPage(taxYear),
+    postPaymentsPensionsPage(taxYear),
+    getChangePaymentsPensionsPage(taxYear),
+    postChangePaymentsPensionsPage(taxYear)
+  )
 }
