@@ -24,7 +24,7 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY
 
 trait TailorReturnSimSteps extends PerformanceTestRunner {
 
-  def tailorReturnIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def aboutYouIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AA123459A", "1234567890",taxYearEOY),
     getStartPage(taxYearEOY),
@@ -69,7 +69,7 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     getTailorReturnFrontEndPage(taxYearEOY)
   )
 
-  def tailorReturnAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def aboutYouAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postAgentLoginPage("AA123459A", "1234567890",taxYear),
     getInsertAdditionalParametersEndPoint("AA123459A", "1234567890",taxYear),
@@ -112,5 +112,46 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     postTaxAvoidanceSchemesPage(taxYear),
     getChangeTaxAvoidanceSchemesPage(taxYear),
     postChangeTaxAvoidanceSchemesPage(taxYear)
+  )
+
+  def incomeFromWorkIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA123459A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getTailorReturnStartPage(taxYearEOY),
+    getTailorReturnAddSectionsPage(taxYearEOY),
+    getAboutYourWorkPage(taxYearEOY),
+    postAboutYourWorkPage(taxYearEOY),
+    getChangeAboutYourWorkPage(taxYearEOY),
+    postChangeAboutYourWorkPage(taxYearEOY),
+    getConstructionIndustrySchemePage(taxYearEOY),
+    postConstructionIndustrySchemePage(taxYearEOY),
+    getChangeConstructionIndustrySchemePage(taxYearEOY),
+    postChangeConstructionIndustrySchemePage(taxYearEOY),
+    getJobseekersAllowancePage(taxYearEOY),
+    postJobseekersAllowancePage(taxYearEOY),
+    getChangeJobseekersAllowancePage(taxYearEOY),
+    postChangeJobseekersAllowancePage(taxYearEOY),
+  )
+
+  def incomeFromWorkAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA123459A", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
+    getStartPage(taxYear),
+    getTailorReturnStartPage(taxYear),
+    getTailorReturnAddSectionsPage(taxYear),
+    getAboutYourWorkPage(taxYear),
+    postAboutYourWorkPage(taxYear),
+    getChangeAboutYourWorkPage(taxYear),
+    postChangeAboutYourWorkPage(taxYear),
+    getConstructionIndustrySchemePage(taxYear),
+    postConstructionIndustrySchemePage(taxYear),
+    getChangeConstructionIndustrySchemePage(taxYear),
+    postChangeConstructionIndustrySchemePage(taxYear),
+    getJobseekersAllowancePage(taxYear),
+    postJobseekersAllowancePage(taxYear),
+    getChangeJobseekersAllowancePage(taxYear),
+    postChangeJobseekersAllowancePage(taxYear),
   )
 }

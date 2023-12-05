@@ -255,4 +255,70 @@ object TailorReturnRequests extends ServicesConfiguration {
   def getTailorReturnFrontEndPage(taxYear: String) : HttpRequestBuilder = http("Get Tailor Return Frontend Page")
     .get(s"${tailorReturnUrl(taxYear)}")
     .check(status.is(200))
+
+  def getAboutYourWorkPage(taxYear: String): HttpRequestBuilder = http("Get About Your Work Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/about-your-work")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postAboutYourWorkPage(taxYear: String): HttpRequestBuilder = http("Post About Your Work Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/about-your-work")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "employed")
+    .check(status.is(303))
+
+  def getChangeAboutYourWorkPage(taxYear: String): HttpRequestBuilder = http("Get Change About Your Work Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/change-about-your-work")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeAboutYourWorkPage(taxYear: String): HttpRequestBuilder = http("Post Change About Your Work Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/change-about-your-work")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "selfEmployed")
+    .check(status.is(303))
+
+  def getConstructionIndustrySchemePage(taxYear: String): HttpRequestBuilder = http("Get Construction Industry Scheme Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/construction-industry-scheme")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postConstructionIndustrySchemePage(taxYear: String): HttpRequestBuilder = http("Post Construction Industry Scheme Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/construction-industry-scheme")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", true)
+    .check(status.is(303))
+
+  def getChangeConstructionIndustrySchemePage(taxYear: String): HttpRequestBuilder = http("Get Change Construction Industry Scheme Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/construction-industry-scheme")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeConstructionIndustrySchemePage(taxYear: String): HttpRequestBuilder = http("Post Change Construction Industry Scheme Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/construction-industry-scheme")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", false)
+    .check(status.is(303))
+
+  def getJobseekersAllowancePage(taxYear: String): HttpRequestBuilder = http("Get Jobseekers Allowance Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/jobseekers-allowance-employment-and-support-allowance")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postJobseekersAllowancePage(taxYear: String): HttpRequestBuilder = http("Post Jobseekers Allowance Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/jobseekers-allowance-employment-and-support-allowance")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "jsa")
+    .check(status.is(303))
+
+  def getChangeJobseekersAllowancePage(taxYear: String): HttpRequestBuilder = http("Get Change Jobseekers Allowance Page")
+    .get(s"${tailorReturnUrl(taxYear)}/work-and-benefits/jobseekers-allowance-employment-and-support-allowance")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postChangeJobseekersAllowancePage(taxYear: String): HttpRequestBuilder = http("Post Change Jobseekers Allowance Page")
+    .post(s"${tailorReturnUrl(taxYear)}/work-and-benefits/jobseekers-allowance-employment-and-support-allowance")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "none")
+    .check(status.is(303))
 }
