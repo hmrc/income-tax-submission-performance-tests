@@ -334,12 +334,12 @@ object TailorReturnRequests extends ServicesConfiguration {
     .check(status.is(303))
 
   def getChangePaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Get Change Payments Into Pensions Page")
-    .get(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .get(s"${tailorReturnUrl(taxYear)}/change-payments-pensions")
     .check(saveCsrfToken())
     .check(status.is(200))
 
   def postChangePaymentsPensionsPage(taxYear: String): HttpRequestBuilder = http("Post Change Payments Into Pensions Page")
-    .post(s"${tailorReturnUrl(taxYear)}/payments-pensions")
+    .post(s"${tailorReturnUrl(taxYear)}/change-payments-pensions")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value[]", "none")
     .check(status.is(303))
