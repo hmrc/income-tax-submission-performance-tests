@@ -381,7 +381,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
 
   def employmentOPWIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA123459A", "XAIT00000888888", taxYearEOY),
+    postIndividualLoginPage("AA123459A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getEmploymentSummaryPage(taxYearEOY),
@@ -416,7 +416,7 @@ trait EmploymentsSimSteps extends PerformanceTestRunner {
     postUkTaxEmploymentPage(taxYearEOY, 600, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
     getEmployerTaxWarningPage(taxYearEOY, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
     getEmployerOffPayrollWorkingPage(taxYearEOY, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
-    postEmployerOffPayrollWorkingPage(taxYearEOY, false, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
+    postEmployerOffPayrollWorkingPage(taxYearEOY, true, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
     getEmployerOffPayrollWorkingWarningPage(taxYearEOY, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
     getCheckEmploymentDetailsPage(taxYearEOY, "3c891e58-9b21-4296-8ecd-76f771c5d079"),
     postCheckEmploymentDetailsPage(taxYearEOY, "3c891e58-9b21-4296-8ecd-76f771c5d079")
