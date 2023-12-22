@@ -57,6 +57,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   removeEmploymentIndividual(id = "individual-remove-employment", description = "Individual Remove Employment - Single Employment")
   removeEmploymentAgent(id = "agent-remove-employment", description = "Agent Remove Employment - Multiple Employments")
 
+  //Employment OPW
+  employmentOPWIndividual(id = "individual-employment-opw", description = "Individual Employment OPW")
+  employmentOPWAgent(id = "agent-employment-opw", description = "Agent Employment OPW")
+
   //StudentLoans
   studentLoansIndividual(id = "individual-student-loans", description = "Individual Student Loans Journey")
   studentLoansAgent(id = "agent-student-loans", description = "Agent Student Loans Journey")
