@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val employmentFrontendBaseUrl: String = baseUrlFor("income-tax-employment-frontend")
   val additionalInfoFrontendBaseUrl: String = baseUrlFor("income-tax-additional-info-frontend")
   val tailorReturnBaseUrl: String = baseUrlFor("income-tax-tailor-return")
+  val propertyBaseUrl: String = baseUrlFor("income-tax-property-frontend")
   val viewAndChangeFrontendBaseUrl: String = baseUrlFor("income-tax-view-change-frontend")
   val nrsProxyBaseUrl: String = baseUrlFor("income-tax-nrs-proxy")
   val authLoginUrl: String = baseUrlFor("auth-login-stub")
@@ -52,6 +53,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val pensionsUrl: String => String = (taxYear: String) => pensionsFrontendBaseUrl + s"/update-and-submit-income-tax-return/pensions/$taxYear"
   val gainsUrl: String => String = (taxYear: String) => additionalInfoFrontendBaseUrl + s"/update-and-submit-income-tax-return/additional-information/$taxYear/gains"
   val tailorReturnUrl: String => String = (taxYear: String) => tailorReturnBaseUrl + s"/update-and-submit-income-tax-return/tailored-return/$taxYear"
+  val propertyUrl: String => String = (taxYear: String) => propertyBaseUrl + s"/update-and-submit-income-tax-return/property/$taxYear"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""

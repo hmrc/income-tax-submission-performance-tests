@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps{
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps {
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -101,6 +101,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   agentPaymentsIntoPensions(id = "payments-into-pensions-agent", description = "Agent Payments Into Pensions")
   propertyPensionsInvestmentsIndividual(id = "property-pensions-investments-individual", description = "Individual Property Pensions Investments")
   propertyPensionsInvestmentsAgent(id = "property-pensions-investments-agent", description = "Agent Property Pensions Investments")
+
+  //Property
+  propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
+  propertyAgentEOYYear(id = "agent-property" , description = "Agent UK Property Journey")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
