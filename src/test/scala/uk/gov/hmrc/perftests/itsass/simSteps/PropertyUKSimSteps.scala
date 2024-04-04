@@ -27,7 +27,7 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
 
   def propertyIndividualEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AC180000A", "1234567890", taxYear),
+    postIndividualLoginPage("AC180000A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
@@ -35,12 +35,22 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     getPropertyTotalIncome(taxYearEOY),
     getPropertyUKSelect(taxYearEOY),
     getCheckYourAnswers(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+    getPropertyRentalsAbout(taxYearEOY),
+    getExpensesLessThan1000(taxYearEOY),
+    getClaimPropertyIncomeAllowance(taxYearEOY),
+    getPropertyRentalsCYA(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+    getPropertyIncomeStart(taxYearEOY),
+    getNonUkLandlord(taxYearEOY),
+    getDeductingUKTax(taxYearEOY),
+    getIncomePropertyRentals(taxYearEOY)
 
   )
   def propertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC180000A", "1234567890", taxYear),
-    getInsertAdditionalParametersEndPoint("AC180000A", "1234567890", taxYear),
+    postAgentLoginPage("AC180000A", "1234567890", taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AC180000A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
@@ -48,5 +58,16 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     getPropertyTotalIncome(taxYearEOY),
     getPropertyUKSelect(taxYearEOY),
     getCheckYourAnswers(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+    getPropertyRentalsAbout(taxYearEOY),
+    getExpensesLessThan1000(taxYearEOY),
+    getClaimPropertyIncomeAllowance(taxYearEOY),
+    getPropertyRentalsCYA(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+    getPropertyIncomeStart(taxYearEOY),
+    getNonUkLandlord(taxYearEOY),
+    getDeductingUKTax(taxYearEOY),
+    getIncomePropertyRentals(taxYearEOY)
+
   )
 }
