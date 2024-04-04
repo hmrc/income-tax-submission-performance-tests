@@ -75,4 +75,36 @@ object PropertyUKRequests extends ServicesConfiguration {
     .formParam("value", true)
     .check(status.is(303))
 
+  def getPropertyRentalsAbout(taxYear : String): HttpRequestBuilder = http("Get Property Rentals About Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/property-rentals-start")
+    .check(status.is(expected = 200))
+
+  def getExpensesLessThan1000(taxYear : String): HttpRequestBuilder = http ("Get Expenses Less Than 1000 Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/property-rentals-start")
+    .check(status.is(expected = 200))
+
+  def getClaimPropertyIncomeAllowance(taxYear : String): HttpRequestBuilder = http ("Get Claim Property Income Allowance Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/claim-property-income-allowance")
+    .check(status.is(expected = 200))
+
+  def getPropertyRentalsCYA(taxYear : String): HttpRequestBuilder = http ("Get Property Rentals CYA Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/check-your-answers")
+    .check(status.is(expected = 200))
+
+  def getPropertyIncomeStart(taxYear : String): HttpRequestBuilder = http ("Get Property Income Start Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/property-income-start")
+    .check(status.is(expected = 200))
+
+  def getNonUkLandlord(taxYear : String): HttpRequestBuilder = http ("Get Is Non-UK Landlord Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/is-non-uk-landlord")
+    .check(status.is(expected = 200))
+
+  def getDeductingUKTax(taxYear : String): HttpRequestBuilder = http ("Get Deducting Tax Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/deducting-tax")
+    .check(status.is(expected = 200))
+
+  def getIncomePropertyRentals(taxYear : String): HttpRequestBuilder = http ("Get Deducting Tax Page")
+    .get(s"${propertyUrl(taxYear)}/property-rentals/income-from-property-rentals")
+    .check(status.is(expected = 200))
+
 }
