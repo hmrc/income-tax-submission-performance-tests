@@ -314,7 +314,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(status.is(200))
 
   def postPolicySummaryPage(taxYear: String): HttpRequestBuilder = http("Post Policy Summary Page")
-    .post(s"${gainsUrl(taxYear)}/policy-summary")
+    .post(s"${gainsUrl(taxYear)}/policy-summary/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
@@ -323,11 +323,11 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(status.is(200))
 
   def getPoliciesRemoveConfirmationPage(taxYear: String): HttpRequestBuilder = http("Get Policies Remove Confirmation Page")
-    .get(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsSessionId")
+    .get(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsRemoveConfirmationSessionId")
     .check(status.is(200))
 
   def postPoliciesRemoveConfirmationPage(taxYear: String): HttpRequestBuilder = http("Post Policies Remove Confirmation Page")
-    .post(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsSessionId")
+    .post(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsRemoveConfirmationSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
   

@@ -29,6 +29,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val employmentIdWithNoBenefits: String = "f82f7d1d-61e2-45a0-8a1e-c515b7da81eb"
   val employmentIdWithNoStudentLoans: String = "3c891e58-9b21-4296-8ecd-76f771c5d079"
   val gainsSessionId = "sessionId-eb3158c2-0aff-4ce8-8d1b-f2208ace52fe"
+  val gainsRemoveConfirmationSessionId = "257782ce-f399-415b-af40-3c37636d53eb"
 
   val baseUrl: String = baseUrlFor("income-tax-submission-frontend")
   val personalIncomeBaseUrl: String = baseUrlFor("personal-income-tax-submission-frontend")
