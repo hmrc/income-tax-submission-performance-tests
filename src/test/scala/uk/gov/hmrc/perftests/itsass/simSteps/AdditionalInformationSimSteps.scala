@@ -27,7 +27,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def interestSecuritiesIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111112A", "1234567890", taxYear),
+    postIndividualLoginPage("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getInterestSummaryPage(taxYear),
@@ -45,8 +45,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def interestSecuritiesAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A", "1234567890", taxYear),
-    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890", taxYear),
+    postAgentLoginPage("AA123459A", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getInterestSummaryPage(taxYear),
@@ -64,7 +64,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def gainsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111112A", "1234567890", taxYear),
+    postIndividualLoginPage("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGainsGatewayPage(taxYear),
@@ -96,8 +96,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def gainsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A", "1234567890", taxYear),
-    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890", taxYear),
+    postAgentLoginPage("AA123459A", "1234567890", taxYear),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGainsGatewayPage(taxYear),
@@ -129,7 +129,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def gainsVoidedISAIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111112A", "1234567890"),
+    postIndividualLoginPage("AA123459A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGainsGatewayPage(taxYear),
@@ -159,8 +159,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def gainsVoidedISAAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A", "1234567890"),
-    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890"),
+    postAgentLoginPage("AA123459A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getGainsGatewayPage(taxYear),
@@ -190,7 +190,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def stockDividendsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AA111112A", "1234567890", s"$taxYearEOY"),
+    postIndividualLoginPage("AA123459A", "1234567890", s"$taxYearEOY"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getDividendsGatewayPage(taxYearEOY),
@@ -221,8 +221,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
   def stockDividendsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AA111112A", "1234567890", s"$taxYearEOY"),
-    getInsertAdditionalParametersEndPoint("AA111112A", "1234567890", s"$taxYearEOY"),
+    postAgentLoginPage("AA123459A", "1234567890", s"$taxYearEOY"),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", s"$taxYearEOY"),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getDividendsGatewayPage(taxYearEOY),
