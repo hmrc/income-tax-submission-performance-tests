@@ -258,7 +258,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postPolicyEventPage(policyEvent: String): HttpRequestBuilder = http("Post Policy Event Page")
+  def postPolicyEventPage(policyEvent: String, taxYear: String): HttpRequestBuilder = http("Post Policy Event Page")
     .post(s"${gainsUrl(taxYear)}/policy-event/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("policy-event", policyEvent)

@@ -26,23 +26,23 @@ trait CISSimSteps extends PerformanceTestRunner {
 
   def cisIndividualInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postIndividualLoginPage("AC150000B", "1234567890", taxYear),
-    getStartPage(taxYear),
-    getOverviewPage(taxYear),
-    getCisSummaryPage(taxYear),
-    getCisContractorPage(taxYear, "111%2F11111"),
-    getCheckYourCisDeductionsPage(taxYear, "may", "111%2F11111")
+    postIndividualLoginPage("AC150000B", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getCisSummaryPage(taxYearEOY),
+    getCisContractorPage(taxYearEOY, "111%2F11111"),
+    getCheckYourCisDeductionsPage(taxYearEOY, "may", "111%2F11111")
   )
 
   def cisAgentInYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC150000B", "1234567890", taxYear),
-    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890", taxYear),
-    getStartPage(taxYear),
-    getOverviewPage(taxYear),
-    getCisSummaryPage(taxYear),
-    getCisContractorPage(taxYear, "111%2F11111"),
-    getCheckYourCisDeductionsPage(taxYear, "may", "111%2F11111")
+    postAgentLoginPage("AC150000B", "1234567890", taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AC150000B", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getCisSummaryPage(taxYearEOY),
+    getCisContractorPage(taxYearEOY, "111%2F11111"),
+    getCheckYourCisDeductionsPage(taxYearEOY, "may", "111%2F11111")
   )
 
   def cisIndividualEndOfYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
