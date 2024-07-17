@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AdditionalInfoRequests._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests._
-import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getEOYOverviewPage, getInsertAdditionalParametersEndPoint, getOverviewPage, getStartPage}
+import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY}
 
 trait AdditionalInformationSimSteps extends PerformanceTestRunner {
@@ -41,6 +41,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postTaxTakenFromInterestAmountPage(taxYear),
     getSecuritiesCheckYourAnswersPage(taxYear),
     postSecuritiesCheckYourAnswersPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getInterestSectionCompletedPage(taxYear),
+//    postInterestSectionCompletedPage(taxYear)
   )
 
   def interestSecuritiesAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -60,6 +63,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postTaxTakenFromInterestAmountPage(taxYear),
     getSecuritiesCheckYourAnswersPage(taxYear),
     postSecuritiesCheckYourAnswersPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getInterestSectionCompletedPage(taxYear),
+//    postInterestSectionCompletedPage(taxYear)
   )
 
   def gainsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -92,6 +98,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsSummaryPage(taxYear),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getGainsSectionCompletedPage(taxYear),
+//    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -125,6 +134,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsSummaryPage(taxYear),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getGainsSectionCompletedPage(taxYear),
+//    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsVoidedISAIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -155,6 +167,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsSummaryPage(taxYear),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getGainsSectionCompletedPage(taxYear),
+//    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsVoidedISAAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -186,6 +201,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsSummaryPage(taxYear),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
+    //TODO add when endpoints are added to Journey
+//    getGainsSectionCompletedPage(taxYear),
+//    postGainsSectionCompletedPage(taxYear,"false")
   )
 
   def stockDividendsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -217,6 +235,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postStockDividendsCompanyLoanAmountPage(taxYearEOY),
     getStockDividendsSummaryPage(taxYearEOY),
     postStockDividendsSummaryPage(taxYearEOY)
+    //TODO add when endpoints are added to Journey
+//    getStockDividendSectionCompletedPage(taxYearEOY),
+//    postStockDividendSectionCompletedPage(taxYearEOY)
   )
 
   def stockDividendsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -249,5 +270,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postStockDividendsCompanyLoanAmountPage(taxYearEOY),
     getStockDividendsSummaryPage(taxYearEOY),
     postStockDividendsSummaryPage(taxYearEOY)
+    //TODO add when endpoints are added to Journey
+//    getStockDividendSectionCompletedPage(taxYearEOY),
+//    postStockDividendSectionCompletedPage(taxYearEOY)
   )
 }

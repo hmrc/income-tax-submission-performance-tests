@@ -407,4 +407,37 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .post(s"${dividendsUrl(taxYear)}/summary")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
+
+  def getInterestSectionCompletedPage(taxYear: String): HttpRequestBuilder = http("Get Interest Section Completed Page")
+    .get(s"${interestUrl(taxYear)}/section-completed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postInterestSectionCompletedPage(taxYear: String, value: String = "true"): HttpRequestBuilder = http("Post Interest Section Completed Page")
+    .post(s"${interestUrl(taxYear)}/section-completed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", value)
+    .check(status.is(303))
+
+  def getStockDividendSectionCompletedPage(taxYear: String): HttpRequestBuilder = http("Get Dividends Section Completed Page")
+    .get(s"${dividendsUrl(taxYear)}/section-completed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postStockDividendSectionCompletedPage(taxYear: String, value: String = "true"): HttpRequestBuilder = http("Post Dividends Section Completed Page")
+    .post(s"${dividendsUrl(taxYear)}/section-completed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", value)
+    .check(status.is(303))
+
+  def getGainsSectionCompletedPage(taxYear: String): HttpRequestBuilder = http("Get Gains Section Completed Page")
+    .get(s"${gainsUrl(taxYear)}/section-completed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGainsSectionCompletedPage(taxYear: String, value: String = "true"): HttpRequestBuilder = http("Post Gains Section Completed Page")
+    .post(s"${gainsUrl(taxYear)}/section-completed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", value)
+    .check(status.is(303))
 }
