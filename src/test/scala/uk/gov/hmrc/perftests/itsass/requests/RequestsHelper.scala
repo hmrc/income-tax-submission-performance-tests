@@ -62,6 +62,10 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val employmentIdPattern: String = s"""employmentId=([^"]+)"""
   val sessionDataIdPattern: String = s"""/jobseekers-allowance/([^"]+)/(start-date|review-claim)"""
 
+  def formatPolicyType(policyType: String): String = {
+    policyType.replace(" ", "+")
+  }
+
   def saveUntaxedAccountId: CheckBuilder[HttpHeaderRegexCheckType, Response, String] = headerRegex(
     "Location", untaxedAccountPattern).saveAs("untaxedAccountId")
 

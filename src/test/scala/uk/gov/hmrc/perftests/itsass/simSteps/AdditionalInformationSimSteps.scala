@@ -42,8 +42,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getSecuritiesCheckYourAnswersPage(taxYear),
     postSecuritiesCheckYourAnswersPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getInterestSectionCompletedPage(taxYear),
-//    postInterestSectionCompletedPage(taxYear)
+    //    getInterestSectionCompletedPage(taxYear),
+    //    postInterestSectionCompletedPage(taxYear)
   )
 
   def interestSecuritiesAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -64,8 +64,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getSecuritiesCheckYourAnswersPage(taxYear),
     postSecuritiesCheckYourAnswersPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getInterestSectionCompletedPage(taxYear),
-//    postInterestSectionCompletedPage(taxYear)
+    //    getInterestSectionCompletedPage(taxYear),
+    //    postInterestSectionCompletedPage(taxYear)
   )
 
   def gainsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -86,7 +86,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicyHeldPreviousPage(taxYear),
     postPolicyHeldPreviousPage(taxYear),
     getPolicyEventPage(taxYear),
-    postPolicyEventPage("Policy matured or a death",taxYear),
+    postPolicyEventPage("Policy matured or a death", taxYear),
     getPolicyHeldPage(taxYear),
     postPolicyHeldPage(taxYear),
     getPaidTaxStatusPage(taxYear),
@@ -95,12 +95,12 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postDeficiencyReliefStatusPage("100", taxYear),
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
-    getGainsSummaryPage(taxYear),
+    getGainsSummaryPage(taxYear, "Life Insurance"),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getGainsSectionCompletedPage(taxYear),
-//    postGainsSectionCompletedPage(taxYear)
+    //    getGainsSectionCompletedPage(taxYear),
+    //    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -122,7 +122,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicyHeldPreviousPage(taxYear),
     postPolicyHeldPreviousPage(taxYear),
     getPolicyEventPage(taxYear),
-    postPolicyEventPage("Policy matured or a death",taxYear),
+    postPolicyEventPage("Policy matured or a death", taxYear),
     getPolicyHeldPage(taxYear),
     postPolicyHeldPage(taxYear),
     getPaidTaxStatusPage(taxYear),
@@ -131,12 +131,12 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postDeficiencyReliefStatusPage("100", taxYear),
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
-    getGainsSummaryPage(taxYear),
+    getGainsSummaryPage(taxYear, "Life Insurance"),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getGainsSectionCompletedPage(taxYear),
-//    postGainsSectionCompletedPage(taxYear)
+    //    getGainsSectionCompletedPage(taxYear),
+    //    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsVoidedISAIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -153,7 +153,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsAmountPage(taxYear),
     postGainsAmountPage("193.34", taxYear),
     getPolicyEventPage(taxYear),
-    postPolicyEventPage("Policy matured or a death",taxYear),
+    postPolicyEventPage("Policy matured or a death", taxYear),
     getGainsStatusPage(taxYear),
     postGainsStatusPage(taxYear),
     getPolicyHeldPreviousPage(taxYear),
@@ -164,12 +164,12 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postPaidTaxAmountPage(taxYear),
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
-    getGainsSummaryPage(taxYear),
+    getGainsSummaryPage(taxYear, "Voided ISA"),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getGainsSectionCompletedPage(taxYear),
-//    postGainsSectionCompletedPage(taxYear)
+    //    getGainsSectionCompletedPage(taxYear),
+    //    postGainsSectionCompletedPage(taxYear)
   )
 
   def gainsVoidedISAAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -187,7 +187,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getGainsAmountPage(taxYear),
     postGainsAmountPage("193.34", taxYear),
     getPolicyEventPage(taxYear),
-    postPolicyEventPage("Policy matured or a death",taxYear),
+    postPolicyEventPage("Policy matured or a death", taxYear),
     getGainsStatusPage(taxYear),
     postGainsStatusPage(taxYear),
     getPolicyHeldPreviousPage(taxYear),
@@ -198,12 +198,12 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     postPaidTaxAmountPage(taxYear),
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
-    getGainsSummaryPage(taxYear),
+    getGainsSummaryPage(taxYear, "Voided ISA"),
     getPoliciesRemoveConfirmationPage(taxYear),
     postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
-//    getGainsSectionCompletedPage(taxYear),
-//    postGainsSectionCompletedPage(taxYear,"false")
+    //    getGainsSectionCompletedPage(taxYear),
+    //    postGainsSectionCompletedPage(taxYear,"false")
   )
 
   def stockDividendsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -236,8 +236,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getStockDividendsSummaryPage(taxYearEOY),
     postStockDividendsSummaryPage(taxYearEOY)
     //TODO add when endpoints are added to Journey
-//    getStockDividendSectionCompletedPage(taxYearEOY),
-//    postStockDividendSectionCompletedPage(taxYearEOY)
+    //    getStockDividendSectionCompletedPage(taxYearEOY),
+    //    postStockDividendSectionCompletedPage(taxYearEOY)
   )
 
   def stockDividendsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -271,7 +271,7 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getStockDividendsSummaryPage(taxYearEOY),
     postStockDividendsSummaryPage(taxYearEOY)
     //TODO add when endpoints are added to Journey
-//    getStockDividendSectionCompletedPage(taxYearEOY),
-//    postStockDividendSectionCompletedPage(taxYearEOY)
+    //    getStockDividendSectionCompletedPage(taxYearEOY),
+    //    postStockDividendSectionCompletedPage(taxYearEOY)
   )
 }
