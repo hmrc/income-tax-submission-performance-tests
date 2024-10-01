@@ -141,7 +141,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
   def postInterestFromSecuritiesPage(taxYear: String): HttpRequestBuilder = http("Post Interest From Securities")
     .post(s"${interestUrl(taxYear)}/interest-from-securities")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value",true)
+    .formParam("value", true)
     .check(status.is(303))
 
   def getTaxTakenFromInterestAmountPage(taxYear: String): HttpRequestBuilder = http("Get How Much Interest Did You Get Page")
@@ -163,7 +163,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
   def postInterestSecuritiesTaxTakenOffPage(taxYear: String): HttpRequestBuilder = http("Post Was Tax Taken Off Your Interest Page")
     .post(s"${interestUrl(taxYear)}/tax-taken-from-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("value",true)
+    .formParam("value", true)
     .check(status.is(303))
 
   def getTaxSecuritiesAmountPage(taxYear: String): HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
@@ -174,7 +174,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
   def postTaxSecuritiesAmountPage(taxYear: String): HttpRequestBuilder = http("Get How Much Tax Was Taken Off Page")
     .post(s"${interestUrl(taxYear)}/interest-amount")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("amount","300")
+    .formParam("amount", "300")
     .check(status.is(303))
 
   def getSecuritiesCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Check Your Interest From Gilt Edged Or Accrued Income Securities Page")
@@ -204,7 +204,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postPolicyTypePage(policyType: String,taxYear: String): HttpRequestBuilder = http("Post Policy Type Page")
+  def postPolicyTypePage(policyType: String, taxYear: String): HttpRequestBuilder = http("Post Policy Type Page")
     .post(s"${gainsUrl(taxYear)}/policy-type/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("policy-type", policyType)
@@ -225,7 +225,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postGainsAmountPage(gainsAmount: String,taxYear: String): HttpRequestBuilder = http("Post Gains Amount Page")
+  def postGainsAmountPage(gainsAmount: String, taxYear: String): HttpRequestBuilder = http("Post Gains Amount Page")
     .post(s"${gainsUrl(taxYear)}/gains-amount/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", (gainsAmount))
@@ -302,7 +302,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .check(saveCsrfToken())
     .check(status.is(200))
 
-  def postDeficiencyReliefStatusPage(amount: String,taxYear: String): HttpRequestBuilder = http("Post Deficiency Relief Status Page")
+  def postDeficiencyReliefStatusPage(amount: String, taxYear: String): HttpRequestBuilder = http("Post Deficiency Relief Status Page")
     .post(s"${gainsUrl(taxYear)}/deficiency-relief-status/$gainsSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
@@ -318,9 +318,12 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
-  def getGainsSummaryPage(taxYear: String): HttpRequestBuilder = http("Get Gains Summary Page")
-    .get(s"${gainsUrl(taxYear)}/summary")
-    .check(status.is(200))
+  def getGainsSummaryPage(taxYear: String, policyType: String): HttpRequestBuilder = {
+    val formattedPolicyType = formatPolicyType(policyType)
+    http("Get Gains Summary Page")
+      .get(s"${gainsUrl(taxYear)}/summary?policyType=$formattedPolicyType")
+      .check(status.is(200))
+  }
 
   def getPoliciesRemoveConfirmationPage(taxYear: String): HttpRequestBuilder = http("Get Policies Remove Confirmation Page")
     .get(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsRemoveConfirmationSessionId")
@@ -330,7 +333,7 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .post(s"${gainsUrl(taxYear)}/policies-remove-confirmation/$gainsRemoveConfirmationSessionId")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
-  
+
   //Stock Dividends
   def getStockDividendsStatusPage(taxYear: String): HttpRequestBuilder = http("Get Stock Dividends Status Page")
     .get(s"${dividendsUrl(taxYear)}/stock-dividend-status")
