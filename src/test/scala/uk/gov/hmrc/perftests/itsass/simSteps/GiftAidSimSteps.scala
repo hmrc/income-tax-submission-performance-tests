@@ -89,6 +89,9 @@ trait GiftAidSimSteps extends PerformanceTestRunner {
     postOverseasCharitiesSharesSecuritiesLandPropertyDonatedToSummaryPage(addAnotherCharity = false),
     getGiftAidCheckYourAnswersPage(taxYear),
     postGiftAidCheckYourAnswersPage(taxYear)
+    // TODO - Add have you completed section
+//    getGiftAidHaveYouCompletedSectionPage(taxYear),
+//    postGiftAidHaveYouCompletedSectionPage(taxYear)
   )
 
   def giftAidAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -157,5 +160,8 @@ trait GiftAidSimSteps extends PerformanceTestRunner {
     postOverseasCharitiesSharesSecuritiesLandPropertyDonatedToSummaryPage(addAnotherCharity = false),
     getGiftAidCheckYourAnswersPage(taxYear),
     postGiftAidCheckYourAnswersPage(taxYear)
+    // TODO - Add have you completed section
+//    getGiftAidHaveYouCompletedSectionPage(taxYear),
+//    postGiftAidHaveYouCompletedSectionPage(taxYear)
   )
 }
