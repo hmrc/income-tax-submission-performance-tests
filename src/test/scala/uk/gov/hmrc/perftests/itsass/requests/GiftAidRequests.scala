@@ -265,4 +265,14 @@ object GiftAidRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
+  def getGiftAidHaveYouCompletedSectionPage(taxYear: String): HttpRequestBuilder = http("Get Gift Aid Have You Completed Section Page")
+    .get(s"${giftAidUrl(taxYear)}/section-completed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postGiftAidHaveYouCompletedSectionPage(taxYear: String): HttpRequestBuilder = http("Post Gift Aid Have You Completed Section Page")
+    .post(s"${giftAidUrl(taxYear)}/section-completed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
 }
