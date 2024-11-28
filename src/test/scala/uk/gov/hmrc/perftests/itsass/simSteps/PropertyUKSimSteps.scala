@@ -70,4 +70,21 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     getIncomePropertyRentals(taxYearEOY)
 
   )
+
+  def ukAndForeignPropertyIndividualEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AC180000A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY)
+  )
+
+  def ukAndForeignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AC180000A", "1234567890", taxYearEOY),
+    getInsertAdditionalParametersEndPoint("AC180000A", "1234567890", taxYearEOY),
+    getStartPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY)
+  )
 }
