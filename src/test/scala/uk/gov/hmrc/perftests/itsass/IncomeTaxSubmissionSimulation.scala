@@ -105,6 +105,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
   propertyAgentEOYYear(id = "agent-property" , description = "Agent UK Property Journey")
+  ukAndForeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
+  ukAndForeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
