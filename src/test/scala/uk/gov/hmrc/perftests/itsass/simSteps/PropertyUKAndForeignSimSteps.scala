@@ -19,55 +19,30 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
+import uk.gov.hmrc.perftests.itsass.requests.PropertyForeignRequests.{getForeignPropertyDetailsPage, getForeignPropertyTotalIncome, getForeignPropertyUKSelect}
+import uk.gov.hmrc.perftests.itsass.requests.PropertyUKAndForeignRequests.getUKAndForeignPropertyDetailsPage
 import uk.gov.hmrc.perftests.itsass.requests.PropertyUKRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYearEOY
 
 
-trait PropertyUKSimSteps extends PerformanceTestRunner{
+trait PropertyUKAndForeignSimSteps extends PerformanceTestRunner{
 
-  def propertyIndividualEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def ukAndforeignPropertyIndividualEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AC180000A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
-    getPropertyDetailsPage(taxYearEOY),
-    getPropertyTotalIncome(taxYearEOY),
-    getPropertyUKSelect(taxYearEOY),
-    getCheckYourAnswers(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyRentalsAbout(taxYearEOY),
-    getExpensesLessThan1000(taxYearEOY),
-    getClaimPropertyIncomeAllowance(taxYearEOY),
-    getPropertyRentalsCYA(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyIncomeStart(taxYearEOY),
-    getNonUkLandlord(taxYearEOY),
-    getDeductingUKTax(taxYearEOY),
-    getIncomePropertyRentals(taxYearEOY)
-
+    getUKAndForeignPropertyDetailsPage(taxYearEOY),
   )
-  def propertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+
+  def ukAndforeignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postAgentLoginPage("AC180000A", "1234567890", taxYearEOY),
     getInsertAdditionalParametersEndPoint("AC180000A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
-    getPropertyDetailsPage(taxYearEOY),
-    getPropertyTotalIncome(taxYearEOY),
-    getPropertyUKSelect(taxYearEOY),
-    getCheckYourAnswers(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyRentalsAbout(taxYearEOY),
-    getExpensesLessThan1000(taxYearEOY),
-    getClaimPropertyIncomeAllowance(taxYearEOY),
-    getPropertyRentalsCYA(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyIncomeStart(taxYearEOY),
-    getNonUkLandlord(taxYearEOY),
-    getDeductingUKTax(taxYearEOY),
-    getIncomePropertyRentals(taxYearEOY)
-
+    getUKAndForeignPropertyDetailsPage(taxYearEOY)
   )
 }
