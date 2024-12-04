@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps {
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps with PropertyForeignSimSteps with PropertyUKAndForeignSimSteps {
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -105,8 +105,10 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
   propertyAgentEOYYear(id = "agent-property" , description = "Agent UK Property Journey")
-  ukAndForeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
-  ukAndForeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")
+  foreignPropertyIndividualEOYYear(id = "individual-foreign-property", description = "Individual Foreign Property Journey")
+  foreignPropertyAgentEOYYear(id = "agent-foreign-property", description = "Agent Foreign Property Journey")
+  ukAndforeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
+  ukAndforeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
