@@ -30,19 +30,18 @@ object PropertyUKAndForeignRequests extends ServicesConfiguration {
     .check(status.is(expected = 200))
 
  def postUKAndForeignPropertyDetailsPage(taxYear : String): HttpRequestBuilder =http("Post Foreign Property Details Page")
-    .get(s"${propertyUrl(taxYear)}/uk-foreign-property")
+    .post(s"${propertyUrl(taxYear)}/uk-foreign-property")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("value", true)
    .check(status.is(303))
 
  def getUKAndForeignPropertyTotalIncome(taxYear : String): HttpRequestBuilder = http("Get Total Income page")
    .get(s"${propertyUrl(taxYear)}/total-income")
    .check(status.is(expected = 200))
 
- def postUKAndForeignPropertyTotalIncome(taxYear : String): HttpRequestBuilder = http("Post Total Income page")
-   .get(s"${propertyUrl(taxYear)}/total-income")
+ def postUKAndForeignPropertyTotalIncome(taxYear : String, useMax : Boolean): HttpRequestBuilder = http("Post Total Income page")
+   .post(s"${propertyUrl(taxYear)}/total-income")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("value", true)
+   .formParam("value", useMax)
    .check(status.is(303))
 
  def getUKAndForeignPropertyUKSelect(taxYear : String): HttpRequestBuilder = http("Get Property Select Page")
@@ -50,8 +49,39 @@ object PropertyUKAndForeignRequests extends ServicesConfiguration {
    .check(status.is(expected = 200))
 
   def postUKAndForeignPropertyUKSelect(taxYear : String): HttpRequestBuilder = http("Post Property Select Page")
-    .get(s"${propertyUrl(taxYear)}/about/rental-property")
+    .post(s"${propertyUrl(taxYear)}/about/rental-property")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
+
+ def getPropertyRentals(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Page")
+   .get(s"${propertyUrl(taxYear)}/rental-type-uk")
+   .check(status.is(expected = 200))
+
+ def postPropertyRentals(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Page")
+   .post(s"${propertyUrl(taxYear)}/rental-type-uk")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value_0", "true")
+   .formParam("value_1", "true")
+   .check(status.is(303))
+
+ def getUKForeignPropertyCountry(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Page")
+   .get(s"${propertyUrl(taxYear)}/countries/1?mode=NormalMode")
+   .check(status.is(expected = 200))
+
+ def postUKForeignPropertyCountry(taxYear: String, country: String): HttpRequestBuilder = http("Post Property Rentals Page")
+   .post(s"${propertyUrl(taxYear)}/rental-type-uk")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value_0", country)
+   .check(status.is(303))
+
+ def getForeignCountryRentedOut(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Page")
+   .get(s"${propertyUrl(taxYear)}/countries/1?mode=NormalMode")
+   .check(status.is(expected = 200))
+
+ def postForeignCountryRentedOut(taxYear: String, radioNo: String): HttpRequestBuilder = http("Post Property Rentals Page")
+   .post(s"${propertyUrl(taxYear)}/rental-type-uk")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value_0", radioNo)
+   .check(status.is(303))
 }
