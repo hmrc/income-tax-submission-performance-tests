@@ -19,8 +19,7 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
-import uk.gov.hmrc.perftests.itsass.requests.PropertyForeignRequests.{getForeignPropertyDetailsPage, getForeignPropertyTotalIncome, getForeignPropertyUKSelect}
-import uk.gov.hmrc.perftests.itsass.requests.PropertyUKAndForeignRequests.getUKAndForeignPropertyDetailsPage
+import uk.gov.hmrc.perftests.itsass.requests.PropertyUKAndForeignRequests._
 import uk.gov.hmrc.perftests.itsass.requests.PropertyUKRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYearEOY
 
@@ -34,6 +33,16 @@ trait PropertyUKAndForeignSimSteps extends PerformanceTestRunner{
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
     getUKAndForeignPropertyDetailsPage(taxYearEOY),
+    getUKAndForeignPropertyTotalIncome(taxYearEOY),
+    postUKAndForeignPropertyTotalIncome(taxYearEOY),
+    getUKAndForeignPropertyReportIncome(taxYearEOY),
+    postUKAndForeignPropertyReportIncome(taxYearEOY),
+    getWhichRentalTypeUKAndForeign(taxYearEOY),
+    postWhichRentalTypeUKAndForeign(taxYearEOY),
+    getWhichCountryUKAndForeign(taxYearEOY),
+    postWhichCountryUKAndForeign(taxYearEOY),
+    getWhereRentedOutPropertyUKAndForeign(taxYearEOY),
+    postWhereRentedOutPropertyUKAndForeign(taxYearEOY)
   )
 
   def ukAndforeignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -43,6 +52,16 @@ trait PropertyUKAndForeignSimSteps extends PerformanceTestRunner{
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
-    getUKAndForeignPropertyDetailsPage(taxYearEOY)
+    getUKAndForeignPropertyDetailsPage(taxYearEOY),
+    getUKAndForeignPropertyTotalIncome(taxYearEOY),
+    postUKAndForeignPropertyTotalIncome(taxYearEOY),
+    getUKAndForeignPropertyReportIncome(taxYearEOY),
+    postUKAndForeignPropertyReportIncome(taxYearEOY),
+    getWhichRentalTypeUKAndForeign(taxYearEOY),
+    postWhichRentalTypeUKAndForeign(taxYearEOY),
+    getWhichCountryUKAndForeign(taxYearEOY),
+    postWhichCountryUKAndForeign(taxYearEOY),
+    getWhereRentedOutPropertyUKAndForeign(taxYearEOY),
+    postWhereRentedOutPropertyUKAndForeign(taxYearEOY)
   )
 }

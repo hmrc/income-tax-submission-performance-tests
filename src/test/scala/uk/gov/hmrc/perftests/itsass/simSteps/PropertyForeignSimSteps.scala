@@ -19,7 +19,7 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
-import uk.gov.hmrc.perftests.itsass.requests.PropertyForeignRequests.{getForeignPropertyDetailsPage, getForeignPropertyTotalIncome, getForeignPropertyUKSelect}
+import uk.gov.hmrc.perftests.itsass.requests.PropertyForeignRequests._
 import uk.gov.hmrc.perftests.itsass.requests.PropertyUKRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYearEOY
 
@@ -34,8 +34,16 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     getPropertySummaryPage(taxYearEOY),
     getForeignPropertyDetailsPage(taxYearEOY),
     getForeignPropertyTotalIncome(taxYearEOY),
-    getForeignPropertyUKSelect(taxYearEOY),
-    getCheckYourAnswers(taxYearEOY)
+    postForeignPropertyTotalIncome(taxYearEOY),
+    getForeignPropertyReportIncome(taxYearEOY),
+    postForeignPropertyReportIncome(taxYearEOY),
+    getWhichCountryDidYouReceiveIncomeFrom(taxYearEOY),
+    postWhichCountryDidYouReceiveIncomeFrom(taxYearEOY),
+    getCountriesWhereRentedOutProperty(taxYearEOY),
+    postCountriesWhereRentedOutProperty(taxYearEOY),
+    getClaimPropertyAllowanceOrExpenses(taxYearEOY),
+    postClaimPropertyAllowanceOrExpenses(taxYearEOY),
+    getForeignCheckYourAnswers(taxYearEOY)
   )
 
   def foreignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -47,7 +55,15 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     getPropertySummaryPage(taxYearEOY),
     getForeignPropertyDetailsPage(taxYearEOY),
     getForeignPropertyTotalIncome(taxYearEOY),
-    getForeignPropertyUKSelect(taxYearEOY),
-    getCheckYourAnswers(taxYearEOY)
+    postForeignPropertyTotalIncome(taxYearEOY),
+    getForeignPropertyReportIncome(taxYearEOY),
+    postForeignPropertyReportIncome(taxYearEOY),
+    getWhichCountryDidYouReceiveIncomeFrom(taxYearEOY),
+    postWhichCountryDidYouReceiveIncomeFrom(taxYearEOY),
+    getCountriesWhereRentedOutProperty(taxYearEOY),
+    postCountriesWhereRentedOutProperty(taxYearEOY),
+    getClaimPropertyAllowanceOrExpenses(taxYearEOY),
+    postClaimPropertyAllowanceOrExpenses(taxYearEOY),
+    getForeignCheckYourAnswers(taxYearEOY)
   )
 }

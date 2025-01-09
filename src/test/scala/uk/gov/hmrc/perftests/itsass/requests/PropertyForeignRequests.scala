@@ -26,32 +26,60 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.propertyUrl
 object PropertyForeignRequests extends ServicesConfiguration {
 
   def getForeignPropertyDetailsPage(taxYear : String): HttpRequestBuilder =http("Get Foreign Property Details Page")
-    .get(s"${propertyUrl(taxYear)}/foreign-property-details")
+    .get(s"${propertyUrl(taxYear)}/foreign-property/about/start")
     .check(status.is(expected = 200))
 
- def postForeignPropertyDetailsPage(taxYear : String): HttpRequestBuilder =http("Post Foreign Property Details Page")
-    .get(s"${propertyUrl(taxYear)}/foreign-property-details")
-   .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("value", true)
-   .check(status.is(303))
-
  def getForeignPropertyTotalIncome(taxYear : String): HttpRequestBuilder = http("Get Total Income page")
-   .get(s"${propertyUrl(taxYear)}/total-income")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/select-country/total-income")
    .check(status.is(expected = 200))
 
  def postForeignPropertyTotalIncome(taxYear : String): HttpRequestBuilder = http("Post Total Income page")
-   .get(s"${propertyUrl(taxYear)}/total-income")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/select-country/total-income")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("value", true)
+   .formParam("foreignTotalIncome" ,"lessThanOneThousand")
    .check(status.is(303))
 
- def getForeignPropertyUKSelect(taxYear : String): HttpRequestBuilder = http("Get Property Select Page")
-   .get(s"${propertyUrl(taxYear)}/about/rental-property")
+ def getForeignPropertyReportIncome(taxYear : String): HttpRequestBuilder = http("Get Foreign Property Report Income Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income-report")
    .check(status.is(expected = 200))
 
-  def postForeignPropertyUKSelect(taxYear : String): HttpRequestBuilder = http("Post Property Select Page")
-    .get(s"${propertyUrl(taxYear)}/about/rental-property")
+  def postForeignPropertyReportIncome(taxYear : String): HttpRequestBuilder = http("Post Foreign Property Report Income Page")
+    .post(s"${propertyUrl(taxYear)}/foreign-property/income-report")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", true)
     .check(status.is(303))
+
+ def getWhichCountryDidYouReceiveIncomeFrom(taxYear: String): HttpRequestBuilder = http("Get Which Country Did You Receive Income From Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/about/0/select-income-country")
+   .check(status.is(expected = 200))
+
+ def postWhichCountryDidYouReceiveIncomeFrom(taxYear: String): HttpRequestBuilder = http("Post Which Country Did You Receive Income From Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/about/0/select-income-country")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("incomeCountry", "AGO")
+   .check(status.is(303))
+
+  def getCountriesWhereRentedOutProperty(taxYear: String): HttpRequestBuilder = http("Get Countries Where You Rented Out Property Page")
+    .get(s"${propertyUrl(taxYear)}/foreign-property/countries-rented-property")
+    .check(status.is(expected = 200))
+
+  def postCountriesWhereRentedOutProperty(taxYear: String): HttpRequestBuilder = http("Post Countries Where You Rented Out Property Page")
+    .post(s"${propertyUrl(taxYear)}/foreign-property/countries-rented-property")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("countriesRentedPropertyYesOrNo", false)
+    .check(status.is(303))
+
+  def getClaimPropertyAllowanceOrExpenses(taxYear: String): HttpRequestBuilder = http("Get Claim Property Allowance Or Expenses Page")
+    .get(s"${propertyUrl(taxYear)}/foreign-property/claim-property-income-allowance-or-expenses")
+    .check(status.is(expected = 200))
+
+ def postClaimPropertyAllowanceOrExpenses(taxYear: String): HttpRequestBuilder = http("Post Claim Property Allowance Or Expenses Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/claim-property-income-allowance-or-expenses")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("claimPropertyIncomeAllowanceOrExpenses", false)
+   .check(status.is(303))
+
+ def getForeignCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("Get Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/select-country/check-your-answers")
+   .check(status.is(expected = 200))
 }
