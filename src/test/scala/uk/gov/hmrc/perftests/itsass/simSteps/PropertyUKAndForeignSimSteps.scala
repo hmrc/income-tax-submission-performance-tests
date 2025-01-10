@@ -42,7 +42,13 @@ trait PropertyUKAndForeignSimSteps extends PerformanceTestRunner{
     getWhichCountryUKAndForeign(taxYearEOY),
     postWhichCountryUKAndForeign(taxYearEOY),
     getWhereRentedOutPropertyUKAndForeign(taxYearEOY),
-    postWhereRentedOutPropertyUKAndForeign(taxYearEOY)
+    postWhereRentedOutPropertyUKAndForeign(taxYearEOY),
+    getClaimExpensesOrReliefPropertyUKAndForeign(taxYearEOY),
+    postClaimExpensesOrReliefPropertyUKAndForeign(taxYearEOY),
+    getClaimAllowancePropertyUKAndForeign(taxYearEOY),
+    postClaimAllowancePropertyUKAndForeign(taxYearEOY),
+    getNonUKResidentPropertyUKAndForeign(taxYearEOY)
+
   )
 
   def ukAndforeignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -62,6 +68,11 @@ trait PropertyUKAndForeignSimSteps extends PerformanceTestRunner{
     getWhichCountryUKAndForeign(taxYearEOY),
     postWhichCountryUKAndForeign(taxYearEOY),
     getWhereRentedOutPropertyUKAndForeign(taxYearEOY),
-    postWhereRentedOutPropertyUKAndForeign(taxYearEOY)
+    postWhereRentedOutPropertyUKAndForeign(taxYearEOY),
+    getClaimExpensesOrReliefPropertyUKAndForeign(taxYearEOY),
+    postClaimExpensesOrReliefPropertyUKAndForeign(taxYearEOY),
+    getClaimAllowancePropertyUKAndForeign(taxYearEOY),
+    postClaimAllowancePropertyUKAndForeign(taxYearEOY),
+    getNonUKResidentPropertyUKAndForeign(taxYearEOY)
   )
 }

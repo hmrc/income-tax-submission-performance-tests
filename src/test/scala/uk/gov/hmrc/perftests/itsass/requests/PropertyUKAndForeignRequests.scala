@@ -56,6 +56,7 @@ object PropertyUKAndForeignRequests extends ServicesConfiguration {
  def postWhichRentalTypeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Which Rental Property Page")
    .post(s"${propertyUrl(taxYear)}/uk-foreign-property/rental-type-uk")
    .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value[0]", "propertyRentals")
    .formParam("value[1]", "rentARoom")
    .check(status.is(303))
 
@@ -78,4 +79,29 @@ object PropertyUKAndForeignRequests extends ServicesConfiguration {
    .formParam("""csrfToken""", """${csrfToken}""")
    .formParam("addAnother", false)
    .check(status.is(303))
+
+ def getClaimExpensesOrReliefPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Claim expenses or rent a room relief Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/claim-expenses-or-relief")
+   .check(status.is(expected = 200))
+
+ def postClaimExpensesOrReliefPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Claim expenses or rent a room relief Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/claim-expenses-or-relief")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("ukAndForeignPropertyClaimExpensesOrRelief", true)
+   .check(status.is(303))
+
+ def getClaimAllowancePropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Claim property income allowance or expenses Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/claim-property-income-allowance-or-expenses")
+   .check(status.is(expected = 200))
+
+ def postClaimAllowancePropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Claim property income allowance or expenses Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/claim-property-income-allowance-or-expenses")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("ukAndForeignPropertyClaimPropertyIncomeAllowanceOrExpenses", true)
+   .check(status.is(303))
+
+ def getNonUKResidentPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Non-UK resident landlord Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/non-resident-landlord-uk")
+   .check(status.is(expected = 200))
+
 }
