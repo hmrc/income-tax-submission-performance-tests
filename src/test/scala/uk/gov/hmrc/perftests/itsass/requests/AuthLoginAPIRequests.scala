@@ -19,9 +19,10 @@ package uk.gov.hmrc.perftests.itsass.requests
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
-import org.joda.time.DateTime
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.perftests.itsass.utils.NumberGenerator.{randomAlphanumeric, randomNumber}
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 object AuthLoginAPIRequests extends ServicesConfiguration {
 
@@ -33,6 +34,10 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
 
   val Agent: String = "Agent"
   val Individual: String = "Individual"
+
+  val dateTimeString = "2018-03-01T12:00:00.000Z"
+  val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+  val previousLogin: LocalDateTime = LocalDateTime.parse(dateTimeString, formatter)
 
   def insertAuthRecordInd(simNino: String, simMtditid: String): HttpRequestBuilder = http("Insert Auth Record Individual")
     .post(authLoginApiUrl)
@@ -91,8 +96,8 @@ object AuthLoginAPIRequests extends ServicesConfiguration {
          |  "affinityGroup": "$affinityGroup",
          |  "credentialStrength": "strong",
          |  "loginTimes": {
-         |    "currentLogin": "${DateTime.now}",
-         |    "previousLogin": "${DateTime.parse("2018-03-01T12:00:00.000Z")}"
+         |    "currentLogin": "${LocalDateTime.now}",
+         |    "previousLogin": "${previousLogin}"
          |  },
          |  "credId": "${randomAlphanumeric(16)}",
          |  "enrolments": $enrolments,
