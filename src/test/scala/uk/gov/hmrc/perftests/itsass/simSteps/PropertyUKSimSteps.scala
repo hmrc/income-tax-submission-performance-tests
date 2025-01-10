@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,41 +33,28 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     getPropertySummaryPage(taxYearEOY),
     getPropertyDetailsPage(taxYearEOY),
     getPropertyTotalIncome(taxYearEOY),
-    getPropertyUKSelect(taxYearEOY),
+    postPropertyTotalIncome(taxYearEOY),
+    getPropertyReportIncome(taxYearEOY),
+    postPropertyReportIncome(taxYearEOY),
+    getWhichRentalPropertyUK(taxYearEOY),
+    postWhichRentalPropertyUK(taxYearEOY),
     getCheckYourAnswers(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyRentalsAbout(taxYearEOY),
-    getExpensesLessThan1000(taxYearEOY),
-    getClaimPropertyIncomeAllowance(taxYearEOY),
-    getPropertyRentalsCYA(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyIncomeStart(taxYearEOY),
-    getNonUkLandlord(taxYearEOY),
-    getDeductingUKTax(taxYearEOY),
-    getIncomePropertyRentals(taxYearEOY)
-
+    getHaveYouFinishedSection(taxYearEOY)
   )
   def propertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postAgentLoginPage("AC180000A", "1234567890", taxYearEOY),
-    getInsertAdditionalParametersEndPoint("AC180000A", "1234567890", taxYearEOY),
+    postIndividualLoginPage("AC180000A", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
     getPropertyDetailsPage(taxYearEOY),
     getPropertyTotalIncome(taxYearEOY),
-    getPropertyUKSelect(taxYearEOY),
+    postPropertyTotalIncome(taxYearEOY),
+    getPropertyReportIncome(taxYearEOY),
+    postPropertyReportIncome(taxYearEOY),
+    getWhichRentalPropertyUK(taxYearEOY),
+    postWhichRentalPropertyUK(taxYearEOY),
     getCheckYourAnswers(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyRentalsAbout(taxYearEOY),
-    getExpensesLessThan1000(taxYearEOY),
-    getClaimPropertyIncomeAllowance(taxYearEOY),
-    getPropertyRentalsCYA(taxYearEOY),
-    getPropertySummaryPage(taxYearEOY),
-    getPropertyIncomeStart(taxYearEOY),
-    getNonUkLandlord(taxYearEOY),
-    getDeductingUKTax(taxYearEOY),
-    getIncomePropertyRentals(taxYearEOY)
-
+    getHaveYouFinishedSection(taxYearEOY)
   )
 }
