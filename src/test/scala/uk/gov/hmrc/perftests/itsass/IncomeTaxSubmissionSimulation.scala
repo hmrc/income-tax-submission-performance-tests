@@ -37,8 +37,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   gainsAgent(id = "agent-gains", description = "Agent Gains Journey")
   gainsVoidedISAIndividual(id = "individual-gains-voided-ISA", description = "Individual Gains Voided ISA Journey")
   gainsVoidedISAAgent(id = "agent-gains-voided-ISA", description = "Agent Gains Voided ISA Journey")
-  stockDividendsIndividual(id = "individual-stock-dividends", description = "Individual Stock dividends Journey")
-  stockDividendsAgent(id = "agent-stock-dividends", description = "Agent Stock Dividends Journey")
+//  stockDividendsIndividual(id = "individual-stock-dividends", description = "Individual Stock dividends Journey")
+//  stockDividendsAgent(id = "agent-stock-dividends", description = "Agent Stock Dividends Journey")
 
   //GiftAid
   giftAidIndividual(id = "individual-gift-aid", description = "Individual Gift Aid Journey")
@@ -93,14 +93,9 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
 
   //Tailor Return
-  aboutYouIndividual(id = "individual-about-you", description = "Individual About You Journey")
-  aboutYouAgent(id = "agent-about-you", description = "Agent About You Journey")
-  incomeFromWorkIndividual(id = "individual-income-from-work", description = "Individual Income From Work Journey")
-  incomeFromWorkAgent(id = "agent-income-from-work", description = "Agent Income From Work Journey")
-  individualPaymentsIntoPensions(id = "payments-into-pensions-individual", description = "Individual Payments Into Pensions")
-  agentPaymentsIntoPensions(id = "payments-into-pensions-agent", description = "Agent Payments Into Pensions")
-  propertyPensionsInvestmentsIndividual(id = "property-pensions-investments-individual", description = "Individual Property Pensions Investments")
-  propertyPensionsInvestmentsAgent(id = "property-pensions-investments-agent", description = "Agent Property Pensions Investments")
+  IndividualTaskList(id = "individual-task-list", description = "Individual Tailor Return Journey")
+  AgentTaskList(id = "agent-task-list", description = "Agent Tailor Return Journey")
+  IndividualDividends(id = "individual-dividends-mini-journeys", description = "Individual Dividends Mini Journeys")
 
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")

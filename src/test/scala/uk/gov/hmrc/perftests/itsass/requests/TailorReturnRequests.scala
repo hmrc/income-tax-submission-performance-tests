@@ -410,6 +410,16 @@ object TailorReturnRequests extends ServicesConfiguration {
     .formParam("value[]", "stockDividendsUkCompanies")
     .check(status.is(303))
 
+  def postAllDividendsSharesLoansPage(taxYear: String): HttpRequestBuilder = http("Post UK Dividends Shares Loans Page")
+    .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-dividends-shares-loans")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value[]", "cashDividendsUkStocksAndShares")
+    .formParam("value[]", "stockDividendsUkCompanies")
+    .formParam("value[]", "dividendsUnitTrustsInvestmentCompanies")
+    .formParam("value[]", "freeOrRedeemableShares")
+    .formParam("value[]", "closeCompanyLoansWrittenOffReleased")
+    .check(status.is(303))
+
   def getUKInsuranceGainsPage(taxYear: String): HttpRequestBuilder = http("Get UK Insurance Gains Page")
     .get(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/uk-insurance-gains")
     .check(saveCsrfToken())
@@ -452,5 +462,10 @@ object TailorReturnRequests extends ServicesConfiguration {
     .post(s"${tailorReturnUrl(taxYear)}/property-pensions-investments/change-uk-interest")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value[]", "fromUkBanks")
+    .check(status.is(303))
+
+  def postStubData(taxYear: String): HttpRequestBuilder = http("Post stub data")
+    .get(s"${stubDataUrl(taxYear)}")
+//    .check(saveCsrfToken())
     .check(status.is(303))
 }
