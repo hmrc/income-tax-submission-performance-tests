@@ -55,6 +55,8 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val gainsUrl: String => String = (taxYear: String) => additionalInfoFrontendBaseUrl + s"/update-and-submit-income-tax-return/additional-information/$taxYear/gains"
   val tailorReturnUrl: String => String = (taxYear: String) => tailorReturnBaseUrl + s"/update-and-submit-income-tax-return/tailored-return/$taxYear"
   val propertyUrl: String => String = (taxYear: String) => propertyBaseUrl + s"/update-and-submit-income-tax-return/property/$taxYear"
+  val miniJourneyUrl: String => String = (taxYear: String) => personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear"
+  val stubDataUrl: String => String = (taxYear: String) => tailorReturnBaseUrl + s"/update-and-submit-income-tax-return/tailored-return/test-only/$taxYear/add-data"
 
   val csrfPattern: String = """<input type="hidden" name="csrfToken" value="([^"]+)"/>"""
   val untaxedAccountPattern: String = s"""/update-and-submit-income-tax-return/personal-income/$taxYear/interest/add-untaxed-uk-interest-account/([^"]+)"""

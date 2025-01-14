@@ -67,4 +67,8 @@ object IncomeTaxSubmissionRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
 
+  def getYourIncomeTaxReturnPage(taxYear: String): HttpRequestBuilder = http("Get Your Income Tax Return Page")
+    .get(s"$serviceUrl/$taxYear/tasklist")
+    .check(status.is(200))
+
 }
