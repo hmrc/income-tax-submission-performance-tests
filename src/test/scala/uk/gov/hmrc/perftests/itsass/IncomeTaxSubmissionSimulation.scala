@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps with PropertyForeignSimSteps with PropertyUKAndForeignSimSteps {
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps with PropertyForeignSimSteps with PropertyUKAndForeignSimSteps with SelfEmploymentSimSteps {
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -37,8 +37,8 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   gainsAgent(id = "agent-gains", description = "Agent Gains Journey")
   gainsVoidedISAIndividual(id = "individual-gains-voided-ISA", description = "Individual Gains Voided ISA Journey")
   gainsVoidedISAAgent(id = "agent-gains-voided-ISA", description = "Agent Gains Voided ISA Journey")
-  stockDividendsIndividual(id = "individual-stock-dividends", description = "Individual Stock dividends Journey")
-  stockDividendsAgent(id = "agent-stock-dividends", description = "Agent Stock Dividends Journey")
+//  stockDividendsIndividual(id = "individual-stock-dividends", description = "Individual Stock dividends Journey")
+//  stockDividendsAgent(id = "agent-stock-dividends", description = "Agent Stock Dividends Journey")
 
   //GiftAid
   giftAidIndividual(id = "individual-gift-aid", description = "Individual Gift Aid Journey")
@@ -93,14 +93,9 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   viewEstimationAgent(id = "agent-view-estimation", description = "Agent View Estimation Journey")
 
   //Tailor Return
-  aboutYouIndividual(id = "individual-about-you", description = "Individual About You Journey")
-  aboutYouAgent(id = "agent-about-you", description = "Agent About You Journey")
-  incomeFromWorkIndividual(id = "individual-income-from-work", description = "Individual Income From Work Journey")
-  incomeFromWorkAgent(id = "agent-income-from-work", description = "Agent Income From Work Journey")
-  individualPaymentsIntoPensions(id = "payments-into-pensions-individual", description = "Individual Payments Into Pensions")
-  agentPaymentsIntoPensions(id = "payments-into-pensions-agent", description = "Agent Payments Into Pensions")
-  propertyPensionsInvestmentsIndividual(id = "property-pensions-investments-individual", description = "Individual Property Pensions Investments")
-  propertyPensionsInvestmentsAgent(id = "property-pensions-investments-agent", description = "Agent Property Pensions Investments")
+  IndividualTaskList(id = "individual-task-list", description = "Individual Tailor Return Journey")
+  AgentTaskList(id = "agent-task-list", description = "Agent Tailor Return Journey")
+  IndividualDividends(id = "individual-dividends-mini-journeys", description = "Individual Dividends Mini Journeys")
 
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
@@ -109,6 +104,11 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   foreignPropertyAgentEOYYear(id = "agent-foreign-property", description = "Agent Foreign Property Journey")
   ukAndforeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
   ukAndforeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")
+
+//  Self Employment
+  selfEmploymentIndividualEOYYear(id = "individual-self-employment", description = "Individual Self Employment")
+  selfEmploymentAgentEOYYear(id = "agent-self-employment", description = "Agent Self Employment")
+
 
   //NRS
   nrsJourney(id = "nrs-proxy-crystallisation", description = "NRS Crystallisation Downstream Request")
