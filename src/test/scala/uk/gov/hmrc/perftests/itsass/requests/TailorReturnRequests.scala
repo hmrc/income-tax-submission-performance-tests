@@ -463,9 +463,4 @@ object TailorReturnRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value[]", "fromUkBanks")
     .check(status.is(303))
-
-  def postStubData(taxYear: String): HttpRequestBuilder = http("Post stub data")
-    .get(s"${stubDataUrl(taxYear)}")
-//    .check(saveCsrfToken())
-    .check(status.is(303))
 }
