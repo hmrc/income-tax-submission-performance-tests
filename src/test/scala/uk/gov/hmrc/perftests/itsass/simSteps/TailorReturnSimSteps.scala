@@ -18,7 +18,7 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.TailorReturnRequests._
-import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postTailoringIndividualLoginPage}
+import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests.{getCheckCloseCompanyLoanAmountPage, getCheckRedeemableSharesAmountPage, getCheckStockDividendsAmountPage, getCheckUKDividendsAmountPage, getCloseCompanyLoanAmountPage, getCloseCompanyLoanSectionCompletedPage, getOtherDividendsAmountPage, getRedeemableSharesAmountPage, getRedeemableSharesSectionCompletedPage, getStockDividendSectionCompletedPage, getStockDividendsAmountPage, getUKDividendsAmountPage, postCheckCloseCompanyLoanAmountPage, postCheckRedeemableSharesAmountPage, postCheckStockDividendsAmountPage, postCheckUKDividendsAmountPage, postCloseCompanyLoanAmountPage, postCloseCompanyLoanSectionCompletedPage, postOtherDividendsAmountPage, postRedeemableSharesAmountPage, postRedeemableSharesSectionCompletedPage, postStockDividendSectionCompletedPage, postStockDividendsAmountPage, postUKDividendsAmountPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getStartPage, getYourIncomeTaxReturnPage}
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
@@ -27,7 +27,7 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
 
   def IndividualTaskList(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postTailoringIndividualLoginPage("AA123459A", "1234567890", taxYear),
+    postIndividualLoginPage("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getTailorReturnStartPage(taxYear),
     getTailorReturnAddSectionsPage(taxYear),
@@ -182,7 +182,7 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
 
   def IndividualDividends(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
-    postTailoringIndividualLoginPage("AA123459A", "1234567890", taxYear),
+    postIndividualLoginPage("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getTailorReturnStartPage(taxYear),
     getTailorReturnAddSectionsPage(taxYear),
