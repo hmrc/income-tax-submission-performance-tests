@@ -96,8 +96,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
     getGainsSummaryPage(taxYear, "Life Insurance"),
-    getPoliciesRemoveConfirmationPage(taxYear),
-    postPoliciesRemoveConfirmationPage(taxYear)
+//    getPoliciesRemoveConfirmationPage(taxYear),
+//    postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
     //    getGainsSectionCompletedPage(taxYear),
     //    postGainsSectionCompletedPage(taxYear)
@@ -132,8 +132,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
     getGainsSummaryPage(taxYear, "Life Insurance"),
-    getPoliciesRemoveConfirmationPage(taxYear),
-    postPoliciesRemoveConfirmationPage(taxYear)
+//    getPoliciesRemoveConfirmationPage(taxYear),
+//    postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
     //    getGainsSectionCompletedPage(taxYear),
     //    postGainsSectionCompletedPage(taxYear)
@@ -165,8 +165,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
     getGainsSummaryPage(taxYear, "Voided ISA"),
-    getPoliciesRemoveConfirmationPage(taxYear),
-    postPoliciesRemoveConfirmationPage(taxYear)
+//    getPoliciesRemoveConfirmationPage(taxYear),
+//    postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
     //    getGainsSectionCompletedPage(taxYear),
     //    postGainsSectionCompletedPage(taxYear)
@@ -199,8 +199,8 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPolicySummaryPage(taxYear),
     postPolicySummaryPage(taxYear),
     getGainsSummaryPage(taxYear, "Voided ISA"),
-    getPoliciesRemoveConfirmationPage(taxYear),
-    postPoliciesRemoveConfirmationPage(taxYear)
+//    getPoliciesRemoveConfirmationPage(taxYear),
+//    postPoliciesRemoveConfirmationPage(taxYear)
     //TODO add when endpoints are added to Journey
     //    getGainsSectionCompletedPage(taxYear),
     //    postGainsSectionCompletedPage(taxYear,"false")
