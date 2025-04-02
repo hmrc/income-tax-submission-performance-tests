@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
   .settings(
     name := appName,
     version := appVersion,
-    scalaVersion := "2.13.12",
+    scalaVersion := "2.13.16",
     //implicitConversions & postfixOps are Gatling recommended -language settings
     scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps"),
     // Enabling sbt-auto-build plugin provides DefaultBuildSettings with default `testOptions` from `sbt-settings` plugin.
