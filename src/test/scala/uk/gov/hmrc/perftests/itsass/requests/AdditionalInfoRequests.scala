@@ -378,4 +378,15 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("amount", amount)
     //TODO temporary, submission not yet implemented
     .check(status.is(501))
+
+  def getNonDeductibleLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Get Non-Deductible Loan Interest Relief Page")
+    .get(s"${businessTaxReliefsUrl(taxYear)}/non-deductible-loan-interest/relief-claimed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postNonDeductibleLoanInterestReliefPage(taxYear: String, amount: BigDecimal): HttpRequestBuilder = http("Post Non-Deductible Loan Interest Relief Page")
+    .post(s"${businessTaxReliefsUrl(taxYear)}/non-deductible-loan-interest/relief-claimed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", amount)
+    .check(status.is(303))
 }
