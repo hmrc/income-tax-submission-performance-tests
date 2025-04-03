@@ -16,18 +16,26 @@
 
 package uk.gov.hmrc.perftests.itsass.simSteps
 
-import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
-import uk.gov.hmrc.perftests.itsass.requests.TailorReturnRequests._
+import io.gatling.core.action.builder.PauseBuilder
+import io.gatling.core.session.ExpressionSuccessWrapper
+import uk.gov.hmrc.performance.simulation._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
-import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests.{getCheckCloseCompanyLoanAmountPage, getCheckRedeemableSharesAmountPage, getCheckStockDividendsAmountPage, getCheckUKDividendsAmountPage, getCloseCompanyLoanAmountPage, getCloseCompanyLoanSectionCompletedPage, getOtherDividendsAmountPage, getRedeemableSharesAmountPage, getRedeemableSharesSectionCompletedPage, getStockDividendSectionCompletedPage, getStockDividendsAmountPage, getUKDividendsAmountPage, postCheckCloseCompanyLoanAmountPage, postCheckRedeemableSharesAmountPage, postCheckStockDividendsAmountPage, postCheckUKDividendsAmountPage, postCloseCompanyLoanAmountPage, postCloseCompanyLoanSectionCompletedPage, postOtherDividendsAmountPage, postRedeemableSharesAmountPage, postRedeemableSharesSectionCompletedPage, postStockDividendSectionCompletedPage, postStockDividendsAmountPage, postUKDividendsAmountPage}
+import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests.{getInsertAdditionalParametersEndPoint, getStartPage, getYourIncomeTaxReturnPage}
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
+import uk.gov.hmrc.perftests.itsass.requests.TailorReturnRequests._
+
+import scala.concurrent.duration.DurationInt
 
 trait TailorReturnSimSteps extends PerformanceTestRunner {
 
-  def IndividualTaskList(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+  def pause(millis: Int) = new PauseBuilder(millis.millis.expressionSuccess, None)
+
+  def IndividualTaskList(id: String, description: String): JourneyPart = setup(id, description).withRequests(
     getLoginPage,
     postIndividualLoginPage("AA123459A", "1234567890", taxYear),
+    //TODO: The below is a temporary fix; a code change is required to retrieve NINO from Auth for Individuals
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getTailorReturnStartPage(taxYear),
     getTailorReturnAddSectionsPage(taxYear),
@@ -95,7 +103,7 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     postPaymentsPensionsPage(taxYear),
     getChangePaymentsPensionsPage(taxYear),
     postChangePaymentsPensionsPage(taxYear),
-    getYourIncomeTaxReturnPage(taxYear)
+    getTaskListPage(taxYear)
   )
 
   def AgentTaskList(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -177,12 +185,14 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     postPaymentsPensionsPage(taxYear),
     getChangePaymentsPensionsPage(taxYear),
     postChangePaymentsPensionsPage(taxYear),
-    getYourIncomeTaxReturnPage(taxYear)
+    getTaskListPage(taxYear)
   )
 
   def IndividualDividends(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AA123459A", "1234567890", taxYear),
+    //TODO: The below is a temporary fix; a code change is required to retrieve NINO from Auth for Individuals
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890", taxYear),
     getStartPage(taxYear),
     getTailorReturnStartPage(taxYear),
     getTailorReturnAddSectionsPage(taxYear),
@@ -224,7 +234,7 @@ trait TailorReturnSimSteps extends PerformanceTestRunner {
     postAllDividendsSharesLoansPage(taxYear),
     getPaymentsPensionsPage(taxYear),
     postPaymentsPensionsPage(taxYear),
-    getYourIncomeTaxReturnPage(taxYear),
+    getTaskListPage(taxYear),
     getUKDividendsAmountPage(taxYear),
     postUKDividendsAmountPage(taxYear),
     getCheckUKDividendsAmountPage(taxYear),
