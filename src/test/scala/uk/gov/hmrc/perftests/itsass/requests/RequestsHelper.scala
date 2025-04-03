@@ -54,6 +54,7 @@ object RequestsHelper extends ServicesConfiguration with TaxYearHelper {
   val stateBenefitsUrl: String => String = (taxYear: String) => stateBenefitsBaseUrl + s"/update-and-submit-income-tax-return/state-benefits/$taxYear"
   val pensionsUrl: String => String = (taxYear: String) => pensionsFrontendBaseUrl + s"/update-and-submit-income-tax-return/pensions/$taxYear"
   val gainsUrl: String => String = (taxYear: String) => additionalInfoFrontendBaseUrl + s"/update-and-submit-income-tax-return/additional-information/$taxYear/gains"
+  val businessTaxReliefsUrl: String => String = (taxYear: String) => additionalInfoFrontendBaseUrl + s"/update-and-submit-income-tax-return/additional-information/$taxYear/business-reliefs"
   val tailorReturnUrl: String => String = (taxYear: String) => tailorReturnBaseUrl + s"/update-and-submit-income-tax-return/tailored-return/$taxYear"
   val propertyUrl: String => String = (taxYear: String) => propertyBaseUrl + s"/update-and-submit-income-tax-return/property/$taxYear"
   val miniJourneyUrl: String => String = (taxYear: String) => personalIncomeBaseUrl + s"/update-and-submit-income-tax-return/personal-income/$taxYear"
