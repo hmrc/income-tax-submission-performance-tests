@@ -11,7 +11,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start the services locally:
 ```
 
-sm --start INCOME_TAX_SUBMISSION_ALL -r
+sm2 --start INCOME_TAX_SUBMISSION_ALL -r
 
 ```
 
