@@ -366,4 +366,16 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", value)
     .check(status.is(303))
+
+  def getPostCessationTradeReliefPage(taxYear: String): HttpRequestBuilder = http("Get Post-cessation Trade Relief Page")
+    .get(s"${businessTaxReliefsUrl(taxYear)}/post-cessation-trade-relief/relief-claimed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postPostCessationTradeReliefPage(taxYear: String, amount: BigDecimal): HttpRequestBuilder = http("Post Post-cessation Trade Loan Interest Relief Page")
+    .post(s"${businessTaxReliefsUrl(taxYear)}/post-cessation-trade-relief/relief-claimed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", amount)
+    //TODO temporary, submission not yet implemented
+    .check(status.is(501))
 }

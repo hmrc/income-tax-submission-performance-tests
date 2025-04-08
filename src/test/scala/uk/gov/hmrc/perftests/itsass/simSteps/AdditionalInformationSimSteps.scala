@@ -206,4 +206,25 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     //    postGainsSectionCompletedPage(taxYear,"false")
   )
 
+  def businessTaxReliefsIndividual(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postIndividualLoginPage("AA123459A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getPostCessationTradeReliefPage(taxYear),
+    postPostCessationTradeReliefPage(taxYear, 50.99)
+    //TODO: As part of future story, add other Business Tax Relief pages below here
+  )
+
+  def businessTaxReliefsAgent(id: String, description: String): JourneyPart = setup(id, description) withRequests(
+    getLoginPage,
+    postAgentLoginPage("AA123459A", "1234567890"),
+    getInsertAdditionalParametersEndPoint("AA123459A", "1234567890"),
+    getStartPage(taxYear),
+    getOverviewPage(taxYear),
+    getPostCessationTradeReliefPage(taxYear),
+    postPostCessationTradeReliefPage(taxYear, 50.99)
+    //TODO: As part of future story, add other Business Tax Relief pages below here
+  )
+
 }
