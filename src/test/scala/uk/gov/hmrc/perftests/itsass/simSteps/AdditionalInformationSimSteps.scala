@@ -19,9 +19,8 @@ package uk.gov.hmrc.perftests.itsass.simSteps
 import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AdditionalInfoRequests._
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postAgentLoginPage, postIndividualLoginPage}
-import uk.gov.hmrc.perftests.itsass.requests.DividendsRequests._
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
-import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.{taxYear, taxYearEOY}
+import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYear
 
 trait AdditionalInformationSimSteps extends PerformanceTestRunner {
 
@@ -212,7 +211,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getPostCessationTradeReliefPage(taxYear),
-    postPostCessationTradeReliefPage(taxYear, 50.99)
+    postPostCessationTradeReliefPage(taxYear, 50.99),
+    getNonDeductibleLoanInterestReliefPage(taxYear),
+    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99)
     //TODO: As part of future story, add other Business Tax Relief pages below here
   )
 
@@ -223,7 +224,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getStartPage(taxYear),
     getOverviewPage(taxYear),
     getPostCessationTradeReliefPage(taxYear),
-    postPostCessationTradeReliefPage(taxYear, 50.99)
+    postPostCessationTradeReliefPage(taxYear, 50.99),
+    getNonDeductibleLoanInterestReliefPage(taxYear),
+    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99)
     //TODO: As part of future story, add other Business Tax Relief pages below here
   )
 
