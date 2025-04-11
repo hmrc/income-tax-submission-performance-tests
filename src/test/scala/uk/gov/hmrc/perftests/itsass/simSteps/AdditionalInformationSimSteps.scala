@@ -213,7 +213,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPostCessationTradeReliefPage(taxYear),
     postPostCessationTradeReliefPage(taxYear, 50.99),
     getNonDeductibleLoanInterestReliefPage(taxYear),
-    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99)
+    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99),
+    getQualifyingLoanInterestReliefPage(taxYear),
+    postQualifyingLoanInterestReliefPage(taxYear, 120.44)
     //TODO: As part of future story, add other Business Tax Relief pages below here
   )
 
@@ -226,7 +228,9 @@ trait AdditionalInformationSimSteps extends PerformanceTestRunner {
     getPostCessationTradeReliefPage(taxYear),
     postPostCessationTradeReliefPage(taxYear, 50.99),
     getNonDeductibleLoanInterestReliefPage(taxYear),
-    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99)
+    postNonDeductibleLoanInterestReliefPage(taxYear, 50.99),
+    getQualifyingLoanInterestReliefPage(taxYear),
+    postQualifyingLoanInterestReliefPage(taxYear, 120.44)
     //TODO: As part of future story, add other Business Tax Relief pages below here
   )
 

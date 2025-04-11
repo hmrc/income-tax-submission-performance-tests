@@ -389,4 +389,15 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", amount)
     .check(status.is(303))
+
+  def getQualifyingLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Get Qualifying Loan Interest Relief Page")
+    .get(s"${businessTaxReliefsUrl(taxYear)}/qualifying-loan-interest/relief-claimed")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postQualifyingLoanInterestReliefPage(taxYear: String, amount: BigDecimal): HttpRequestBuilder = http("Post Qualifying Loan Interest Relief Page")
+    .post(s"${businessTaxReliefsUrl(taxYear)}/qualifying-loan-interest/relief-claimed")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("amount", amount)
+    .check(status.is(303))
 }
