@@ -41,6 +41,16 @@ sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dperftest.labels=nrsProxy gatl
 ./run_nrs_smoke_tests.sh
 ```
 
+
+If you wish to test the tailoring steps only, there is another label called 'tailorReturnFlows'. Please note that the service manager profile `INCOME_TAX_TAILOR_RETURNS_ALL` should be used for running these tests otherwise certain scenarios will fail. You can run these tests with the following 
+```
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dperftest.labels=tailorReturnFlows gatling:test
+
+-------------------------------OR----------------------------
+
+./run_smoke_tests_tailor_return.sh
+```
+
 #### Running the performance test
 ```
 sbt -DrunLocal=true -Dperftest.labels=journeyFlows gatling:test

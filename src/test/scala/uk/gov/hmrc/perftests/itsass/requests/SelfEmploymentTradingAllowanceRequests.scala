@@ -47,11 +47,17 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
     .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/change-self-employment-abroad")
     .check(status.is(expected = 200))
 
+ def postSelfEmploymentAbroad(taxYear: String): HttpRequestBuilder = http("Post Carry out self employment abroad page")
+   .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/change-self-employment-abroad")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value", "true")
+   .check(status.is(expected = 303))
+
   def getCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Get Check your details page")
     .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/self-employment-abroad/check")
     .check(status.is(expected = 200))
 
-  def postCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Post Check your details page")
+  def postCheckYourDetails(taxYear: String): HttpRequestBuilder = http("1heck your details page")
     .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/self-employment-abroad/check")
     .formParam("""csrfToken""", """${csrfToken}""")
     .check(status.is(303))
@@ -160,7 +166,7 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/income/check-your-income")
    .check(status.is(expected = 200))
 
- def postCheckYourIncome(taxYear: String): HttpRequestBuilder = http("Post Check your income page")
+ def postCheckYourIncome(taxYear: String): HttpRequestBuilder = http("2heck your income page")
    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/income/check-your-income")
    .formParam("""csrfToken""", """${csrfToken}""")
    .check(status.is(303))
@@ -189,7 +195,7 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/capital-allowances/balancing-charge/check")
    .check(status.is(expected = 200))
 
- def postCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("Post Check your answers page")
+ def postCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("3heck your answers page")
    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/capital-allowances/balancing-charge/check")
    .formParam("""csrfToken""", """${csrfToken}""")
    .check(status.is(303))
