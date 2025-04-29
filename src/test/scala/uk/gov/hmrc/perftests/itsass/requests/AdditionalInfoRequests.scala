@@ -376,7 +376,17 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .post(s"${businessTaxReliefsUrl(taxYear)}/post-cessation-trade-relief/relief-claimed")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("amount", amount)
-    //TODO temporary, submission not yet implemented
+    .check(status.is(303))
+
+  def getCheckAnswersPostCessationTradeReliefPage(taxYear: String): HttpRequestBuilder = http("Get Check Answers for Post-cessation Trade Relief Page")
+    .get(s"${businessTaxReliefsUrl(taxYear)}/post-cessation-trade-relief/check-answers")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postCheckAnswersPostCessationTradeReliefPage(taxYear: String): HttpRequestBuilder = http("Post Check Answers for Post-cessation Trade Relief Page")
+    .post(s"${businessTaxReliefsUrl(taxYear)}/post-cessation-trade-relief/check-answers")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    //TODO: Update this to check for 303 when the submission is implemented
     .check(status.is(501))
 
   def getNonDeductibleLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Get Non-Deductible Loan Interest Relief Page")
