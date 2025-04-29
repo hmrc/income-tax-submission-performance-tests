@@ -400,6 +400,17 @@ object AdditionalInfoRequests extends ServicesConfiguration {
     .formParam("amount", amount)
     .check(status.is(303))
 
+  def getCheckAnswersNonDeductibleLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Get Check Answers Non-Deductible Loan Interest Relief Page")
+    .get(s"${businessTaxReliefsUrl(taxYear)}/non-deductible-loan-interest/check-answers")
+    .check(saveCsrfToken())
+    .check(status.is(200))
+
+  def postCheckAnswersNonDeductibleLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Post Check Answers Non-Deductible Loan Interest Relief Page")
+    .post(s"${businessTaxReliefsUrl(taxYear)}/non-deductible-loan-interest/check-answers")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    //TODO: Update this to check for 303 when the submission is implemented
+    .check(status.is(501))
+
   def getQualifyingLoanInterestReliefPage(taxYear: String): HttpRequestBuilder = http("Get Qualifying Loan Interest Relief Page")
     .get(s"${businessTaxReliefsUrl(taxYear)}/qualifying-loan-interest/relief-claimed")
     .check(saveCsrfToken())
