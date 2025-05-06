@@ -43,6 +43,26 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
    .formParam("value", "true")
    .check(status.is(303))
 
+  def getFarmerOrMarketGardener(taxYear: String): HttpRequestBuilder = http("Get Farmer or Market Gardener page")
+    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/farmer-market-gardener")
+    .check(status.is(expected = 200))
+
+  def postFarmerOrMarketGardener(taxYear: String): HttpRequestBuilder = http("Post Farmer or Market Gardener page")
+    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/farmer-market-gardener")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "false")
+    .check(status.is(303))
+
+  def getLiteracyOrCreativeWorks(taxYear: String): HttpRequestBuilder = http("Get Literacy or Creative Works page")
+    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/literary-or-creative-works")
+    .check(status.is(expected = 200))
+
+  def postLiteracyOrCreativeWorks(taxYear: String): HttpRequestBuilder = http("Post Literacy or Creative Works page")
+    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/literary-or-creative-works")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "true")
+    .check(status.is(303))
+
   def getSelfEmploymentAbroad(taxYear: String): HttpRequestBuilder = http("Get Carry out self employment abroad page")
     .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/change-self-employment-abroad")
     .check(status.is(expected = 200))
