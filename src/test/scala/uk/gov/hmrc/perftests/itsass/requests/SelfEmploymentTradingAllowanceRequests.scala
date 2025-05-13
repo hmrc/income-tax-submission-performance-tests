@@ -30,7 +30,7 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
     .check(status.is(expected = 200))
 
  def getSelfEmploymentSummary(taxYear : String): HttpRequestBuilder = http("Get Self Employment Summary Page")
-   .get(s"${selfEmploymentUrl(taxYear)}/self-employment-summary")
+   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/check")
    .check(status.is(expected = 200))
 
   def getHaveYouFinishedSection(taxYear: String): HttpRequestBuilder = http("Get Have you finished this section page")
