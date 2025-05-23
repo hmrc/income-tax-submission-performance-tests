@@ -87,8 +87,17 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     getDepreciationOrProfit(taxYearEOY),
     postDepreciationOrProfit(taxYearEOY),
     getOtherExpenses(taxYearEOY),
-    postOtherExpenses(taxYearEOY)
+    postOtherExpenses(taxYearEOY),
+    getTaskListPage(taxYearEOY),
+    getTravelAndAccomTotalExpenses(taxYearEOY),
+    postTravelAndAccomTotalExpenses(taxYearEOY),
+    //TODO Add the following once developed
+//    getTravelAndAccomTotalExpenses(taxYearEOY),
+//    postTravelAndAccomTotalExpenses(taxYearEOY),
+//    getCheckYourTravelExpenses(taxYearEOY),
+//    postCheckYourTravelExpenses(taxYearEOY)
   )
+
   def selfEmploymentExpensesAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AA000001C", "1234567890", taxYearEOY),
@@ -151,6 +160,13 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     getDepreciationOrProfit(taxYearEOY),
     postDepreciationOrProfit(taxYearEOY),
     getOtherExpenses(taxYearEOY),
-    postOtherExpenses(taxYearEOY)
+    postOtherExpenses(taxYearEOY),
+    //TODO Add the following once developed
+//    getTravelAndAccomTotalExpenses(taxYearEOY),
+//    postTravelAndAccomTotalExpenses(taxYearEOY),
+//    getTravelAndAccomTotalExpenses(taxYearEOY),
+//    postTravelAndAccomTotalExpenses(taxYearEOY),
+//    getCheckYourTravelExpenses(taxYearEOY),
+//    postCheckYourTravelExpenses(taxYearEOY)
   )
 }

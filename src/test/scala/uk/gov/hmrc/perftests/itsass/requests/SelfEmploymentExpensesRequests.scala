@@ -165,4 +165,33 @@ object SelfEmploymentExpensesRequests extends ServicesConfiguration {
    .formParam("value", "no")
    .check(status.is(303))
 
+  def getTravelAndAccomTotalExpenses(taxYear: String): HttpRequestBuilder = http("Get Travel And Accommodation Total Expenses Page")
+    .get(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/travel-accommodation-total-expenses")
+    .check(status.is(expected = 200))
+
+  def postTravelAndAccomTotalExpenses(taxYear: String): HttpRequestBuilder = http("Post Travel And Accommodation Total Expenses Page")
+    .post(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/travel-accommodation-total-expenses")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "100")
+    .check(status.is(303))
+
+  def getTravelAndAccomDisallowable(taxYear: String): HttpRequestBuilder = http("Get Travel And Accommodation Disallowable Expenses Page")
+    .get(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/travel-accommodation-disallowable-expenses")
+    .check(status.is(expected = 200))
+
+  def postTravelAndAccomDisallowable(taxYear: String): HttpRequestBuilder = http("Post Travel And Accommodation Disallowable Expenses Page")
+    .post(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/travel-accommodation-disallowable-expenses")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("value", "87")
+    .check(status.is(303))
+
+  def getCheckYourTravelExpenses(taxYear: String): HttpRequestBuilder = http("Get Check Your Travel Expenses Page")
+    .get(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/check-your-travel-expenses")
+    .check(status.is(expected = 200))
+
+  def postCheckYourTravelExpenses(taxYear: String): HttpRequestBuilder = http("Post Check Your Travel Expenses Page")
+    .post(s"${selfEmploymentUrl(taxYear)}/$selfEmploymentId/expenses/travel/check-your-travel-expenses")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .check(status.is(303))
+
 }
