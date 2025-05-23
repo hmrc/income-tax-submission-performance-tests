@@ -74,11 +74,11 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
    .check(status.is(expected = 303))
 
  def getCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Get Check your details page")
-   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/self-employment-abroad/check")
+   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/check")
    .check(status.is(expected = 200))
 
- def postCheckYourDetails(taxYear: String): HttpRequestBuilder = http("1heck your details page")
-   .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/self-employment-abroad/check")
+ def postCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Check your details page")
+   .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/check")
    .formParam("""csrfToken""", """${csrfToken}""")
    .check(status.is(303))
 
