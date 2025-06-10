@@ -139,7 +139,103 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .formParam("isForeignTaxSectionComplete", "true")
    .check(status.is(303))
 
+ //-------------------------------Income----------------------------
+ def getForeignIncomeStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Income Start Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/start")
+   .check(status.is(expected = 200))
+
+ def getForeignPropertyRentalIncomeStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Property Rental Income Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/foreign-property-rental-income")
+   .check(status.is(expected = 200))
+
+ def postForeignPropertyRentalIncomeStartPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Property Rental Income Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/foreign-property-rental-income")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("rentIncome", "100.10")
+   .check(status.is(303))
+
+ def getForeignDidYouReceiveAPremiumForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Did You Receive A Premium For Grant Of Lease Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/premiums-grant-lease-yn")
+   .check(status.is(expected = 200))
+
+ def postForeignDidYouReceiveAPremiumForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Did You Receive A Premium For Grant Of Lease Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/premiums-grant-lease-yn")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("premiumsGrantLeaseReceived", "true")
+   .check(status.is(303))
+
+ def getForeignHaveYouCalculatedAmountForPremiumGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Have You Calculated The Amount For Premium Grant Of Lease Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/calculated-premium-lease-taxable")
+   .check(status.is(expected = 200))
+
+ def postForeignHaveYouCalculatedAmountForPremiumGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Have You Calculated The Amount For Premium Grant Of Lease Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/calculated-premium-lease-taxable")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("calculatedPremiumLeaseTaxable", "false")
+   .check(status.is(303))
+
+ def getForeignHowMuchDidYouReceiveForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Get Foreign How Much Did Your Receive For Grant Of Lease Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/received-grant-lease-amount")
+   .check(status.is(expected = 200))
+
+ def postForeignHowMuchDidYouReceiveForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Post Foreign How Much Did Your Receive For Grant Of Lease Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/received-grant-lease-amount")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("receivedGrantLeaseAmount", "200")
+   .check(status.is(303))
+
+ def getForeignCompletePeriodsInTermOfLeasePage(taxYear: String): HttpRequestBuilder = http("Get Foreign How Much Did Your Receive For Grant Of Lease Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/twelve-month-periods")
+   .check(status.is(expected = 200))
+
+ def postForeignCompletePeriodsInTermOfLeasePage(taxYear: String): HttpRequestBuilder = http("Post Foreign How Much Did Your Receive For Grant Of Lease Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/twelve-month-periods")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("twelveMonthPeriodsInLease", "3")
+   .check(status.is(303))
+
+ def getForeignPremiumsForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Premiums For The Grant Of Lease Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/premiums-grant-lease")
+   .check(status.is(expected = 200))
+
+ def postForeignPremiumsForGrantOfLeasePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Premiums For The Grant Of Lease Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/premiums-grant-lease")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("premiumsOfLeaseGrantAgreed", "true")
+   .check(status.is(303))
+
+ def getForeignOtherPropertyIncomePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Other Income From Property Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/other-income-from-property")
+   .check(status.is(expected = 200))
+
+ def postForeignOtherPropertyIncomePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Other Income From Property Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/other-income-from-property")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("otherPropertyIncome", "99.99")
+   .check(status.is(303))
+
+ def getForeignIncomeCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Income Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def postForeignIncomeCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Income Check Your Answers Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getForeignIncomeSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Income Section Complete Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignIncomeSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Income Section Complete Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/income/$countryCode/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignIncomeSectionComplete", "true")
+   .check(status.is(303))
+
 }
+
+
 
 
 
