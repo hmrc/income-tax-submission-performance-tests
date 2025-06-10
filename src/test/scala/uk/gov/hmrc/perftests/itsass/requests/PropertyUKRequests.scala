@@ -106,7 +106,7 @@ object PropertyUKRequests extends ServicesConfiguration {
     .formParam("totalIncomeAmount", "1000")
     .check(status.is(303))
 
- //-----------------------------UK Property Rentals About------------------------------------------------
+  //-----------------------------UK Property Rentals About------------------------------------------------
   def getPropertyRentalsStartPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Start Page")
     .get(s"${propertyUrl(taxYear)}/rentals/about/start")
     .check(status.is(expected = 200))
@@ -139,44 +139,48 @@ object PropertyUKRequests extends ServicesConfiguration {
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("isAboutPropertyRentalsSectionFinished", "true")
     .check(status.is(303))
+
+
+  //-----------------------------Income------------------------------------------------
+  def getPropertyRentalsIncomeStartPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Income Start Page")
+    .get(s"${propertyUrl(taxYear)}/rentals/income/start")
+    .check(status.is(expected = 200))
+
+  def getPropertyRentalsIncomeNonUKResidentLandlordPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Non-UK Resident Landlord Page")
+    .get(s"${propertyUrl(taxYear)}/rentals/income/is-non-uk-landlord")
+    .check(status.is(expected = 200))
+
+  def postPropertyRentalsIncomeNonUKResidentLandlordPage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Non-UK Resident Landlord Page")
+    .post(s"${propertyUrl(taxYear)}/rentals/income/is-non-uk-landlord")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("isNonUKLandlord", "true")
+    .check(status.is(303))
+
+  def getPropertyRentalsIncomeDeductingTaxPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Income Deducting Tax Page")
+    .get(s"${propertyUrl(taxYear)}/rentals/income/deducting-tax")
+    .check(status.is(expected = 200))
+
+  def postPropertyRentalsIncomeDeductingTaxPage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Income Deducting Tax Page")
+    .post(s"${propertyUrl(taxYear)}/rentals/income/deducting-tax")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("isTaxDeducted", "true")
+    .formParam("taxDeductedAmount", "800")
+    .check(status.is(303))
+
+  def getPropertyRentalsIncomePropertyRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Total Income Page")
+    .get(s"${propertyUrl(taxYear)}/rentals/income/property-rental-income")
+    .check(status.is(expected = 200))
+
+  def postPropertyRentalsIncomePropertyRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Total Income Page")
+    .post(s"${propertyUrl(taxYear)}/rentals/income/property-rental-income")
+    .formParam("""csrfToken""", """${csrfToken}""")
+    .formParam("propertyRentalIncome", "90000")
+    .check(status.is(303))
+
+  def getPropertyRentalsIncomePremiumsGrantLeasePage(taxYear: String): HttpRequestBuilder = http("Get Premiums Grant Lease Page")
+    .get(s"${propertyUrl(taxYear)}/rentals/income/lease-premium-payment")
+    .check(status.is(expected = 200))
+
+
 }
-
-//-----------------------------Income------------------------------------------------
- def getPropertyRentalsIncomeStartPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Income Start Page")
-   .get(s"${propertyUrl(taxYear)}/rentals/income/start")
-   .check(status.is(expected = 200))
-
- def getPropertyRentalsIncomeNonUKResidentLandlordPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Non-UK Resident Landlord Page")
-   .get(s"${propertyUrl(taxYear)}/rentals/income/is-non-uk-landlord")
-   .check(status.is(expected = 200))
-
- def postPropertyRentalsIncomeNonUKResidentLandlordPage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Non-UK Resident Landlord Page")
-   .post(s"${propertyUrl(taxYear)}/rentals/income/is-non-uk-landlord")
-   .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("isNonUKLandlord", "true")
-   .check(status.is(303))
-
- def getPropertyRentalsIncomeDeductingTaxPage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Income Deducting Tax Page")
-   .get(s"${propertyUrl(taxYear)}/rentals/income/deducting-tax")
-   .check(status.is(expected = 200))
-
- def postPropertyRentalsIncomeDeductingTaxPage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Income Deducting Tax Page")
-   .post(s"${propertyUrl(taxYear)}/rentals/income/deducting-tax")
-   .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("isTaxDeducted", "true")
-   .formParam("taxDeductedAmount", "800")
-   .check(status.is(303))
-
- def getPropertyRentalsIncomePropertyRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Get Property Rentals Total Income Page")
-   .get(s"${propertyUrl(taxYear)}/rentals/income/property-rental-income")
-   .check(status.is(expected = 200))
-
- def postPropertyRentalsIncomePropertyRentalIncomePage(taxYear: String): HttpRequestBuilder = http("Post Property Rentals Total Income Page")
-   .post(s"${propertyUrl(taxYear)}/rentals/income/property-rental-income")
-   .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("propertyRentalIncome", "90000")
-   .check(status.is(303))
-
-
-
 

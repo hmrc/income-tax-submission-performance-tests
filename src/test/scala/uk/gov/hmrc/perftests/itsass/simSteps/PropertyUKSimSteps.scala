@@ -54,6 +54,9 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     postRentalsHaveYouFinishedSection(taxYearEOY),
     getPropertySummaryPage(taxYearEOY),
 
+    //UK Property Rentals - Income
+
+
   )
   def propertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,

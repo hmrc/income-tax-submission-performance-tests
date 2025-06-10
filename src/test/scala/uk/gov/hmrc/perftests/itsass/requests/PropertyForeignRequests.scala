@@ -83,3 +83,5 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .get(s"${propertyUrl(taxYear)}/foreign-property/select-country/check-your-answers")
    .check(status.is(expected = 200))
 }
+
+
