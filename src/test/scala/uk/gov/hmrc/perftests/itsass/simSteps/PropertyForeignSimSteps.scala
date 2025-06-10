@@ -57,6 +57,27 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignTaxCheckYourAnswersPage(taxYearEOY),
     getForeignTaxSectionCompletePage(taxYearEOY),
     postForeignTaxSectionCompletePage(taxYearEOY),
+
+    // Foreign Property - Income
+    getForeignIncomeStartPage(taxYearEOY),
+    getForeignPropertyRentalIncomeStartPage(taxYearEOY),
+    postForeignPropertyRentalIncomeStartPage(taxYearEOY),
+    getForeignDidYouReceiveAPremiumForGrantOfLeasePage(taxYearEOY),
+    postForeignDidYouReceiveAPremiumForGrantOfLeasePage(taxYearEOY),
+    getForeignHaveYouCalculatedAmountForPremiumGrantOfLeasePage(taxYearEOY),
+    postForeignHaveYouCalculatedAmountForPremiumGrantOfLeasePage(taxYearEOY),
+    getForeignHowMuchDidYouReceiveForGrantOfLeasePage(taxYearEOY),
+    postForeignHowMuchDidYouReceiveForGrantOfLeasePage(taxYearEOY),
+    getForeignCompletePeriodsInTermOfLeasePage(taxYearEOY),
+    postForeignCompletePeriodsInTermOfLeasePage(taxYearEOY),
+    getForeignPremiumsForGrantOfLeasePage(taxYearEOY),
+    postForeignPremiumsForGrantOfLeasePage(taxYearEOY),
+    getForeignOtherPropertyIncomePage(taxYearEOY),
+    postForeignOtherPropertyIncomePage(taxYearEOY),
+    getForeignIncomeCheckYourAnswersPage(taxYearEOY),
+    postForeignIncomeCheckYourAnswersPage(taxYearEOY),
+    getForeignIncomeSectionCompletePage(taxYearEOY),
+    postForeignIncomeSectionCompletePage(taxYearEOY),
   )
 
   def foreignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
