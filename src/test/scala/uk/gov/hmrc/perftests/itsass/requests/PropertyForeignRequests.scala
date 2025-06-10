@@ -24,7 +24,7 @@ import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.propertyUrl
 
 
 object PropertyForeignRequests extends ServicesConfiguration {
-
+  private val countryCode: String = "AGO"
   def getForeignPropertyDetailsPage(taxYear : String): HttpRequestBuilder =http("Get Foreign Property Details Page")
     .get(s"${propertyUrl(taxYear)}/foreign-property/about/start")
     .check(status.is(expected = 200))
@@ -56,7 +56,7 @@ object PropertyForeignRequests extends ServicesConfiguration {
  def postWhichCountryDidYouReceiveIncomeFrom(taxYear: String): HttpRequestBuilder = http("Post Which Country Did You Receive Income From Page")
    .post(s"${propertyUrl(taxYear)}/foreign-property/about/0/select-income-country")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("country-autocomplete", "AGO")
+   .formParam("country-autocomplete", countryCode)
    .check(status.is(303))
 
   def getCountriesWhereRentedOutProperty(taxYear: String): HttpRequestBuilder = http("Get Countries Where You Rented Out Property Page")
@@ -97,6 +97,48 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .formParam("""csrfToken""", """${csrfToken}""")
    .formParam("isForeignSelectCountriesComplete", "true")
    .check(status.is(303))
+
+ //-------------------------------Foreign Tax----------------------------
+ def getForeignTaxStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Tax Start Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/foreign-income-tax")
+   .check(status.is(expected = 200))
+
+ def postForeignTaxStartPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Tax Start Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/foreign-income-tax")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignIncomeTax", "true")
+   .formParam("foreignTaxPaidOrDeducted", "200")
+   .check(status.is(303))
+
+ def getForeignTaxCreditReliefPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Tax Credit Relief Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/claim-foreign-tax-credit-relief")
+   .check(status.is(expected = 200))
+
+ def postForeignTaxCreditReliefPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Tax Credit Relief Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/claim-foreign-tax-credit-relief")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("claimForeignTaxCreditRelief", "true")
+   .check(status.is(303))
+
+ def getForeignTaxCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Tax Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def postForeignTaxCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Tax Check Your Answers Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getForeignTaxSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Tax Section Complete Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/complete-yes-no")
+   .check(status.is(200))
+
+ def postForeignTaxSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Tax Section Complete Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/foreign-tax/$countryCode/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignTaxSectionComplete", "true")
+   .check(status.is(303))
+
 }
 
 
