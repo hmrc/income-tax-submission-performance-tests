@@ -39,7 +39,21 @@ trait PropertyUKSimSteps extends PerformanceTestRunner{
     getWhichRentalPropertyUK(taxYearEOY),
     postWhichRentalPropertyUK(taxYearEOY),
     getCheckYourAnswers(taxYearEOY),
-    getHaveYouFinishedSection(taxYearEOY)
+    postCheckYourAnswers(taxYearEOY),
+    getHaveYouFinishedSection(taxYearEOY),
+    postHaveYouFinishedSection(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+
+    //UK property rentals - About
+    getPropertyRentalsStartPage(taxYearEOY),
+    getPropertyClaimPIAorExpensesProperty(taxYearEOY),
+    postClaimExpenses(taxYearEOY),
+    getRentalsCheckYourAnswers(taxYearEOY),
+    postRentalsCheckYourAnswers(taxYearEOY),
+    getRentalsHaveYouFinishedSection(taxYearEOY),
+    postRentalsHaveYouFinishedSection(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+
   )
   def propertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,

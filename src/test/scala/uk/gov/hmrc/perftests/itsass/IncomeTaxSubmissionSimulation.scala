@@ -102,7 +102,7 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
   propertyAgentEOYYear(id = "agent-property" , description = "Agent UK Property Journey")
-  foreignPropertyIndividualEOYYear(id = "individual-foreign-property", description = "Individual Foreign Property Journey")
+  foreignPropertyIndividualEOYYear(id = "individual-foreign-property", description = "Individual F")
   foreignPropertyAgentEOYYear(id = "agent-foreign-property", description = "Agent Foreign Property Journey")
   ukAndforeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
   ukAndforeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")

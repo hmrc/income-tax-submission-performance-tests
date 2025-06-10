@@ -36,7 +36,7 @@ object PropertyForeignRequests extends ServicesConfiguration {
  def postForeignPropertyTotalIncome(taxYear : String): HttpRequestBuilder = http("Post Total Income page")
    .post(s"${propertyUrl(taxYear)}/foreign-property/select-country/total-income")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("foreignTotalIncome" ,"lessThanOneThousand")
+   .formParam("foreignTotalIncome" ,"under")
    .check(status.is(303))
 
  def getForeignPropertyReportIncome(taxYear : String): HttpRequestBuilder = http("Get Foreign Property Report Income Page")
@@ -56,7 +56,7 @@ object PropertyForeignRequests extends ServicesConfiguration {
  def postWhichCountryDidYouReceiveIncomeFrom(taxYear: String): HttpRequestBuilder = http("Post Which Country Did You Receive Income From Page")
    .post(s"${propertyUrl(taxYear)}/foreign-property/about/0/select-income-country")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("incomeCountry", "AGO")
+   .formParam("country-autocomplete", "AGO")
    .check(status.is(303))
 
   def getCountriesWhereRentedOutProperty(taxYear: String): HttpRequestBuilder = http("Get Countries Where You Rented Out Property Page")
@@ -66,7 +66,7 @@ object PropertyForeignRequests extends ServicesConfiguration {
   def postCountriesWhereRentedOutProperty(taxYear: String): HttpRequestBuilder = http("Post Countries Where You Rented Out Property Page")
     .post(s"${propertyUrl(taxYear)}/foreign-property/countries-rented-property")
     .formParam("""csrfToken""", """${csrfToken}""")
-    .formParam("countriesRentedPropertyYesOrNo", false)
+    .formParam("isCountriesRentedProperty", false)
     .check(status.is(303))
 
   def getClaimPropertyAllowanceOrExpenses(taxYear: String): HttpRequestBuilder = http("Get Claim Property Allowance Or Expenses Page")
