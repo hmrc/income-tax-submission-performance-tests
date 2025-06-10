@@ -43,7 +43,10 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postCountriesWhereRentedOutProperty(taxYearEOY),
     getClaimPropertyAllowanceOrExpenses(taxYearEOY),
     postClaimPropertyAllowanceOrExpenses(taxYearEOY),
-    getForeignCheckYourAnswers(taxYearEOY)
+    getForeignCheckYourAnswers(taxYearEOY),
+    postForeignCheckYourAnswers(taxYearEOY),
+    getForeignHaveYouFinishedSection(taxYearEOY),
+    postForeignHaveYouFinishedSection(taxYearEOY)
   )
 
   def foreignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(

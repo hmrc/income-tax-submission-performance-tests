@@ -82,6 +82,22 @@ object PropertyForeignRequests extends ServicesConfiguration {
  def getForeignCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("Get Check Your Answers Page")
    .get(s"${propertyUrl(taxYear)}/foreign-property/select-country/check-your-answers")
    .check(status.is(expected = 200))
+
+ def postForeignCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("Post Foreign Check Your Answers Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/select-country/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getForeignHaveYouFinishedSection(taxYear: String): HttpRequestBuilder = http("Get Foreign Have You Finished Section Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/select-country/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignHaveYouFinishedSection(taxYear: String): HttpRequestBuilder = http("Post Foreign Have You Finished Section Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/select-country/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignSelectCountriesComplete", "true")
+   .check(status.is(303))
 }
+
 
 
