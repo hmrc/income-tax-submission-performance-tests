@@ -233,6 +233,110 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .formParam("isForeignIncomeSectionComplete", "true")
    .check(status.is(303))
 
+ //-------------------------------Expenses----------------------------
+
+ def getForeignExpensesStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Expenses Start Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/start")
+   .check(status.is(expected = 200))
+
+ def getForeignConsolidatedOrIndividualExpensesPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Consolidated Or Individual Expenses Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/consolidated-or-individual-expenses")
+   .check(status.is(expected = 200))
+
+ def postForeignConsolidatedOrIndividualExpensesPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Consolidated Or Individual Expenses Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/consolidated-or-individual-expenses")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("consolidatedOrIndividualExpenses", "false")
+   .check(status.is(303))
+
+ def getForeignRentsRatesAndInsurancePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Rents, Rates and Insurance Costs Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/rents-rates-and-insurance")
+   .check(status.is(expected = 200))
+
+ def postForeignRentsRatesAndInsurancePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Rents, Rates and Insurance Costs Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/rents-rates-and-insurance")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignRentsRatesAndInsurance", "300")
+   .check(status.is(303))
+
+ def getForeignRepairsAndMaintenancePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Property Repairs And Maintenance Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-property-repairs-and-maintenance")
+   .check(status.is(expected = 200))
+
+ def postForeignRepairsAndMaintenancePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Property Repairs And Maintenance Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-property-repairs-and-maintenance")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignPropertyRepairsAndMaintenanceAmount", "200")
+   .check(status.is(303))
+
+ def getForeignNonResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Non-Residential Property Finance Costs Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-non-residential-property-finance-costs")
+   .check(status.is(expected = 200))
+
+ def postForeignNonResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Non-Residential Property Finance Costs Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-non-residential-property-finance-costs")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignNonResidentialPropertyFinanceCostsAmount", "100.50")
+   .check(status.is(303))
+
+ def getForeignLegalManagementOtherFeesPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Legal, Management or Other Professional Fees Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-professional-fees")
+   .check(status.is(expected = 200))
+
+ def postForeignLegalManagementOtherFeesPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Legal, Management or Other Professional Fees Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/foreign-professional-fees")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignProfessionalFeesAmount", "50.55")
+   .check(status.is(303))
+
+ def getForeignCostOfServicesPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Cost of Services Provided Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/costs-of-services-provided")
+   .check(status.is(expected = 200))
+
+ def postForeignCostOfServicesPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Cost of Services Provided Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/costs-of-services-provided")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignCostsOfServicesProvided", "100")
+   .check(status.is(303))
+
+ def getForeignOtherExpensesPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Other Allowable Expenses Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/other-allowable-property-expenses")
+   .check(status.is(expected = 200))
+
+ def postForeignOtherExpensesPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Other Allowable Expenses Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/other-allowable-property-expenses")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("otherAllowablePropertyExpensesAmount", "200")
+   .check(status.is(303))
+
+ def getForeignExpensesCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Expenses Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def postForeignExpensesCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Expenses Check Your Answers Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getForeignExpensesSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Expenses Section Complete Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignExpensesSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Expenses Section Complete Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignExpensesSectionComplete", "true")
+   .check(status.is(303))
+
+// def getForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Get Foreign XXX Page")
+//   .get(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/XXX")
+//   .check(status.is(expected = 200))
+//
+// def postForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Post Foreign XXX Page")
+//   .post(s"${propertyUrl(taxYear)}/foreign-property/expenses/$countryCode/XXX")
+//   .formParam("""csrfToken""", """${csrfToken}""")
+//   .formParam("XXX", "XXX")
+//   .check(status.is(303))
 }
 
 

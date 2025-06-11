@@ -78,6 +78,27 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignIncomeCheckYourAnswersPage(taxYearEOY),
     getForeignIncomeSectionCompletePage(taxYearEOY),
     postForeignIncomeSectionCompletePage(taxYearEOY),
+
+    // Foreign Property - Expenses
+    getForeignExpensesStartPage(taxYearEOY),
+    getForeignConsolidatedOrIndividualExpensesPage(taxYearEOY),
+    postForeignConsolidatedOrIndividualExpensesPage(taxYearEOY),
+    getForeignRentsRatesAndInsurancePage(taxYearEOY),
+    postForeignRentsRatesAndInsurancePage(taxYearEOY),
+    getForeignRepairsAndMaintenancePage(taxYearEOY),
+    postForeignRepairsAndMaintenancePage(taxYearEOY),
+    getForeignNonResidentialFinanceCostsPage(taxYearEOY),
+    postForeignNonResidentialFinanceCostsPage(taxYearEOY),
+    getForeignLegalManagementOtherFeesPage(taxYearEOY),
+    postForeignLegalManagementOtherFeesPage(taxYearEOY),
+    getForeignCostOfServicesPage(taxYearEOY),
+    postForeignCostOfServicesPage(taxYearEOY),
+    getForeignOtherExpensesPage(taxYearEOY),
+    postForeignOtherExpensesPage(taxYearEOY),
+    getForeignExpensesCheckYourAnswersPage(taxYearEOY),
+    postForeignExpensesCheckYourAnswersPage(taxYearEOY),
+    getForeignExpensesSectionCompletePage(taxYearEOY),
+    postForeignExpensesSectionCompletePage(taxYearEOY),
   )
 
   def foreignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
