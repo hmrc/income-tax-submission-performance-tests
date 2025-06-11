@@ -395,13 +395,100 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .check(status.is(303))
 
 
+ //-------------------------------Structures and Building Allowance----------------------------
+
+ private val foreignSBAIndex: Int = 0
+
+ def getForeignClaimSBAPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Claim SBA Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/claim-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Claim SBA Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/claim-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignClaimStructureBuildingAllowance", "true")
+   .check(status.is(303))
+
+ def getForeignSBAAddClaimPage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Add Claim Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/add-claim")
+   .check(status.is(expected = 200))
+
+ def getForeignSBAQualifyingDatePage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Qualifying Date Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/qualifying-date")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAQualifyingDatePage(taxYear: String): HttpRequestBuilder = http("Post Foreign SBA Qualifying Date Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/qualifying-date")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignStructureBuildingQualifyingDate.day", "25")
+   .formParam("foreignStructureBuildingQualifyingDate.month", "4")
+   .formParam("foreignStructureBuildingQualifyingDate.year", "2020")
+   .check(status.is(303))
+
+ def getForeignSBAQualifyingAmountPage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Qualifying Amount Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/qualifying-amount")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAQualifyingAmountPage(taxYear: String): HttpRequestBuilder = http("Post Foreign SBA Qualifying Amount Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/qualifying-amount")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignStructureBuildingQualifyingAmount", "250")
+   .check(status.is(303))
+
+ def getForeignSBAHowMuchIsYourClaimPage(taxYear: String): HttpRequestBuilder = http("Get Foreign How Much is Your SBA Claim Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/claim-amount")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAHowMuchIsYourClaimPage(taxYear: String): HttpRequestBuilder = http("Post Foreign How Much is Your SBA Claim Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/claim-amount")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignStructureBuildingAllowanceClaim", "123.45")
+   .check(status.is(303))
+
+ def getForeignSBAAddressPage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Address Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/address")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAAddressPage(taxYear: String): HttpRequestBuilder = http("Post Foreign SBA Address Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/address")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("buildingName", "Building Name")
+   .formParam("buildingNumber", "10")
+   .formParam("postcode", "ex4 1pl")
+   .check(status.is(303))
+
+ def getForeignSBACheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/$foreignSBAIndex/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def getForeignSBAClaimsPage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Claims Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/claims")
+   .check(status.is(expected = 200))
+
+ def postForeignSBAClaimsPage(taxYear: String): HttpRequestBuilder = http("Post Foreign SBA Claims Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/claims")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value", "false")
+   .check(status.is(303))
+
+ def getForeignSBASectionCompletePage(taxYear: String): HttpRequestBuilder = http("Get Foreign SBA Section Complete Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignSBASectionCompletePage(taxYear: String): HttpRequestBuilder = http("Post Foreign SBA Section Complete Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/structures-buildings-allowance/$countryCode/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignSbaComplete", "true")
+   .check(status.is(303))
+
+ //-------------------------------Adjustments----------------------------
 
 // def getForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Get Foreign XXX Page")
-//   .get(s"${propertyUrl(taxYear)}/foreign-property/allowances/$countryCode/XXX")
+//   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/XXX")
 //   .check(status.is(expected = 200))
 //
 // def postForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Post Foreign XXX Page")
-//   .post(s"${propertyUrl(taxYear)}/foreign-property/allowances/$countryCode/XXX")
+//   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/XXX")
 //   .formParam("""csrfToken""", """${csrfToken}""")
 //   .formParam("XXX", "XXX")
 //   .check(status.is(303))
