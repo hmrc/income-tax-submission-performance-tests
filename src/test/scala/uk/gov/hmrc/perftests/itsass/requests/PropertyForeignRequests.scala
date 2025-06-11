@@ -483,15 +483,92 @@ object PropertyForeignRequests extends ServicesConfiguration {
 
  //-------------------------------Adjustments----------------------------
 
-// def getForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Get Foreign XXX Page")
-//   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/XXX")
-//   .check(status.is(expected = 200))
-//
-// def postForeign-XXX-Page(taxYear: String): HttpRequestBuilder = http("Post Foreign XXX Page")
-//   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/XXX")
-//   .formParam("""csrfToken""", """${csrfToken}""")
-//   .formParam("XXX", "XXX")
-//   .check(status.is(303))
+
+ def getForeignAdjustmentsStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Adjustments Start Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/start?isPIA=false")
+   .check(status.is(expected = 200))
+
+ def getForeignPrivateUseAdjustmentPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Private Use Adjustment Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/private-use-adjustment")
+   .check(status.is(expected = 200))
+
+ def postForeignPrivateUseAdjustmentPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Private Use Adjustment Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/private-use-adjustment")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("privateUseAdjustmentAmount", "100.50")
+   .check(status.is(303))
+
+ def getForeignBalancingChargePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Balancing Charge Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/balancing-charge")
+   .check(status.is(expected = 200))
+
+ def postForeignBalancingChargePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Balancing Charge Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/balancing-charge")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isBalancingCharge", "true")
+   .formParam("balancingChargeAmount", "300")
+   .check(status.is(303))
+
+ def getForeignResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Residential Finance Costs Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/residential-finance-costs")
+   .check(status.is(expected = 200))
+
+ def postForeignResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Residential Finance Costs Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/residential-finance-costs")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("residentialFinanceCostsAmount", "200")
+   .check(status.is(303))
+
+ def getForeignUnusedResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Unused Residential Finance Costs Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/unused-residential-finance-cost")
+   .check(status.is(expected = 200))
+
+ def postForeignUnusedResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Unused Residential Finance Costs Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/unused-residential-finance-cost")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignUnusedResidentialFinanceCost", "true")
+   .formParam("foreignUnusedResidentialFinanceCostAmount", "100.10")
+   .check(status.is(303))
+
+ def getForeignUnusedLossesPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Unused Losses Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/unused-losses-previous-years")
+   .check(status.is(expected = 200))
+
+ def postForeignUnusedLossesPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Unused Losses Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/unused-losses-previous-years")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isUnusedLossesPreviousYears", "true")
+   .formParam("unusedLossesPreviousYearsAmount", "333.33")
+   .check(status.is(303))
+
+ def getForeignWhenYouReportedTheLossPage(taxYear: String): HttpRequestBuilder = http("Get Foreign When You Reported The Loss Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/when-you-reported-the-loss")
+   .check(status.is(expected = 200))
+
+ def postForeignWhenYouReportedTheLossPage(taxYear: String): HttpRequestBuilder = http("Post Foreign When You Reported The Loss Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/when-you-reported-the-loss")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("whenYouReportedTheLoss", "y2021to2022")
+   .check(status.is(303))
+
+ def getForeignAdjustmentsCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Ådjustments Check Your Answers Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def postForeignAdjustmentsCheckYourAnswersPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Ådjustments Check Your Answers Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getForeignAdjustmentsSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Get Foreign Foreign Adjustments Section Complete Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postForeignAdjustmentsSectionCompletePage(taxYear: String): HttpRequestBuilder = http("Post Foreign Foreign Adjustments Section Complete Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isForeignAdjustmentsComplete", "true")
+   .check(status.is(303))
 }
 
 
