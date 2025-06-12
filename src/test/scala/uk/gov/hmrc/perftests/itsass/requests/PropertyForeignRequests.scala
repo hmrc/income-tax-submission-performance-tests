@@ -73,10 +73,10 @@ object PropertyForeignRequests extends ServicesConfiguration {
     .get(s"${propertyUrl(taxYear)}/foreign-property/claim-property-income-allowance-or-expenses")
     .check(status.is(expected = 200))
 
- def postClaimPropertyAllowanceOrExpenses(taxYear: String): HttpRequestBuilder = http("Post Claim Property Allowance Or Expenses Page")
+ def postClaimPropertyAllowanceOrExpenses(taxYear: String, claimPIA: Boolean = false): HttpRequestBuilder = http("Post Claim Property Allowance Or Expenses Page")
    .post(s"${propertyUrl(taxYear)}/foreign-property/claim-property-income-allowance-or-expenses")
    .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("claimPropertyIncomeAllowanceOrExpenses", false)
+   .formParam("claimPropertyIncomeAllowanceOrExpenses", claimPIA)
    .check(status.is(303))
 
  def getForeignCheckYourAnswers(taxYear: String): HttpRequestBuilder = http("Get Check Your Answers Page")
@@ -484,8 +484,8 @@ object PropertyForeignRequests extends ServicesConfiguration {
  //-------------------------------Adjustments----------------------------
 
 
- def getForeignAdjustmentsStartPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Adjustments Start Page")
-   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/start?isPIA=false")
+ def getForeignAdjustmentsStartPage(taxYear: String, claimPIA: Boolean = false): HttpRequestBuilder = http("Get Foreign Adjustments Start Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/start?isPIA=$claimPIA")
    .check(status.is(expected = 200))
 
  def getForeignPrivateUseAdjustmentPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Private Use Adjustment Page")
@@ -507,6 +507,16 @@ object PropertyForeignRequests extends ServicesConfiguration {
    .formParam("""csrfToken""", """${csrfToken}""")
    .formParam("isBalancingCharge", "true")
    .formParam("balancingChargeAmount", "300")
+   .check(status.is(303))
+
+ def getForeignYourPIAClaimPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Your Property Income Allowance Claim Page")
+   .get(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/property-income-allowance-claim")
+   .check(status.is(expected = 200))
+
+ def postForeignYourPIAClaimPage(taxYear: String): HttpRequestBuilder = http("Post Foreign Your Property Income Allowance Claim Page")
+   .post(s"${propertyUrl(taxYear)}/foreign-property/adjustments/$countryCode/property-income-allowance-claim")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("propertyIncomeAllowanceClaimAmount", "355.55")
    .check(status.is(303))
 
  def getForeignResidentialFinanceCostsPage(taxYear: String): HttpRequestBuilder = http("Get Foreign Residential Finance Costs Page")
