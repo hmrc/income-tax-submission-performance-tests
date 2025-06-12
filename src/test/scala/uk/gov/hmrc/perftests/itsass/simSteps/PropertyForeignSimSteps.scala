@@ -47,6 +47,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignCheckYourAnswers(taxYearEOY),
     getForeignHaveYouFinishedSection(taxYearEOY),
     postForeignHaveYouFinishedSection(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Foreign Tax
     getForeignTaxStartPage(taxYearEOY),
@@ -57,6 +58,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignTaxCheckYourAnswersPage(taxYearEOY),
     getForeignTaxSectionCompletePage(taxYearEOY),
     postForeignTaxSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Income
     getForeignIncomeStartPage(taxYearEOY),
@@ -78,6 +80,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignIncomeCheckYourAnswersPage(taxYearEOY),
     getForeignIncomeSectionCompletePage(taxYearEOY),
     postForeignIncomeSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Expenses
     getForeignExpensesStartPage(taxYearEOY),
@@ -99,6 +102,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignExpensesCheckYourAnswersPage(taxYearEOY),
     getForeignExpensesSectionCompletePage(taxYearEOY),
     postForeignExpensesSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Allowances
     getForeignAllowancesStartPage(taxYearEOY),
@@ -114,6 +118,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignAllowancesCheckYourAnswersPage(taxYearEOY),
     getForeignAllowancesSectionCompletePage(taxYearEOY),
     postForeignAllowancesSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Structures and Buildings Allowance
     getForeignClaimSBAPage(taxYearEOY),
@@ -132,6 +137,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignSBAClaimsPage(taxYearEOY),
     getForeignSBASectionCompletePage(taxYearEOY),
     postForeignSBASectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Adjustments
     getForeignAdjustmentsStartPage(taxYearEOY),
@@ -151,6 +157,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignAdjustmentsCheckYourAnswersPage(taxYearEOY),
     getForeignAdjustmentsSectionCompletePage(taxYearEOY),
     postForeignAdjustmentsSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
   )
 
   def foreignPropertyAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
@@ -172,6 +179,11 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     getClaimPropertyAllowanceOrExpenses(taxYearEOY),
     postClaimPropertyAllowanceOrExpenses(taxYearEOY, claimPIA = true),
     getForeignCheckYourAnswers(taxYearEOY),
+    postForeignCheckYourAnswers(taxYearEOY),
+    getForeignHaveYouFinishedSection(taxYearEOY),
+    postForeignHaveYouFinishedSection(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
+
 
     // Foreign Property - Foreign Tax
     getForeignTaxStartPage(taxYearEOY),
@@ -182,6 +194,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignTaxCheckYourAnswersPage(taxYearEOY),
     getForeignTaxSectionCompletePage(taxYearEOY),
     postForeignTaxSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Income
     getForeignIncomeStartPage(taxYearEOY),
@@ -203,6 +216,7 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignIncomeCheckYourAnswersPage(taxYearEOY),
     getForeignIncomeSectionCompletePage(taxYearEOY),
     postForeignIncomeSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
 
     // Foreign Property - Adjustments
     getForeignAdjustmentsStartPage(taxYearEOY),
@@ -220,5 +234,6 @@ trait PropertyForeignSimSteps extends PerformanceTestRunner{
     postForeignAdjustmentsCheckYourAnswersPage(taxYearEOY),
     getForeignAdjustmentsSectionCompletePage(taxYearEOY),
     postForeignAdjustmentsSectionCompletePage(taxYearEOY),
+    getPropertySummaryPage(taxYearEOY),
   )
 }
