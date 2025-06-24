@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.itsass.simSteps._
 
 class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with DividendsSimSteps with InterestSimSteps with AdditionalInformationSimSteps with CISSimSteps with StateBenefitsSimSteps
-  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps with PropertyForeignSimSteps with PropertyUKAndForeignSimSteps with SelfEmploymentTradingAllowanceSimSteps with SelfEmploymentExpensesSimSteps {
+  with GiftAidSimSteps with EmploymentsSimSteps with StudentLoansSimSteps with CrystallisationSimSteps with ViewEstimationSimSteps with NRSSimSteps with PensionsSimSteps with TailorReturnSimSteps with PropertyUKSimSteps with PropertyForeignSimSteps with PropertyUKAndForeignSimSteps with ForeignIncomeSimSteps with SelfEmploymentTradingAllowanceSimSteps with SelfEmploymentExpensesSimSteps {
 
   //Dividends
   individualDividends(id = "individual-dividends", description = "Individual Dividends Journey")
@@ -102,10 +102,14 @@ class IncomeTaxSubmissionSimulation extends PerformanceTestRunner with Dividends
   //Property
   propertyIndividualEOYYear(id = "individual-property" , description = "Individual UK Property Journey")
   propertyAgentEOYYear(id = "agent-property" , description = "Agent UK Property Journey")
-  foreignPropertyIndividualEOYYear(id = "individual-foreign-property", description = "Individual F")
+  foreignPropertyIndividualEOYYear(id = "individual-foreign-property", description = "Individual Foreign Property Journey")
   foreignPropertyAgentEOYYear(id = "agent-foreign-property", description = "Agent Foreign Property Journey")
   ukAndforeignPropertyIndividualEOYYear(id = "individual-uk-and-foreign-property", description = "Individual UK & Foreign Property Journey")
   ukAndforeignPropertyAgentEOYYear(id = "agent-uk-and-foreign-property", description = "Agent UK & Foreign Property Journey")
+
+  //Foreign income
+  foreignIncomeIndividualEOYYear(id = "individual-foreign-income", description = "Individual Foreign Income Journey")
+  foreignIncomeAgentEOYYear(id = "agent-foreign-income", description = "Agent Foreign Income Journey")
 
 //  Self Employment
   selfEmploymentTradingAllowanceIndividualEOYYear(id = "individual-self-employment-trading-allowance", description = "Individual Self Employment Trading Allowance")

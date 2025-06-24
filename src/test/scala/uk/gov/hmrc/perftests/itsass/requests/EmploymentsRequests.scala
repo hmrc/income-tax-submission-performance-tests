@@ -161,7 +161,7 @@ object EmploymentsRequests extends ServicesConfiguration {
     .formParam("value", true)
     .check(status.is(303))
 
-  def getPayrollIdPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get PayrollId Page")
+  def getPayrollIdPage(taxYear: String, employmentId: String): HttpRequestBuilder = http("Get Payroll Id Page")
     .get(s"${employmentsUrl(taxYear)}/details/payroll-id?employmentId=$employmentId": String)
     .check(status.is(200))
 

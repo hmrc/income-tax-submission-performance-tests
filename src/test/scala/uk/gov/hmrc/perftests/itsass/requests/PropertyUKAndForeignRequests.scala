@@ -104,4 +104,165 @@ object PropertyUKAndForeignRequests extends ServicesConfiguration {
    .get(s"${propertyUrl(taxYear)}/uk-foreign-property/non-resident-landlord-uk")
    .check(status.is(expected = 200))
 
+ def postNonUKResidentPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Non-UK resident landlord Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/non-resident-landlord-uk")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("value", true)
+   .check(status.is(303))
+
+ def getDeductingTaxFromNonUKResidentPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Deducting tax from non-UK resident landlord Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/deducting-tax-from-non-uk-resident-landlord")
+   .check(status.is(expected = 200))
+
+ def postDeductingTaxFromNonUKResidentPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Deducting tax from non-UK resident landlord Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/deducting-tax-from-non-uk-resident-landlord")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isDeductingTaxFromNonUkResidentLandlord", true)
+   .formParam("deductingTaxFromNonUkResidentLandlordAmount", 2300)
+   .check(status.is(303))
+
+ def getUKPropertyRentalIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get UK property rental income Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/uk-rental-property-income")
+   .check(status.is(expected = 200))
+
+ def postUKPropertyRentalIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post UK property rental income Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/uk-rental-property-income")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("ukRentalPropertyIncomeAmount", 80000)
+   .check(status.is(303))
+
+ def getBalancingChargeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Balancing charge Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/balancing-charge")
+   .check(status.is(expected = 200))
+
+ def postBalancingChargeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Balancing charge Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/balancing-charge")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isBalancingCharge", true)
+   .formParam("balancingChargeAmount", 240)
+   .check(status.is(303))
+
+ def getUKPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get UK premiums for the grant of a lease Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/lease-premium-payment")
+   .check(status.is(expected = 200))
+
+ def postUKPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post UK premiums for the grant of a lease Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/lease-premium-payment")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isUkAndForeignPropertyPremiumForLease", true)
+   .check(status.is(303))
+
+ def getCalculatedPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Calculated premiums for the grant of a lease Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/premium-grant-lease")
+   .check(status.is(expected = 200))
+
+ def postCalculatedPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Calculated premiums for the grant of a lease Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/premium-grant-lease")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isPremiumGrantLease", true)
+   .formParam("premiumGrantLeaseAmount", 6500)
+   .check(status.is(303))
+
+ def getReversePremiumsReceivedUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Reverse premiums received Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/reverse-premiums-received")
+   .check(status.is(expected = 200))
+
+ def postReversePremiumsReceivedUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Reverse premiums received Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/reverse-premiums-received")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("reversePremiumsReceived", true)
+   .formParam("reversePremiums", 5210)
+   .check(status.is(303))
+
+ def getOtherIncomeFromPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Other income from property Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/other-income-from-property")
+   .check(status.is(expected = 200))
+
+ def postOtherIncomeFromPropertyUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Other income from property Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/other-income-from-property")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("otherIncomeFromProperty", 5210)
+   .check(status.is(303))
+
+ def getForeignRentalPropertyIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Foreign property rental income Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-rental-property-income")
+   .check(status.is(expected = 200))
+
+ def postForeignRentalPropertyIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Foreign property rental income Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-rental-property-income")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("foreignRentalPropertyIncomeAmount", 36400)
+   .check(status.is(303))
+
+ def getForeignBalancingChargeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Foreign balancing charge Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-balancing-charge")
+   .check(status.is(expected = 200))
+
+ def postForeignBalancingChargeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Foreign balancing charge Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-balancing-charge")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("isBalancingCharge", true)
+   .formParam("balancingChargeAmount", 1900)
+   .check(status.is(303))
+
+ def getForeignPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Foreign premiums for the grant of a lease Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-premiums-for-the-grant-of-a-lease")
+   .check(status.is(expected = 200))
+
+ def postForeignPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Foreign premiums for the grant of a lease Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/foreign-premiums-for-the-grant-of-a-lease")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("ukAndForeignForeignPremiumsGrantLease", true)
+   .check(status.is(303))
+
+ def getForeignCalculatedPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Foreign calculated premiums for the grant of a lease Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/calculated-foreign-premium-grant-lease-taxable")
+   .check(status.is(expected = 200))
+
+ def postForeignCalculatedPremiumsForTheGrantOfALeaseUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Foreign calculated premiums for the grant of a lease Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/calculated-foreign-premium-grant-lease-taxable")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("calculatedPremiumLeaseTaxable", true)
+   .formParam("premiumsOfLeaseGrant", 3300)
+   .check(status.is(303))
+
+ def getForeignOtherIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Foreign other income Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/income/foreign-other-income-from-foreign-property")
+   .check(status.is(expected = 200))
+
+ def postForeignOtherIncomeUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Foreign other income Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/income/foreign-other-income-from-foreign-property")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("otherPropertyIncome", 9800)
+   .check(status.is(303))
+
+ def getPropertyIncomeAllowanceClaimUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Property income allowance Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/property-income-allowance-claim")
+   .check(status.is(expected = 200))
+
+ def postPropertyIncomeAllowanceClaimUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Property income allowance Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/property-income-allowance-claim")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("propertyIncomeAllowanceClaimAmount", 1000)
+   .check(status.is(303))
+
+ def getCheckYourAnswersUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Check your answers UK and foreign Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/check-your-answers")
+   .check(status.is(expected = 200))
+
+ def postCheckYourAnswersUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Check your answers UK and foreign Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/check-your-answers")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .check(status.is(303))
+
+ def getHaveYouFinishedUKAndForeign(taxYear: String): HttpRequestBuilder = http("Get Have you finished UK and foreign Page")
+   .get(s"${propertyUrl(taxYear)}/uk-foreign-property/complete-yes-no")
+   .check(status.is(expected = 200))
+
+ def postHaveYouFinishedUKAndForeign(taxYear: String): HttpRequestBuilder = http("Post Have you finished UK and foreign Page")
+   .post(s"${propertyUrl(taxYear)}/uk-foreign-property/complete-yes-no")
+   .formParam("""csrfToken""", """${csrfToken}""")
+   .formParam("sectionComplete", true)
+   .check(status.is(303))
+
 }
