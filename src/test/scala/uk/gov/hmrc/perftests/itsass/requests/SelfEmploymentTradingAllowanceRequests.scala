@@ -44,37 +44,27 @@ object SelfEmploymentTradingAllowanceRequests extends ServicesConfiguration {
    .check(status.is(303))
 
   def getFarmerOrMarketGardener(taxYear: String): HttpRequestBuilder = http("Get Farmer or Market Gardener page")
-    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/farmer-market-gardener")
+    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938001/about-trade/farmer-market-gardener")
     .check(status.is(expected = 200))
 
   def postFarmerOrMarketGardener(taxYear: String): HttpRequestBuilder = http("Post Farmer or Market Gardener page")
-    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/farmer-market-gardener")
+    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938001/about-trade/farmer-market-gardener")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", "false")
     .check(status.is(303))
 
   def getLiteracyOrCreativeWorks(taxYear: String): HttpRequestBuilder = http("Get Literacy or Creative Works page")
-    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/literary-or-creative-works")
+    .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938001/about-trade/literary-or-creative-works")
     .check(status.is(expected = 200))
 
   def postLiteracyOrCreativeWorks(taxYear: String): HttpRequestBuilder = http("Post Literacy or Creative Works page")
-    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/details/literary-or-creative-works")
+    .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938001/about-trade/literary-or-creative-works")
     .formParam("""csrfToken""", """${csrfToken}""")
     .formParam("value", "true")
     .check(status.is(303))
 
- def getSelfEmploymentAbroad(taxYear: String): HttpRequestBuilder = http("Get Carry out self employment abroad page")
-   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/self-employment-abroad")
-   .check(status.is(expected = 200))
-
- def postSelfEmploymentAbroad(taxYear: String): HttpRequestBuilder = http("Post Carry out self employment abroad page")
-   .post(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/self-employment-abroad")
-   .formParam("""csrfToken""", """${csrfToken}""")
-   .formParam("value", "true")
-   .check(status.is(expected = 303))
-
  def getCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Get Check your details page")
-   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938000/about-trade/check")
+   .get(s"${selfEmploymentUrl(taxYear)}/SJPR05893938001/about-trade/check")
    .check(status.is(expected = 200))
 
  def postCheckYourDetails(taxYear: String): HttpRequestBuilder = http("Check your details page")

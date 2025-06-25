@@ -20,8 +20,8 @@ import uk.gov.hmrc.performance.simulation.{JourneyPart, PerformanceTestRunner}
 import uk.gov.hmrc.perftests.itsass.requests.AuthLoginRequests.{getLoginPage, postIndividualLoginPage}
 import uk.gov.hmrc.perftests.itsass.requests.IncomeTaxSubmissionRequests._
 import uk.gov.hmrc.perftests.itsass.requests.RequestsHelper.taxYearEOY
-import uk.gov.hmrc.perftests.itsass.requests.SelfEmploymentTradingAllowanceRequests._
 import uk.gov.hmrc.perftests.itsass.requests.SelfEmploymentExpensesRequests._
+import uk.gov.hmrc.perftests.itsass.requests.SelfEmploymentTradingAllowanceRequests._
 
 trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
 
@@ -30,13 +30,15 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     postIndividualLoginPage("AA000001C", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
-    getTaskListPage(taxYearEOY),
     getSelfEmploymentSummary(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
     postHaveYouFinishedSection(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
     getTaskListPage(taxYearEOY),
-    getSelfEmploymentAbroad(taxYearEOY),
-    postSelfEmploymentAbroad(taxYearEOY),
+    getFarmerOrMarketGardener(taxYearEOY),
+    postFarmerOrMarketGardener(taxYearEOY),
+    getLiteracyOrCreativeWorks(taxYearEOY),
+    postLiteracyOrCreativeWorks(taxYearEOY),
     getCheckYourDetails(taxYearEOY),
     postCheckYourDetails(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
@@ -61,7 +63,7 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     postCheckYourIncome(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
     postHaveYouFinishedSection(taxYearEOY),
-    getTaskListPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
     getExpensesCategories(taxYearEOY),
     postExpensesCategories(taxYearEOY),
     getOfficeSupplies(taxYearEOY),
@@ -87,29 +89,22 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     getDepreciationOrProfit(taxYearEOY),
     postDepreciationOrProfit(taxYearEOY),
     getOtherExpenses(taxYearEOY),
-    postOtherExpenses(taxYearEOY),
-    getTaskListPage(taxYearEOY),
-    getTravelAndAccomTotalExpenses(taxYearEOY),
-    postTravelAndAccomTotalExpenses(taxYearEOY),
-    //TODO Add the following once developed
-//    getTravelAndAccomTotalExpenses(taxYearEOY),
-//    postTravelAndAccomTotalExpenses(taxYearEOY),
-//    getCheckYourTravelExpenses(taxYearEOY),
-//    postCheckYourTravelExpenses(taxYearEOY)
+    postOtherExpenses(taxYearEOY)
   )
-
   def selfEmploymentExpensesAgentEOYYear(id: String, description: String): JourneyPart = setup(id, description) withRequests(
     getLoginPage,
     postIndividualLoginPage("AA000001C", "1234567890", taxYearEOY),
     getStartPage(taxYearEOY),
     getEOYOverviewPage(taxYearEOY),
-    getTaskListPage(taxYearEOY),
     getSelfEmploymentSummary(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
     postHaveYouFinishedSection(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
     getTaskListPage(taxYearEOY),
-    getSelfEmploymentAbroad(taxYearEOY),
-    postSelfEmploymentAbroad(taxYearEOY),
+    getFarmerOrMarketGardener(taxYearEOY),
+    postFarmerOrMarketGardener(taxYearEOY),
+    getLiteracyOrCreativeWorks(taxYearEOY),
+    postLiteracyOrCreativeWorks(taxYearEOY),
     getCheckYourDetails(taxYearEOY),
     postCheckYourDetails(taxYearEOY),
     getHaveYouFinishedSection (taxYearEOY),
@@ -134,7 +129,7 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     postCheckYourIncome(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
     postHaveYouFinishedSection(taxYearEOY),
-    getTaskListPage(taxYearEOY),
+    getEOYOverviewPage(taxYearEOY),
     getExpensesCategories(taxYearEOY),
     postExpensesCategories(taxYearEOY),
     getOfficeSupplies(taxYearEOY),
@@ -160,13 +155,6 @@ trait SelfEmploymentExpensesSimSteps extends PerformanceTestRunner{
     getDepreciationOrProfit(taxYearEOY),
     postDepreciationOrProfit(taxYearEOY),
     getOtherExpenses(taxYearEOY),
-    postOtherExpenses(taxYearEOY),
-    //TODO Add the following once developed
-//    getTravelAndAccomTotalExpenses(taxYearEOY),
-//    postTravelAndAccomTotalExpenses(taxYearEOY),
-//    getTravelAndAccomTotalExpenses(taxYearEOY),
-//    postTravelAndAccomTotalExpenses(taxYearEOY),
-//    getCheckYourTravelExpenses(taxYearEOY),
-//    postCheckYourTravelExpenses(taxYearEOY)
+    postOtherExpenses(taxYearEOY)
   )
 }
