@@ -67,7 +67,7 @@ trait SelfEmploymentTradingAllowanceSimSteps extends PerformanceTestRunner{
     postCheckYourIncome(taxYearEOY),
     getHaveYouFinishedSection(taxYearEOY),
     postHaveYouFinishedSection(taxYearEOY),
-    getEOYOverviewPage(taxYearEOY),
+    getTaskListPage(taxYearEOY),
     getBalancingCharge(taxYearEOY),
     postBalancingCharge(taxYearEOY),
     getHowMuchIsTotalBalancingCharge(taxYearEOY),
